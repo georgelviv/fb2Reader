@@ -1,0 +1,23 @@
+{
+  "name": "fb2Reader",
+  "version": "0.0.0",
+  "description": "fb2Reader\r =========",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/georgelviv/fb2Reader.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/georgelviv/fb2Reader/issues"
+  },
+  "homepage": "https://github.com/georgelviv/fb2Reader",
+  "devDependencies": {
+    "express": "^4.10.2"
+  }
+}
