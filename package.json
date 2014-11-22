@@ -19,6 +19,6 @@
   "homepage": "https://github.com/georgelviv/fb2Reader",
   "devDependencies": {
     "express": "^4.10.2",
-    "fileupload": "^0.3.0"
+    "jquery-file-upload-middleware": "^0.1.7"
   }
 }
