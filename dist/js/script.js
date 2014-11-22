@@ -16,6 +16,7 @@ $(document).ready(function() {
 		},
 		done: function (e, data) {
 			$('form').html('File loaded ' + data.result.files[0].name);
+			getBook();
 		},
 		progressall: function(e, data) {
 			var progress = parseInt(data.loaded / data.total * 100, 10);
@@ -23,5 +24,13 @@ $(document).ready(function() {
 		}
 	});
 
+	function getBook() {
+		console.log(2);
+		$.get("/getbook").done(function( data ) {
+				$('#book').html(data);
+		}).fail(function() {
+			alert( "error" );
+		});
+	}
 
 });
