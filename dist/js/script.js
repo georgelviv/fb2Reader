@@ -11,7 +11,6 @@ $(document).ready(function() {
 			bookName = data.files[0].name;
 			format = bookName.split('.');
 			format = format[format.length - 1];
-			console.log(bookName);
 			if (format === fileExtension) {
 				data.submit();
 			} else {
@@ -19,12 +18,12 @@ $(document).ready(function() {
 			}
 		},
 		done: function (e, data) {
-			$('form').html('File loaded ' + data.result.files[0].name);
+			$('#status').html('File loaded ' + data.result.files[0].name);
 			getBook();
 		},
 		progressall: function(e, data) {
 			var progress = parseInt(data.loaded / data.total * 100, 10);
-			$('form').html('Loading ' + progress);
+			$('#status').html('Loading ' + progress);
 		}
 	});
 
