@@ -8,15 +8,15 @@ module.exports = function(grunt) {
 		},
 		watch: {
 			scripts: {
-				files: ['dist/js/*.js', 'server.js'],
+				files: ['dev/js/*.js', 'server.js'],
 				tasks: ['uglify', 'nodemon']
 			}
 		},
 		uglify: {
 			my_target: {
 				files: {
-					'dist/js/built.min.js': ['dist/js/jquery-1.11.1.min.js', 'dist/js/jquery.ui.widget.js', 'jquery.iframe-transport.js',
-						'dist/js/jquery.fileupload.js', 'dist/js/script.js']
+					'dist/js/built.min.js': ['dev/js/jquery-1.11.1.min.js', 'dev/js/jquery.ui.widget.js', 'jquery.iframe-transport.js',
+						'dev/js/jquery.fileupload.js', 'dev/js/script.js']
 				}
 			}
 		}

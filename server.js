@@ -4,13 +4,14 @@ var express = require('express'),
     app = express(),
     bookText;
 
+
 upload.configure({
   uploadDir: __dirname + '/dist/uploads',
   uploadUrl: '/uploads',
 });
 
 app.get('/', function(req, res) {
-	res.redirect('index.html');
+	res.sendfile(__dirname + '/dist/index.html');
 });
 
 app.get('/getbook', function(req, res) {
