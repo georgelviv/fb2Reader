@@ -1,13 +1,17 @@
 $(document).ready(function() {
 
-	var fileExtension = 'fb2';
+	var fileExtension = 'fb2',
+		bookName;
 
 	$('#fileselect').fileupload({
 		url: '/upload',
 		dataType: 'json',
 		add: function(e, data) {
-			var format = data.files[0].name.split('.');
+			var format;
+			bookName = data.files[0].name;
+			format = bookName.split('.');
 			format = format[format.length - 1];
+			console.log(bookName);
 			if (format === fileExtension) {
 				data.submit();
 			} else {
@@ -25,8 +29,7 @@ $(document).ready(function() {
 	});
 
 	function getBook() {
-		console.log(2);
-		$.get("/getbook").done(function( data ) {
+		$.get("/getbook?bookName=" + bookName).done(function( data ) {
 				$('#book').html(data);
 		}).fail(function() {
 			alert( "error" );

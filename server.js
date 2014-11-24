@@ -1,7 +1,8 @@
 var express = require('express'),
     upload = require('jquery-file-upload-middleware'),
     fs = require('fs'),
-    app = express();
+    app = express(),
+    bookText;
 
 upload.configure({
   uploadDir: __dirname + '/dist/uploads',
@@ -10,6 +11,12 @@ upload.configure({
 
 app.get('/', function(req, res) {
 	res.redirect('index.html');
+});
+
+app.get('/getbook', function(req, res) {
+  res.set('Content-Type', 'text/html');
+  res.send(bookText);
+  deleteBook(req.query.bookName);
 });
 
 app.post('/upload', upload.fileHandler());
@@ -28,18 +35,11 @@ app.listen(8080);
 
 
 function parsingBook(bookName) {
-  var text;
+  bookText = '';
   fs.readFile(__dirname + '/dist/uploads/' + bookName, function (err, data) {
     if (err) throw err;
-    text = data.toString("utf-8");
+    bookText = data.toString("utf-8");
   });
-
-  app.get('/getbook', function(req, res) {
-    res.set('Content-Type', 'text/html');
-    res.send(text);
-    deleteBook(bookName);
-  });
-
 }
 
 function deleteBook(bookName) {
