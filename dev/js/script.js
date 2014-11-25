@@ -19,20 +19,24 @@ $(document).ready(function() {
 		},
 		done: function (e, data) {
 			$('#status').html('File loaded ' + data.result.files[0].name);
-			getBook();
+			setTimeout(getBook, 500);
 		},
 		progressall: function(e, data) {
 			var progress = parseInt(data.loaded / data.total * 100, 10);
 			$('#status').html('Loading ' + progress);
+			$('#book').html('');
 		}
 	});
 
 	function getBook() {
 		$.get("/getbook?bookName=" + bookName).done(function( data ) {
 				$('#book').html(data);
+				console.log(data.slice(0,300));
+				$('#status').html('Ready ' + bookName);
 		}).fail(function() {
 			alert( "error" );
 		});
+		$('#status').html('Parsing ' + bookName);
 	}
 
 });

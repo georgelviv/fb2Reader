@@ -9,7 +9,10 @@ module.exports = function(grunt) {
 		watch: {
 			scripts: {
 				files: ['dev/js/*.js', 'server.js'],
-				tasks: ['uglify', 'nodemon']
+				tasks: ['uglify:my_target', 'nodemon'],
+				options: {
+					spawn: false,
+				}
 			}
 		},
 		uglify: {
