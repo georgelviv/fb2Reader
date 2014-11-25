@@ -1,8 +1,8 @@
-var express = require('express'),
-    upload = require('jquery-file-upload-middleware'),
-    fs = require('fs'),
-    app = express(),
-    bookText;
+var express = require('express');
+var upload = require('jquery-file-upload-middleware');
+var xmlParser = require('./dev/xmlParser.js');
+var app = express();
+var bookText;
 
 
 upload.configure({
@@ -16,14 +16,15 @@ app.get('/', function(req, res) {
 
 app.get('/getbook', function(req, res) {
   res.set('Content-Type', 'text/html');
-  res.send(bookText);
-  deleteBook(req.query.bookName);
+  res.send(xmlParser.bookText);
+  console.log(req.query.bookName);
+  xmlParser.deleteBook(req.query.bookName);
 });
 
 app.post('/upload', upload.fileHandler());
 
 upload.on('end', function (fileInfo, req, res) {
-  parsingBook(fileInfo.name);
+  xmlParser.parsingBook(fileInfo.name);
 });
 
 upload.on('error', function (e, req, res) {
@@ -34,17 +35,9 @@ app.use(express.static(__dirname + '/dist'));
 console.log('Server start at http://localhost:8080/ ...');
 app.listen(8080);
 
+app.use(function(req, res) {
+  res.status(404);
+  res.sendFile(__dirname + '/dist/404.html');
+});
 
-function parsingBook(bookName) {
-  bookText = '';
-  fs.readFile(__dirname + '/dist/uploads/' + bookName, function (err, data) {
-    if (err) throw err;
-    bookText = data.toString("utf-8");
-  });
-}
 
-function deleteBook(bookName) {
-  fs.unlink(__dirname + '/dist/uploads/' + bookName, function(err){
-     if (err) throw err;
-  });
-}

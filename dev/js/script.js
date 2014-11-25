@@ -1,7 +1,7 @@
 $(document).ready(function() {
 
-	var fileExtension = 'fb2',
-		bookName;
+	var fileExtension = 'fb2';
+	var bookName;
 
 	$('#fileselect').fileupload({
 		url: '/upload',
@@ -10,8 +10,9 @@ $(document).ready(function() {
 			var format;
 			bookName = data.files[0].name;
 			format = bookName.split('.');
+
 			format = format[format.length - 1];
-			if (format === fileExtension) {
+			if (format == fileExtension) {
 				data.submit();
 			} else {
 				console.log('error format');
@@ -31,7 +32,6 @@ $(document).ready(function() {
 	function getBook() {
 		$.get("/getbook?bookName=" + bookName).done(function( data ) {
 				$('#book').html(data);
-				console.log(data.slice(0,300));
 				$('#status').html('Ready ' + bookName);
 		}).fail(function() {
 			alert( "error" );
