@@ -17,7 +17,6 @@ app.get('/', function(req, res) {
 app.get('/getbook', function(req, res) {
   res.set('Content-Type', 'text/html');
   res.send(xmlParser.bookText);
-  console.log(req.query.bookName);
   xmlParser.deleteBook(req.query.bookName);
 });
 
