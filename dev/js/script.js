@@ -3,6 +3,10 @@ $(document).ready(function() {
 	var fileExtension = 'fb2';
 	var bookName;
 
+	if (storageGet('bookData')) {
+		$('#book').html(storageGet('bookData'));
+	}
+
 	$('#fileselect').fileupload({
 		url: '/upload',
 		dataType: 'json',
@@ -33,10 +37,27 @@ $(document).ready(function() {
 		$.get("/getbook?bookName=" + bookName).done(function( data ) {
 				$('#book').html(data);
 				$('#status').html('Ready ' + bookName);
+				storageSave(data, 'bookData');
 		}).fail(function() {
-			alert( "error" );
+			console.log('Error with getting book');
 		});
 		$('#status').html('Parsing ' + bookName);
+	}
+
+	function storageSave(data, item) {
+		if (typeof(Storage) !== 'undefined') {
+			localStorage.setItem(item, data);
+		} else {
+			console.log('Local Storega no support');
+		}
+	}
+
+	function storageGet(item) {
+		if (typeof(Storage) !== 'undefined') {
+			return localStorage.getItem(item);
+		} else {
+			console.log('Local Storega no support');
+		}
 	}
 
 });
