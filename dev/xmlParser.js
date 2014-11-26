@@ -34,12 +34,20 @@ function xmlBookToObj(xml) {
     var fictionBook = result.FictionBook;
     var bookDesc = fictionBook.description[0]['title-info'][0];
 
-    objBook.posterSrc = 'data:image/jpeg;base64,' + fictionBook.binary[0]['_'] ;
+    if (fictionBook.binary) {
+      objBook.posterSrc = 'data:image/jpeg;base64,' + fictionBook.binary[0]['_'] ;
+    }
     objBook.title = bookDesc['book-title'][0];
-    objBook.firstName =  bookDesc['author'][0]['first-name'][0];
-    objBook.lastName = bookDesc['author'][0]['last-name'][0];
-    objBook.annotation = bookDesc['annotation'][0]['p'][0];
-    objBook.date = bookDesc['date'][0]['_'];
+    if (bookDesc['author'][0]['first-name']) {
+      objBook.firstName =  bookDesc['author'][0]['first-name'][0];
+    }
+    if (bookDesc['author'][0]['last-name']) {
+      objBook.lastName = bookDesc['author'][0]['last-name'][0];
+    }
+    if (bookDesc['date']) {
+       objBook.date = bookDesc['date'][0]['_'];
+    }
+   
 
   });
 

@@ -1,8 +1,11 @@
 #book
   h2 #{title}
-  h3 #{firstName}  #{lastName} Date: #{date}
-  img(src='#{posterSrc}', alt='poster')
-  p #{annotation}
+  if date
+    h3 #{firstName}  #{lastName} Date: #{date}
+  else
+    h3 #{firstName}  #{lastName} 
+  if posterSrc
+    img(src='#{posterSrc}', alt='poster')
   .body #{body}
 
 
