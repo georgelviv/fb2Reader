@@ -1,9 +1,9 @@
 #book
-  h2 #{title}
+  h2 Title: #{title}
   if date
-    h3 #{firstName}  #{lastName} Date: #{date}
+    h3 Author: #{firstName}  #{lastName} Date: #{date}
   else
-    h3 #{firstName}  #{lastName} 
+    h3 Author: #{firstName}  #{lastName} 
   if posterSrc
     img(src='#{posterSrc}', alt='poster')
   .body #{body}

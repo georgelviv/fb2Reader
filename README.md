@@ -14,3 +14,5 @@ fb2Reader is best web application for read books in fb2 format
 -- added Jade template and parsing xml
 
 -- Saving book on localStorage
+
+-- Module parser and Epub module (not parsing)

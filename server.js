@@ -1,6 +1,6 @@
 var express = require('express');
 var upload = require('jquery-file-upload-middleware');
-var xmlParser = require('./dev/xmlParser.js');
+var parser = require('./dev/parser.js');
 var app = express();
 var bookText;
 
@@ -16,14 +16,14 @@ app.get('/', function(req, res) {
 
 app.get('/getbook', function(req, res) {
   res.set('Content-Type', 'text/html');
-  res.send(xmlParser.bookText);
-  xmlParser.deleteBook(req.query.bookName);
+  res.send(parser.bookText);
+  parser.deleteBook(req.query.bookName);
 });
 
 app.post('/upload', upload.fileHandler());
 
 upload.on('end', function (fileInfo, req, res) {
-  xmlParser.parsingBook(fileInfo.name);
+  parser.parsingBook(fileInfo.name);
 });
 
 upload.on('error', function (e, req, res) {

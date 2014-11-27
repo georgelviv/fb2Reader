@@ -16,7 +16,7 @@ $(document).ready(function() {
 			format = bookName.split('.');
 
 			format = format[format.length - 1];
-			if (format == fileExtension) {
+			if (format == 'fb2' || format == 'epub') {
 				data.submit();
 			} else {
 				console.log('error format');

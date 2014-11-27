@@ -3,22 +3,22 @@ var fs = require('fs');
 var parseString = require('xml2js').parseString;
 var jade = require('jade');
 
-exports.bookText = '';
+exports.xmlBook = '';
 
-exports.parsingBook = function(bookName) {
+exports.parsingXml = function(bookName) {
  
   fs.readFile(__dirname + '/../dist/uploads/' + bookName, function (err, data) {
     if (err) throw err;
     var dataString = data.toString('utf-8');
     var jadeFn = jade.compileFile('dev/jade/book.jade');
 
-    exports.bookText = jadeFn(xmlBookToObj(data));
-    exports.bookText += dataString.slice(dataString.indexOf('<body>') + 6, dataString.indexOf('</body>') );
+    exports.xmlBook = jadeFn(xmlBookToObj(data));
+    exports.xmlBook += dataString.slice(dataString.indexOf('<body>') + 6, dataString.indexOf('</body>') );
 
   });
 };
 
-exports.deleteBook = function(bookName) {
+exports.deleteXml = function(bookName) {
   fs.unlink(__dirname + '/../dist/uploads/' + bookName, function(err){
      if (err) throw err;
   });
