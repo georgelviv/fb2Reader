@@ -9,7 +9,7 @@ module.exports = function(grunt) {
 		watch: {
 			scripts: {
 				files: ['dev/frontJs/*.js', 'server.js'],
-				tasks: ['uglify:my_target', 'nodemon'],
+				tasks: ['uglify:my_target'],
 				options: {
 					spawn: false,
 				}
@@ -18,17 +18,25 @@ module.exports = function(grunt) {
 		uglify: {
 			my_target: {
 				files: {
-					'dist/js/built.min.js': ['dev/frontJs/jquery-1.11.1.min.js', 'dev/frontJs/jquery.ui.widget.js', 
+					'dist/js/built.min.js': ['dev/frontJs/jquery-1.11.1.min.js', 'dev/frontJs/jquery.ui.widget.js',
 					'jquery.iframe-transport.js', 'dev/frontJs/jquery.fileupload.js', 'dev/frontJs/script.js']
+				}
+			}
+		},
+		less: {
+			development: {
+				files: {
+					"dist/css/style.css": "dev/less/style.less"
 				}
 			}
 		}
 	});
 
-	grunt.registerTask('default', ['uglify', 'nodemon', 'watch']);
+	grunt.registerTask('default', ['less', 'uglify', 'nodemon', 'watch']);
 
 	grunt.loadNpmTasks('grunt-nodemon');
 	grunt.loadNpmTasks('grunt-contrib-watch');
 	grunt.loadNpmTasks('grunt-contrib-uglify');
+	grunt.loadNpmTasks('grunt-contrib-less');
 
 };
