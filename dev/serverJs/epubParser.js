@@ -2,6 +2,7 @@ var exports = module.exports = {};
 var unzip = require('unzip');
 var parseString = require('xml2js').parseString;
 var fs = require('fs');
+var jade = require('jade');
 
 exports.parsingEpub = function(bookName, callback) {
 	fs.createReadStream('./dist/uploads/' + bookName)
@@ -12,18 +13,26 @@ exports.parsingEpub = function(bookName, callback) {
 };
 
 function parsingContentOpf(callback) {
-	var objBook = {};
 	fs.readFile('./dist/uploads/OEBPS/content.opf', function(err, xml) {
 		if (err) throw err;
 		var xmlString = xml.toString('utf-8');
+		var jadeFn = jade.compileFile('dev/jade/bookEpub.jade');
 
 		parseString(xmlString, function(err, result){
 			if (err) throw err;
-
-			objBook.title = result['package']['metadata'][0]['dc:title'][0];
-			exports.epubBook = objBook.title;
+		
+			exports.epubBook = jadeFn(xmlBookToObj(result));
 			callback();
 		});
 
 	});
+}
+
+function xmlBookToObj(xml) {
+	var objBook = {};
+
+	objBook.title = xml['package']['metadata'][0]['dc:title'][0];
+	objBook.author = xml['package']['metadata'][0]['dc:creator'][0]['_'];
+
+	return objBook;
 }
