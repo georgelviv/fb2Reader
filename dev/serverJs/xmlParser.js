@@ -7,7 +7,7 @@ exports.xmlBook = '';
 
 exports.parsingXml = function(bookName, callback) {
  
-  fs.readFile(__dirname + '/../dist/uploads/' + bookName, function (err, data) {
+  fs.readFile('./dist/uploads/' + bookName, function (err, data) {
     if (err) throw err;
     var dataString = data.toString('utf-8');
     var jadeFn = jade.compileFile('dev/jade/book.jade');

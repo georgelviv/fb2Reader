@@ -8,7 +8,7 @@ module.exports = function(grunt) {
 		},
 		watch: {
 			scripts: {
-				files: ['dev/js/*.js', 'server.js'],
+				files: ['dev/frontJs/*.js', 'server.js'],
 				tasks: ['uglify:my_target', 'nodemon'],
 				options: {
 					spawn: false,
@@ -18,8 +18,8 @@ module.exports = function(grunt) {
 		uglify: {
 			my_target: {
 				files: {
-					'dist/js/built.min.js': ['dev/js/jquery-1.11.1.min.js', 'dev/js/jquery.ui.widget.js', 'jquery.iframe-transport.js',
-						'dev/js/jquery.fileupload.js', 'dev/js/script.js']
+					'dist/js/built.min.js': ['dev/frontJs/jquery-1.11.1.min.js', 'dev/frontJs/jquery.ui.widget.js', 
+					'jquery.iframe-transport.js', 'dev/frontJs/jquery.fileupload.js', 'dev/frontJs/script.js']
 				}
 			}
 		}

@@ -4,8 +4,8 @@ var parseString = require('xml2js').parseString;
 var fs = require('fs');
 
 exports.parsingEpub = function(bookName, callback) {
-	fs.createReadStream(__dirname + '/../dist/uploads/' + bookName)
-	.pipe(unzip.Extract({ path: __dirname + '/../dist/uploads/' }))
+	fs.createReadStream('./dist/uploads/' + bookName)
+	.pipe(unzip.Extract({ path: './dist/uploads/' }))
 	.on('close', function() {
 		parsingContentOpf(callback);
 	});
@@ -13,7 +13,7 @@ exports.parsingEpub = function(bookName, callback) {
 
 function parsingContentOpf(callback) {
 	var objBook = {};
-	fs.readFile(__dirname + '/../dist/uploads/OEBPS/content.opf', function(err, xml) {
+	fs.readFile('./dist/uploads/OEBPS/content.opf', function(err, xml) {
 		if (err) throw err;
 		var xmlString = xml.toString('utf-8');
 

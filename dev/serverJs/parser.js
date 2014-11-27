@@ -1,6 +1,6 @@
 var exports = module.exports = {};
-var xmlParser = require('../dev/xmlParser.js');
-var epubParser = require('../dev/epubParser.js');
+var xmlParser = require('./xmlParser.js');
+var epubParser = require('./epubParser.js');
 var rmdir = require( 'rmdir' );
 
 exports.ready = false;
@@ -20,7 +20,7 @@ exports.parsingBook = function(bookName) {
 };
 
 exports.deleteBook = function() {
-	removeDir(__dirname + '/../dist/uploads/');
+	removeDir('./dist/uploads/');
 };
 
 

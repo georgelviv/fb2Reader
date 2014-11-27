@@ -1,6 +1,6 @@
 var express = require('express');
 var upload = require('jquery-file-upload-middleware');
-var parser = require('./dev/parser.js');
+var parser = require('./dev/serverJs/parser.js');
 var app = express();
 var bookText;
 
