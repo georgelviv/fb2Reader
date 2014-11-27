@@ -5,7 +5,7 @@ var jade = require('jade');
 
 exports.xmlBook = '';
 
-exports.parsingXml = function(bookName) {
+exports.parsingXml = function(bookName, callback) {
  
   fs.readFile(__dirname + '/../dist/uploads/' + bookName, function (err, data) {
     if (err) throw err;
@@ -15,12 +15,7 @@ exports.parsingXml = function(bookName) {
     exports.xmlBook = jadeFn(xmlBookToObj(data));
     exports.xmlBook += dataString.slice(dataString.indexOf('<body>') + 6, dataString.indexOf('</body>') );
 
-  });
-};
-
-exports.deleteXml = function(bookName) {
-  fs.unlink(__dirname + '/../dist/uploads/' + bookName, function(err){
-     if (err) throw err;
+    callback();
   });
 };
 

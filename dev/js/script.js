@@ -2,10 +2,7 @@ $(document).ready(function() {
 
 	var fileExtension = 'fb2';
 	var bookName;
-
-	if (storageGet('bookData')) {
-		$('#book').html(storageGet('bookData'));
-	}
+	var getInterval;
 
 	$('#fileselect').fileupload({
 		url: '/upload',
@@ -24,7 +21,7 @@ $(document).ready(function() {
 		},
 		done: function (e, data) {
 			$('#status').html('File loaded ' + data.result.files[0].name);
-			setTimeout(getBook, 500);
+			getInterval = setInterval(getBook, 500);
 		},
 		progressall: function(e, data) {
 			var progress = parseInt(data.loaded / data.total * 100, 10);
@@ -34,10 +31,12 @@ $(document).ready(function() {
 	});
 
 	function getBook() {
-		$.get("/getbook?bookName=" + bookName).done(function( data ) {
+		$.get("/getbook?bookName=" + bookName).done(function(data) {
+			if (data !== 'false') {
 				$('#book').html(data);
 				$('#status').html('Ready ' + bookName);
-				storageSave(data, 'bookData');
+				clearInterval(getInterval);
+			}
 		}).fail(function() {
 			console.log('Error with getting book');
 		});

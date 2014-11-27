@@ -1,12 +1,29 @@
 var exports = module.exports = {};
+var unzip = require('unzip');
+var parseString = require('xml2js').parseString;
 var fs = require('fs');
 
-exports.parsingEpub = function(bookName) {
-	exports.epubBook = 'Epub Book';
+exports.parsingEpub = function(bookName, callback) {
+	fs.createReadStream(__dirname + '/../dist/uploads/' + bookName)
+	.pipe(unzip.Extract({ path: __dirname + '/../dist/uploads/' }))
+	.on('close', function() {
+		parsingContentOpf(callback);
+	});
 };
 
-exports.deleteEpub = function(bookName) {
-  fs.unlink(__dirname + '/../dist/uploads/' + bookName, function(err){
-     if (err) throw err;
-  });
-};
+function parsingContentOpf(callback) {
+	var objBook = {};
+	fs.readFile(__dirname + '/../dist/uploads/OEBPS/content.opf', function(err, xml) {
+		if (err) throw err;
+		var xmlString = xml.toString('utf-8');
+
+		parseString(xmlString, function(err, result){
+			if (err) throw err;
+
+			objBook.title = result['package']['metadata'][0]['dc:title'][0];
+			exports.epubBook = objBook.title;
+			callback();
+		});
+
+	});
+}

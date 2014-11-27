@@ -16,8 +16,12 @@ app.get('/', function(req, res) {
 
 app.get('/getbook', function(req, res) {
   res.set('Content-Type', 'text/html');
-  res.send(parser.bookText);
-  parser.deleteBook(req.query.bookName);
+  if (parser.ready) {
+    res.send(parser.bookText);
+    parser.deleteBook();
+  } else {
+    res.send(false);
+  }
 });
 
 app.post('/upload', upload.fileHandler());

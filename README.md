@@ -1,7 +1,7 @@
 fb2Reader
 =========
 
-fb2Reader is best web application for read books in fb2 format
+fb2Reader is best web application for read books in fb2 (working to make EPUB) format
 
 -- work uploading with ajax files to server
 
@@ -16,3 +16,5 @@ fb2Reader is best web application for read books in fb2 format
 -- Saving book on localStorage
 
 -- Module parser and Epub module (not parsing)
+
+-- Fixed error with wrong getting book and epub gets title
