@@ -32,7 +32,6 @@ function xmlBookToObj(xml, callback) {
 	var regExpTitle = /<dc:title.*>.*<\/dc:title>/i;
 	var regExpAuthor = /<dc:creator.*opf:role="aut".*>.*<\/dc:creator>/i;
 	var contentArr = getHref(xml.slice(xml.indexOf('<manifest>') + 10, xml.indexOf('</manifest>')));
-	var contentHtml = [];
 
 	objBook.title = getTagInner(regExpTitle, xml);
 	if (getTagInner(regExpAuthor, xml)) {
@@ -42,33 +41,44 @@ function xmlBookToObj(xml, callback) {
 	exports.epubBook = jadeParse(objBook);
 
 	for (var i = 0; i < contentArr.length; i++) {
-		htmlAdding(contentArr[i], i, callback);
+		if (i == contentArr.length - 1) {
+			htmlAdding(contentArr[i], callback);
+		} else {
+			htmlAdding(contentArr[i]);
+		}
 	}
-
-	function htmlAdding(path, index, callback) {
-		fs.readFile('./dist/uploads/OEBPS/' + path, function(err, data) {
-			if (err) {
-				console.log('Error to read html file. ' + err);
-				return;
-			}
-
-			contentHtml[index] = formatHtml(data.toString('utf-8'));
-
-			if (checkArr(contentHtml, contentArr.length)) {
-				for (var i = 0; i < contentArr.length; i++) {
-					exports.epubBook += contentHtml[i];
-				}
-				callback();
-			}
-		});
-
-	}
-
 }
 
-function formatHtml(htmlString) {
-	var bookBody = htmlString.slice(htmlString.search(/<body.*>/), htmlString.search(/<\/body>/));
-	bodkBody = bookBody.slice(bookBody.search(/>/));
+function htmlAdding(path, callback) {
+	var data = fs.readFileSync('./dist/uploads/OEBPS/' + path);
+	path = path.slice(0, path.lastIndexOf('/') + 1);
+	exports.epubBook += formatHtml(data.toString('utf-8'), path);
+
+	if (callback) {
+		callback();
+	}
+}
+
+function formatHtml(htmlString, path) {
+	var bookBody = htmlString.slice(htmlString.search(/<body.*>/i), htmlString.search(/<\/body>/i));
+	var imgArr = [];
+	var img = '';
+	var imgHref = '';
+	var dataImg;
+
+	bookBody = bookBody.slice(bookBody.search(/>/) + 1);
+
+	if(bookBody.search(/<img.*>/i) !== -1) {
+		imgArr = bookBody.match(/<img.*>/gi);
+
+		for (var i = 0; i < imgArr.length; i++) {
+			img = imgArr[i];
+			imgHref = (img.match(/src=("|').*("|')/i)[0]).slice(5,-1);
+			dataImg = fs.readFileSync('./dist/uploads/OEBPS/' + path +imgHref);
+			bookBody = bookBody.replace(imgHref, 'data:image/jpeg;base64,' + dataImg.toString("base64"));
+		}
+	}
+
 	return bookBody;
 }
 
@@ -101,15 +111,3 @@ function getHref(htmlString) {
 	return fillResults;
 }
 
-function checkArr(arr, length) {
-	var isFull = false;
-	for (var i = 0; i < length; i++) {
-		if (arr[i]) {
-			isFull = true;
-		} else {
-			isFull = false;
-			break;
-		}
-	}
-	return isFull;
-}

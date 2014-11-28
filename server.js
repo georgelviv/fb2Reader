@@ -17,7 +17,6 @@ app.get('/', function(req, res) {
 app.get('/getbook', function(req, res) {
   res.set('Content-Type', 'text/html');
   if (parser.ready) {
-    console.log(parser.ready);
     res.send(parser.bookText);
   } else {
     res.send(false);
