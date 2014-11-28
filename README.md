@@ -15,6 +15,8 @@ fb2Reader is best web application for read books in fb2 (working to make EPUB) f
 
 * localStorage
 
+* settings panel
+
 #### Bugs list:
 
 * no bugs ;)
