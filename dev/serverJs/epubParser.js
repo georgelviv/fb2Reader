@@ -35,8 +35,10 @@ function xmlBookToObj(xml, callback) {
 	var contentHtml = [];
 
 	objBook.title = getTagInner(regExpTitle, xml);
-	objBook.author = getTagInner(regExpAuthor, xml);
-
+	if (getTagInner(regExpAuthor, xml)) {
+		objBook.author = getTagInner(regExpAuthor, xml);
+	}
+	
 	exports.epubBook = jadeParse(objBook);
 
 	for (var i = 0; i < contentArr.length; i++) {
@@ -65,7 +67,8 @@ function xmlBookToObj(xml, callback) {
 }
 
 function formatHtml(htmlString) {
-	var bookBody = htmlString.slice(htmlString.indexOf('<body>') + 6, htmlString.indexOf('</body>'));
+	var bookBody = htmlString.slice(htmlString.search(/<body.*>/), htmlString.search(/<\/body>/));
+	bodkBody = bookBody.slice(bookBody.search(/>/));
 	return bookBody;
 }
 
@@ -81,6 +84,7 @@ function getFormat(fileName) {
 
 function getTagInner(regExp, xml) {
 	var string = xml.match(regExp);
+	if (!string) return false;
 	string = string[0];
 	return string.slice(string.indexOf('>') + 1, string.lastIndexOf('<'));
 }

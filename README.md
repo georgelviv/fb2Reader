@@ -9,6 +9,8 @@ fb2Reader is best web application for read books in fb2 (working to make EPUB) f
 
 * Fixed error with wrong getting book and epub gets title
 
+* Epub parsing only text in order
+
 #### TODO list:
 
 * hint
