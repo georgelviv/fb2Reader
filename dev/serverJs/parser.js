@@ -3,9 +3,9 @@ var xmlParser = require('./xmlParser.js');
 var epubParser = require('./epubParser.js');
 var rmdir = require( 'rmdir' );
 
-exports.ready = false;
 
 exports.parsingBook = function(bookName) {
+	exports.ready = false;
 	if (getFormat(bookName) == 'fb2') {
 		xmlParser.parsingXml(bookName, function() {
 			exports.bookText = xmlParser.xmlBook;
