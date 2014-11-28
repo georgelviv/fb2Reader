@@ -10,19 +10,16 @@ exports.parsingBook = function(bookName) {
 		xmlParser.parsingXml(bookName, function() {
 			exports.bookText = xmlParser.xmlBook;
 			exports.ready = true;
+			removeDir('./dist/uploads/');
 		});
 	} else if (getFormat(bookName) == 'epub') {
 		epubParser.parsingEpub(bookName, function() {
 			exports.bookText = epubParser.epubBook;
 			exports.ready = true;
+			removeDir('./dist/uploads/');
 		});
 	}
 };
-
-exports.deleteBook = function() {
-	removeDir('./dist/uploads/');
-};
-
 
 function getFormat(fileName) {
 	var format = fileName.split('.');
@@ -30,5 +27,9 @@ function getFormat(fileName) {
 }
 
 function removeDir(path) {
-	rmdir(path, function ( err, dirs, files ){});
+	rmdir(path, function ( err, dirs, files ){
+		if (err) {
+			console.log('Error delete. ' + err);
+		}
+	});
 }
