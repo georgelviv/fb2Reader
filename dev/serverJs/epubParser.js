@@ -65,25 +65,49 @@ function htmlAdding(path, callback) {
 
 function formatHtml(htmlString, path) {
 	var bookBody = htmlString.slice(htmlString.search(/<body.*>/i), htmlString.search(/<\/body>/i));
-	var imgArr = [];
-	var img = '';
-	var imgHref = '';
-	var dataImg;
 
 	bookBody = bookBody.slice(bookBody.search(/>/) + 1);
 
-	if(bookBody.search(/<img.*>/i) !== -1) {
-		imgArr = bookBody.match(/<img.*>/gi);
+	if (bookBody.search(/<img.*>/i) !== -1) {
+		bookBody = imageSort(bookBody);
+	}
+
+
+	if (bookBody.search(/<a.*?href=("|')[^http](s)?.*?(<\/a>)/i) !== -1) {
+		bookBody = linkSort(bookBody);
+	}
+
+	return bookBody;
+
+	function imageSort(htmlString) {
+		var imgArr = htmlString.match(/<img.*>/gi);
+		var img = '';
+		var imgHref = '';
+		var dataImg;
 
 		for (var i = 0; i < imgArr.length; i++) {
 			img = imgArr[i];
 			imgHref = (img.match(/src=("|').*("|')/i)[0]).slice(5,-1);
 			dataImg = fs.readFileSync('./dist/uploads/OEBPS/' + path +imgHref);
-			bookBody = bookBody.replace(imgHref, 'data:image/jpeg;base64,' + dataImg.toString("base64"));
+			htmlString = htmlString.replace(imgHref, 'data:image/jpeg;base64,' + dataImg.toString("base64"));
 		}
+
+		return htmlString;
 	}
 
-	return bookBody;
+	function linkSort(htmlString) {
+		var linkArr = htmlString.match(/<a.*?href=("|')[^http](s)?.*?(<\/a>)/gi);
+		var link;
+		var linkInner;
+
+		for (var i = 0; i < linkArr.length; i++) {
+			link = linkArr[i];
+			linkInner = (link.match(/>.*<\/a>/i)[0]).slice(1, -4);
+			htmlString = htmlString.replace(link , linkInner);
+		}
+
+		return htmlString;
+	}
 }
 
 function jadeParse(obj) {
