@@ -1,7 +1,7 @@
 fb2Reader
 =========
 
-fb2Reader is best web application for read books in fb2 and epub format
+fb2Reader is best web application for read books in fb2, epub and txt format
 
 #### Last Updates:
 
@@ -12,6 +12,8 @@ fb2Reader is best web application for read books in fb2 and epub format
 * Epub parsing only text in order
 
 * Yeah! Epub parse with image)
+
+* Now works with txt
 
 #### TODO list:
 

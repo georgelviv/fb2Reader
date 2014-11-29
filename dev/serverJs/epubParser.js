@@ -34,6 +34,10 @@ function xmlBookToObj(xml, callback) {
 	var contentArr = getHref(xml.slice(xml.indexOf('<manifest>') + 10, xml.indexOf('</manifest>')));
 
 	objBook.title = getTagInner(regExpTitle, xml);
+	if (objBook.title.search(/-0/)) {
+		objBook.title = objBook.title.slice(0, objBook.title.search(/-0/));
+	}
+
 	if (getTagInner(regExpAuthor, xml)) {
 		objBook.author = getTagInner(regExpAuthor, xml);
 	}

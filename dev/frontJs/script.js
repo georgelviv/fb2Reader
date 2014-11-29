@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-	var fileExtension = 'fb2';
+	var fileExtension = /(fb2|epub|txt)/i;
 	var bookName;
 	var getInterval;
 
@@ -13,7 +13,7 @@ $(document).ready(function() {
 			format = bookName.split('.');
 
 			format = format[format.length - 1];
-			if (format == 'fb2' || format == 'epub') {
+			if (format.match(fileExtension)) {
 				data.submit();
 			} else {
 				console.log('error format');
