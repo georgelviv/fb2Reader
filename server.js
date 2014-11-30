@@ -26,7 +26,7 @@ app.get('/getbook', function(req, res) {
 app.post('/upload', upload.fileHandler());
 
 upload.on('end', function (fileInfo, req, res) {
-  parser.parsingBook(fileInfo.name);
+  parser.parsingBook(fileInfo.name, req.fields);
 });
 
 upload.on('error', function (e, req, res) {

@@ -9,7 +9,8 @@ $(document).ready(function() {
 		dataType: 'json',
 		formData: {
 			height: $('body').height(),
-			width: $('body').width()
+			width: $('body').width(),
+			lineHeight: $('#book').css('line-height')
 		},
 		add: function(e, data) {
 			var format;
@@ -45,22 +46,6 @@ $(document).ready(function() {
 			console.log('Error with getting book');
 		});
 		$('#status').html('Parsing ' + bookName);
-	}
-
-	function storageSave(data, item) {
-		if (typeof(Storage) !== 'undefined') {
-			localStorage.setItem(item, data);
-		} else {
-			console.log('Local Storega no support');
-		}
-	}
-
-	function storageGet(item) {
-		if (typeof(Storage) !== 'undefined') {
-			return localStorage.getItem(item);
-		} else {
-			console.log('Local Storega no support');
-		}
 	}
 
 });
