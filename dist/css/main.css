@@ -3,7 +3,6 @@ body {
 }
 .wrapper {
   width: 95%;
-  xheight: auto;
   height: auto;
   margin: 0 auto;
   position: relative;
@@ -12,8 +11,6 @@ body {
 header {
   width: 100%;
   height: 80px;
-  xdisplay: table-cell;
-  xvertical-align: middle;
   background: #353434;
 }
 header .logo {
@@ -45,7 +42,6 @@ header nav {
   overflow: hidden;
   display: inline-block;
   margin: 20px 0 0 50px;
-  xpadding: 13px 40px;
   padding: 0px 40px;
   border-left: 1px #404040 solid;
 }
@@ -109,18 +105,15 @@ header ul.social li a.gplus {
 .btn:before {
   content: 'Choose File';
   display: inline-block;
-  padding: 20px 20px;
+  padding: 24px 32px;
   background-color: #65bf95;
   color: #fff;
   font-family: "lato_regular", arial;
   font-size: 20px;
   text-decoration: none;
-  margin-top: 5px;
+  margin-top: 3px;
   text-transform: uppercase;
   letter-spacing: 1px;
-  -moz-border-radius: 1px;
-  -webkit-border-radius: 1px;
-  border-radius: 1px;
   white-space: nowrap;
   cursor: pointer;
   text-shadow: 1px 0px #fff;
@@ -142,7 +135,6 @@ header ul.social li a.gplus {
 .slideout_inner {
   position: fixed;
   top: -40px;
-  xleft: 250px;
   -webkit-transition-duration: 0.3s;
   -moz-transition-duration: 0.3s;
   -o-transition-duration: 0.3s;
@@ -177,13 +169,10 @@ header ul.social li a.gplus {
   margin-top: 40px;
 }
 footer {
-  xpadding: 100px 0;
   border-top: 1px #dedede solid;
   background: #343232;
   width: 100%;
   height: 25px;
-  xtext-align: center;
-  xmargin-top: 30px;
   bottom: 0 !important;
   left: 0 !important;
   position: fixed;
