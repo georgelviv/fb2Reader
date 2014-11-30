@@ -7,6 +7,11 @@ $(document).ready(function() {
 	$('#fileselect').fileupload({
 		url: '/upload',
 		dataType: 'json',
+		formData: {
+			height: $('body').height(),
+			width: $('body').width(),
+			lineHeight: $('#book').css('line-height')
+		},
 		add: function(e, data) {
 			var format;
 			bookName = data.files[0].name;
@@ -36,47 +41,11 @@ $(document).ready(function() {
 				$('#book').html(data);
 				$('#status').html('Ready ' + bookName);
 				clearInterval(getInterval);
-				// gettingPage();
 			}
 		}).fail(function() {
 			console.log('Error with getting book');
 		});
 		$('#status').html('Parsing ' + bookName);
 	}
-
-	function storageSave(data, item) {
-		if (typeof(Storage) !== 'undefined') {
-			localStorage.setItem(item, data);
-		} else {
-			console.log('Local Storega no support');
-		}
-	}
-
-	function storageGet(item) {
-		if (typeof(Storage) !== 'undefined') {
-			return localStorage.getItem(item);
-		} else {
-			console.log('Local Storega no support');
-		}
-	}
-
-	// function gettingPage() {
-	// 	var lineHeight = ($('#book').css('font-size')).slice(0, -2) * 1.5;
-	// 	var scrollHeight =  Math.floor($('#book').height() / lineHeight) * lineHeight;
-
-	// 	$('#book img').height(Math.floor(Math.min(10, $('#book img').height() / lineHeight)) * lineHeight);
-	// 	$('#book').height(Math.floor($('#book').height() / lineHeight) * lineHeight);
-
-
-	// 	$('body')[0].onkeydown = function(e) {
-	// 		if (e.keyCode == 39) {
-	// 			$('#book').scrollTop($('#book').scrollTop() + scrollHeight);
-				
-	// 		}
-	// 		if (e.keyCode == 37) {
-	// 			$('#book').scrollTop($('#book').scrollTop() - scrollHeight);
-	// 		}
-	// 	};
-	// }
 
 });
