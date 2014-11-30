@@ -54,8 +54,7 @@ header nav ul li a {
 header nav {
   overflow: hidden;
   display: inline-block;
-  margin: 20px 0 0 50px;
-  xpadding: 13px 40px;
+  margin: 32px 0 0 -50px;
   padding: 0px 40px;
   border-left: 1px #404040 solid;
 }
@@ -83,7 +82,8 @@ header nav ul li a:hover {
 header ul.social {
   float: right;
   list-style: none;
-  margin-top: 5px;
+  margin-top: 0px;
+  padding: 0px 60px;
 }
 header ul.social li {
   float: left;
