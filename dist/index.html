@@ -4,16 +4,37 @@
 	<meta charset="UTF-8">
 	<title>fb2Reader</title>
 	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/main.css">
 </head>
 <body>
-	<h1>fb2Reader</h1>
-	<form action="">
-		<label for="load">Choose fb2, epub or txt file</label>
-		<input id="fileselect" type="file">
-	</form>
-	<div id="status"></div>
-	<div id="book"></div>
+	<header>		
+		<div class="wrapper">
+			<form action="" class="logo">
+				<input id="fileselect" type="file" class="btn">
+			</form>
+			<!--<span id="status"></span>-->
+			<nav id="nav_menu">
+				<ul>
+					<li><a href="#">Прогрес [1%..100%]</a></li>
+					<li><a href="#">Сторінка (поточна / скільки всього)</a></li>
+					<li><a href="#">Зробити закладку</a></li>					
+				</ul>
 
+				<ul class="social">
+					<li><a class="fb" href="#"></a></li>
+					<li><a class="gplus" href="#"></a></li>
+				</ul>
+			</nav>
+		</div>
+	</header>
+<div class="wrapper">
+	<section class="column">
+		<div id="book"></div>
+	</section>
+</div>
+	<footer>
+		Тут будуть Налаштування)
+	</footer>
 	<script src="js/built.min.js"></script>
 </body>
 </html>
