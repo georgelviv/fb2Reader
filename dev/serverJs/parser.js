@@ -2,25 +2,25 @@ var exports = module.exports = {};
 var xmlParser = require('./xmlParser.js');
 var epubParser = require('./epubParser.js');
 var txtParser = require('./txtParser.js');
-var pageDivider = require('./pageDivider.js');
 var rmdir = require( 'rmdir' );
 
-exports.parsingBook = function(bookName, fields) {
+
+exports.parsingBook = function(bookName) {
 	exports.ready = false;
 	switch (getFormat(bookName)) {
 		case 'fb2' :
 			xmlParser.parsingXml(bookName, function() {
-				readyAndRemove(xmlParser.xmlBook, fields);
+				readyAndRemove(xmlParser.xmlBook);
 			});
 			break;
 		case 'epub' :
 			epubParser.parsingEpub(bookName, function() {
-				readyAndRemove(epubParser.epubBook, fields);
+				readyAndRemove(epubParser.epubBook);
 			});
 			break;
 		case 'txt' :
 			txtParser.parsingTxt(bookName, function() {
-				readyAndRemove(txtParser.txtBook, fields);
+				readyAndRemove(txtParser.txtBook);
 			});
 			break;
 	}
@@ -39,8 +39,7 @@ function removeDir(path) {
 	});
 }
 
-function readyAndRemove(htmlString, fields) {
-	pageDivider.dividePage(fields);
+function readyAndRemove(htmlString) {
 	exports.bookText = htmlString;
 	exports.ready = true;
 	removeDir('./dist/uploads/');
