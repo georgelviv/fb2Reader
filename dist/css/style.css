@@ -7,3 +7,6 @@ body {
   xwidth: 900px;
   margin: 0 auto;
 }
+#book img {
+  max-height: 500px;
+}

@@ -1,28 +1,33 @@
 var exports = module.exports = {};
 var xmlParser = require('./xmlParser.js');
 var epubParser = require('./epubParser.js');
+var txtParser = require('./txtParser.js');
 var rmdir = require( 'rmdir' );
 
-exports.ready = false;
 
 exports.parsingBook = function(bookName) {
-	if (getFormat(bookName) == 'fb2') {
-		xmlParser.parsingXml(bookName, function() {
-			exports.bookText = xmlParser.xmlBook;
-			exports.ready = true;
-		});
-	} else if (getFormat(bookName) == 'epub') {
-		epubParser.parsingEpub(bookName, function() {
-			exports.bookText = epubParser.epubBook;
-			exports.ready = true;
-		});
+	exports.ready = false;
+	switch (getFormat(bookName)) {
+		case 'fb2' :
+			xmlParser.parsingXml(bookName, function() {
+				exports.bookText = xmlParser.xmlBook;
+				readyAndRemove();
+			});
+			break;
+		case 'epub' :
+			epubParser.parsingEpub(bookName, function() {
+				exports.bookText = epubParser.epubBook;
+				readyAndRemove();
+			});
+			break;
+		case 'txt' :
+			txtParser.parsingTxt(bookName, function() {
+				exports.bookText = txtParser.txtBook;
+				readyAndRemove();
+			});
+			break;
 	}
 };
-
-exports.deleteBook = function() {
-	removeDir('./dist/uploads/');
-};
-
 
 function getFormat(fileName) {
 	var format = fileName.split('.');
@@ -30,5 +35,14 @@ function getFormat(fileName) {
 }
 
 function removeDir(path) {
-	rmdir(path, function ( err, dirs, files ){});
+	rmdir(path, function ( err, dirs, files ){
+		if (err) {
+			console.log('Error delete. ' + err);
+		}
+	});
+}
+
+function readyAndRemove() {
+	exports.ready = true;
+	removeDir('./dist/uploads/');
 }

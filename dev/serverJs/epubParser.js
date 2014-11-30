@@ -1,68 +1,113 @@
 var exports = module.exports = {};
 var unzip = require('unzip');
-var parseString = require('xml2js').parseString;
 var fs = require('fs');
 var jade = require('jade');
 
 exports.parsingEpub = function(bookName, callback) {
+	exports.epubBook = '';
+
 	fs.createReadStream('./dist/uploads/' + bookName)
 	.pipe(unzip.Extract({ path: './dist/uploads/' }))
 	.on('close', function() {
 		parsingContentOpf(callback);
+	}).on('error', function(err) {
+		exports.epubBook = 'Wrong zip format. ' + err;
+		callback();
 	});
 };
 
 function parsingContentOpf(callback) {
 	fs.readFile('./dist/uploads/OEBPS/content.opf', function(err, xml) {
-		if (err) throw err;
+		if (err) {
+			exports.epubBook = 'Error with findin content.opf. ' + err;
+			callback();
+		}
 		var xmlString = xml.toString('utf-8');
-
-		parseString(xmlString, function(err, result){
-			if (err) throw err;
-		
-			xmlBookToObj(result, callback);
-		});
-
+		xmlBookToObj(xmlString, callback);
 	});
 }
 
 function xmlBookToObj(xml, callback) {
 	var objBook = {};
-	var bookItem = xml['package']['manifest'][0]["item"];
+	var regExpTitle = /<dc:title.*>.*<\/dc:title>/i;
+	var regExpAuthor = /<dc:creator.*opf:role="aut".*>.*<\/dc:creator>/i;
+	var contentArr = getHref(xml.slice(xml.indexOf('<manifest>') + 10, xml.indexOf('</manifest>')));
 
-	objBook.title = xml['package']['metadata'][0]['dc:title'][0];
-	objBook.author = xml['package']['metadata'][0]['dc:creator'][0]['_'];
+	objBook.title = getTagInner(regExpTitle, xml);
+	if (objBook.title.search(/-0/)) {
+		objBook.title = objBook.title.slice(0, objBook.title.search(/-0/));
+	}
 
-	exports.epubBook = jadeParse(objBook);
-
-	for (var i = 0; i < bookItem.length; i++) {
-		if (i == bookItem.length - 1) {
-			htmlAdding(bookItem[i]['$']['href'], callback);
-		} else {
-			htmlAdding(bookItem[i]['$']['href']);
-		}
+	if (getTagInner(regExpAuthor, xml)) {
+		objBook.author = getTagInner(regExpAuthor, xml);
 	}
 	
-	return objBook;
+	exports.epubBook = jadeParse(objBook);
+
+	for (var i = 0; i < contentArr.length; i++) {
+		if (i == contentArr.length - 1) {
+			htmlAdding(contentArr[i], callback);
+		} else {
+			htmlAdding(contentArr[i]);
+		}
+	}
 }
 
 function htmlAdding(path, callback) {
-	fs.readFile('./dist/uploads/OEBPS/' + path, function(err, data) {
-		if (err) throw err;
-		if (getFormat(path) == 'html') {
-			exports.epubBook += formatHtml(data.toString('utf-8'));
-		}
-		if (callback) {
+	var data = fs.readFileSync('./dist/uploads/OEBPS/' + path);
+	path = path.slice(0, path.lastIndexOf('/') + 1);
+	exports.epubBook += formatHtml(data.toString('utf-8'), path);
 
-			callback();
-		}
-	});
+	if (callback) {
+		callback();
+	}
 }
 
-function formatHtml(htmlString) {
-	var bookBody = htmlString.slice(htmlString.indexOf('<body>') + 6, htmlString.indexOf('</body>'));
-	var imgRexExp = /src=/;
+function formatHtml(htmlString, path) {
+	var bookBody = htmlString.slice(htmlString.search(/<body.*>/i), htmlString.search(/<\/body>/i));
+
+	bookBody = bookBody.slice(bookBody.search(/>/) + 1);
+
+	if (bookBody.search(/<img.*>/i) !== -1) {
+		bookBody = imageSort(bookBody);
+	}
+
+
+	if (bookBody.search(/<a.*?href=("|')(?!http(s)?:\/\/).*?(<\/a>)/i) !== -1) {
+		bookBody = linkSort(bookBody);
+	}
+
 	return bookBody;
+
+	function imageSort(htmlString) {
+		var imgArr = htmlString.match(/<img.*>/gi);
+		var img = '';
+		var imgHref = '';
+		var dataImg;
+
+		for (var i = 0; i < imgArr.length; i++) {
+			img = imgArr[i];
+			imgHref = (img.match(/src=("|').*("|')/i)[0]).slice(5,-1);
+			dataImg = fs.readFileSync('./dist/uploads/OEBPS/' + path +imgHref);
+			htmlString = htmlString.replace(imgHref, 'data:image/jpeg;base64,' + dataImg.toString("base64"));
+		}
+
+		return htmlString;
+	}
+
+	function linkSort(htmlString) {
+		var linkArr = htmlString.match(/<a.*?href=("|')(?!http(s)?:\/\/).*?(<\/a>)/gi);
+		var link;
+		var linkInner;
+
+		for (var i = 0; i < linkArr.length; i++) {
+			link = linkArr[i];
+			linkInner = (link.match(/>.*<\/a>/i)[0]).slice(1, -4);
+			htmlString = htmlString.replace(link , linkInner);
+		}
+
+		return htmlString;
+	}
 }
 
 function jadeParse(obj) {
@@ -74,3 +119,23 @@ function getFormat(fileName) {
 	var format = fileName.split('.');
 	return format[format.length - 1];
 }
+
+function getTagInner(regExp, xml) {
+	var string = xml.match(regExp);
+	if (!string) return false;
+	string = string[0];
+	return string.slice(string.indexOf('>') + 1, string.lastIndexOf('<'));
+}
+
+function getHref(htmlString) {
+	var regExpHref = /\bhref=("|'){1}.*\.\w{3,5}/gi;
+	var results = htmlString.match(regExpHref);
+	var fillResults = [];
+	results.forEach(function(value) {
+		if (getFormat(value) == 'html' || getFormat(value) == 'xhtml') {
+			fillResults.push(value.slice(value.search(/'|"/) + 1));
+		}
+	});
+	return fillResults;
+}
+
