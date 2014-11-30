@@ -36,6 +36,7 @@ $(document).ready(function() {
 				$('#book').html(data);
 				$('#status').html('Ready ' + bookName);
 				clearInterval(getInterval);
+				// gettingPage();
 			}
 		}).fail(function() {
 			console.log('Error with getting book');
@@ -58,5 +59,24 @@ $(document).ready(function() {
 			console.log('Local Storega no support');
 		}
 	}
+
+	// function gettingPage() {
+	// 	var lineHeight = ($('#book').css('font-size')).slice(0, -2) * 1.5;
+	// 	var scrollHeight =  Math.floor($('#book').height() / lineHeight) * lineHeight;
+
+	// 	$('#book img').height(Math.floor(Math.min(10, $('#book img').height() / lineHeight)) * lineHeight);
+	// 	$('#book').height(Math.floor($('#book').height() / lineHeight) * lineHeight);
+
+
+	// 	$('body')[0].onkeydown = function(e) {
+	// 		if (e.keyCode == 39) {
+	// 			$('#book').scrollTop($('#book').scrollTop() + scrollHeight);
+				
+	// 		}
+	// 		if (e.keyCode == 37) {
+	// 			$('#book').scrollTop($('#book').scrollTop() - scrollHeight);
+	// 		}
+	// 	};
+	// }
 
 });

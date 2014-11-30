@@ -8,11 +8,15 @@ module.exports = function(grunt) {
 		},
 		watch: {
 			scripts: {
-				files: ['dev/frontJs/*.js', 'server.js'],
+				files: ['dev/frontJs/*.js'],
 				tasks: ['uglify:my_target'],
 				options: {
 					spawn: false,
 				}
+			},
+			less: {
+				files: ['dev/less/*.less'],
+				tasks: ['less']
 			}
 		},
 		uglify: {
@@ -33,6 +37,7 @@ module.exports = function(grunt) {
 	});
 
 	grunt.registerTask('default', ['less', 'uglify', 'nodemon', 'watch']);
+	grunt.registerTask('front', ['less', 'uglify', 'watch']);
 
 	grunt.loadNpmTasks('grunt-nodemon');
 	grunt.loadNpmTasks('grunt-contrib-watch');

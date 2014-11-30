@@ -10,20 +10,17 @@ exports.parsingBook = function(bookName) {
 	switch (getFormat(bookName)) {
 		case 'fb2' :
 			xmlParser.parsingXml(bookName, function() {
-				exports.bookText = xmlParser.xmlBook;
-				readyAndRemove();
+				readyAndRemove(xmlParser.xmlBook);
 			});
 			break;
 		case 'epub' :
 			epubParser.parsingEpub(bookName, function() {
-				exports.bookText = epubParser.epubBook;
-				readyAndRemove();
+				readyAndRemove(epubParser.epubBook);
 			});
 			break;
 		case 'txt' :
 			txtParser.parsingTxt(bookName, function() {
-				exports.bookText = txtParser.txtBook;
-				readyAndRemove();
+				readyAndRemove(txtParser.txtBook);
 			});
 			break;
 	}
@@ -42,7 +39,8 @@ function removeDir(path) {
 	});
 }
 
-function readyAndRemove() {
+function readyAndRemove(htmlString) {
+	exports.bookText = htmlString;
 	exports.ready = true;
 	removeDir('./dist/uploads/');
 }

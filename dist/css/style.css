@@ -1,12 +1,23 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 html,
 body {
   width: 100%;
   height: 100%;
 }
-body {
+header {
+  height: 20%;
+}
+#book {
   width: 900px;
   margin: 0 auto;
 }
 #book img {
-  max-height: 500px;
+  max-height: 250px;
+}
+footer {
+  height: 10%;
 }
