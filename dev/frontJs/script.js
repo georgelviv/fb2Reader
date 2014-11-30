@@ -7,11 +7,6 @@ $(document).ready(function() {
 	$('#fileselect').fileupload({
 		url: '/upload',
 		dataType: 'json',
-		formData: {
-			height: $('body').height(),
-			width: $('body').width(),
-			lineHeight: $('#book').css('line-height')
-		},
 		add: function(e, data) {
 			var format;
 			bookName = data.files[0].name;
@@ -41,11 +36,13 @@ $(document).ready(function() {
 				$('#book').html(data);
 				$('#status').html('Ready ' + bookName);
 				clearInterval(getInterval);
+				pageDivider();
 			}
 		}).fail(function() {
 			console.log('Error with getting book');
 		});
 		$('#status').html('Parsing ' + bookName);
 	}
+
 
 });
