@@ -73,7 +73,7 @@ function formatHtml(htmlString, path) {
 	}
 
 
-	if (bookBody.search(/<a.*?href=("|')[^http](s)?.*?(<\/a>)/i) !== -1) {
+	if (bookBody.search(/<a.*?href=("|')(?!http(s)?:\/\/).*?(<\/a>)/i) !== -1) {
 		bookBody = linkSort(bookBody);
 	}
 
@@ -96,7 +96,7 @@ function formatHtml(htmlString, path) {
 	}
 
 	function linkSort(htmlString) {
-		var linkArr = htmlString.match(/<a.*?href=("|')[^http](s)?.*?(<\/a>)/gi);
+		var linkArr = htmlString.match(/<a.*?href=("|')(?!http(s)?:\/\/).*?(<\/a>)/gi);
 		var link;
 		var linkInner;
 
