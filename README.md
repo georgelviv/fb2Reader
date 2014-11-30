@@ -27,5 +27,8 @@ fb2Reader is best web application for read books in fb2, epub and txt format
 
 #### Bugs list:
 
-* no bugs ;)
+* великі img не поміщаються
+
+* текст під кнопкою завантаження той що за замовчуванням
+
 
