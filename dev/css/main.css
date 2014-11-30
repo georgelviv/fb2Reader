@@ -1,0 +1,111 @@
+body {
+  font-family: Tahoma, Arial, Verdana, sans-serif;
+}
+.wrapper {
+  width: 1200px;
+  height: auto;
+  margin: 0 auto;
+  position: relative;
+}
+/*  header  */
+header {
+  width: 100%;
+  height: 80px;
+  background: #353434;
+}
+header .logo {
+  float: left;
+  margin-top: 21px;
+}
+header nav {
+  overflow: hidden;
+  display: inline-block;
+  margin: 20px 0 0 40px;
+  padding: 13px 40px;
+  border-left: 1px #404040 solid;
+}
+header nav ul {
+  list-style: none;
+}
+header nav ul li {
+  float: left;
+  margin-left: 35px;
+  font-size: 16px;
+  font-family: 'lato_regular', arial;
+  letter-spacing: 1px;
+}
+header nav ul li :first-child {
+  margin-left: 0;
+}
+header nav ul li a {
+  text-decoration: none;
+  color: #fff;
+}
+.slideout {
+  position: fixed;
+  left: 0;
+  -webkit-transition-duration: 0.3s;
+  -moz-transition-duration: 0.3s;
+  -o-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+}
+.slideout_inner {
+  position: fixed;
+  top: -40px;
+  xleft: 250px;
+  -webkit-transition-duration: 0.3s;
+  -moz-transition-duration: 0.3s;
+  -o-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+}
+.slideout:hover {
+  top: -50px;
+}
+.slideout:hover #slideout_inner {
+  left: 0;
+}
+.sep_line {
+  display: inline-block;
+  text-align: center;
+  width: 13px;
+  height: 100px;
+}
+.sep_line :after {
+  content: "";
+  display: block;
+  width: 1px;
+  height: 100%;
+  background: #dedede;
+  margin-left: 6px;
+}
+.sep_top {
+  border-bottom: 1px #dedede solid;
+  margin-bottom: 40px;
+}
+.sep_bottom {
+  border-top: 1px #dedede solid;
+  margin-top: 40px;
+}
+footer {
+  padding: 100px 0;
+  border-top: 1px #dedede solid;
+  background: #343232;
+  text-align: center;
+  margin-top: 30px;
+}
+.column {
+  -webkit-column-width: 500px;
+  -moz-column-width: 500px;
+  column-width: 500px;
+  -webkit-column-count: 3;
+  -moz-column-count: 3;
+  column-count: 3;
+  -webkit-column-gap: 30px;
+  -moz-column-gap: 30px;
+  column-gap: 30px;
+  -webkit-column-rule: 1px solid #ccc;
+  -moz-column-rule: 1px solid #ccc;
+  column-rule: 1px solid #ccc;
+  letter-spacing: 1px;
+  line-height: 2;
+}
