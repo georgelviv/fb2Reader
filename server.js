@@ -27,6 +27,7 @@ app.post('/upload', upload.fileHandler());
 
 upload.on('end', function (fileInfo, req, res) {
   parser.parsingBook(fileInfo.name);
+  console.log(req.fields.width, req.fields.height);
 });
 
 upload.on('error', function (e, req, res) {

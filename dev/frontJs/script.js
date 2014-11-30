@@ -7,6 +7,10 @@ $(document).ready(function() {
 	$('#fileselect').fileupload({
 		url: '/upload',
 		dataType: 'json',
+		formData: {
+			height: $('body').height(),
+			width: $('body').width()
+		},
 		add: function(e, data) {
 			var format;
 			bookName = data.files[0].name;
