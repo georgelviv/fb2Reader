@@ -3,16 +3,48 @@
 <head>
 	<meta charset="UTF-8">
 	<title>fb2Reader</title>
+	<link rel="stylesheet" href="css/main.css">
 </head>
 <body>
-	<h1>fb2Reader</h1>
-	<form action="">
-		<label for="load">Choose fb2 file</label>
-		<input id="fileselect" type="file">
-	</form>
-	<div id="status"></div>
-	<div id="book"></div>
+	<header>		
+		<div class="wrapper">
+			<form action="" class="logo">
+				<input id="fileselect" type="file" class="btn">
+			</form>
+			<nav id="nav_menu">
+				<ul>
+					<li><a href="#">Прогрес [1%..100%]</a></li>
+					<li><a href="#">Сторінка (поточна / скільки всього)</a></li>
+					<li><a href="#">Зробити закладку</a></li>					
+				</ul>
 
+				<ul class="social">
+					<li><a class="fb" href="#"></a></li>
+					<li><a class="gplus" href="#"></a></li>
+				</ul>
+			</nav>
+		</div>
+	</header>
+<div class="wrapper">
+	<section class="column">
+		<div id="book"></div>
+	</section>
+</div>
+	<footer>
+		Тут будуть Налаштування)
+	</footer>
 	<script src="js/built.min.js"></script>
+	<script>
+		var button = document.getElementById('fileselect');
+		var header = document.getElementsByTagName('header')[0];
+		var nav = document.getElementsByTagName('nav')[0];
+		button.onclick = function() {
+			header.style.background = '#353434';
+			nav.style.display = 'inline-block';
+			$(".column").css("display", "inline-block");
+			$("body").css("background", "#fff");
+			$("a").css("color", "#000");
+		}
+	</script>
 </body>
 </html>
