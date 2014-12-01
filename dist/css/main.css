@@ -10,7 +10,7 @@ html {
 }
 body {
   font-family: Tahoma, Arial, Verdana, sans-serif;
-    background: #000 url("../img/openFile.jpg") no-repeat center;
+  background: #000 url("../img/openFile.jpg") no-repeat center;
 }
 .wrapper {
   width: 95%;
@@ -22,10 +22,10 @@ body {
 /*  header  */
 header {
   width: 100%;
-  height: 80px;
+  height: 15%;
   xdisplay: table-cell;
   xvertical-align: middle;
- /* background: #353434;*/
+ /*background: #353434;*/
 }
 header .logo {
   float: left;
@@ -53,13 +53,12 @@ header nav ul li a {
   -o-transition: all .2s linear;
 }
 header nav {
+  width: 60%;
   overflow: hidden;
   display: inline-block;
-  margin: 20px 0 0 50px;
-  xpadding: 13px 40px;
+  margin: 32px 0 0 -50px;
   padding: 0px 40px;
   border-left: 1px #404040 solid;
-  float: left;
 }
 header nav ul {
   list-style: none;
@@ -77,6 +76,7 @@ header nav ul li:first-child {
 }
 header nav ul li a {
   text-decoration: none;
+  display: none;
   color: #fff;
 }
 header nav ul li a:hover {
@@ -85,7 +85,8 @@ header nav ul li a:hover {
 header ul.social {
   float: right;
   list-style: none;
-  margin-top: 5px;
+  margin-top: 0px;
+  padding: 0px 60px;
 }
 header ul.social li {
   float: left;
@@ -101,7 +102,8 @@ header ul.social li a:hover {
   background: url('../img/sm_hover.png') no-repeat;
 }
 header ul.social li a {
-  display: block;
+  display: none;
+
   width: 35px;
   height: 35px;
 }
@@ -114,7 +116,6 @@ header ul.social li a.gplus {
 .btn {
   width: 130%;
   outline: none;
-  margin: 0 auto;
 }
 .btn::-webkit-file-upload-button {
   visibility: hidden;
@@ -122,13 +123,13 @@ header ul.social li a.gplus {
 .btn:before {
   content: 'Choose File';
   display: inline-block;
-  padding: 20px 20px;
+  padding: 24px 32px;
   background-color: #65bf95;
   color: #fff;
   font-family: "lato_regular", arial;
   font-size: 20px;
   text-decoration: none;
-  margin-top: 5px;
+  margin-top: 3px;
   text-transform: uppercase;
   letter-spacing: 1px;
   -moz-border-radius: 1px;
@@ -194,11 +195,11 @@ footer {
   border-top: 1px #dedede solid;
   background: #343232;
   width: 100%;
-  height: 25px;
+  height: 5%;
   xtext-align: center;
   xmargin-top: 30px;
-  bottom: 0 !important;
-  left: 0 !important;
+  bottom: 0;
+  left: 0;
   position: fixed;
 }
 .column {
@@ -216,4 +217,12 @@ footer {
   column-rule: 1px solid #ccc;
   letter-spacing: 1px;
   line-height: 2;
+}
+#book {
+  height: 80%;
+  overflow: hidden;
+  padding: 20px;
+}
+#book img {
+  max-height: 400px;
 }
