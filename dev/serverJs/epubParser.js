@@ -2,6 +2,7 @@ var exports = module.exports = {};
 var unzip = require('unzip');
 var fs = require('fs');
 var jade = require('jade');
+var dirOpf;
 
 exports.parsingEpub = function(bookName, callback) {
 	exports.epubBook = '';
@@ -17,13 +18,39 @@ exports.parsingEpub = function(bookName, callback) {
 };
 
 function parsingContentOpf(callback) {
-	fs.readFile('./dist/uploads/OEBPS/content.opf', function(err, xml) {
-		if (err) {
-			exports.epubBook = 'Error with findin content.opf. ' + err;
-			callback();
+	var dirUploads = fs.readdirSync('./dist/uploads/');
+	
+	for (var i = 0; i < dirUploads.length; i++) {
+		if (dirUploads[i].match(/(oebps|ops)/i)) {
+			dirOpf = './dist/uploads/' + dirUploads[i];
+			continue;
 		}
-		var xmlString = xml.toString('utf-8');
-		xmlBookToObj(xmlString, callback);
+	}
+
+	fs.readdir(dirOpf, function(err, data) {
+		if (err) {
+			exports.epubBook = 'Dir OPF err. ' + err;
+			callback();
+			return;
+		}
+
+		var opfPath;
+		for (var i = 0; i < data.length; i++) {
+			if (data[i].match(/(.*?.opf)/i)) {
+				opfPath = dirOpf + '/' + data[i];
+				continue;
+			}
+		}
+
+		fs.readFile(opfPath, function(err, xml) {
+			if (err) {
+				exports.epubBook = 'Error with findin content.opf. ' + err;
+				callback();
+				return;
+			}
+			var xmlString = xml.toString('utf-8');
+			xmlBookToObj(xmlString, callback);
+		});
 	});
 }
 
@@ -42,6 +69,7 @@ function xmlBookToObj(xml, callback) {
 		objBook.author = getTagInner(regExpAuthor, xml);
 	}
 	
+
 	exports.epubBook = jadeParse(objBook);
 
 	for (var i = 0; i < contentArr.length; i++) {
@@ -54,7 +82,7 @@ function xmlBookToObj(xml, callback) {
 }
 
 function htmlAdding(path, callback) {
-	var data = fs.readFileSync('./dist/uploads/OEBPS/' + path);
+	var data = fs.readFileSync(dirOpf + '/' + path);
 	path = path.slice(0, path.lastIndexOf('/') + 1);
 	exports.epubBook += formatHtml(data.toString('utf-8'), path);
 
@@ -68,7 +96,7 @@ function formatHtml(htmlString, path) {
 
 	bookBody = bookBody.slice(bookBody.search(/>/) + 1);
 
-	if (bookBody.search(/<img.*>/i) !== -1) {
+	if (bookBody.search(/<img.*?(\n)*?.*?>/i) !== -1) {
 		bookBody = imageSort(bookBody);
 	}
 
@@ -80,15 +108,15 @@ function formatHtml(htmlString, path) {
 	return bookBody;
 
 	function imageSort(htmlString) {
-		var imgArr = htmlString.match(/<img.*>/gi);
+		var imgArr = htmlString.match(/<img.*?(\n)*?.*?>/gi);
 		var img = '';
 		var imgHref = '';
 		var dataImg;
 
 		for (var i = 0; i < imgArr.length; i++) {
 			img = imgArr[i];
-			imgHref = (img.match(/src=("|').*("|')/i)[0]).slice(5,-1);
-			dataImg = fs.readFileSync('./dist/uploads/OEBPS/' + path +imgHref);
+			imgHref = (img.match(/src=("|').*?("|')/i)[0]).slice(5,-1);
+			dataImg = fs.readFileSync(dirOpf + '/' + path + imgHref);
 			htmlString = htmlString.replace(imgHref, 'data:image/jpeg;base64,' + dataImg.toString("base64"));
 		}
 
@@ -132,7 +160,7 @@ function getHref(htmlString) {
 	var results = htmlString.match(regExpHref);
 	var fillResults = [];
 	results.forEach(function(value) {
-		if (getFormat(value) == 'html' || getFormat(value) == 'xhtml') {
+		if (getFormat(value).match(/(html|xhtml|xml)/i)) {
 			fillResults.push(value.slice(value.search(/'|"/) + 1));
 		}
 	});

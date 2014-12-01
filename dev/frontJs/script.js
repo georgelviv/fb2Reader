@@ -36,7 +36,6 @@ $(document).ready(function() {
 				$('#book').html(data);
 				$('#status').html('Ready ' + bookName);
 				clearInterval(getInterval);
-				pageDivider();
 			}
 		}).fail(function() {
 			console.log('Error with getting book');
