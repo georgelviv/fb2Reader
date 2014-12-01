@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 h2 Title: #{title}
 if date
@@ -9,3 +10,16 @@ if posterSrc
 .body #{body}
 
 
+=======
+
+h2 Title: #{title}
+if date
+	h3 Author: #{firstName}  #{lastName} Date: #{date}
+else
+	h3 Author: #{firstName}  #{lastName} 
+if posterSrc
+	img(src='#{posterSrc}', alt='poster')
+.body #{body}
+
+
+>>>>>>> f0c05408982cc2ba59e9d12952fa7120847dc2c4

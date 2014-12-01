@@ -10,7 +10,10 @@ html {
 }
 body {
   font-family: Tahoma, Arial, Verdana, sans-serif;
+<<<<<<< HEAD
   background: #000 url("../img/openFile.jpg") no-repeat center;
+=======
+>>>>>>> f0c05408982cc2ba59e9d12952fa7120847dc2c4
 }
 .wrapper {
   width: 95%;
@@ -25,7 +28,11 @@ header {
   height: 15%;
   xdisplay: table-cell;
   xvertical-align: middle;
+<<<<<<< HEAD
  /*background: #353434;*/
+=======
+  background: #353434;
+>>>>>>> f0c05408982cc2ba59e9d12952fa7120847dc2c4
 }
 header .logo {
   float: left;
@@ -53,7 +60,10 @@ header nav ul li a {
   -o-transition: all .2s linear;
 }
 header nav {
+<<<<<<< HEAD
   width: 60%;
+=======
+>>>>>>> f0c05408982cc2ba59e9d12952fa7120847dc2c4
   overflow: hidden;
   display: inline-block;
   margin: 32px 0 0 -50px;
@@ -76,7 +86,10 @@ header nav ul li:first-child {
 }
 header nav ul li a {
   text-decoration: none;
+<<<<<<< HEAD
   display: none;
+=======
+>>>>>>> f0c05408982cc2ba59e9d12952fa7120847dc2c4
   color: #fff;
 }
 header nav ul li a:hover {
@@ -102,8 +115,12 @@ header ul.social li a:hover {
   background: url('../img/sm_hover.png') no-repeat;
 }
 header ul.social li a {
+<<<<<<< HEAD
   display: none;
 
+=======
+  display: block;
+>>>>>>> f0c05408982cc2ba59e9d12952fa7120847dc2c4
   width: 35px;
   height: 35px;
 }
