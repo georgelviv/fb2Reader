@@ -1,2 +1,3 @@
 node_modules/
 dist/js/built.min.js
+dist/uploads/
