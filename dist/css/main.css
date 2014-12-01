@@ -21,7 +21,7 @@ body {
 /*  header  */
 header {
   width: 100%;
-  height: 80px;
+  height: 15%;
   xdisplay: table-cell;
   xvertical-align: middle;
   background: #353434;
@@ -191,7 +191,7 @@ footer {
   border-top: 1px #dedede solid;
   background: #343232;
   width: 100%;
-  height: 25px;
+  height: 5%;
   xtext-align: center;
   xmargin-top: 30px;
   bottom: 0;
@@ -213,6 +213,11 @@ footer {
   column-rule: 1px solid #ccc;
   letter-spacing: 1px;
   line-height: 2;
+}
+#book {
+  height: 80%;
+  overflow: hidden;
+  padding: 20px;
 }
 #book img {
   max-height: 400px;
