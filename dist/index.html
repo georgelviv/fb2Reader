@@ -5,6 +5,7 @@
 	<title>fb2Reader</title>
 	<link rel="stylesheet" href="css/main.css">
 	<link rel="stylesheet" type="text/css" href="css/normalize.css">
+	<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 </head>
 <body>
 	<header>		
@@ -28,8 +29,20 @@
 	</header>
 	<div id="book"></div>
 	<footer>
-		Тут будуть Налаштування)
+		<i class="fa fa-bars fa-3 menu" data-toggle-settings-panel="settings-panel"></i>
+		<div id="settings-panel" style="display:none">
+ 			<div id="settings"> </div>
+ 		</div>
 	</footer>
 	<script src="js/built.min.js"></script>
+	 <script type="text/javascript">
+ document.onclick = function(e) {
+   var target = e && e.target || window.event.srcElement;
+   var dataToggleSettingsPanel = target.getAttribute('data-toggle-settings-panel');
+      if (!dataToggleSettingsPanel) return;
+        var elem = document.getElementById(dataToggleSettingsPanel);
+          elem.style.display = elem.offsetHeight ? 'none' : 'block';
+       }
+ </script>
 </body>
 </html>

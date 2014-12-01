@@ -198,6 +198,17 @@ footer {
   left: 0;
   position: fixed;
 }
+footer .menu {
+  color: #65bf95;
+  width: 50%;
+  float: right;
+}
+footer #settings {
+  height: 200px;
+  width: 100%;
+  background: #424242;
+  position: relative;
+}
 .column {
   -webkit-column-width: 500px;
   -moz-column-width: 500px;
