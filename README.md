@@ -1,22 +1,38 @@
-fb2Reader
+﻿fb2Reader!!!!
 =========
 
-fb2Reader is best web application for read books in fb2 (working to make EPUB) format
+fb2Reader is best web application for read books in fb2, epub and txt format
 
--- work uploading with ajax files to server
+#### Last Updates:
 
--- fixed bug with fileName when deleting
+* Module parser and Epub module (not parsing)
 
--- added gruntfile
+* Fixed error with wrong getting book and epub gets title
 
--- added 404 html and xmlParses module
+* Epub parsing only text in order
 
--- added Jade template and parsing xml
+* Yeah! Epub parse with image)
 
--- Saving book on localStorage
+* Now works with txt
 
--- Module parser and Epub module (not parsing)
+#### TODO list:
 
--- Fixed error with wrong getting book and epub gets title
+* hint
 
--- hello world
+* localStorage
+
+* settings panel
+
+* some design
+
+#### Bugs list:
+
+* великі img не поміщаються
+
+* текст під кнопкою завантаження той що за замовчуванням
+
+* останній абзац в книжці через футер невидно
+
+
+
+

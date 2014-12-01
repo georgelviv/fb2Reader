@@ -18,7 +18,6 @@ app.get('/getbook', function(req, res) {
   res.set('Content-Type', 'text/html');
   if (parser.ready) {
     res.send(parser.bookText);
-    parser.deleteBook();
   } else {
     res.send(false);
   }

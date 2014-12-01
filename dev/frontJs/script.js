@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-	var fileExtension = 'fb2';
+	var fileExtension = /(fb2|epub|txt)/i;
 	var bookName;
 	var getInterval;
 
@@ -13,7 +13,7 @@ $(document).ready(function() {
 			format = bookName.split('.');
 
 			format = format[format.length - 1];
-			if (format == 'fb2' || format == 'epub') {
+			if (format.match(fileExtension)) {
 				data.submit();
 			} else {
 				console.log('error format');
@@ -22,6 +22,7 @@ $(document).ready(function() {
 		done: function (e, data) {
 			$('#status').html('File loaded ' + data.result.files[0].name);
 			getInterval = setInterval(getBook, 500);
+			document.body.removeEventListener('keydown', keyPressEvent);
 		},
 		progressall: function(e, data) {
 			var progress = parseInt(data.loaded / data.total * 100, 10);
@@ -36,6 +37,7 @@ $(document).ready(function() {
 				$('#book').html(data);
 				$('#status').html('Ready ' + bookName);
 				clearInterval(getInterval);
+				document.body.addEventListener('keydown', keyPressEvent);
 			}
 		}).fail(function() {
 			console.log('Error with getting book');
@@ -43,19 +45,16 @@ $(document).ready(function() {
 		$('#status').html('Parsing ' + bookName);
 	}
 
-	function storageSave(data, item) {
-		if (typeof(Storage) !== 'undefined') {
-			localStorage.setItem(item, data);
-		} else {
-			console.log('Local Storega no support');
-		}
-	}
+	function keyPressEvent(e) {
+		var bookScroll = $('#book')[0].scrollHeight;
+		var bookHeight = $('#book').height();
+		var pages = Math.ceil(bookScroll / bookHeight, bookHeight);
 
-	function storageGet(item) {
-		if (typeof(Storage) !== 'undefined') {
-			return localStorage.getItem(item);
-		} else {
-			console.log('Local Storega no support');
+		if (e.keyCode == 39) {
+			$('#book').scrollTop($('#book').scrollTop() + (bookHeight - 10));
+		}
+		if (e.keyCode == 37) {
+			$('#book').scrollTop($('#book').scrollTop() - (bookHeight - 10));
 		}
 	}
 

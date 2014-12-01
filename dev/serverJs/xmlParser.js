@@ -10,10 +10,10 @@ exports.parsingXml = function(bookName, callback) {
   fs.readFile('./dist/uploads/' + bookName, function (err, data) {
     if (err) throw err;
     var dataString = data.toString('utf-8');
-    var jadeFn = jade.compileFile('dev/jade/book.jade');
+    var jadeFn = jade.compileFile('dev/jade/bookXml.jade');
 
     exports.xmlBook = jadeFn(xmlBookToObj(data));
-    exports.xmlBook += dataString.slice(dataString.indexOf('<body>') + 6, dataString.indexOf('</body>') );
+    exports.xmlBook += xmlBookTagFilter(dataString);
 
     callback();
   });
@@ -47,4 +47,17 @@ function xmlBookToObj(xml) {
   });
 
   return objBook;
+}
+
+function xmlBookTagFilter(bookString) {
+  var regExpTagDelete = /<epigraph>|<\/epigraph>|<empty-line\/>|/g;
+  var regExpTitleOpen = /<title>/g;
+  var regExpTitleClose = /<\/title>/g;
+  var bookBody = bookString.slice(bookString.indexOf('<body>') + 6, bookString.indexOf('</body>'));
+
+  bookBody = bookBody.replace(regExpTagDelete, '');
+  bookBody = bookBody.replace(regExpTitleOpen, '<h3>');
+  bookBody = bookBody.replace(regExpTitleClose, '</h3>');
+
+  return bookBody;
 }
