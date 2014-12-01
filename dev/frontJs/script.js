@@ -36,6 +36,7 @@ $(document).ready(function() {
 				$('#book').html(data);
 				$('#status').html('Ready ' + bookName);
 				clearInterval(getInterval);
+				pageDivider();
 			}
 		}).fail(function() {
 			console.log('Error with getting book');
@@ -43,5 +44,18 @@ $(document).ready(function() {
 		$('#status').html('Parsing ' + bookName);
 	}
 
+	function pageDivider() {
+		var bookScroll = $('#book')[0].scrollHeight;
+		var bookHeight = $('#book').height();
+		var pages = Math.ceil(bookScroll / bookHeight, bookHeight);
+		$('body').keydown(function(e) {
+			if (e.keyCode == 39) {
+				$('#book').scrollTop($('#book').scrollTop() + bookHeight);
+			}
+			if (e.keyCode == 37) {
+				$('#book').scrollTop($('#book').scrollTop() - bookHeight);
+			}
+		});
+	}
 
 });
