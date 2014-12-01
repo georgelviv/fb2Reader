@@ -110,7 +110,7 @@ header ul.social li a.gplus {
   background-position: -72px 0;
 }
 .btn {
-  width: 130%;
+  width: 100%;
   outline: none;
 }
 .btn::-webkit-file-upload-button {
