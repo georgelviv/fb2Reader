@@ -72,6 +72,4 @@ $(document).ready(function() {
 	}
 
 
-
-
 });
