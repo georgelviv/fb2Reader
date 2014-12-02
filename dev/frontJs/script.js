@@ -54,10 +54,10 @@ $(document).ready(function() {
 		
 		hideLastElement();
 		if (e.keyCode == 39) {
-			$('#book').scrollTop($('#book').scrollTop() + (bookHeight - 10));
+			$('#book').scrollTop($('#book').scrollTop() + (bookHeight - 5));
 		}
 		if (e.keyCode == 37) {
-			$('#book').scrollTop($('#book').scrollTop() - (bookHeight - 10));
+			$('#book').scrollTop($('#book').scrollTop() - (bookHeight - 5));
 		}
 	}
 
@@ -68,7 +68,6 @@ $(document).ready(function() {
 		var lastElementView;
 		bookPosition.bottom =  Math.floor(bookPosition.main.height);
 		lastElementView = document.elementFromPoint(10, bookPosition.bottom);
-		console.log(lastElementView);
 	}
 
 
