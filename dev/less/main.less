@@ -1,5 +1,5 @@
 @headerheight: 15%;
-@footerheight: 5%;
+@footerheight: 3%;
 @bookheight: 80%;
 * {
   margin: 0;
@@ -220,17 +220,30 @@ header ul.social li a.gplus{
 }
 
 footer{
-    xpadding: 100px 0;
     border-top: 1px #dedede solid;
     background: #343232;
     width: 100%;
     height: @footerheight;
-    xtext-align: center;    
-    xmargin-top: 30px;
     bottom: 0;
     left: 0;
     position: fixed;
+    z-index: 100;
+
+    .menu{
+      color: #65bf95;
+      margin-left: 50%;
+      cursor: pointer;
+    }
+
+        #settings{
+      height: 200px;
+      margin-top: -10%;
+      background: #343232;
+      position: relative;
+      z-index: -1;
+    }
 }
+
 
 .column {
     -webkit-column-width: 500px;

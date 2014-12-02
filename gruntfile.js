@@ -23,7 +23,7 @@ module.exports = function(grunt) {
 			my_target: {
 				files: {
 					'dist/js/built.min.js': ['dev/frontJs/jquery-1.11.1.min.js', 'dev/frontJs/jquery.ui.widget.js',
-					'jquery.iframe-transport.js', 'dev/frontJs/jquery.fileupload.js', 'dev/frontJs/script.js']
+					'jquery.iframe-transport.js', 'dev/frontJs/jquery.fileupload.js', 'dev/frontJs/script.js', 'dev/frontJs/settingsPanel.js']
 				}
 			}
 		},

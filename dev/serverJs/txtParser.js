@@ -17,5 +17,4 @@ exports.parsingTxt = function(bookName, callback) {
 		exports.txtBook =  bookString.slice(0, -3);
 		callback();
 	});
-
 };

@@ -5,6 +5,7 @@
 	<title>fb2Reader</title>
 	<link rel="stylesheet" href="css/main.css">
 	<link rel="stylesheet" type="text/css" href="css/normalize.css">
+	<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 </head>
 <body>
 	<header>		
@@ -26,10 +27,33 @@
 			</nav>
 		</div>
 	</header>
+<div class="wrapper">
+	<section class="column">
+		<div id="book"></div>
+	</section>
+</div>
 	<div id="book"></div>
+
 	<footer>
-		Тут будуть Налаштування)
+		<i class="fa fa-bars menu" data-toggle-settings-panel="settings-panel"></i>
+		<div id="settings-panel" style="display:none">
+ 			<div id="settings"> </div>
+ 		</div>
 	</footer>
+
 	<script src="js/built.min.js"></script>
+	<script>
+		var button = document.getElementById('fileselect');
+		var header = document.getElementsByTagName('header')[0];
+		var nav = document.getElementsByTagName('nav')[0];
+		button.onclick = function() {
+			header.style.background = '#353434';
+			nav.style.display = 'inline-block';
+			$(".column").css("display", "inline-block");
+			$("body").css("background", "#fff");
+			$("a").css("display", "inline-block");
+		}
+	</script>
+
 </body>
 </html>
