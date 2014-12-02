@@ -1,19 +1,19 @@
 $(document).ready(function() {
 
-	var fileExtension = /(fb2|epub|txt)/i;
-	var bookName;
-	var getInterval;
+	var book = {
+		fileExtension: /(fb2|epub|txt)/i
+	};
 
 	$('#fileselect').fileupload({
 		url: '/upload',
 		dataType: 'json',
 		add: function(e, data) {
 			var format;
-			bookName = data.files[0].name;
-			format = bookName.split('.');
+			book.bookName = data.files[0].name;
+			format = book.bookName.split('.');
 
 			format = format[format.length - 1];
-			if (format.match(fileExtension)) {
+			if (format.match(book.fileExtension)) {
 				data.submit();
 			} else {
 				console.log('error format');
@@ -21,7 +21,7 @@ $(document).ready(function() {
 		},
 		done: function (e, data) {
 			$('#status').html('File loaded ' + data.result.files[0].name);
-			getInterval = setInterval(getBook, 500);
+			book.getDataInterval = setInterval(getBook, 500);
 			document.body.removeEventListener('keydown', keyPressEvent);
 		},
 		progressall: function(e, data) {
@@ -32,24 +32,27 @@ $(document).ready(function() {
 	});
 
 	function getBook() {
-		$.get("/getbook?bookName=" + bookName).done(function(data) {
+		$.get("/getbook?bookName=" + book.bookName).done(function(data) {
 			if (data !== 'false') {
 				$('#book').html(data);
-				$('#status').html('Ready ' + bookName);
-				clearInterval(getInterval);
+				$('#status').html('Ready ' + book.bookName);
+				hideLastElement();
+				clearInterval(book.getDataInterval);
 				document.body.addEventListener('keydown', keyPressEvent);
 			}
 		}).fail(function() {
 			console.log('Error with getting book');
 		});
-		$('#status').html('Parsing ' + bookName);
+		$('#status').html('Parsing ' + book.bookName);
 	}
 
 	function keyPressEvent(e) {
+
 		var bookScroll = $('#book')[0].scrollHeight;
 		var bookHeight = $('#book').height();
 		var pages = Math.ceil(bookScroll / bookHeight, bookHeight);
-
+		
+		hideLastElement();
 		if (e.keyCode == 39) {
 			$('#book').scrollTop($('#book').scrollTop() + (bookHeight - 10));
 		}
@@ -57,5 +60,18 @@ $(document).ready(function() {
 			$('#book').scrollTop($('#book').scrollTop() - (bookHeight - 10));
 		}
 	}
+
+	function hideLastElement() {
+		var bookPosition = {
+			main: document.getElementById('book').getBoundingClientRect(),
+		};
+		var lastElementView;
+		bookPosition.bottom =  Math.floor(bookPosition.main.height);
+		lastElementView = document.elementFromPoint(10, bookPosition.bottom);
+		console.log(lastElementView);
+	}
+
+
+
 
 });
