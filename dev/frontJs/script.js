@@ -1,8 +1,13 @@
 $(document).ready(function() {
 
 	var book = {
-		fileExtension: /(fb2|epub|txt)/i
+		fileExtension: /(fb2|epub|txt)/i,
+		showBook: showBookStorage,
+		saveBook: saveBookStorage,
+		pageSave: saveCurrenPosition
 	};
+
+	book.showBook();
 
 	$('#fileselect').fileupload({
 		url: '/upload',
@@ -35,8 +40,8 @@ $(document).ready(function() {
 		$.get("/getbook?bookName=" + book.bookName).done(function(data) {
 			if (data !== 'false') {
 				$('#book').html(data);
+				book.saveBook(data);
 				$('#status').html('Ready ' + book.bookName);
-				hideLastElement();
 				clearInterval(book.getDataInterval);
 				document.body.addEventListener('keydown', keyPressEvent);
 			}
@@ -47,28 +52,38 @@ $(document).ready(function() {
 	}
 
 	function keyPressEvent(e) {
-
 		var bookScroll = $('#book')[0].scrollHeight;
 		var bookHeight = $('#book').height();
 		var pages = Math.ceil(bookScroll / bookHeight, bookHeight);
-		
-		hideLastElement();
+
 		if (e.keyCode == 39) {
 			$('#book').scrollTop($('#book').scrollTop() + (bookHeight - 5));
+			saveCurrenPosition($('#book').scrollTop());
 		}
 		if (e.keyCode == 37) {
 			$('#book').scrollTop($('#book').scrollTop() - (bookHeight - 5));
+			book.pageSave($('#book').scrollTop());
 		}
 	}
 
-	function hideLastElement() {
-		var bookPosition = {
-			main: document.getElementById('book').getBoundingClientRect(),
-		};
-		var lastElementView;
-		bookPosition.bottom =  Math.floor(bookPosition.main.height);
-		lastElementView = document.elementFromPoint(10, bookPosition.bottom);
+	function saveBookStorage(data) {
+		if (!!localStorage && data) {
+			localStorage.setItem("book", data);
+		}
 	}
-
+	function saveCurrenPosition(scrollTop) {
+		if (!!localStorage && scrollTop) {
+			localStorage.setItem("scrollTop", scrollTop);
+		}
+	}
+	function showBookStorage() {
+		if (!!localStorage && localStorage.getItem("book")){
+			document.body.addEventListener('keydown', keyPressEvent);
+			$('#book').html(localStorage.getItem("book"));
+			if (localStorage.getItem("scrollTop")) {
+				$('#book').scrollTop(localStorage.getItem("scrollTop"));
+			}
+		}
+	}
 
 });
