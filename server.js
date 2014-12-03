@@ -34,7 +34,7 @@ upload.on('error', function (e, req, res) {
 });
 
 app.use(express.static(__dirname + '/dist'));
-console.log('Server start at http://localhost:8080/ ...');
+console.log('Server start at http://localhost:8080/...');
 app.listen(8080);
 
 app.use(function(req, res) {

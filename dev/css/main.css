@@ -9,7 +9,7 @@ html {
   height: 100%;
 }
 body {
-  font-family: Tahoma, Arial, Verdana, sans-serif;
+  font-family: 0.6px Tahoma, Arial, Verdana, sans-serif;
 }
 .wrapper {
   width: 95%;
@@ -201,12 +201,137 @@ footer .menu {
   margin-left: 50%;
   cursor: pointer;
 }
-footer #settings {
-  height: 200px;
+footer .settings {
   margin-top: -10%;
-  background: #343232;
+  background: #343232 !important;
+  /* Deactivate the default tab when a preceding tab is activated. */
+}
+footer .settings .settings {
   position: relative;
-  z-index: -1;
+  margin: 50px auto;
+  width: 90%;
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  -webkit-box-shadow: 0 0 8px rgba(0, 0, 0, 0.07);
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.07);
+}
+footer .settings .settings-tabs {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 9px 12px 0;
+  text-align: left;
+  /* Make the last tab in the DOM the left-most tab on the screen.
+     That way we can activate it by default and still be able to
+     deactivate it later using the ~ selector. */
+  direction: rtl;
+  background: #353434;
+  /* #f5f5f5;*/
+  border-bottom: 1px solid #ddd;
+  xborder-radius: 3px 3px 0 0;
+}
+footer .settings .settings-tab,
+footer .settings .settings-list:target:first-of-type ~ .settings-tabs > .settings-tab:first-child ~ .settings-tab,
+footer .settings .settings-list:target:nth-of-type(2) ~ .settings-tabs > .settings-tab:nth-child(2) ~ .settings-tab,
+footer .settings .settings-list:target:last-of-type ~ .settings-tabs > .settings-tab:last-child ~ .settings-tab {
+  position: relative;
+  display: inline-block;
+  vertical-align: top;
+  margin-top: 3px;
+  line-height: 36px;
+  font-weight: normal;
+  color: #999;
+  background: #fcfcfc;
+  border: solid #ddd;
+  border-width: 1px 1px 0;
+  padding-bottom: 0;
+  bottom: auto;
+}
+footer .settings .settings-tab > .settings-tab-link,
+footer .settings .settings-list:target:first-of-type ~ .settings-tabs > .settings-tab:first-child ~ .settings-tab > .settings-tab-link,
+footer .settings .settings-list:target:nth-of-type(2) ~ .settings-tabs > .settings-tab:nth-child(2) ~ .settings-tab > .settings-tab-link,
+footer .settings .settings-list:target:last-of-type ~ .settings-tabs > .settings-tab:last-child ~ .settings-tab > .settings-tab-link {
+  margin: 0;
+  border-top: 0;
+}
+footer .settings .settings-tab + .settings-tab {
+  margin-right: -1px;
+}
+footer .settings .settings-tab:last-child,
+footer .settings .settings-list:target:first-of-type ~ .settings-tabs > .settings-tab:first-child,
+footer .settings .settings-list:target:nth-of-type(2) ~ .settings-tabs > .settings-tab:nth-child(2),
+footer .settings .settings-list:target:last-of-type ~ .settings-tabs > .settings-tab:last-child {
+  bottom: -1px;
+  margin-top: 0;
+  padding-bottom: 2px;
+  line-height: 34px;
+  font-weight: bold;
+  color: #555;
+  background: white;
+  border-top: 0;
+}
+footer .settings .settings-tab:last-child > .settings-tab-link,
+footer .settings .settings-list:target:first-of-type ~ .settings-tabs > .settings-tab:first-child > .settings-tab-link,
+footer .settings .settings-list:target:nth-of-type(2) ~ .settings-tabs > .settings-tab:nth-child(2) > .settings-tab-link,
+footer .settings .settings-list:target:last-of-type ~ .settings-tabs > .settings-tab:last-child > .settings-tab-link {
+  margin: 0 -1px;
+  border-top: 4px solid #65bf95;
+}
+footer .settings .settings-tab-link {
+  display: block;
+  min-width: 60px;
+  padding: 0 15px;
+  color: inherit;
+  text-align: center;
+  text-decoration: none;
+}
+footer .settings .settings-list {
+  display: none;
+  padding-top: 50px;
+  /* The last list is activated (visible) by default. */
+}
+footer .settings .settings-list > li + li {
+  border-top: 1px solid #e8e8e8;
+}
+footer .settings .settings-list:last-of-type {
+  display: block;
+}
+footer .settings .settings-list:target {
+  display: block;
+  /* Hide the default list when another is activated. */
+  /* First list activates the first tab, second list activates the second tab, etc. */
+}
+footer .settings .settings-list:target ~ .settings-list {
+  display: none;
+}
+footer .settings .settings-list-link {
+  display: block;
+  line-height: 18px;
+  padding: 10px 12px;
+  font-weight: bold;
+  color: #555;
+  text-decoration: none;
+  cursor: pointer;
+}
+footer .settings .settings-list-link:hover {
+  background: #f7f7f7;
+}
+footer .settings li:last-child > .settings-list-link {
+  border-radius: 0 0 3px 3px;
+}
+footer .settings .settings-list-link > img {
+  float: left;
+  width: 32px;
+  height: 32px;
+  margin: 2px 12px 0 0;
+}
+footer .settings .settings-list-link > span {
+  display: block;
+  font-size: 11px;
+  font-weight: normal;
+  color: #999;
 }
 .column {
   -webkit-column-width: 500px;

@@ -32,7 +32,12 @@ module.exports = function(grunt) {
 		less: {
 			development: {
 				files: {
+<<<<<<< HEAD
+					'dist/js/built.min.js': ['dev/frontJs/jquery-1.11.1.min.js', 'dev/frontJs/jquery.ui.widget.js',
+					'jquery.iframe-transport.js', 'dev/frontJs/jquery.fileupload.js', 'dev/frontJs/script.js', 'dev/frontJs/settingsPanel.js', 'dev/frontJs/pageDivider.js']
+=======
 					"dev/css/main.css": "dev/less/main.less"
+>>>>>>> 83b877b21b36647d9f8ddfd1cfdd556b920cd609
 				}
 			}
 		},
