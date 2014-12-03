@@ -9,7 +9,7 @@ document.onclick = function(e) {
        }
  };
 */
-
+/*
  $(document).ready(function() {       
       var allSections = $('#footer > settings-panel').hide();
         
@@ -21,4 +21,16 @@ document.onclick = function(e) {
         return false;
       });
 												
-}); 	
+}); */	
+
+$(document).ready(function() {
+     var allSections = $('#footer > settings-panel').hide();
+     $('footer > .menu').click(function() {
+       allSections.slideUp();
+         $(this).next().slideToggle();
+       $(this).parent().toggleClass('open');
+      // $(this).parent().next().slideDown();
+       return false;
+     });
+
+});
