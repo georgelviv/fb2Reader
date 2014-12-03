@@ -2,18 +2,21 @@ require(
     [
         'tools/jquery-1.11.1.min',
         'tools/jquery.fileupload',
+        'bookSave',
         'settingsPanel'
     ],
 main);
 
-function main() {
+function main(jquery, fileupload, bookSave, settingsPanel) {
 	$(document).ready(function() {
+		console.log(bookSave);
 
 		var book = {
 			fileExtension: /(fb2|epub|txt)/i,
-			showBook: showBookStorage,
-			saveBook: saveBookStorage,
-			pageSave: saveCurrenPosition
+			showBook: bookSave.show,
+			saveBook: bookSave.save,
+			pageSave: bookSave.savePage,
+			keyPress: bookSave.keyPress
 		};
 
 		book.showBook();
@@ -36,7 +39,7 @@ function main() {
 			done: function (e, data) {
 				$('#status').html('File loaded ' + data.result.files[0].name);
 				book.getDataInterval = setInterval(getBook, 500);
-				document.body.removeEventListener('keydown', keyPressEvent);
+				document.body.removeEventListener('keydown', book.keyPress);
 			},
 			progressall: function(e, data) {
 				var progress = parseInt(data.loaded / data.total * 100, 10);
@@ -52,47 +55,12 @@ function main() {
 					book.saveBook(data);
 					$('#status').html('Ready ' + book.bookName);
 					clearInterval(book.getDataInterval);
-					document.body.addEventListener('keydown', keyPressEvent);
+					document.body.addEventListener('keydown', book.keyPress);
 				}
 			}).fail(function() {
 				console.log('Error with getting book');
 			});
 			$('#status').html('Parsing ' + book.bookName);
-		}
-
-		function keyPressEvent(e) {
-			var bookScroll = $('#book')[0].scrollHeight;
-			var bookHeight = $('#book').height();
-			var pages = Math.ceil(bookScroll / bookHeight, bookHeight);
-
-			if (e.keyCode == 39) {
-				$('#book').scrollTop($('#book').scrollTop() + (bookHeight - 5));
-				saveCurrenPosition($('#book').scrollTop());
-			}
-			if (e.keyCode == 37) {
-				$('#book').scrollTop($('#book').scrollTop() - (bookHeight - 5));
-				book.pageSave($('#book').scrollTop());
-			}
-		}
-
-		function saveBookStorage(data) {
-			if (!!localStorage && data) {
-				localStorage.setItem("book", data);
-			}
-		}
-		function saveCurrenPosition(scrollTop) {
-			if (!!localStorage && scrollTop) {
-				localStorage.setItem("scrollTop", scrollTop);
-			}
-		}
-		function showBookStorage() {
-			if (!!localStorage && localStorage.getItem("book")){
-				document.body.addEventListener('keydown', keyPressEvent);
-				$('#book').html(localStorage.getItem("book"));
-				if (localStorage.getItem("scrollTop")) {
-					$('#book').scrollTop(localStorage.getItem("scrollTop"));
-				}
-			}
 		}
 
 	});
