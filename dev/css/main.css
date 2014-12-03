@@ -201,12 +201,7 @@ footer .menu {
   margin-left: 50%;
   cursor: pointer;
 }
-footer .settings {
-  margin-top: -10%;
-  background: #343232 !important;
-  /* Deactivate the default tab when a preceding tab is activated. */
-}
-footer .settings .settings {
+.settings {
   position: relative;
   margin: 50px auto;
   width: 90%;
@@ -216,7 +211,7 @@ footer .settings .settings {
   -webkit-box-shadow: 0 0 8px rgba(0, 0, 0, 0.07);
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.07);
 }
-footer .settings .settings-tabs {
+.settings-tabs {
   position: absolute;
   top: 0;
   left: 0;
@@ -232,10 +227,10 @@ footer .settings .settings-tabs {
   border-bottom: 1px solid #ddd;
   xborder-radius: 3px 3px 0 0;
 }
-footer .settings .settings-tab,
-footer .settings .settings-list:target:first-of-type ~ .settings-tabs > .settings-tab:first-child ~ .settings-tab,
-footer .settings .settings-list:target:nth-of-type(2) ~ .settings-tabs > .settings-tab:nth-child(2) ~ .settings-tab,
-footer .settings .settings-list:target:last-of-type ~ .settings-tabs > .settings-tab:last-child ~ .settings-tab {
+.settings-tab,
+.settings-list:target:first-of-type ~ .settings-tabs > .settings-tab:first-child ~ .settings-tab,
+.settings-list:target:nth-of-type(2) ~ .settings-tabs > .settings-tab:nth-child(2) ~ .settings-tab,
+.settings-list:target:last-of-type ~ .settings-tabs > .settings-tab:last-child ~ .settings-tab {
   position: relative;
   display: inline-block;
   vertical-align: top;
@@ -249,20 +244,20 @@ footer .settings .settings-list:target:last-of-type ~ .settings-tabs > .settings
   padding-bottom: 0;
   bottom: auto;
 }
-footer .settings .settings-tab > .settings-tab-link,
-footer .settings .settings-list:target:first-of-type ~ .settings-tabs > .settings-tab:first-child ~ .settings-tab > .settings-tab-link,
-footer .settings .settings-list:target:nth-of-type(2) ~ .settings-tabs > .settings-tab:nth-child(2) ~ .settings-tab > .settings-tab-link,
-footer .settings .settings-list:target:last-of-type ~ .settings-tabs > .settings-tab:last-child ~ .settings-tab > .settings-tab-link {
+.settings-tab > .settings-tab-link,
+.settings-list:target:first-of-type ~ .settings-tabs > .settings-tab:first-child ~ .settings-tab > .settings-tab-link,
+.settings-list:target:nth-of-type(2) ~ .settings-tabs > .settings-tab:nth-child(2) ~ .settings-tab > .settings-tab-link,
+.settings-list:target:last-of-type ~ .settings-tabs > .settings-tab:last-child ~ .settings-tab > .settings-tab-link {
   margin: 0;
   border-top: 0;
 }
-footer .settings .settings-tab + .settings-tab {
+.settings-tab + .settings-tab {
   margin-right: -1px;
 }
-footer .settings .settings-tab:last-child,
-footer .settings .settings-list:target:first-of-type ~ .settings-tabs > .settings-tab:first-child,
-footer .settings .settings-list:target:nth-of-type(2) ~ .settings-tabs > .settings-tab:nth-child(2),
-footer .settings .settings-list:target:last-of-type ~ .settings-tabs > .settings-tab:last-child {
+.settings-tab:last-child,
+.settings-list:target:first-of-type ~ .settings-tabs > .settings-tab:first-child,
+.settings-list:target:nth-of-type(2) ~ .settings-tabs > .settings-tab:nth-child(2),
+.settings-list:target:last-of-type ~ .settings-tabs > .settings-tab:last-child {
   bottom: -1px;
   margin-top: 0;
   padding-bottom: 2px;
@@ -272,14 +267,15 @@ footer .settings .settings-list:target:last-of-type ~ .settings-tabs > .settings
   background: white;
   border-top: 0;
 }
-footer .settings .settings-tab:last-child > .settings-tab-link,
-footer .settings .settings-list:target:first-of-type ~ .settings-tabs > .settings-tab:first-child > .settings-tab-link,
-footer .settings .settings-list:target:nth-of-type(2) ~ .settings-tabs > .settings-tab:nth-child(2) > .settings-tab-link,
-footer .settings .settings-list:target:last-of-type ~ .settings-tabs > .settings-tab:last-child > .settings-tab-link {
+.settings-tab:last-child > .settings-tab-link,
+.settings-list:target:first-of-type ~ .settings-tabs > .settings-tab:first-child > .settings-tab-link,
+.settings-list:target:nth-of-type(2) ~ .settings-tabs > .settings-tab:nth-child(2) > .settings-tab-link,
+.settings-list:target:last-of-type ~ .settings-tabs > .settings-tab:last-child > .settings-tab-link {
   margin: 0 -1px;
   border-top: 4px solid #65bf95;
 }
-footer .settings .settings-tab-link {
+/* Deactivate the default tab when a preceding tab is activated. */
+.settings-tab-link {
   display: block;
   min-width: 60px;
   padding: 0 15px;
@@ -287,26 +283,26 @@ footer .settings .settings-tab-link {
   text-align: center;
   text-decoration: none;
 }
-footer .settings .settings-list {
+.settings-list {
   display: none;
   padding-top: 50px;
   /* The last list is activated (visible) by default. */
 }
-footer .settings .settings-list > li + li {
+.settings-list > li + li {
   border-top: 1px solid #e8e8e8;
 }
-footer .settings .settings-list:last-of-type {
+.settings-list:last-of-type {
   display: block;
 }
-footer .settings .settings-list:target {
+.settings-list:target {
   display: block;
   /* Hide the default list when another is activated. */
   /* First list activates the first tab, second list activates the second tab, etc. */
 }
-footer .settings .settings-list:target ~ .settings-list {
+.settings-list:target ~ .settings-list {
   display: none;
 }
-footer .settings .settings-list-link {
+.settings-list-link {
   display: block;
   line-height: 18px;
   padding: 10px 12px;
@@ -315,19 +311,19 @@ footer .settings .settings-list-link {
   text-decoration: none;
   cursor: pointer;
 }
-footer .settings .settings-list-link:hover {
+.settings-list-link:hover {
   background: #f7f7f7;
 }
-footer .settings li:last-child > .settings-list-link {
+li:last-child > .settings-list-link {
   border-radius: 0 0 3px 3px;
 }
-footer .settings .settings-list-link > img {
+.settings-list-link > img {
   float: left;
   width: 32px;
   height: 32px;
   margin: 2px 12px 0 0;
 }
-footer .settings .settings-list-link > span {
+.settings-list-link > span {
   display: block;
   font-size: 11px;
   font-weight: normal;

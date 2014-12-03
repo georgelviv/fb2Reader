@@ -9,7 +9,6 @@ main);
 
 function main(jquery, fileupload, bookSave, settingsPanel) {
 	$(document).ready(function() {
-		console.log(bookSave);
 
 		var book = {
 			fileExtension: /(fb2|epub|txt)/i,

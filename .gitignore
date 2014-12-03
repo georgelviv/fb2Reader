@@ -1,4 +1,5 @@
 node_modules/
 dist/js/built.min.js
 dist/uploads/
+dist/img/Thumbs.db
 sh.exe.stackdump
