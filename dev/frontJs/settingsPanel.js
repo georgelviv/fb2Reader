@@ -1,3 +1,8 @@
+define(['tools/jquery-1.11.1.min'], function() {
+  settingPanel();
+});
+
+function settingPanel() {
 /*window.onload = function() {
 
 document.onclick = function(e) {
@@ -10,9 +15,8 @@ document.onclick = function(e) {
  };
 */
 
- $(document).ready(function() {       
+ $(document).ready(function() {
       var allSections = $('#footer > settings-panel').hide();
-        
       $('footer > .menu').click(function() {
         allSections.slideUp();
           $(this).next().slideToggle();
@@ -21,4 +25,6 @@ document.onclick = function(e) {
         return false;
       });
 												
-}); 	
+});
+
+}
