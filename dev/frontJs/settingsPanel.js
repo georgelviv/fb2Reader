@@ -1,3 +1,8 @@
+define(['tools/jquery-1.11.1.min'], function() {
+  settingPanel();
+});
+
+function settingPanel() {
 /*window.onload = function() {
 
 document.onclick = function(e) {
@@ -9,10 +14,14 @@ document.onclick = function(e) {
        }
  };
 */
+<<<<<<< HEAD
 /*
  $(document).ready(function() {       
+=======
+
+ $(document).ready(function() {
+>>>>>>> 83b877b21b36647d9f8ddfd1cfdd556b920cd609
       var allSections = $('#footer > settings-panel').hide();
-        
       $('footer > .menu').click(function() {
         allSections.slideUp();
           $(this).next().slideToggle();
@@ -21,6 +30,7 @@ document.onclick = function(e) {
         return false;
       });
 												
+<<<<<<< HEAD
 }); */	
 
 $(document).ready(function() {
@@ -34,3 +44,8 @@ $(document).ready(function() {
      });
 
 });
+=======
+});
+
+}
+>>>>>>> 83b877b21b36647d9f8ddfd1cfdd556b920cd609
