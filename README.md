@@ -5,11 +5,11 @@ fb2Reader is best web application for read books in fb2, epub and txt format
 
 #### Last Updates:
 
+* preloader added
+
 * requireJs modules
 
 * Now it saves book and page
-
-* Epub parsing only text in order
 
 * Yeah! Epub parse with image)
 

@@ -3,11 +3,12 @@ require(
         'tools/jquery-1.11.1.min',
         'tools/jquery.fileupload',
         'bookSave',
-        'settingsPanel'
+        'settingsPanel',
+        'preloader'
     ],
 main);
 
-function main(jquery, fileupload, bookSave, settingsPanel) {
+function main(jquery, fileupload, bookSave, settingsPanel, preloader) {
 	$(document).ready(function() {
 
 		var book = {
@@ -40,11 +41,7 @@ function main(jquery, fileupload, bookSave, settingsPanel) {
 				book.getDataInterval = setInterval(getBook, 500);
 				document.body.removeEventListener('keydown', book.keyPress);
 			},
-			progressall: function(e, data) {
-				var progress = parseInt(data.loaded / data.total * 100, 10);
-				$('#status').html('Loading ' + progress);
-				$('#book').html('');
-			}
+			progressall: preloader.progress
 		});
 
 		function getBook() {
@@ -52,6 +49,7 @@ function main(jquery, fileupload, bookSave, settingsPanel) {
 				if (data !== 'false') {
 					$('#book').html(data);
 					book.saveBook(data);
+					book.pageSave(0);
 					$('#status').html('Ready ' + book.bookName);
 					clearInterval(book.getDataInterval);
 					document.body.addEventListener('keydown', book.keyPress);
@@ -59,7 +57,7 @@ function main(jquery, fileupload, bookSave, settingsPanel) {
 			}).fail(function() {
 				console.log('Error with getting book');
 			});
-			$('#status').html('Parsing ' + book.bookName);
+			preloader.parsing();
 		}
 
 	});

@@ -9,9 +9,9 @@ module.exports = function(grunt) {
 		requirejs: {
 			compile: {
 				options: {
-					baseUrl: "dev/frontJs/",
+					baseUrl: 'dev/frontJs/',
 					name: 'script',
-					out: "dist/js/build.min.js",
+					out: 'dist/js/build.min.js',
 					include: ['tools/require.js']
 				}
 			}
@@ -32,7 +32,7 @@ module.exports = function(grunt) {
 		less: {
 			development: {
 				files: {
-					"dev/css/main.css": "dev/less/main.less"
+					'dev/css/main.css': ['dev/less/main.less', 'dev/less/preloader.less']
 				}
 			}
 		},

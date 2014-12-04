@@ -15,7 +15,7 @@ function saveBookStorage(data) {
 	}
 }
 function saveCurrenPosition(scrollTop) {
-	if (!!localStorage && scrollTop) {
+	if (!!localStorage) {
 		localStorage.setItem("scrollTop", scrollTop);
 	}
 }
@@ -36,10 +36,10 @@ function keyPressEvent(e) {
 
 	if (e.keyCode == 39) {
 		$('#book').scrollTop($('#book').scrollTop() + (bookHeight - 5));
-		book.pageSave($('#book').scrollTop());
+		saveCurrenPosition($('#book').scrollTop());
 	}
 	if (e.keyCode == 37) {
 		$('#book').scrollTop($('#book').scrollTop() - (bookHeight - 5));
-		book.pageSave($('#book').scrollTop());
+		saveCurrenPosition($('#book').scrollTop());
 	}
 }
