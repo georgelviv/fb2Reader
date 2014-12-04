@@ -1,0 +1,355 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body,
+html {
+  width: 100%;
+  height: 100%;
+}
+body {
+  font-family: 0.6px Tahoma, Arial, Verdana, sans-serif;
+}
+.wrapper {
+  width: 95%;
+  xheight: auto;
+  height: auto;
+  margin: 0 auto;
+  position: relative;
+}
+/*  header  */
+header {
+  width: 100%;
+  height: 15%;
+  xdisplay: table-cell;
+  xvertical-align: middle;
+  background: #353434;
+}
+header .logo {
+  float: left;
+  xline-height: 20px;
+  margin-top: 1px;
+  xwidth: 150px;
+  xfont-size: 12px;
+}
+#status {
+  color: #fff;
+}
+::selection {
+  color: #ffffff;
+  background: #353434;
+}
+::-moz-selection {
+  color: #ffffff;
+  background: #353434;
+}
+header ul.social li a,
+header nav ul li a {
+  transition: all .2s linear;
+  -webkit-transition: all .2s linear;
+  -moz-transition: all .2s linear;
+  -o-transition: all .2s linear;
+}
+header nav {
+  overflow: hidden;
+  display: inline-block;
+  margin: 32px 0 0 -50px;
+  padding: 0px 40px;
+  border-left: 1px #404040 solid;
+}
+header nav ul {
+  list-style: none;
+  float: left;
+}
+header nav ul li {
+  float: left;
+  margin-left: 35px;
+  font-size: 16px;
+  font-family: 'lato_regular', arial;
+  letter-spacing: 1px;
+}
+header nav ul li:first-child {
+  margin-left: 0;
+}
+header nav ul li a {
+  text-decoration: none;
+  color: #fff;
+}
+header nav ul li a:hover {
+  color: #65bf95;
+}
+header ul.social {
+  float: right;
+  list-style: none;
+  margin-top: 0px;
+  padding: 0px 60px;
+}
+header ul.social li {
+  float: left;
+  margin-left: 10px;
+}
+header ul.social li a {
+  display: block;
+  width: 35px;
+  height: 35px;
+  background: url('../img/sm.png') no-repeat;
+}
+header ul.social li a:hover {
+  background: url('../img/sm_hover.png') no-repeat;
+}
+header ul.social li a {
+  display: block;
+  width: 35px;
+  height: 35px;
+}
+header ul.social li a.fb {
+  background-position: 0 0;
+}
+header ul.social li a.gplus {
+  background-position: -72px 0;
+}
+.btn {
+  width: 130%;
+  outline: none;
+}
+.btn::-webkit-file-upload-button {
+  visibility: hidden;
+}
+.btn:before {
+  content: 'Choose File';
+  display: inline-block;
+  padding: 24px 32px;
+  background-color: #65bf95;
+  color: #fff;
+  font-family: "lato_regular", arial;
+  font-size: 20px;
+  text-decoration: none;
+  margin-top: 3px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  -moz-border-radius: 1px;
+  -webkit-border-radius: 1px;
+  border-radius: 1px;
+  white-space: nowrap;
+  cursor: pointer;
+  text-shadow: 1px 0px #fff;
+}
+.btn:hover:before {
+  background: #56b086;
+}
+.btn:active:before {
+  outline: none !important;
+}
+.slideout {
+  position: fixed;
+  left: 0;
+  -webkit-transition-duration: 0.3s;
+  -moz-transition-duration: 0.3s;
+  -o-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+}
+.slideout_inner {
+  position: fixed;
+  top: -40px;
+  xleft: 250px;
+  -webkit-transition-duration: 0.3s;
+  -moz-transition-duration: 0.3s;
+  -o-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+}
+.slideout:hover {
+  top: -50px;
+}
+.slideout:hover #slideout_inner {
+  left: 0;
+}
+.sep_line {
+  display: inline-block;
+  text-align: center;
+  width: 13px;
+  height: 100px;
+}
+.sep_line:after {
+  content: "";
+  display: block;
+  width: 1px;
+  height: 100%;
+  background: #dedede;
+  margin-left: 6px;
+}
+.sep_top {
+  border-bottom: 1px #dedede solid;
+  margin-bottom: 40px;
+}
+.sep_bottom {
+  border-top: 1px #dedede solid;
+  margin-top: 40px;
+}
+footer {
+  border-top: 1px #dedede solid;
+  background: #343232;
+  width: 100%;
+  height: 3%;
+  bottom: 0;
+  left: 0;
+  position: fixed;
+  z-index: 100;
+}
+footer .menu {
+  color: #65bf95;
+  margin-left: 50%;
+  cursor: pointer;
+}
+.settings {
+  position: relative;
+  margin: 50px auto;
+  width: 90%;
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  -webkit-box-shadow: 0 0 8px rgba(0, 0, 0, 0.07);
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.07);
+}
+.settings-tabs {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 9px 12px 0;
+  text-align: left;
+  /* Make the last tab in the DOM the left-most tab on the screen.
+     That way we can activate it by default and still be able to
+     deactivate it later using the ~ selector. */
+  direction: rtl;
+  background: #353434;
+  /* #f5f5f5;*/
+  border-bottom: 1px solid #ddd;
+  xborder-radius: 3px 3px 0 0;
+}
+.settings-tab,
+.settings-list:target:first-of-type ~ .settings-tabs > .settings-tab:first-child ~ .settings-tab,
+.settings-list:target:nth-of-type(2) ~ .settings-tabs > .settings-tab:nth-child(2) ~ .settings-tab,
+.settings-list:target:last-of-type ~ .settings-tabs > .settings-tab:last-child ~ .settings-tab {
+  position: relative;
+  display: inline-block;
+  vertical-align: top;
+  margin-top: 3px;
+  line-height: 36px;
+  font-weight: normal;
+  color: #999;
+  background: #fcfcfc;
+  border: solid #ddd;
+  border-width: 1px 1px 0;
+  padding-bottom: 0;
+  bottom: auto;
+}
+.settings-tab > .settings-tab-link,
+.settings-list:target:first-of-type ~ .settings-tabs > .settings-tab:first-child ~ .settings-tab > .settings-tab-link,
+.settings-list:target:nth-of-type(2) ~ .settings-tabs > .settings-tab:nth-child(2) ~ .settings-tab > .settings-tab-link,
+.settings-list:target:last-of-type ~ .settings-tabs > .settings-tab:last-child ~ .settings-tab > .settings-tab-link {
+  margin: 0;
+  border-top: 0;
+}
+.settings-tab + .settings-tab {
+  margin-right: -1px;
+}
+.settings-tab:last-child,
+.settings-list:target:first-of-type ~ .settings-tabs > .settings-tab:first-child,
+.settings-list:target:nth-of-type(2) ~ .settings-tabs > .settings-tab:nth-child(2),
+.settings-list:target:last-of-type ~ .settings-tabs > .settings-tab:last-child {
+  bottom: -1px;
+  margin-top: 0;
+  padding-bottom: 2px;
+  line-height: 34px;
+  font-weight: bold;
+  color: #555;
+  background: white;
+  border-top: 0;
+}
+.settings-tab:last-child > .settings-tab-link,
+.settings-list:target:first-of-type ~ .settings-tabs > .settings-tab:first-child > .settings-tab-link,
+.settings-list:target:nth-of-type(2) ~ .settings-tabs > .settings-tab:nth-child(2) > .settings-tab-link,
+.settings-list:target:last-of-type ~ .settings-tabs > .settings-tab:last-child > .settings-tab-link {
+  margin: 0 -1px;
+  border-top: 4px solid #65bf95;
+}
+/* Deactivate the default tab when a preceding tab is activated. */
+.settings-tab-link {
+  display: block;
+  min-width: 60px;
+  padding: 0 15px;
+  color: inherit;
+  text-align: center;
+  text-decoration: none;
+}
+.settings-list {
+  display: none;
+  padding-top: 50px;
+  /* The last list is activated (visible) by default. */
+}
+.settings-list > li + li {
+  border-top: 1px solid #e8e8e8;
+}
+.settings-list:last-of-type {
+  display: block;
+}
+.settings-list:target {
+  display: block;
+  /* Hide the default list when another is activated. */
+  /* First list activates the first tab, second list activates the second tab, etc. */
+}
+.settings-list:target ~ .settings-list {
+  display: none;
+}
+.settings-list-link {
+  display: block;
+  line-height: 18px;
+  padding: 10px 12px;
+  font-weight: bold;
+  color: #555;
+  text-decoration: none;
+  cursor: pointer;
+}
+.settings-list-link:hover {
+  background: #f7f7f7;
+}
+li:last-child > .settings-list-link {
+  border-radius: 0 0 3px 3px;
+}
+.settings-list-link > img {
+  float: left;
+  width: 32px;
+  height: 32px;
+  margin: 2px 12px 0 0;
+}
+.settings-list-link > span {
+  display: block;
+  font-size: 11px;
+  font-weight: normal;
+  color: #999;
+}
+.column {
+  -webkit-column-width: 500px;
+  -moz-column-width: 500px;
+  column-width: 500px;
+  -webkit-column-count: 3;
+  -moz-column-count: 3;
+  column-count: 3;
+  -webkit-column-gap: 30px;
+  -moz-column-gap: 30px;
+  column-gap: 30px;
+  -webkit-column-rule: 1px solid #ccc;
+  -moz-column-rule: 1px solid #ccc;
+  column-rule: 1px solid #ccc;
+  letter-spacing: 1px;
+  line-height: 2;
+}
+#book {
+  height: 82%;
+  overflow: hidden;
+  padding: 20px;
+}
+#book img {
+  max-height: 400px;
+}
