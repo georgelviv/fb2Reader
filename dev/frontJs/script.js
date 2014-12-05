@@ -49,12 +49,7 @@ function main(jquery, fileupload, bookSave, settingsPanel, preloader) {
 		function getBook() {
 			$.get("/getbook?bookName=" + book.bookName).done(function(data) {
 				if (data !== 'false') {
-					$('#book').html(data);
-					book.hideEl(false);
-					book.saveBook(data);
-					book.pageSave(0);
-					clearInterval(book.getDataInterval);
-					document.body.addEventListener('keydown', book.keyPress);
+					onBookGet(data);
 				}
 			}).fail(function() {
 				console.log('Error with getting book');
@@ -62,6 +57,25 @@ function main(jquery, fileupload, bookSave, settingsPanel, preloader) {
 			preloader.parsing();
 		}
 
+		function onBookGet(data) {
+			$('#book').html(data);
+			book.hideEl(false);
+			book.saveBook(data);
+			book.pageSave(0);
+			pageSet();
+			clearInterval(book.getDataInterval);
+			document.body.addEventListener('keydown', book.keyPress);
+		}
+
+		function pageSet() {
+			var bookScroll = bookEl.bookDiv[0].scrollHeight;
+			var bookHeight = bookEl.bookDiv.height();
+			var pages = Math.ceil(bookScroll / bookHeight, bookHeight);
+			$('#book-page').find('a').html("1 / " + pages);
+		}
+
 	});
 }
+
+
 

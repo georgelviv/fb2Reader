@@ -20,6 +20,7 @@ function progressLoading(e, data) {
 	var loader = $('<div id="loader"></div>').html(preloaderString + '<p id="bookstatus">Loading ' + progress + '%</p>');
 	$('#book').html('');
 	$('#book').append(loader);
+	$('#book-page').find('a').html('');
 }
 
 function parsingBook(bookName) {
