@@ -16,7 +16,8 @@ function main(jquery, fileupload, bookSave, settingsPanel, preloader) {
 			showBook: bookSave.show,
 			saveBook: bookSave.save,
 			pageSave: bookSave.savePage,
-			keyPress: bookSave.keyPress
+			keyPress: bookSave.keyPress,
+			hideEl: bookSave.hideElement
 		};
 
 		book.showBook();
@@ -48,6 +49,7 @@ function main(jquery, fileupload, bookSave, settingsPanel, preloader) {
 			$.get("/getbook?bookName=" + book.bookName).done(function(data) {
 				if (data !== 'false') {
 					$('#book').html(data);
+					book.hideEl(false);
 					book.saveBook(data);
 					book.pageSave(0);
 					$('#status').html('Ready ' + book.bookName);

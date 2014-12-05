@@ -17,7 +17,7 @@ function progressLoading(e, data) {
 							'<div id="preloader_7" class="preloader"></div>' +
 							'<div id="preloader_8" class="preloader"></div></div>';
 	var progress = parseInt(data.loaded / data.total * 100, 10);
-	var loader = $('<div id="loader"></div>').html(preloaderString + '<p id="bookstatus">Loading ' + progress + '</p>');
+	var loader = $('<div id="loader"></div>').html(preloaderString + '<p id="bookstatus">Loading ' + progress + '%</p>');
 	$('#book').html('');
 	$('#book').append(loader);
 }

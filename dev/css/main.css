@@ -331,9 +331,16 @@ li:last-child > .settings-list-link {
   height: 82%;
   overflow: hidden;
   padding: 20px;
+  line-height: 1.5em;
+  background-color: #fff;
 }
 #book img {
   max-height: 400px;
+}
+.linehide {
+  z-index: 10;
+  position: absolute;
+  width: 100%;
 }
 
 #loader {
