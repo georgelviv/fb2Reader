@@ -1,7 +1,6 @@
 var exports = module.exports = {};
 var unzip = require('unzip');
 var fs = require('fs');
-var jade = require('jade');
 var dirOpf;
 
 exports.parsingEpub = function(bookName, callback) {
@@ -59,18 +58,21 @@ function xmlBookToObj(xml, callback) {
 	var regExpTitle = /<dc:title.*>.*<\/dc:title>/i;
 	var regExpAuthor = /<dc:creator.*opf:role="aut".*>.*<\/dc:creator>/i;
 	var contentArr = getHref(xml.slice(xml.indexOf('<manifest>') + 10, xml.indexOf('</manifest>')));
+	var informBook;
 
 	objBook.title = getTagInner(regExpTitle, xml);
 	if (objBook.title.search(/-0/) !== -1) {
 		objBook.title = objBook.title.slice(0, (objBook.title.search(/-0/)));
 	}
+	informBook = '<h2>' + objBook.title + '</h2>';
 
 	if (getTagInner(regExpAuthor, xml)) {
 		objBook.author = getTagInner(regExpAuthor, xml);
+		informBook += '<h3>' + objBook.author + '</h3>';
 	}
 	
 
-	exports.epubBook = jadeParse(objBook);
+	exports.epubBook = informBook;
 
 	for (var i = 0; i < contentArr.length; i++) {
 		if (i == contentArr.length - 1) {
@@ -136,11 +138,6 @@ function formatHtml(htmlString, path) {
 
 		return htmlString;
 	}
-}
-
-function jadeParse(obj) {
-	var jadeFn = jade.compileFile('dev/jade/bookEpub.jade');
-	return jadeFn(obj);
 }
 
 function getFormat(fileName) {

@@ -26,7 +26,6 @@
     "grunt-contrib-watch": "^0.6.1",
     "grunt-nodemon": "^0.3.0",
     "iconv-lite": "^0.4.5",
-    "jade": "^1.7.0",
     "jquery-file-upload-middleware": "^0.1.7",
     "rmdir": "^1.0.4",
     "unzip": "^0.1.11",

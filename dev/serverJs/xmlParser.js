@@ -1,7 +1,6 @@
 var exports = module.exports = {};
 var fs = require('fs');
 var parseString = require('xml2js').parseString;
-var jade = require('jade');
 
 exports.xmlBook = '';
 
@@ -12,10 +11,9 @@ exports.parsingXml = function(bookName, callback) {
       console.log('Error width reading xml file. ' + err);
       callback(true);
     }
-    var dataString = data.toString('utf-8');
-    var jadeFn = jade.compileFile('dev/jade/bookXml.jade');
 
-    exports.xmlBook = jadeFn(xmlBookToObj(data));
+    var dataString = data.toString('utf-8');
+    exports.xmlBook = xmlBookToObj(data);
     exports.xmlBook += xmlBookTagFilter(dataString);
 
     callback();
@@ -25,6 +23,7 @@ exports.parsingXml = function(bookName, callback) {
 function xmlBookToObj(xml) {
   var objBook = {};
   var xmlString = xml.toString('utf-8');
+  var informBook;
 
   parseString(xml, function (err, result) {
     if (err) {
@@ -34,24 +33,28 @@ function xmlBookToObj(xml) {
     var fictionBook = result.FictionBook;
     var bookDesc = fictionBook.description[0]['title-info'][0];
 
-    if (fictionBook.binary) {
-      objBook.posterSrc = 'data:image/jpeg;base64,' + fictionBook.binary[0]['_'] ;
-    }
     objBook.title = bookDesc['book-title'][0];
+    informBook = '<h2>' + objBook.title + '</h2>';
+
     if (bookDesc['author'][0]['first-name']) {
       objBook.firstName =  bookDesc['author'][0]['first-name'][0];
+      informBook += '<h3>' + objBook.firstName;
+      if (bookDesc['author'][0]['last-name']) {
+        objBook.lastName = bookDesc['author'][0]['last-name'][0];
+         informBook += ' ' + objBook.lastName;
+      }
+      informBook += '</h3>';
     }
-    if (bookDesc['author'][0]['last-name']) {
-      objBook.lastName = bookDesc['author'][0]['last-name'][0];
-    }
-    if (bookDesc['date']) {
-       objBook.date = bookDesc['date'][0]['_'];
+
+    if (fictionBook.binary) {
+      objBook.posterSrc = 'data:image/jpeg;base64,' + fictionBook.binary[0]['_'] ;
+      informBook += '<img alt="poster" src="' + objBook.posterSrc + '">';
     }
    
 
   });
 
-  return objBook;
+  return informBook;
 }
 
 function xmlBookTagFilter(bookString) {
