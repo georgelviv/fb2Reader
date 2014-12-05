@@ -116,7 +116,7 @@ function getHideEl(checkElPos) {
 			var top = child[i].getBoundingClientRect().top;
 			var bottom = child[i].getBoundingClientRect().bottom;
 			if (top < checkElPos && checkElPos < bottom) {
-				if ($(child[i]).children().not('em, strong, br, sup, sub').length) {
+				if ($(child[i]).children().not('em, strong, br, sup, sub, emphasis, a').length) {
 					element = child[i];
 					break;
 				} else {

@@ -38,6 +38,7 @@ function main(jquery, fileupload, bookSave, settingsPanel, preloader) {
 				}
 			},
 			done: function (e, data) {
+				$('.linehide').remove();
 				$('#status').html('File loaded ' + data.result.files[0].name);
 				book.getDataInterval = setInterval(getBook, 500);
 				document.body.removeEventListener('keydown', book.keyPress);
@@ -52,7 +53,6 @@ function main(jquery, fileupload, bookSave, settingsPanel, preloader) {
 					book.hideEl(false);
 					book.saveBook(data);
 					book.pageSave(0);
-					$('#status').html('Ready ' + book.bookName);
 					clearInterval(book.getDataInterval);
 					document.body.addEventListener('keydown', book.keyPress);
 				}
@@ -63,5 +63,5 @@ function main(jquery, fileupload, bookSave, settingsPanel, preloader) {
 		}
 
 	});
-
 }
+
