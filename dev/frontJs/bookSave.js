@@ -14,7 +14,7 @@ var bookEl = {
 	bookDiv: $('#book'),
 	bookBottom: Math.floor($('#book')[0].getBoundingClientRect().bottom),
 	bookTop: Math.floor($('#book')[0].getBoundingClientRect().top),
-	footerHeight: Math.ceil($('footer')[0].getBoundingClientRect().height),
+	footerHeight: Math.floor($('footer')[0].getBoundingClientRect().height),
 	headerHeight: Math.floor($('header')[0].getBoundingClientRect().height)
 };
 
