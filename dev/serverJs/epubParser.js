@@ -13,7 +13,7 @@ exports.parsingEpub = function(bookName, callback) {
 		parsingContentOpf(callback);
 	}).on('error', function(err) {
 		exports.epubBook = 'Wrong zip format. ' + err;
-		callback();
+		callback(true);
 	});
 };
 
@@ -30,7 +30,7 @@ function parsingContentOpf(callback) {
 	fs.readdir(dirOpf, function(err, data) {
 		if (err) {
 			exports.epubBook = 'Dir OPF err. ' + err;
-			callback();
+			callback(true);
 			return;
 		}
 
@@ -45,7 +45,7 @@ function parsingContentOpf(callback) {
 		fs.readFile(opfPath, function(err, xml) {
 			if (err) {
 				exports.epubBook = 'Error with findin content.opf. ' + err;
-				callback();
+				callback(true);
 				return;
 			}
 			var xmlString = xml.toString('utf-8');

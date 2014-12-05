@@ -8,7 +8,10 @@ exports.xmlBook = '';
 exports.parsingXml = function(bookName, callback) {
  
   fs.readFile('./dist/uploads/' + bookName, function (err, data) {
-    if (err) throw err;
+    if (err) {
+      console.log('Error width reading xml file. ' + err);
+      callback(true);
+    }
     var dataString = data.toString('utf-8');
     var jadeFn = jade.compileFile('dev/jade/bookXml.jade');
 
@@ -24,7 +27,9 @@ function xmlBookToObj(xml) {
   var xmlString = xml.toString('utf-8');
 
   parseString(xml, function (err, result) {
-    if (err) throw err;
+    if (err) {
+      console.log('Error with parsing xml' + err);
+    }
 
     var fictionBook = result.FictionBook;
     var bookDesc = fictionBook.description[0]['title-info'][0];

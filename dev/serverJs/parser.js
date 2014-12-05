@@ -9,18 +9,18 @@ exports.parsingBook = function(bookName) {
 	exports.ready = false;
 	switch (getFormat(bookName)) {
 		case 'fb2' :
-			xmlParser.parsingXml(bookName, function() {
-				readyAndRemove(xmlParser.xmlBook);
+			xmlParser.parsingXml(bookName, function(isError) {
+				readyAndRemove(xmlParser.xmlBook, isError);
 			});
 			break;
 		case 'epub' :
-			epubParser.parsingEpub(bookName, function() {
-				readyAndRemove(epubParser.epubBook);
+			epubParser.parsingEpub(bookName, function(isError) {
+				readyAndRemove(epubParser.epubBook, isError);
 			});
 			break;
 		case 'txt' :
-			txtParser.parsingTxt(bookName, function() {
-				readyAndRemove(txtParser.txtBook);
+			txtParser.parsingTxt(bookName, function(isError) {
+				readyAndRemove(txtParser.txtBook, isError);
 			});
 			break;
 	}
@@ -39,8 +39,22 @@ function removeDir(path) {
 	});
 }
 
-function readyAndRemove(htmlString) {
+function readyAndRemove(htmlString, isError) {
 	exports.bookText = htmlString;
+	if (!isError) {
+			splitBook(htmlString);
+	}
 	exports.ready = true;
 	removeDir('./dist/uploads/');
+}
+
+function splitBook(htmlString) {
+	var symbolsLength = htmlString.split('').length;
+	var divideEach = 1000000;
+	var parts = Math.ceil(symbolsLength / divideEach);
+	var partsArr;
+	
+	for (var i = 0; i <= parts; i++) {
+		
+	}
 }

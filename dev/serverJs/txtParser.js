@@ -8,6 +8,7 @@ exports.parsingTxt = function(bookName, callback) {
 	fs.readFile('./dist/uploads/' + bookName, function(err, data) {
 		if (err) {
 			console.log('Error with txt. ' + err);
+			callback(true);
 		}
 
 		bookString =  iconv.decode(data, 'win1251');
