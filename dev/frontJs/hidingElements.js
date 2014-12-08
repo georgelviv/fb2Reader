@@ -11,13 +11,11 @@ define(['tools/jquery-1.11.1.min'], function() {
 function hideBoth() {
 	var hideStr = '';
 	if ($('#lcolumn')[0]) {
-		console.time('1');
 		hideStr += hideEl(true, $('#lcolumn'));
 		hideStr += hideEl(false, $('#lcolumn'));
 		hideStr += hideEl(true, $('#rcolumn'));
 		hideStr += hideEl(false, $('#rcolumn'));
 		$('#book').append(hideStr);
-		console.timeEnd('1');
 	} else {
 		hideStr += hideEl(true, $('#book'));
 		hideStr += hideEl(false, $('#book'));
