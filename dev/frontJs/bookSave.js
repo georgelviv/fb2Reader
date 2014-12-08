@@ -47,7 +47,7 @@ define(['tools/jquery-1.11.1.min', 'hidingElements'], function(jquery, elementHi
 
 	function keyPressEvent(e) {
 		var bookHeight;
-		if ($('#lcolumn')) {
+		if ($('#lcolumn')[0]) {
 			bookHeight = $('#lcolumn').height();
 		} else {
 			bookHeight = bookDiv.height();
@@ -56,12 +56,12 @@ define(['tools/jquery-1.11.1.min', 'hidingElements'], function(jquery, elementHi
 
 		if (e.keyCode == 39) {
 			if ($('#lcolumn')[0]) {
-				$("#lcolumn").scrollTop($("#lcolumn").scrollTop() + ((bookHeight * 2) - 50));
+				$("#lcolumn").scrollTop($("#lcolumn").scrollTop() + ((bookHeight * 2) - 60));
 				$("#rcolumn").scrollTop(($("#lcolumn").scrollTop() + bookHeight) - 30);
 				saveCurrenPosition($('#lcolumn').scrollTop());
 				hideAndPage();
 			} else {
-				bookDiv.scrollTop(bookDiv.scrollTop() + bookHeight);
+				bookDiv.scrollTop(bookDiv.scrollTop() + bookHeight - 30);
 				saveCurrenPosition(bookDiv.scrollTop());
 				hideAndPage();
 			}
@@ -69,12 +69,12 @@ define(['tools/jquery-1.11.1.min', 'hidingElements'], function(jquery, elementHi
 		}
 		if (e.keyCode == 37) {
 			if ($('#lcolumn')[0]) {
-				$("#lcolumn").scrollTop($("#lcolumn").scrollTop() - ((bookHeight * 2) - 50));
+				$("#lcolumn").scrollTop($("#lcolumn").scrollTop() - ((bookHeight * 2) - 60));
 				$("#rcolumn").scrollTop(($("#lcolumn").scrollTop() + bookHeight) - 30);
 				saveCurrenPosition($('#lcolumn').scrollTop());
 				hideAndPage();
 			} else {
-				bookDiv.scrollTop(bookDiv.scrollTop() - bookHeight);
+				bookDiv.scrollTop(bookDiv.scrollTop() - bookHeight - 30);
 				saveCurrenPosition(bookDiv.scrollTop());
 				hideAndPage();
 			}
@@ -85,13 +85,13 @@ define(['tools/jquery-1.11.1.min', 'hidingElements'], function(jquery, elementHi
 		var bookScroll, bookHeight, pages, currentPage;
 		if ($('#lcolumn')[0]) {
 			bookScroll = $('#lcolumn')[0].scrollHeight;
-			bookHeight = $('#lcolumn').height();
-			pages = Math.ceil((bookScroll / bookHeight) / 2);
-			currentPage = Math.ceil((($('#lcolumn').scrollTop() / 2) / bookHeight) + 1);
+			bookHeight = $('#lcolumn').height() * 2;
+			pages = Math.ceil(bookScroll / bookHeight);
+			currentPage = Math.ceil(($('#lcolumn').scrollTop() / bookHeight) + 1);
 		} else {
 			bookScroll = bookDiv[0].scrollHeight;
 			bookHeight = bookDiv.height();
-			pages = Math.ceil(bookScroll / bookHeight, bookHeight);
+			pages = Math.ceil(bookScroll / bookHeight);
 			currentPage = Math.ceil(bookDiv.scrollTop() / bookHeight) + 1;
 		}
 		$('#book-page').find('a').html(currentPage + " / " + pages);
