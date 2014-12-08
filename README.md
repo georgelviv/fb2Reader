@@ -5,6 +5,8 @@ fb2Reader is best web application for read books in fb2, epub and txt format
 
 #### Last Updates:
 
+* two columns (bad perfomance)
+
 * page progress
 
 * added favicon
@@ -14,10 +16,6 @@ fb2Reader is best web application for read books in fb2, epub and txt format
 * fixed text divide
 
 * preloader added
-
-* requireJs modules
-
-* Now it saves book and page
 
 #### TODO list:
 

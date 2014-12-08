@@ -17,7 +17,8 @@ function main(jquery, fileupload, bookSave, settingsPanel, preloader) {
 			saveBook: bookSave.save,
 			pageSave: bookSave.savePage,
 			keyPress: bookSave.keyPress,
-			hideEl: bookSave.hideElement
+			hideEl: bookSave.hideElement,
+			bookDiv: $('#book')
 		};
 
 		book.showBook();
@@ -58,8 +59,17 @@ function main(jquery, fileupload, bookSave, settingsPanel, preloader) {
 		}
 
 		function onBookGet(data) {
-			$('#book').html(data);
-			book.hideEl(false);
+			if (chekForColumns()) {
+				$('#lcolumn').html(data);
+				$('#rcolumn').html(data).scrollTop($('#lcolumn').height() - 30);
+				$('#rcolumn').append('<div style="height:' + book.bookDiv.height() + 'px;">');
+				book.hideEl(false, $('#lcolumn'));
+				book.hideEl(false, $('#rcolumn'));
+				book.hideEl(true, $('#rcolumn'));
+			} else {
+				book.bookDiv.html(data);
+				book.hideEl(false, book.bookDiv);
+			}
 			book.saveBook(data);
 			book.pageSave(0);
 			pageSet();
@@ -68,10 +78,25 @@ function main(jquery, fileupload, bookSave, settingsPanel, preloader) {
 		}
 
 		function pageSet() {
-			var bookScroll = bookEl.bookDiv[0].scrollHeight;
-			var bookHeight = bookEl.bookDiv.height();
-			var pages = Math.ceil(bookScroll / bookHeight, bookHeight);
+			var bookScroll, bookHeight, pages;
+			if ($('#lcolumn')[0]) {
+				bookScroll = $('#lcolumn')[0].scrollHeight;
+				bookHeight = $('#lcolumn').height();
+				pages = Math.ceil((bookScroll / bookHeight) / 2);
+			} else {
+				bookScroll = book.bookDiv[0].scrollHeight;
+				bookHeight = book.bookDiv.height();
+				pages = Math.ceil(bookScroll / bookHeight);
+			}
 			$('#book-page').find('a').html("1 / " + pages);
+		}
+
+		function chekForColumns() {
+			if (book.bookDiv.width() > 1000) {
+				book.bookDiv.html('<div class="bookcolumn" id="lcolumn"></div><div class="bookcolumn" id="rcolumn" ></div>');
+				return true;
+			}
+			return false;
 		}
 
 	});

@@ -14,6 +14,7 @@
 body, html {
   width: 100%;
   height: 100%;
+  -webkit-transform: translate3d(0,0,0);
 }
 body{
   font-family: 12px/20px  Tahoma, Arial, Verdana, sans-serif;
@@ -376,12 +377,22 @@ li:last-child > .settings-list-link {
   } 
   height: @bookheight;
   overflow: hidden;
-  padding: 20px;
   line-height: 1.5em;
   background-color: #fff;
+}
+#book:after {
+  content: '';
+  clear: both;
+  visibility: hidden;
+  display: block;
 }
 .linehide {
   z-index: 10;
   position: absolute;
-  width: 100%;
+}
+.bookcolumn {
+  overflow: hidden;
+  width: 50%;
+  height: 100%;
+  float: left;
 }
