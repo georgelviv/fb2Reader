@@ -59,16 +59,19 @@ function main(jquery, fileupload, bookSave, settingsPanel, preloader) {
 		}
 
 		function onBookGet(data) {
+			var hideStr = '';
 			if (chekForColumns()) {
 				$('#lcolumn').html(data);
 				$('#rcolumn').html(data).scrollTop($('#lcolumn').height() - 30);
 				$('#rcolumn').append('<div style="height:' + book.bookDiv.height() + 'px;">');
-				book.hideEl(false, $('#lcolumn'));
-				book.hideEl(false, $('#rcolumn'));
-				book.hideEl(true, $('#rcolumn'));
+				hideStr += book.hideEl(false, $('#lcolumn'));
+				hideStr += book.hideEl(false, $('#rcolumn'));
+				hideStr += book.hideEl(true, $('#rcolumn'));
+				$('#book').append(hideStr);
 			} else {
 				book.bookDiv.html(data);
-				book.hideEl(false, book.bookDiv);
+				hideStr += book.hideEl(false, book.bookDiv);
+				book.append(hideStr);
 			}
 			book.saveBook(data);
 			book.pageSave(0);
