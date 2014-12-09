@@ -4,11 +4,10 @@ define(['tools/jquery-1.11.1.min'], function() {
 
 function settingPanel() {
 $(document).ready(function() {
-     var allSections = $('#footer > settings-panel').hide();
+     var allSections = $('.settings-panel');
      $('footer > .menu').click(function() {
-       allSections.slideUp();
-         $(this).next().slideToggle();
-       $(this).parent().toggleClass('open');
+      allSections.toggle();
+      // $(this).next().slideToggle();
       // $(this).parent().next().slideDown();
        return false;
      });
