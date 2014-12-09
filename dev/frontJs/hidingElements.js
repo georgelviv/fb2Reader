@@ -57,8 +57,8 @@ function hideEl(isTop, el) {
 
 	
 	if (heightHide < Math.floor($(lastEl).css('line-height').slice(0, -2))) {
-		lineHide = '<div style="height:' + heightHide + 'px;background:';
-		lineHide += $('#book').css('background-color') + ';';
+		lineHide = '<div style="height:' + Math.ceil(heightHide) + 'px;background:';
+		lineHide += bookDiv.css('background-color') + ';';
 		lineHide += 'width:' + el.width() + 'px;';
 		lineHide += 'left:' + bookEl.bookLeft + 'px;';
 		lineHide += positionEl + '" class="linehide"></div>';
