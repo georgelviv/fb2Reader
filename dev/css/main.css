@@ -8,9 +8,6 @@ body {
   height: 100%;
   width: 100%;
 }
-body {
-  background: #ecf0f1;
-}
 ul,
 ol {
   list-style: none;
@@ -143,10 +140,10 @@ footer .menu {
   bottom: 0;
 }
 #book {
-  height: 83%;
+  height: 80%;
   overflow: hidden;
   line-height: 1.5em;
-  background-color: #fff;
+  background-color: #ecf0f1;
 }
 #book img {
   max-height: 400px;
