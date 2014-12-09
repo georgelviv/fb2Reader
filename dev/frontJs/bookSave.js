@@ -32,7 +32,7 @@ define(['tools/jquery-1.11.1.min', 'hidingElements'], function(jquery, elementHi
 				$("#lcolumn").html(localStorage.getItem("book"));
 				$('#rcolumn').html(localStorage.getItem("book")).scrollTop($('#lcolumn').height() - 50);
 				$('#rcolumn').append('<div style="height:' + book.bookDiv.height() + 'px;">');
-				book.bookHeight = $('#lcolumn').height() * 2;
+				book.bookHeight = $('#lcolumn').height();
 				book.bookScroll = $('#lcolumn')[0].scrollHeight;
 				if (localStorage.getItem("scrollTop")) {
 					$("#lcolumn").scrollTop(localStorage.getItem("scrollTop"));
@@ -86,8 +86,8 @@ define(['tools/jquery-1.11.1.min', 'hidingElements'], function(jquery, elementHi
 	function pageSet() {
 		var pages, currentPage;
 		if ($('#lcolumn')[0]) {
-			pages = Math.ceil(book.bookScroll / book.bookHeight);
-			currentPage = Math.ceil(($('#lcolumn').scrollTop() / book.bookHeight) + 1);
+			pages = Math.ceil(book.bookScroll / (book.bookHeight * 2));
+			currentPage = Math.ceil(($('#lcolumn').scrollTop() / (book.bookHeight* 2) + 1));
 		} else {
 			pages = Math.ceil(book.bookScroll /  book.bookHeight);
 			currentPage = Math.ceil(book.bookDiv.scrollTop() /  book.bookHeight) + 1;
