@@ -4,7 +4,7 @@
 @headerColor: #27ae60;
 @settingsLinkHover: #333;
 @mainBackgroundColor: #ecf0f1;
-@hoverColor: #65bf95;
+@hoverColor: #27ae60;
 @bookheight: 83%;
 @whiteColor: #fff;
 @TabsPanelHeight: 10%;
@@ -70,6 +70,81 @@ header{
   &:hover:before{ background: rgba(255,255,255,.2); }
   &:active:before{ background: @whiteColor; }
 }
+
+ul.social li a,
+  nav ul li a{
+    transition:all .2s linear;
+    -webkit-transition:all .2s linear;
+    -moz-transition:all .2s linear;
+    -o-transition:all .2s linear;
+  }
+
+
+  nav{
+    overflow: hidden;
+    display: inline-block;
+    xmargin: 32px 0 0 -50px;
+    margin: 0 0 2em 2em;
+    padding: 0px 40px;
+    border-left: 1px #404040 solid;
+
+
+    ul{
+      list-style: none;
+      float: left;
+      .social{
+          float: right;
+          list-style: none;
+          margin-top: 0px;
+          padding: 0px 60px;
+
+
+
+          li{
+            float: left;
+            margin-left: 10px;
+            a{
+              display: block;
+              width: 35px;
+              height: 35px;
+              background: url('../img/sm.png') no-repeat;
+                &:hover{
+                  background: url('../img/sm_hover.png') no-repeat;
+                }
+
+                .fb{
+                  background-position: 0 0;
+                }
+
+
+              .gplus{
+                background-position: -72px 0;
+              }
+            }
+          }      
+      }
+
+        li{
+          float: left;
+          margin-left: 35px;
+          font-size: 16px;
+          font-family: 'lato_regular', arial;
+          letter-spacing: 1px;
+
+          &:first-child{
+              margin-left: 0;
+            }
+
+          a {
+            text-decoration: none;
+            color: @whiteColor;
+              &:hover{
+              color: @hoverColor;
+            } 
+          }                                        
+        } 
+    }                              
+  }
 
 }
 
