@@ -34,8 +34,9 @@ function main(jquery, fileupload, bookSave, settingsPanel, preloader) {
 				format = format[format.length - 1];
 				if (format.match(book.fileExtension)) {
 					data.submit();
+					book.bookDiv.html('');
 				} else {
-					console.log('error format');
+					$('#book').html('<div id="nobook">Wrong book format</div>');
 				}
 			},
 			done: function (e, data) {
