@@ -28,6 +28,9 @@ function main(jquery, fileupload, bookSave, settingsPanel, preloader) {
 			dataType: 'json',
 			add: function(e, data) {
 				var format;
+				book.bookDiv.html('');
+				document.body.removeEventListener('keyup', book.keyPress);
+
 				book.bookName = data.files[0].name;
 				format = book.bookName.split('.');
 
@@ -35,14 +38,13 @@ function main(jquery, fileupload, bookSave, settingsPanel, preloader) {
 				if (format.match(book.fileExtension)) {
 					data.submit();
 				} else {
-					console.log('error format');
+					book.bookDiv.html('<div id="nobook">Wrong book format</div>');
 				}
 			},
 			done: function (e, data) {
 				$('.linehide').remove();
 				$('#status').html('File loaded ' + data.result.files[0].name);
 				book.getDataInterval = setInterval(getBook, 500);
-				document.body.removeEventListener('keydown', book.keyPress);
 			},
 			progressall: preloader.progress
 		});
@@ -53,28 +55,31 @@ function main(jquery, fileupload, bookSave, settingsPanel, preloader) {
 					onBookGet(data);
 				}
 			}).fail(function() {
-				console.log('Error with getting book');
+				book.bookDiv.html('<div id="nobook">Error to get book</div>');
 			});
 			preloader.parsing();
 		}
 
 		function onBookGet(data) {
+			var hideStr = '';
 			if (chekForColumns()) {
 				$('#lcolumn').html(data);
 				$('#rcolumn').html(data).scrollTop($('#lcolumn').height() - 30);
 				$('#rcolumn').append('<div style="height:' + book.bookDiv.height() + 'px;">');
-				book.hideEl(false, $('#lcolumn'));
-				book.hideEl(false, $('#rcolumn'));
-				book.hideEl(true, $('#rcolumn'));
+				hideStr += book.hideEl(false, $('#lcolumn'));
+				hideStr += book.hideEl(false, $('#rcolumn'));
+				hideStr += book.hideEl(true, $('#rcolumn'));
+				$('#book').append(hideStr);
 			} else {
 				book.bookDiv.html(data);
-				book.hideEl(false, book.bookDiv);
+				hideStr += book.hideEl(false, book.bookDiv);
+				book.append(hideStr);
 			}
 			book.saveBook(data);
 			book.pageSave(0);
 			pageSet();
 			clearInterval(book.getDataInterval);
-			document.body.addEventListener('keydown', book.keyPress);
+			document.body.addEventListener('keyup', book.keyPress);
 		}
 
 		function pageSet() {

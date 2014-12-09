@@ -9,14 +9,17 @@ define(['tools/jquery-1.11.1.min'], function() {
 
 
 function hideBoth() {
+	var hideStr = '';
 	if ($('#lcolumn')[0]) {
-		hideEl(true, $('#lcolumn'));
-		hideEl(false, $('#lcolumn'));
-		hideEl(true, $('#rcolumn'));
-		hideEl(false, $('#rcolumn'));
+		hideStr += hideEl(true, $('#lcolumn'));
+		hideStr += hideEl(false, $('#lcolumn'));
+		hideStr += hideEl(true, $('#rcolumn'));
+		hideStr += hideEl(false, $('#rcolumn'));
+		$('#book').append(hideStr);
 	} else {
-		hideEl(true, $('#book'));
-		hideEl(false, $('#book'));
+		hideStr += hideEl(true, $('#book'));
+		hideStr += hideEl(false, $('#book'));
+		$('#body').append(hideStr);
 	}
 }
 
@@ -59,8 +62,7 @@ function hideEl(isTop, el) {
 		lineHide += 'width:' + el.width() + 'px;';
 		lineHide += 'left:' + bookEl.bookLeft + 'px;';
 		lineHide += positionEl + '" class="linehide"></div>';
-		el.parent().append(lineHide);
-		return;
+		return lineHide;
 	}
 	return;
 
