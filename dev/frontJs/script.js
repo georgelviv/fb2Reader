@@ -29,7 +29,7 @@ function main(jquery, fileupload, bookSave, settingsPanel, preloader) {
 			add: function(e, data) {
 				var format;
 				book.bookDiv.html('');
-				document.body.removeEventListener('keydown', book.keyPress);
+				document.body.removeEventListener('keyup', book.keyPress);
 
 				book.bookName = data.files[0].name;
 				format = book.bookName.split('.');
@@ -55,7 +55,7 @@ function main(jquery, fileupload, bookSave, settingsPanel, preloader) {
 					onBookGet(data);
 				}
 			}).fail(function() {
-				console.log('Error with getting book');
+				book.bookDiv.html('<div id="nobook">Error to get book</div>');
 			});
 			preloader.parsing();
 		}
@@ -79,7 +79,7 @@ function main(jquery, fileupload, bookSave, settingsPanel, preloader) {
 			book.pageSave(0);
 			pageSet();
 			clearInterval(book.getDataInterval);
-			document.body.addEventListener('keydown', book.keyPress);
+			document.body.addEventListener('keyup', book.keyPress);
 		}
 
 		function pageSet() {

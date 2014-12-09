@@ -25,7 +25,7 @@ define(['tools/jquery-1.11.1.min', 'hidingElements'], function(jquery, elementHi
 	}
 	function showBookStorage() {
 		if (!!localStorage && localStorage.getItem("book")){
-			document.body.addEventListener('keydown', keyPressEvent);
+			document.body.addEventListener('keyup', keyPressEvent);
 			if (chekForColumns()) {
 				$("#lcolumn").html(localStorage.getItem("book"));
 				$('#rcolumn').html(localStorage.getItem("book")).scrollTop($('#lcolumn').height() - 50);
