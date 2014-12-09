@@ -28,22 +28,23 @@ function main(jquery, fileupload, bookSave, settingsPanel, preloader) {
 			dataType: 'json',
 			add: function(e, data) {
 				var format;
+				book.bookDiv.html('');
+				document.body.removeEventListener('keydown', book.keyPress);
+
 				book.bookName = data.files[0].name;
 				format = book.bookName.split('.');
 
 				format = format[format.length - 1];
 				if (format.match(book.fileExtension)) {
 					data.submit();
-					book.bookDiv.html('');
 				} else {
-					$('#book').html('<div id="nobook">Wrong book format</div>');
+					book.bookDiv.html('<div id="nobook">Wrong book format</div>');
 				}
 			},
 			done: function (e, data) {
 				$('.linehide').remove();
 				$('#status').html('File loaded ' + data.result.files[0].name);
 				book.getDataInterval = setInterval(getBook, 500);
-				document.body.removeEventListener('keydown', book.keyPress);
 			},
 			progressall: preloader.progress
 		});
