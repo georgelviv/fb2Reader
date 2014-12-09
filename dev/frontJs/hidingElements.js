@@ -6,7 +6,7 @@ define(['tools/jquery-1.11.1.min'], function() {
 	return elementHide;
 });
 
-
+var bookDiv = $('#book');
 
 function hideBoth() {
 	var hideStr = '';
@@ -15,11 +15,11 @@ function hideBoth() {
 		hideStr += hideEl(false, $('#lcolumn'));
 		hideStr += hideEl(true, $('#rcolumn'));
 		hideStr += hideEl(false, $('#rcolumn'));
-		$('#book').append(hideStr);
+		bookDiv.append(hideStr);
 	} else {
-		hideStr += hideEl(true, $('#book'));
-		hideStr += hideEl(false, $('#book'));
-		$('#body').append(hideStr);
+		hideStr += hideEl(true, bookDiv);
+		hideStr += hideEl(false, bookDiv);
+		bookDiv.append(hideStr);
 	}
 }
 
@@ -43,7 +43,7 @@ function hideEl(isTop, el) {
 	}
 
 	if (!lastEl || lastEl.tagName == 'IMG') {
-		return;
+		return '';
 	}
 
 	lineHeight = Math.floor($(lastEl).css('line-height').slice(0, -2));
@@ -64,7 +64,7 @@ function hideEl(isTop, el) {
 		lineHide += positionEl + '" class="linehide"></div>';
 		return lineHide;
 	}
-	return;
+	return '';
 
 	function getHideEl(checkElPos) {
 		var bookScroll = bookEl.bookDiv[0].scrollHeight;
