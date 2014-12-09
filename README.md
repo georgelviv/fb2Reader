@@ -33,6 +33,8 @@ fb2Reader is best web application for read books in fb2, epub and txt format
 
 * текст під кнопкою завантаження той що за замовчуванням
 
+* current page
+
 
 
 
