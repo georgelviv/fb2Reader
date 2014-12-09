@@ -3,38 +3,13 @@ define(['tools/jquery-1.11.1.min'], function() {
 });
 
 function settingPanel() {
-/*window.onload = function() {
-
-document.onclick = function(e) {
-    var target = e && e.target || window.event.srcElement;
-    var dataToggleSettingsPanel = target.getAttribute('data-toggle-settings-panel');
-        if (!dataToggleSettingsPanel) return;
-        	var elem = document.getElementById(dataToggleSettingsPanel);
-          	elem.style.display = elem.offsetHeight ? 'none' : 'block';
-       }
- };
-*/
-/*  
-
- $(document).ready(function() {
->>>>>>> 83b877b21b36647d9f8ddfd1cfdd556b920cd609
-      var allSections = $('#footer > settings-panel').hide();
-      $('footer > .menu').click(function() {
-        allSections.slideUp();
-          $(this).next().slideToggle();
-        $(this).parent().toggleClass('open');
-       // $(this).parent().next().slideDown();
-        return false;
-      });
- */	
-
 $(document).ready(function() {
-     var allSections = $('footer > settings-panel').hide();
-     $('footer > #menu').click(function() {
+     var allSections = $('#footer > settings-panel').hide();
+     $('footer > .menu').click(function() {
        allSections.slideUp();
          $(this).next().slideToggle();
-      // $(this).parent().toggleClass('open');
-      $(this).parent().next().slideDown();
+       $(this).parent().toggleClass('open');
+      // $(this).parent().next().slideDown();
        return false;
      });
 
