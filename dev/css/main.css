@@ -130,6 +130,7 @@ footer .menu {
   margin-left: 50%;
   cursor: pointer;
   position: fixed;
+  bottom: 0;
 }
 #book {
   height: 82%;
@@ -151,6 +152,20 @@ footer .menu {
   position: absolute;
 }
 .bookcolumn {
+  overflow: hidden;
+  width: 50%;
+  height: 100%;
+  float: left;
+}
+#nobook {
+  text-align: center;
+  height: 20px;
+  width: 200px;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  margin-left: -100px;
+  margin-top: -10px;
   overflow: hidden;
   width: 50%;
   height: 100%;
