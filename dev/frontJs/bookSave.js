@@ -42,6 +42,8 @@ define(['tools/jquery-1.11.1.min', 'hidingElements'], function(jquery, elementHi
 					hideAndPage();
 				}
 			}
+		} else {
+			$('#book').html('<div id="nobook">No book to show, please upload book</div>');
 		}
 	}
 
