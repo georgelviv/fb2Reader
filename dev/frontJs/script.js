@@ -2,110 +2,112 @@ require(
     [
         'tools/jquery-1.11.1.min',
         'tools/jquery.fileupload',
-        'bookSave',
         'settingsPanel',
-        'preloader'
+        'preloader',
+        'book'
     ],
 main);
 
-function main(jquery, fileupload, bookSave, settingsPanel, preloader) {
+function main(jquery, fileupload, settingsPanel, preloader, Book) {
 	$(document).ready(function() {
 
-		var book = {
+		var book;
+		var bookOption = {
 			fileExtension: /(fb2|epub|txt)/i,
-			showBook: bookSave.show,
-			saveBook: bookSave.save,
-			pageSave: bookSave.savePage,
-			keyPress: bookSave.keyPress,
-			hideEl: bookSave.hideElement,
 			bookDiv: $('#book')
 		};
 
-		book.showBook();
+		showBookStorage();
+		goToEvent();
+
 
 		$('#fileselect').fileupload({
 			url: '/upload',
 			dataType: 'json',
 			add: function(e, data) {
 				var format;
-				book.bookDiv.html('');
-				document.body.removeEventListener('keyup', book.keyPress);
-
-				book.bookName = data.files[0].name;
-				format = book.bookName.split('.');
+				bookOption.bookDiv.html('');
+				if (book) {
+					document.body.removeEventListener('keyup', keyEvent);
+				}
+				bookOption.bookName = data.files[0].name;
+				format = bookOption.bookName.split('.');
 
 				format = format[format.length - 1];
-				if (format.match(book.fileExtension)) {
+				if (format.match(bookOption.fileExtension)) {
 					data.submit();
 				} else {
-					book.bookDiv.html('<div id="nobook">Wrong book format</div>');
+					bookOption.bookDiv.html('<div id="nobook">Wrong book format</div>');
 				}
 			},
 			done: function (e, data) {
 				$('.linehide').remove();
 				$('#status').html('File loaded ' + data.result.files[0].name);
-				book.getDataInterval = setInterval(getBook, 500);
+				bookOption.getDataInterval = setInterval(getBook, 500);
 			},
 			progressall: preloader.progress
 		});
 
 		function getBook() {
-			$.get("/getbook?bookName=" + book.bookName).done(function(data) {
+			$.get("/getbook?bookName=" + bookOption.bookName).done(function(data) {
 				if (data !== 'false') {
+					book = new Book(data);
 					onBookGet(data);
 				}
 			}).fail(function() {
-				book.bookDiv.html('<div id="nobook">Error to get book</div>');
+				bookOption.bookDiv.html('<div id="nobook">Error to get book</div>');
 			});
 			preloader.parsing();
 		}
 
 		function onBookGet(data) {
-			var hideStr = '';
-			if (chekForColumns()) {
-				$('#lcolumn').html(data);
-				$('#rcolumn').html(data).scrollTop($('#lcolumn').height() - 30);
-				$('#rcolumn').append('<div style="height:' + book.bookDiv.height() + 'px;">');
-				hideStr += book.hideEl(false, $('#lcolumn'));
-				hideStr += book.hideEl(false, $('#rcolumn'));
-				hideStr += book.hideEl(true, $('#rcolumn'));
-				$('#book').append(hideStr);
-			} else {
-				book.bookDiv.html(data);
-				hideStr += book.hideEl(false, book.bookDiv);
-				book.append(hideStr);
-			}
-			book.saveBook(data);
-			book.pageSave(0);
-			pageSet();
-			clearInterval(book.getDataInterval);
-			document.body.addEventListener('keyup', book.keyPress);
+			book.hideBoth();
+			book.saveBookString(data);
+			book.savePage(0);
+			book.pageSet();
+			clearInterval(bookOption.getDataInterval);
+			document.body.addEventListener('keyup', keyEvent);
 		}
 
-		function pageSet() {
-			var bookScroll, bookHeight, pages;
-			if ($('#lcolumn')[0]) {
-				bookScroll = $('#lcolumn')[0].scrollHeight;
-				bookHeight = $('#lcolumn').height();
-				pages = Math.ceil((bookScroll / bookHeight) / 2);
-			} else {
-				bookScroll = book.bookDiv[0].scrollHeight;
-				bookHeight = book.bookDiv.height();
-				pages = Math.ceil(bookScroll / bookHeight);
-			}
-			$('#book-page').find('a').html("1 / " + pages);
+		function keyEvent(e) {
+			book.keyPress(e, book);
 		}
 
-		function chekForColumns() {
-			if (book.bookDiv.width() > 1000) {
-				book.bookDiv.html('<div class="bookcolumn" id="lcolumn"></div><div class="bookcolumn" id="rcolumn" ></div>');
-				return true;
+		function goToEvent() {
+			$('#book-page').find('input').keypress(function(e) {
+				if(e.which == 13) {
+					if (book) {
+						book.gotoPage();
+					}
+				}
+			});
+		}
+
+		function showBookStorage() {
+			if (!!localStorage && localStorage.getItem("book")){
+				book = new Book(localStorage.getItem("book"));
+				if (localStorage.getItem("scrollTop")) {
+					if (book.isColumns) {
+						book.lcolumn.scrollTop(localStorage.getItem("scrollTop"));
+						book.rcolumn.scrollTop((book.lcolumn.scrollTop() + book.bookHeight) - 50);
+						book.pageSet();
+						book.hideBoth();
+					} else {
+						book.bookDiv.scrollTop(localStorage.getItem("scrollTop"));
+						book.pageSet();
+						book.hideBoth();
+					}
+				}
+				document.body.addEventListener('keyup', keyEvent);
+			} else {
+				bookOption.bookDiv.html('<div id="nobook">No book to show, please upload book</div>');
 			}
-			return false;
 		}
 
 	});
 }
+
+
 
 
 

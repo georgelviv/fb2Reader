@@ -300,6 +300,24 @@ li:last-child > .settings-list-link {
   margin-left: -100px;
   margin-top: -10px;
 }
+#book-page input {
+  background: #27ae60;
+  border: none;
+  width: 40px;
+  outline: none;
+  padding: 3px 5px;
+  color: #ffffff;
+  transition: all .2s linear;
+  -webkit-transition: all .2s linear;
+  -moz-transition: all .2s linear;
+  -o-transition: all .2s linear;
+}
+#book-page input:focus {
+  background: #36d278;
+}
+#book-page span {
+  color: #ffffff;
+}
 
 #loader {
   position: relative;

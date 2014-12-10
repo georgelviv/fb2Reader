@@ -350,3 +350,21 @@ li:last-child > .settings-list-link {
   margin-left: -100px;
   margin-top: -10px;
 }
+#book-page input {
+  background: @headerColor;
+  border: none;
+  width: 40px;
+  outline: none;
+  padding: 3px 5px;
+  color: @whiteColor;
+  transition:all .2s linear;
+  -webkit-transition:all .2s linear;
+  -moz-transition:all .2s linear;
+  -o-transition:all .2s linear;
+}
+#book-page input:focus {
+  background: lighten(@headerColor, 10%);
+}
+#book-page span {
+  color: @whiteColor;
+}
