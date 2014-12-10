@@ -6,20 +6,18 @@ define(['tools/jquery-1.11.1.min'], function() {
 	return elementHide;
 });
 
-var bookDiv = $('#book');
-
 function hideBoth() {
 	var hideStr = '';
-	if ($('#lcolumn')[0]) {
-		hideStr += hideEl(true, $('#lcolumn'));
-		hideStr += hideEl(false, $('#lcolumn'));
-		hideStr += hideEl(true, $('#rcolumn'));
-		hideStr += hideEl(false, $('#rcolumn'));
-		bookDiv.append(hideStr);
+	if (this.isColumns || this.isColumns === undefined) {
+		hideStr += this.hideEl(true, this.lcolumn);
+		hideStr += this.hideEl(false, this.lcolumn);
+		hideStr += this.hideEl(true, this.rcolumn);
+		hideStr += this.hideEl(false, this.rcolumn);
+		this.bookDiv.append(hideStr);
 	} else {
-		hideStr += hideEl(true, bookDiv);
-		hideStr += hideEl(false, bookDiv);
-		bookDiv.append(hideStr);
+		hideStr += this.hideEl(true, this.bookDiv);
+		hideStr += this.hideEl(false, this.bookDiv);
+		this.bookDiv.append(hideStr);
 	}
 }
 
@@ -58,7 +56,8 @@ function hideEl(isTop, el) {
 	
 	if (heightHide < Math.floor($(lastEl).css('line-height').slice(0, -2))) {
 		lineHide = '<div style="height:' + Math.ceil(heightHide) + 'px;background:';
-		lineHide += bookDiv.css('background-color') + ';';
+		lineHide += this.bookDiv.css('background-color') + ';';
+
 		lineHide += 'width:' + el.width() + 'px;';
 		lineHide += 'left:' + bookEl.bookLeft + 'px;';
 		lineHide += positionEl + '" class="linehide"></div>';
