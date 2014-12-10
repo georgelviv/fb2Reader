@@ -1,12 +1,13 @@
 @headerheight: 12%;
 @footerheight: 3%;
+@TabsPanelHeight: 10%;
+@bookheight: 85%;
+@bookWidth: 85%;
 @headerColor: #27ae60;
 @settingsLinkHover: #333;
 @mainBackgroundColor: #ecf0f1;
 @hoverColor: #27ae60;
-@bookheight: 85%;
 @whiteColor: #fff;
-@TabsPanelHeight: 10%;
 @tabLabelBg: #eee;
 @settingPanelContentBg: #444;
 @settingPanelTextColor: #EFF4D0;
@@ -21,7 +22,7 @@ html, body {
   width: 100%;
 }
 body {
-  xbackground: @mainBackgroundColor;
+  background: @mainBackgroundColor;
 }
 
 ul, ol{
@@ -322,7 +323,9 @@ li:last-child > .settings-list-link {
  height: @bookheight;
  overflow: hidden;
  line-height: 1.5em;
- background-color: #fff;
+ background-color: @mainBackgroundColor;
+ width: @bookWidth;
+ margin: 0 auto;
 }
 #book:after {
  content: '';

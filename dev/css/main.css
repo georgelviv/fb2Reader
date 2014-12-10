@@ -9,7 +9,7 @@ body {
   width: 100%;
 }
 body {
-  xbackground: #ecf0f1;
+  background: #ecf0f1;
 }
 ul,
 ol {
@@ -269,7 +269,9 @@ li:last-child > .settings-list-link {
   height: 85%;
   overflow: hidden;
   line-height: 1.5em;
-  background-color: #fff;
+  background-color: #ecf0f1;
+  width: 85%;
+  margin: 0 auto;
 }
 #book img {
   max-height: 400px;
