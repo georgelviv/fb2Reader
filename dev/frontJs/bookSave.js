@@ -2,7 +2,9 @@ define(['tools/jquery-1.11.1.min'], function(jquery) {
 	var bookSave = {
 		save: saveBookStorage,
 		savePage: saveCurrenPosition,
-		keyPress: keyPressEvent
+		keyPress: keyPressEvent,
+		showNextPage: showNextPage,
+		showPrevPage: showPrevPage
 	};
 
 	return bookSave;
@@ -20,27 +22,34 @@ define(['tools/jquery-1.11.1.min'], function(jquery) {
 
 	function keyPressEvent(e, book) {
 		if (e.keyCode == 39) {
-			$('.linehide').remove();
-			if (book.isColumns) {
-				book.lcolumn.scrollTop(book.lcolumn.scrollTop() + ((book.bookHeight * 2) - 60));
-				book.rcolumn.scrollTop((book.lcolumn.scrollTop() + book.bookHeight) - 30);
-				hideAndPage(book, book.lcolumn.scrollTop());
-			} else {
-				book.bookDiv.scrollTop(book.bookDiv.scrollTop() + book.bookHeight - 30);
-				hideAndPage(book, book.bookDiv.scrollTop());
-			}
-
+			book.showNextPage();
 		}
 		if (e.keyCode == 37) {
-			$('.linehide').remove();
-			if (book.isColumns) {
-				book.lcolumn.scrollTop(book.lcolumn.scrollTop() - ((book.bookHeight * 2) - 60));
-				book.rcolumn.scrollTop((book.lcolumn.scrollTop() + book.bookHeight) - 30);
-				hideAndPage(book, book.lcolumn.scrollTop());
-			} else {
-				book.bookDiv.scrollTop(book.bookDiv.scrollTop() - book.bookHeight - 30);
-				hideAndPage(book, book.bookDiv.scrollTop());
-			}
+			book.showPrevPage();
+		}
+	}
+
+	function showNextPage() {
+		$('.linehide').remove();
+		if (this.isColumns) {
+			this.lcolumn.scrollTop(this.lcolumn.scrollTop() + ((this.bookHeight * 2) - 60));
+			this.rcolumn.scrollTop((this.lcolumn.scrollTop() + this.bookHeight) - 30);
+			hideAndPage(this, this.lcolumn.scrollTop());
+		} else {
+			this.bookDiv.scrollTop(this.bookDiv.scrollTop() + this.bookHeight - 30);
+			hideAndPage(this, this.bookDiv.scrollTop());
+		}
+	}
+
+	function showPrevPage() {
+		$('.linehide').remove();
+		if (this.isColumns) {
+			this.lcolumn.scrollTop(this.lcolumn.scrollTop() - ((this.bookHeight * 2) - 60));
+			this.rcolumn.scrollTop((this.lcolumn.scrollTop() + this.bookHeight) - 30);
+			hideAndPage(this, this.lcolumn.scrollTop());
+		} else {
+			this.bookDiv.scrollTop(this.bookDiv.scrollTop() - this.bookHeight - 30);
+			hideAndPage(this, this.bookDiv.scrollTop());
 		}
 	}
 

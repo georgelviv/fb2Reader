@@ -10,6 +10,8 @@ define(['hidingElements', 'bookSave'], function(hidingElements, bookSave) {
 	Book.prototype.hideEl = hidingElements.hide;
 	Book.prototype.hideBoth = hidingElements.hideBoth;
 	Book.prototype.pageSet = pageSet;
+	Book.prototype.showNextPage = bookSave.showNextPage;
+	Book.prototype.showPrevPage = bookSave.showPrevPage;
 	Book.prototype.keyPress = bookSave.keyPress;
 	Book.prototype.saveBookString = bookSave.save;
 	Book.prototype.savePage = bookSave.savePage;

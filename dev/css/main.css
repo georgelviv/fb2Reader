@@ -320,6 +320,26 @@ li:last-child > .settings-list-link {
 #book-page span {
   color: #ffffff;
 }
+#button-prev,
+#button-next {
+  width: 40px;
+  height: 40px;
+  padding-top: 5px;
+  text-align: center;
+  color: #ffffff;
+  background-color: #60db94;
+  position: absolute;
+  top: 50%;
+  margin-top: -15px;
+}
+#button-next {
+  right: 0;
+}
+#button-prev:hover,
+#button-next:hover {
+  cursor: pointer;
+  background-color: #27ae60;
+}
 
 #loader {
   position: relative;

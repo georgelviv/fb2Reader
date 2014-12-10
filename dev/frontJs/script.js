@@ -19,6 +19,7 @@ function main(jquery, fileupload, settingsPanel, preloader, Book) {
 
 		showBookStorage();
 		goToEvent();
+		navigateButtons();
 
 
 		$('#fileselect').fileupload({
@@ -81,6 +82,17 @@ function main(jquery, fileupload, settingsPanel, preloader, Book) {
 					}
 				}
 			});
+		}
+
+		function navigateButtons() {
+			if (book) {
+				$('#button-prev').on('click', function() {
+					book.showPrevPage();
+				});
+				$('#button-next').on('click', function() {
+					book.showNextPage();
+				});
+			}
 		}
 
 		function showBookStorage() {
