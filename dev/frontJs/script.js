@@ -18,6 +18,8 @@ function main(jquery, fileupload, settingsPanel, preloader, Book) {
 		};
 
 		showBookStorage();
+		goToEvent();
+
 
 		$('#fileselect').fileupload({
 			url: '/upload',
@@ -69,6 +71,16 @@ function main(jquery, fileupload, settingsPanel, preloader, Book) {
 
 		function keyEvent(e) {
 			book.keyPress(e, book);
+		}
+
+		function goToEvent() {
+			$('#book-page').find('input').keypress(function(e) {
+				if(e.which == 13) {
+					if (book) {
+						book.gotoPage();
+					}
+				}
+			});
 		}
 
 		function showBookStorage() {

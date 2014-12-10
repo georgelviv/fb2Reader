@@ -27,7 +27,7 @@ define(['tools/jquery-1.11.1.min'], function(jquery) {
 				hideAndPage(book, book.lcolumn.scrollTop());
 			} else {
 				book.bookDiv.scrollTop(book.bookDiv.scrollTop() + book.bookHeight - 30);
-				hideAndPage(book, book.lcolumn.scrollTop());
+				hideAndPage(book, book.bookDiv.scrollTop());
 			}
 
 		}
