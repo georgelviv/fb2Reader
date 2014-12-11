@@ -30,6 +30,8 @@ function main(jquery, fileupload, settingsPanel, preloader, Book) {
 				bookOption.bookDiv.html('');
 				if (book) {
 					document.body.removeEventListener('keyup', keyEvent);
+					$('#button-prev').unbind();
+					$('#button-next').unbind();
 				}
 				bookOption.bookName = data.files[0].name;
 				format = bookOption.bookName.split('.');
@@ -37,6 +39,7 @@ function main(jquery, fileupload, settingsPanel, preloader, Book) {
 				format = format[format.length - 1];
 				if (format.match(bookOption.fileExtension)) {
 					data.submit();
+					book = '';
 				} else {
 					bookOption.bookDiv.html('<div id="nobook">Wrong book format</div>');
 				}
