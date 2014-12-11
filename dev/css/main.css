@@ -302,6 +302,13 @@ li:last-child > .settings-list-link {
   margin-left: -100px;
   margin-top: -10px;
 }
+#book-page {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
 #book-page input {
   background: #27ae60;
   border: none;
@@ -331,6 +338,11 @@ li:last-child > .settings-list-link {
   position: absolute;
   top: 50%;
   margin-top: -15px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
 }
 #button-next {
   right: 0;

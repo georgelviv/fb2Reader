@@ -68,6 +68,7 @@ function main(jquery, fileupload, settingsPanel, preloader, Book) {
 			book.pageSet();
 			clearInterval(bookOption.getDataInterval);
 			document.body.addEventListener('keyup', keyEvent);
+			navigateButtons();
 		}
 
 		function keyEvent(e) {
