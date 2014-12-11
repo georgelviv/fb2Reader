@@ -1,12 +1,13 @@
 @headerheight: 12%;
 @footerheight: 3%;
+@TabsPanelHeight: 10%;
+@bookheight: 85%;
+@bookWidth: 85%;
 @headerColor: #27ae60;
 @settingsLinkHover: #333;
 @mainBackgroundColor: #ecf0f1;
 @hoverColor: #27ae60;
-@bookheight: 85%;
 @whiteColor: #fff;
-@TabsPanelHeight: 10%;
 @tabLabelBg: #eee;
 @settingPanelContentBg: #444;
 @settingPanelTextColor: #EFF4D0;
@@ -21,7 +22,7 @@ html, body {
   width: 100%;
 }
 body {
-  xbackground: @mainBackgroundColor;
+  background: @mainBackgroundColor;
 }
 
 ul, ol{
@@ -322,7 +323,9 @@ li:last-child > .settings-list-link {
  height: @bookheight;
  overflow: hidden;
  line-height: 1.5em;
- background-color: #fff;
+ background-color: @mainBackgroundColor;
+ width: @bookWidth;
+ margin: 0 auto;
 }
 #book:after {
  content: '';
@@ -350,21 +353,51 @@ li:last-child > .settings-list-link {
   margin-left: -100px;
   margin-top: -10px;
 }
-#book-page input {
-  background: @headerColor;
-  border: none;
+#book-page {
+  input {
+    background: @headerColor;
+    border: none;
+    width: 40px;
+    outline: none;
+    padding: 3px 5px;
+    color: @whiteColor;
+    transition:all .2s linear;
+    -webkit-transition:all .2s linear;
+    -moz-transition:all .2s linear;
+    -o-transition:all .2s linear;
+  }
+  input:focus {
+    background: lighten(@headerColor, 10%);
+  }
+  span {
+    color: @whiteColor;
+  }
+   -webkit-user-select: none;  
+  -moz-user-select: none;     
+  -ms-user-select: none;      
+  -o-user-select: none;
+  user-select: none; 
+}
+#button-prev, #button-next {
   width: 40px;
-  outline: none;
-  padding: 3px 5px;
+  height: 40px;
+  padding-top: 5px;
+  text-align: center;
   color: @whiteColor;
-  transition:all .2s linear;
-  -webkit-transition:all .2s linear;
-  -moz-transition:all .2s linear;
-  -o-transition:all .2s linear;
+  background-color: lighten(@headerColor, 20%);
+  position: absolute;
+  top: 50%;
+  margin-top: -15px;
+ -webkit-user-select: none;  
+  -moz-user-select: none;     
+  -ms-user-select: none;      
+  -o-user-select: none;
+  user-select: none; 
 }
-#book-page input:focus {
-  background: lighten(@headerColor, 10%);
+#button-next {
+  right: 0;
 }
-#book-page span {
-  color: @whiteColor;
+#button-prev:hover, #button-next:hover {
+  cursor: pointer;
+  background-color: @headerColor;
 }
