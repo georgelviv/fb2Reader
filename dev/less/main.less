@@ -51,7 +51,7 @@ header{
   &:before{
     content: 'ЗАВАНТАЖИТИ КНИЖКУ';
     display: inline-block;
-    
+    background: @headerColor;
     padding: 0.625em;
     color: @whiteColor;
     font-family: "lato_regular", arial;
@@ -67,8 +67,12 @@ header{
     cursor: pointer;
     text-shadow: 0.063em 0 @whiteColor;
   }
-  &:hover:before{ background: rgba(255,255,255,.2); }
-  &:active:before{ background: @whiteColor; }
+  &:hover:before{ 
+    background: darken(@headerColor, 10%);
+  }
+  &:active:before{ 
+    background: darken(@headerColor, 10%);
+  }
 }
 
 ul.social li a,
@@ -147,13 +151,6 @@ ul.social li a,
   }
 
 }
-
-
-
-
-
-
-
 
 footer{
     border-top: 1px #dedede solid;

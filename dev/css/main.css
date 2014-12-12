@@ -38,6 +38,7 @@ header .file_upload::-webkit-file-upload-button {
 header .file_upload:before {
   content: 'ЗАВАНТАЖИТИ КНИЖКУ';
   display: inline-block;
+  background: #27ae60;
   padding: 0.625em;
   color: #ffffff;
   font-family: "lato_regular", arial;
@@ -54,10 +55,10 @@ header .file_upload:before {
   text-shadow: 0.063em 0 #ffffff;
 }
 header .file_upload:hover:before {
-  background: rgba(255, 255, 255, 0.2);
+  background: #1e8449;
 }
 header .file_upload:active:before {
-  background: #ffffff;
+  background: #1e8449;
 }
 header ul.social li a,
 header nav ul li a {
