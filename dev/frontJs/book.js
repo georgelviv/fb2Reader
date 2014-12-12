@@ -35,7 +35,7 @@ function chekForColumns(book) {
 		book.rcolumn.scrollTop(book.bookHeight - 30);
 		book.rcolumn.append('<div id="lastp" style="height:' + book.bookDiv.height() + 'px;">');
 		book.scrollHeight = book.lcolumn[0].scrollHeight;
-		book.pages = Math.ceil((book.scrollHeight / book.bookHeight) / 2);
+		book.pages = Math.ceil((book.scrollHeight / book.bookHeight) / 2) + 1;
 		book.initKeyNav();
 		book.pageSet();
 		book.initFullScreen();

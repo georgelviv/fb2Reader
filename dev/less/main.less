@@ -101,7 +101,9 @@ ul.social li a,
           list-style: none;
           margin-top: 0px;
           padding: 0px 60px;
-
+    input[type="text"]{
+      border: 1px solid #fff;
+    }
 
 
           li{
@@ -355,20 +357,26 @@ li:last-child > .settings-list-link {
   margin-top: -10px;
 }
 #book-page {
+span, input {
+  display: inline-block;
+  height: 25px;
+  padding: 3px 5px;
+}
   input {
-    background: @headerColor;
-    border: none;
+    background: lighten(@headerColor, 10%);
+    border: 1px solid #fff;
     width: 40px;
     outline: none;
-    padding: 3px 5px;
-    color: @whiteColor;
+    color: #424242;
     transition:all .2s linear;
     -webkit-transition:all .2s linear;
     -moz-transition:all .2s linear;
     -o-transition:all .2s linear;
   }
   input:focus {
-    background: lighten(@headerColor, 10%);
+    background: #fff;
+    border: 1px solid #fff;
+    color: #000;
   }
   span {
     color: @whiteColor;
