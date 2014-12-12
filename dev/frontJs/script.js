@@ -18,9 +18,6 @@ function main(jquery, fileupload, settingsPanel, preloader, Book) {
 		};
 
 		showBookStorage();
-		goToEvent();
-		navigateButtons();
-
 
 		$('#fileselect').fileupload({
 			url: '/upload',
@@ -28,15 +25,13 @@ function main(jquery, fileupload, settingsPanel, preloader, Book) {
 			add: function(e, data) {
 				var format;
 				bookOption.bookDiv.html('');
+
 				if (book) {
-					document.body.removeEventListener('keyup', keyEvent);
-					$('#button-prev').unbind();
-					$('#button-next').unbind();
-					$('#fullScreenBtn').remove();
+					$('body').trigger('addedBook');
 				}
+
 				bookOption.bookName = data.files[0].name;
 				format = bookOption.bookName.split('.');
-
 				format = format[format.length - 1];
 				if (format.match(bookOption.fileExtension)) {
 					data.submit();
@@ -71,33 +66,6 @@ function main(jquery, fileupload, settingsPanel, preloader, Book) {
 			book.savePage(0);
 			book.pageSet();
 			clearInterval(bookOption.getDataInterval);
-			document.body.addEventListener('keyup', keyEvent);
-			navigateButtons();
-		}
-
-		function keyEvent(e) {
-			book.keyPress(e, book);
-		}
-
-		function goToEvent() {
-			$('#book-page').find('input').keypress(function(e) {
-				if(e.which == 13) {
-					if (book) {
-						book.gotoPage();
-					}
-				}
-			});
-		}
-
-		function navigateButtons() {
-			if (book) {
-				$('#button-prev').on('click', function() {
-					book.showPrevPage();
-				});
-				$('#button-next').on('click', function() {
-					book.showNextPage();
-				});
-			}
 		}
 
 		function showBookStorage() {
@@ -115,7 +83,6 @@ function main(jquery, fileupload, settingsPanel, preloader, Book) {
 						book.hideBoth();
 					}
 				}
-				document.body.addEventListener('keyup', keyEvent);
 			} else {
 				bookOption.bookDiv.html('<div id="nobook">No book to show, please upload book</div>');
 			}

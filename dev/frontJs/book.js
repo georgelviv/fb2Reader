@@ -1,4 +1,4 @@
-define(['hidingElements', 'bookSave'], function(hidingElements, bookSave) {
+define(['hidingElements', 'bookSave', 'bookFullScreen'], function(hidingElements, bookSave, bookFullScreen) {
 	function Book(bookString) {
 		this.bookString = bookString;
 		this.bookDiv = $('#book');
@@ -13,11 +13,11 @@ define(['hidingElements', 'bookSave'], function(hidingElements, bookSave) {
 	Book.prototype.pageSet = bookSave.pageSet;
 	Book.prototype.showNextPage = bookSave.showNextPage;
 	Book.prototype.showPrevPage = bookSave.showPrevPage;
-	Book.prototype.keyPress = bookSave.keyPress;
+	Book.prototype.initKeyNav = bookSave.initKeyNav;
 	Book.prototype.saveBookString = bookSave.save;
 	Book.prototype.savePage = bookSave.savePage;
 	Book.prototype.gotoPage = bookSave.gotoPage;
-	Book.prototype.initFullScreen = initFullScreen;
+	Book.prototype.initFullScreen = bookFullScreen.initFullScreen;
 	Book.prototype.reInitPage = bookSave.reInitPage;
 
 	return Book;
@@ -33,78 +33,24 @@ function chekForColumns(book) {
 		book.lcolumn = $('#lcolumn');
 		book.rcolumn = $('#rcolumn');
 		book.rcolumn.scrollTop(book.bookHeight - 30);
-		book.rcolumn.append('<div style="height:' + book.bookDiv.height() + 'px;">');
+		book.rcolumn.append('<div id="lastp" style="height:' + book.bookDiv.height() + 'px;">');
 		book.scrollHeight = book.lcolumn[0].scrollHeight;
 		book.pages = Math.ceil((book.scrollHeight / book.bookHeight) / 2);
+		book.initKeyNav();
+		book.pageSet();
 		book.initFullScreen();
 		return true;
 	}
 	book.bookDiv.html(book.bookString);
 	book.scrollHeight = book.bookDiv[0].scrollHeight;
 	book.pages = Math.ceil(book.scrollHeight / book.bookHeight);
+	book.initKeyNav();
+	book.pageSet();
 	return false;
 }
 
-function initFullScreen() {
-	if (
-		document.fullscreenEnabled ||
-		document.webkitFullscreenEnabled ||
-		document.mozFullScreenEnabled ||
-		document.msFullscreenEnabled
-	) {
-		var self = this;
-		self.mainDiv.append('<div id="fullScreenBtn"><i class="fa fa-arrows-alt"></i></div>');
-		
-		document.getElementById('fullScreenBtn').onclick = function() {
-			if (
-				document.fullscreenElement ||
-				document.webkitFullscreenElement ||
-				document.mozFullScreenElement ||
-				document.msFullscreenElement
-			) {
-				if (document.exitFullscreen) {
-					document.exitFullscreen();
-					onChangeFull();
-				} else if (document.webkitExitFullscreen) {
-					document.webkitExitFullscreen();
-					onChangeFull();
-				} else if (document.mozCancelFullScreen) {
-					document.mozCancelFullScreen();
-					onChangeFull();
-				} else if (document.msExitFullscreen) {
-					document.msExitFullscreen();
-					onChangeFull();
-				}
-			
-			}
-			else {
-				if (self.mainDiv[0].requestFullscreen) {
-					self.mainDiv[0].requestFullscreen();
-					onChangeFull();
-				} else if (self.mainDiv[0].webkitRequestFullscreen) {
-					self.mainDiv[0].webkitRequestFullscreen();
-					onChangeFull();
-				} else if (self.mainDiv[0].mozRequestFullScreen) {
-					self.mainDiv[0].mozRequestFullScreen();
-					onChangeFull();
-				} else if (self.mainDiv[0].msRequestFullscreen) {
-					self.mainDiv[0].msRequestFullscreen();
-					onChangeFull();
-				}
-			
-			}
-		};
 
-	}
-	function onChangeFull(iconClass) {
-		$('.linehide').remove();
-		setTimeout(function() {
-			self.reInitPage();
-			self.hideBoth();
-			$('#fullScreenBtn').find('i').toggleClass('fa-arrows-alt');
-			$('#fullScreenBtn').find('i').toggleClass('fa-compress');
-		}, 150);
-	}
-}
+
+
 
 

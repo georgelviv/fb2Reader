@@ -2,7 +2,7 @@ define(['tools/jquery-1.11.1.min'], function(jquery) {
 	var bookSave = {
 		save: saveBookStorage,
 		savePage: saveCurrenPosition,
-		keyPress: keyPressEvent,
+		initKeyNav: initKeyNav,
 		showNextPage: showNextPage,
 		showPrevPage: showPrevPage,
 		pageSet: pageSet,
@@ -20,15 +20,6 @@ define(['tools/jquery-1.11.1.min'], function(jquery) {
 	function saveCurrenPosition(scrollTop) {
 		if (!!localStorage) {
 			localStorage.setItem("scrollTop", scrollTop);
-		}
-	}
-
-	function keyPressEvent(e, book) {
-		if (e.keyCode == 39) {
-			book.showNextPage();
-		}
-		if (e.keyCode == 37) {
-			book.showPrevPage();
 		}
 	}
 
@@ -81,17 +72,58 @@ define(['tools/jquery-1.11.1.min'], function(jquery) {
 			this.rcolumn.scrollTop((this.lcolumn.scrollTop() + this.bookHeight) - 30);
 			this.hideBoth();
 			this.pageSet();
+			this.savePage(this.lcolumn.scrollTop());
 		} else {
 			$('.linehide').remove();
 			this.bookDiv.scrollTop(this.bookHeight * (goPage - 1));
 			this.hideBoth();
 			this.pageSet();
+			this.savePage(this.bookDiv.scrollTop());
 		}
-		
 	}
+
 	function reInitPage() {
 		this.bookHeight = this.bookDiv.height();
 		this.rcolumn.scrollTop((this.lcolumn.scrollTop() + this.bookHeight) - 30);
+		this.pageSet();
+	}
+
+	function initKeyNav() {
+		var self = this;
+		document.body.addEventListener('keyup', keyEvent);
+		document.getElementById('book-page').addEventListener('keyup', goToEv);
+		document.getElementById('button-next').addEventListener('click', nextPgEv);
+		document.getElementById('button-prev').addEventListener('click', prevPgEv);
+
+		function keyEvent(e) {
+			if (e.keyCode == 39) {
+				self.showNextPage();
+			}
+			if (e.keyCode == 37) {
+				self.showPrevPage();
+			}
+		}
+
+		function nextPgEv(e) {
+			self.showNextPage();
+		}
+
+		function prevPgEv(e) {
+			self.showPrevPage();
+		}
+
+		function goToEv(e) {
+			if (e.keyCode == 13) {
+				self.gotoPage();
+			}
+		}
+
+		$('body').on('addedBook', function() {
+			document.body.removeEventListener('keyup', keyEvent);
+			document.getElementById('book-page').removeEventListener('keyup', goToEv);
+			document.getElementById('button-next').removeEventListener('click', nextPgEv);
+			document.getElementById('button-prev').removeEventListener('click', prevPgEv);
+		});
 	}
 });
 
