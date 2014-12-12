@@ -84,6 +84,9 @@ header nav ul .social {
   margin-top: 0px;
   padding: 0px 60px;
 }
+header nav ul .social input[type="text"] {
+  border: 1px solid #fff;
+}
 header nav ul .social li {
   float: left;
   margin-left: 10px;
@@ -309,20 +312,27 @@ li:last-child > .settings-list-link {
   -o-user-select: none;
   user-select: none;
 }
+#book-page span,
 #book-page input {
-  background: #27ae60;
-  border: none;
+  display: inline-block;
+  height: 25px;
+  padding: 3px 5px;
+}
+#book-page input {
+  background: #36d278;
+  border: 1px solid #fff;
   width: 40px;
   outline: none;
-  padding: 3px 5px;
-  color: #ffffff;
+  color: #424242;
   transition: all .2s linear;
   -webkit-transition: all .2s linear;
   -moz-transition: all .2s linear;
   -o-transition: all .2s linear;
 }
 #book-page input:focus {
-  background: #36d278;
+  background: #fff;
+  border: 1px solid #fff;
+  color: #000;
 }
 #book-page span {
   color: #ffffff;
