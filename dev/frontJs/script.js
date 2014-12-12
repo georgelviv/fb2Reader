@@ -32,6 +32,7 @@ function main(jquery, fileupload, settingsPanel, preloader, Book) {
 					document.body.removeEventListener('keyup', keyEvent);
 					$('#button-prev').unbind();
 					$('#button-next').unbind();
+					$('#fullScreenBtn').remove();
 				}
 				bookOption.bookName = data.files[0].name;
 				format = bookOption.bookName.split('.');

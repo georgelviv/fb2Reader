@@ -265,8 +265,13 @@ li:last-child > .settings-list-link {
   letter-spacing: 1px;
   line-height: 2;
 }
-#book {
+#main {
+  width: 100%;
   height: 85%;
+  background-color: #ecf0f1;
+}
+#book {
+  height: 100%;
   overflow: hidden;
   line-height: 1.5em;
   background-color: #ecf0f1;
@@ -351,6 +356,30 @@ li:last-child > .settings-list-link {
 #button-next:hover {
   cursor: pointer;
   background-color: #27ae60;
+}
+#fullScreenBtn {
+  position: absolute;
+  right: 10px;
+  bottom: 20px;
+}
+#fullScreenBtn:hover {
+  cursor: pointer;
+}
+#main:-webkit-full-screen {
+  height: 100%;
+  padding: 5% 0;
+}
+#main:-moz-full-screen {
+  height: 100%;
+  padding: 5% 0;
+}
+#main:-ms-fullscreen {
+  height: 100%;
+  padding: 5% 0;
+}
+#main:fullscreen {
+  height: 100%;
+  padding: 5% 0;
 }
 
 #loader {

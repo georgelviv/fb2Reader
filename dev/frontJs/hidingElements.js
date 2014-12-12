@@ -26,9 +26,7 @@ function hideEl(isTop, el) {
 		bookDiv: el,
 		bookBottom: Math.floor(el[0].getBoundingClientRect().bottom),
 		bookTop: Math.floor(el[0].getBoundingClientRect().top),
-		bookLeft: Math.floor(el[0].getBoundingClientRect().left),
-		footerHeight: Math.floor($('footer')[0].getBoundingClientRect().height),
-		headerHeight: Math.floor($('header')[0].getBoundingClientRect().height)
+		bookLeft: Math.floor(el[0].getBoundingClientRect().left)
 	};
 
 	var lastEl, lineHeight, lineHide, heightHide, positionEl;
@@ -47,18 +45,19 @@ function hideEl(isTop, el) {
 	lineHeight = Math.floor($(lastEl).css('line-height').slice(0, -2));
 	if (isTop) {
 		heightHide = (lastEl.getBoundingClientRect().bottom - bookEl.bookTop) % lineHeight;
-		positionEl = 'top:' + bookEl.headerHeight + 'px;';
+		// positionEl = 'top:' + bookEl.headerHeight + 'px;';
+		positionEl = 'top:' + bookEl.bookTop + 'px;';
 	} else {
 		heightHide = (bookEl.bookBottom - lastEl.getBoundingClientRect().top) % lineHeight;
-		positionEl = 'bottom:' + bookEl.footerHeight + 'px;';
+		positionEl = 'bottom:' + (document.body.offsetHeight - bookEl.bookBottom - 1) + 'px;';
 	}
 
 	
 	if (heightHide < Math.floor($(lastEl).css('line-height').slice(0, -2))) {
-		lineHide = '<div style="height:' + Math.ceil(heightHide) + 'px;background:';
+		lineHide = '<div style="height:' + Math.ceil(heightHide + 1)  + 'px;background:';
 		lineHide += this.bookDiv.css('background-color') + ';';
 
-		lineHide += 'width:' + el.width() + 'px;';
+		lineHide += 'width:' + el.outerWidth() + 'px;';
 		lineHide += 'left:' + bookEl.bookLeft + 'px;';
 		lineHide += positionEl + '" class="linehide"></div>';
 		return lineHide;

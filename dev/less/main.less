@@ -315,12 +315,16 @@ li:last-child > .settings-list-link {
     line-height: 2;
 }
 
-
+#main {
+  width: 100%;
+  height: @bookheight;
+  background-color: @mainBackgroundColor;
+}
 #book {
  img {
    max-height: 400px;
  } 
- height: @bookheight;
+ height: 100%;
  overflow: hidden;
  line-height: 1.5em;
  background-color: @mainBackgroundColor;
@@ -400,4 +404,31 @@ li:last-child > .settings-list-link {
 #button-prev:hover, #button-next:hover {
   cursor: pointer;
   background-color: @headerColor;
+}
+#fullScreenBtn {
+  position: absolute;
+  right: 10px;
+  bottom: 20px;
+}
+#fullScreenBtn:hover {
+  cursor: pointer;
+}
+#main:-webkit-full-screen {
+  height: 100%;
+  padding: 5% 0;
+}
+ 
+#main:-moz-full-screen {
+  height: 100%;
+  padding: 5% 0;
+}
+ 
+#main:-ms-fullscreen {
+  height: 100%;
+  padding: 5% 0;
+}
+ 
+#main:fullscreen {
+  height: 100%;
+  padding: 5% 0;
 }
