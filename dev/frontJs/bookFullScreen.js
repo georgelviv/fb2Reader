@@ -67,15 +67,14 @@ define(['tools/jquery-1.11.1.min'], function(jquery) {
 				self.mainDiv.append('<div id="fullScreenBtn"><i class="fa fa-arrows-alt"></i></div>');
 				self.fSDiv = $('#fullScreenBtn');
 			}
-			
 			self.fSDiv[0].addEventListener('click', clickFSEvent);
 		}
 		function clickFSEvent(e) {
-			console.log('1');
 			fSEvent(self);
 		}
 		$('body').on('addedBook', function() {
 			self.fSDiv[0].removeEventListener('click', clickFSEvent);
+			self.fSDiv.remove();
 		});
 	}
 
