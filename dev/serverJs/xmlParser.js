@@ -58,10 +58,11 @@ function xmlBookToObj(xml) {
 }
 
 function xmlBookTagFilter(bookString) {
-  var regExpTagDelete = /<epigraph>|<\/epigraph>|<empty-line\/>|/g;
-  var regExpTitleOpen = /<title>/g;
-  var regExpTitleClose = /<\/title>/g;
-  var bookBody = bookString.slice(bookString.indexOf('<body>') + 6, bookString.indexOf('</body>'));
+  var regExpTagDelete = /<epigraph>|<\/epigraph>|<empty-line\/>|/gi;
+  var regExpTitleOpen = /<title>/gi;
+  var regExpTitleClose = /<\/title>/gi;
+  var bookStart = bookString.match(/<body.*?>/i);
+  var bookBody = bookString.slice(bookString.search(/<body.*?>/i) + bookStart[0].length, bookString.search(/<\/body>/i));
 
   bookBody = bookBody.replace(regExpTagDelete, '');
   bookBody = bookBody.replace(regExpTitleOpen, '<h3>');

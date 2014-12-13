@@ -370,8 +370,10 @@ li:last-child > .settings-list-link {
 }
 #fullScreenBtn {
   position: absolute;
-  right: 10px;
-  bottom: 20px;
+  right: 15px;
+  bottom: 30px;
+  font-size: 1.3em;
+  color: #808080;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -380,6 +382,7 @@ li:last-child > .settings-list-link {
 }
 #fullScreenBtn:hover {
   cursor: pointer;
+  color: #333333;
 }
 #main:-webkit-full-screen {
   height: 100%;
