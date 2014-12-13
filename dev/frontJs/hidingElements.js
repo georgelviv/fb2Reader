@@ -30,6 +30,9 @@ function hideEl(isTop, el) {
 	};
 
 	var lastEl, lineHeight, lineHide, heightHide, positionEl;
+	var fixPix = 1;
+
+	if (this.isColumns) fixPix = 0;
 
 	if (isTop) {
 		lastEl = getHideEl(bookEl.bookTop);
@@ -45,8 +48,7 @@ function hideEl(isTop, el) {
 	lineHeight = Math.floor($(lastEl).css('line-height').slice(0, -2));
 	if (isTop) {
 		heightHide = (lastEl.getBoundingClientRect().bottom - bookEl.bookTop) % lineHeight;
-		// positionEl = 'top:' + bookEl.headerHeight + 'px;';
-		positionEl = 'top:' + bookEl.bookTop + 'px;';
+		positionEl = 'top:' + (bookEl.bookTop + fixPix) + 'px;';
 	} else {
 		heightHide = (bookEl.bookBottom - lastEl.getBoundingClientRect().top) % lineHeight;
 		positionEl = 'bottom:' + (document.body.offsetHeight - bookEl.bookBottom - 1) + 'px;';

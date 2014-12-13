@@ -22,7 +22,6 @@ function parsingContentOpf(callback) {
 	for (var i = 0; i < dirUploads.length; i++) {
 		if (dirUploads[i].match(/(oebps|ops)/i)) {
 			dirOpf = './dist/uploads/' + dirUploads[i];
-			console.log(dirOpf);
 			break;
 		}
 		if (dirUploads[i].match(/(opf)/i)) {
