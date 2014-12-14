@@ -18,13 +18,17 @@ exports.parsingEpub = function(bookName, callback) {
 
 function parsingContentOpf(callback) {
 	var dirUploads = fs.readdirSync('./dist/uploads/');
-	
+	var opfPath;
 	for (var i = 0; i < dirUploads.length; i++) {
 		if (dirUploads[i].match(/(oebps|ops)/i)) {
 			dirOpf = './dist/uploads/' + dirUploads[i];
-			continue;
+			break;
+		}
+		if (dirUploads[i].match(/(opf)/i)) {
+			dirOpf = './dist/uploads/';
 		}
 	}
+
 
 	fs.readdir(dirOpf, function(err, data) {
 		if (err) {
@@ -33,7 +37,6 @@ function parsingContentOpf(callback) {
 			return;
 		}
 
-		var opfPath;
 		for (var i = 0; i < data.length; i++) {
 			if (data[i].match(/(.*?.opf)/i)) {
 				opfPath = dirOpf + '/' + data[i];

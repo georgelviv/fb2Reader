@@ -27,6 +27,7 @@
     "grunt-nodemon": "^0.3.0",
     "iconv-lite": "^0.4.5",
     "jquery-file-upload-middleware": "^0.1.7",
+    "jschardet": "^1.1.0",
     "rmdir": "^1.0.4",
     "unzip": "^0.1.11",
     "xml2js": "^0.4.4"

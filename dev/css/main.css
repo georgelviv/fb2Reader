@@ -39,6 +39,7 @@ header .file_upload::-webkit-file-upload-button {
 header .file_upload:before {
   content: 'ЗАВАНТАЖИТИ КНИЖКУ';
   display: inline-block;
+  background: #27ae60;
   padding: 0.625em;
   color: #ffffff;
   font-family: "lato_regular", arial;
@@ -55,10 +56,10 @@ header .file_upload:before {
   text-shadow: 0.063em 0 #ffffff;
 }
 header .file_upload:hover:before {
-  background: rgba(255, 255, 255, 0.2);
+  background: #1e8449;
 }
 header .file_upload:active:before {
-  background: #ffffff;
+  background: #1e8449;
 }
 header ul.social li a,
 header nav ul li a {
@@ -433,8 +434,10 @@ li:last-child > .settings-list-link {
 }
 #fullScreenBtn {
   position: absolute;
-  right: 10px;
-  bottom: 20px;
+  right: 15px;
+  bottom: 30px;
+  font-size: 1.3em;
+  color: #808080;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -443,6 +446,7 @@ li:last-child > .settings-list-link {
 }
 #fullScreenBtn:hover {
   cursor: pointer;
+  color: #333333;
 }
 #main:-webkit-full-screen {
   height: 100%;

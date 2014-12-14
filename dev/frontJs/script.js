@@ -43,21 +43,23 @@ function main(jquery, fileupload, settingsPanel, preloader, Book) {
 			done: function (e, data) {
 				$('.linehide').remove();
 				$('#status').html('File loaded ' + data.result.files[0].name);
-				bookOption.getDataInterval = setInterval(getBook, 500);
+				setTimeout(getBook, 500);
 			},
 			progressall: preloader.progress
 		});
 
 		function getBook() {
-			$.get("/getbook?bookName=" + bookOption.bookName).done(function(data) {
-				if (data !== 'false') {
-					book = new Book(data);
-					onBookGet(data);
-				}
-			}).fail(function() {
-				bookOption.bookDiv.html('<div id="nobook">Error to get book</div>');
-			});
-			preloader.parsing();
+				$.get("/getbook?bookName=" + bookOption.bookName).done(function(data) {
+					if (data !== 'false') {
+						book = new Book(data);
+						onBookGet(data);
+					} else {
+						setTimeout(getBook, 500);
+					}
+				}).fail(function() {
+					bookOption.bookDiv.html('<div id="nobook">Error to get book</div>');
+				});
+				preloader.parsing();
 		}
 
 		function onBookGet(data) {
@@ -65,7 +67,6 @@ function main(jquery, fileupload, settingsPanel, preloader, Book) {
 			book.saveBookString(data);
 			book.savePage(0);
 			book.pageSet();
-			clearInterval(bookOption.getDataInterval);
 		}
 
 		function showBookStorage() {
