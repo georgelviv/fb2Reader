@@ -1,4 +1,4 @@
-define(['hidingElements', 'bookSave', 'bookFullScreen'], function(hidingElements, bookSave, bookFullScreen) {
+define(['hidingElements', 'bookSave', 'bookFullScreen', 'search'], function(hidingElements, bookSave, bookFullScreen) {
 	function Book(bookString) {
 		this.bookString = bookString;
 		this.bookDiv = $('#book');
