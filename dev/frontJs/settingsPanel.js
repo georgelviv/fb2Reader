@@ -7,8 +7,6 @@ $(document).ready(function() {
      var allSections = $('.settings-panel');
      $('footer > .menu').click(function() {
       allSections.toggle();
-      // $(this).next().slideToggle();
-      // $(this).parent().next().slideDown();
        return false;
      });
 

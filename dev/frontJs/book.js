@@ -6,7 +6,6 @@ define(['hidingElements', 'bookSave', 'bookFullScreen'], function(hidingElements
 		this.mainDiv = $('#main');
 		this.bookHeight = $('#book').height();
 		this.isColumns = chekForColumns(this);
-		this.searchWord = searchWord(this);
 	}
 
 	Book.prototype.hideEl = hidingElements.hide;
@@ -49,49 +48,3 @@ function chekForColumns(book) {
 	book.pageSet();
 	return false;
 }
-
-//Працює, але не правильно і галімо
-function searchWord(book, inputId){
-	function keyEvent(e) {
-				if (e.keyCode == 13) {
-					this.FindOnPage(inputId);
-				}
-			}
-document.getElementById('topSearch').addEventListener('keyup', FindOnPage);
-
-var lastResFind=""; 
-function TrimStr(s) {
-     s = s.replace( /^\s+/g, '');
-  return s.replace( /\s+$/g, '');
-}
-function FindOnPage(inputId) {//ищет текст на странице, в параметр передается ID поля для ввода
-  var obj = window.document.getElementById('topSearch');
-
-  var textToFind;
- 
-  if (obj) {
-    textToFind = TrimStr(obj.value);//обрезаем пробелы
-  } else {
-    alert("Введення фраза не знайдена");
-    return;
-  }
-  if (textToFind == "") {
-    alert("Ви нічего не ввели");
-    return;
-  }
-  
-  if(document.body.innerHTML.indexOf(textToFind)=="-1")
-  alert("Нічего не знайдено,перевірте правильність введеного!");
-  
-  if(book.bookString.length>0)
-        document.getElementById('book').innerHTML=book.bookString;
-
-  document.getElementById('book').innerHTML = document.getElementById('book').innerHTML.replace(eval("/name="+lastResFind+"/gi")," ");//стираем предыдущие якори для скрола
-  document.getElementById('book').innerHTML = document.getElementById('book').innerHTML.replace(eval("/"+textToFind+"/gi"),"<a name="+textToFind+" style='background:#27ae60'>"+textToFind+"</a>"); //Заменяем найденный текст ссылками с якорем;
-  lastResFind=textToFind;
-  window.location = '#'+textToFind;
-}
-
-
-}
-
