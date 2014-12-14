@@ -43,7 +43,7 @@ if (n == 0) {
 	} else {
 		if (n > 0) {
 		  n = 0;
-		  findInPage(str);
+		  searchWord(str);
 		}
 
 		searchError.innerHTML = ("The following text was not found:  " + str);
