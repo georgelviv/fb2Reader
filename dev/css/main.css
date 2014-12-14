@@ -2,6 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  outline: none;
 }
 html,
 body {
@@ -29,7 +30,7 @@ header {
   padding: 10px ;
 }
 header .file_upload {
-  outline: none;
+  xoutline: none;
   text-align: center;
 }
 header .file_upload::-webkit-file-upload-button {
@@ -123,6 +124,100 @@ header nav ul li a {
 }
 header nav ul li a:hover {
   color: #424242;
+}
+header #book-page {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
+header #book-page span,
+header #book-page input {
+  display: inline-block;
+  height: 25px;
+  padding: 3px 5px;
+}
+header #book-page input {
+  background: #36d278;
+  border: 1px solid #fff;
+  width: 40px;
+  outline: none;
+  color: #424242;
+  transition: all .2s linear;
+  -webkit-transition: all .2s linear;
+  -moz-transition: all .2s linear;
+  -o-transition: all .2s linear;
+}
+header #book-page input:focus {
+  background: #fff;
+  border: 1px solid #fff;
+  color: #000;
+}
+header #book-page span {
+  color: #ffffff;
+}
+header #search_col {
+  xwidth: 30%;
+  float: right;
+  position: relative;
+}
+header #search_col .search {
+  display: inline-block;
+  position: relative;
+  margin-right: 10px;
+}
+header #search_col .search input {
+  display: inline-block;
+  width: 30px;
+  height: 34px;
+  font-size: 15px;
+  font-weight: 400;
+  color: #52464C;
+  border-bottom: 1px solid transparent;
+  border: 1px solid #ccc;
+  padding-right: 30px;
+  opacity: 0.15;
+  /*-webkit-transition: all .15s linear;
+    -moz-transition: all .15s linear;
+    transition: all .15s linear;*/
+  transition: width 0.4s cubic-bezier(0, 0.795, 0, 1);
+}
+header #search_col .search label {
+  position: absolute;
+  width: 30px;
+  text-align: center;
+  height: 30px;
+  line-height: 30px;
+  top: 1px;
+  right: 0;
+  color: #52464C;
+  cursor: pointer;
+  border: 1px solid #FFF;
+}
+header #search_col .search label i {
+  color: #52464C;
+  font-size: 14px;
+}
+header #search_col .search input:focus {
+  opacity: 1;
+  width: 200px;
+  border: 1px solid #FFF;
+  Xborder-color: rgba(0, 0, 0, 0.25);
+  /*-webkit-transition: all .15s linear;
+    -moz-transition: all .15s linear;
+    transition: all .15s linear;*/
+  transition: width 0.4s cubic-bezier(0, 0.795, 0, 1);
+}
+header #search_col .search input:focus ~ label {
+  right: 0;
+}
+header #search_col .Border {
+  border: 1px solid red;
+  font-weight: bolder;
+}
+header #search_col .Yellow {
+  background: yellow;
 }
 footer {
   border-top: 1px #dedede solid;
@@ -304,45 +399,14 @@ li:last-child > .settings-list-link {
 #nobook {
   text-align: center;
   height: 20px;
-  width: 200px;
+  width: 350px;
   position: relative;
   top: 50%;
   left: 50%;
-  margin-left: -100px;
+  margin-left: -175px;
   margin-top: -10px;
 }
-#book-page {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  -o-user-select: none;
-  user-select: none;
-}
-#book-page span,
-#book-page input {
-  display: inline-block;
-  height: 25px;
-  padding: 3px 5px;
-}
-#book-page input {
-  background: #36d278;
-  border: 1px solid #fff;
-  width: 40px;
-  outline: none;
-  color: #424242;
-  transition: all .2s linear;
-  -webkit-transition: all .2s linear;
-  -moz-transition: all .2s linear;
-  -o-transition: all .2s linear;
-}
-#book-page input:focus {
-  background: #fff;
-  border: 1px solid #fff;
-  color: #000;
-}
-#book-page span {
-  color: #ffffff;
-}
+/* #book-page  вклала в header */
 #button-prev,
 #button-next {
   width: 40px;

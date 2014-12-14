@@ -5,12 +5,30 @@
 	<title>fb2Reader</title>
 	<link rel="shortcut icon" href="img/favicon.png">
 	<link rel="stylesheet" href="css/style.min.css">
+    <style type="text/css">
+  .Border {
+   border: 1px solid red;
+   font-weight:bolder;
+ }
+ .Yellow {
+   background:yellow;
+ }
+ </style>
 </head>
 <body>
+
 <!-- Header and Nav -->
 <header>    
   <div class="wrapper">
       <input id="fileselect" type="file" class="file_upload ">
+
+     <div id="search_col">
+     <span class="search hidden-xs">
+        <input type="text" id="topSearch" placeholder="Що ви шукаєте?">
+        <label for="topSearch"><i class="fa fa-search"></i></label>
+      </span> 
+
+    </div>
 	<nav id="nav_menu">
 				<ul>
 					<li id="book-page"><input type="text"><span></span></li>				

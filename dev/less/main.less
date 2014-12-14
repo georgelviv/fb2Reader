@@ -16,6 +16,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  outline: none;
 }
 html, body {
   height: 100%;
@@ -43,7 +44,7 @@ header{
   padding: 10px ; 
 
 .file_upload{
-  outline: none;
+  xoutline: none;
   text-align: center;
   &::-webkit-file-upload-button{
       visibility: hidden;
@@ -151,6 +152,110 @@ ul.social li a,
         } 
     }                              
   }
+
+    #book-page {
+    span, input {
+    display: inline-block;
+    height: 25px;
+    padding: 3px 5px;
+    }
+    input {
+    background: lighten(@headerColor, 10%);
+    border: 1px solid #fff;
+    width: 40px;
+    outline: none;
+    color: #424242;
+    transition:all .2s linear;
+    -webkit-transition:all .2s linear;
+    -moz-transition:all .2s linear;
+    -o-transition:all .2s linear;
+    }
+    input:focus {
+    background: #fff;
+    border: 1px solid #fff;
+    color: #000;
+    }
+    span {
+    color: @whiteColor;
+    }
+    -webkit-user-select: none;  
+    -moz-user-select: none;     
+    -ms-user-select: none;      
+    -o-user-select: none;
+    user-select: none; 
+    }
+    #search_col {
+      xwidth: 30%;
+      float:right;
+      position: relative;
+
+  
+.search {
+    display: inline-block;
+    position: relative;
+    margin-right: 10px;
+}
+
+.search input {
+    display: inline-block;
+    width: 30px;
+    height: 34px;
+    font-size: 15px;
+    font-weight: 400;
+    color: #52464C;
+    border-bottom: 1px solid transparent;
+    border: 1px solid #ccc;
+    padding-right: 30px;
+    opacity: 0.15;
+    /*-webkit-transition: all .15s linear;
+    -moz-transition: all .15s linear;
+    transition: all .15s linear;*/
+    transition: width .4s cubic-bezier(0.000, 0.795, 0.000, 1.000);
+}
+
+.search label {
+    position: absolute;
+    width: 30px;
+    text-align: center;
+    height: 30px;
+    line-height: 30px;
+    top: 1px;
+    right: 0;
+    color: #52464C;
+    cursor: pointer;
+    border: 1px solid #FFF;
+}
+
+.search label i {
+    color: #52464C;
+    font-size: 14px;
+}
+
+.search input:focus {
+    opacity: 1;
+    width: 200px;
+    border: 1px solid #FFF;
+    Xborder-color: rgba(0,0,0,0.25);
+    /*-webkit-transition: all .15s linear;
+    -moz-transition: all .15s linear;
+    transition: all .15s linear;*/
+    transition: width .4s cubic-bezier(0.000, 0.795, 0.000, 1.000);
+}
+
+.search input:focus ~ label {
+    right: 0;
+}
+
+  .Border {
+   border: 1px solid red;
+   font-weight:bolder;
+ }
+ .Yellow {
+   background:yellow;
+ }
+
+    }
+   
 
 }
 
@@ -349,44 +454,19 @@ li:last-child > .settings-list-link {
 #nobook {
   text-align: center;
   height: 20px;
-  width: 200px;
+  width: 350px;
   position: relative;
   top: 50%;
   left: 50%;
-  margin-left: -100px;
+  margin-left: -175px;
   margin-top: -10px;
 }
-#book-page {
-span, input {
-  display: inline-block;
-  height: 25px;
-  padding: 3px 5px;
-}
-  input {
-    background: lighten(@headerColor, 10%);
-    border: 1px solid #fff;
-    width: 40px;
-    outline: none;
-    color: #424242;
-    transition:all .2s linear;
-    -webkit-transition:all .2s linear;
-    -moz-transition:all .2s linear;
-    -o-transition:all .2s linear;
-  }
-  input:focus {
-    background: #fff;
-    border: 1px solid #fff;
-    color: #000;
-  }
-  span {
-    color: @whiteColor;
-  }
-   -webkit-user-select: none;  
-  -moz-user-select: none;     
-  -ms-user-select: none;      
-  -o-user-select: none;
-  user-select: none; 
-}
+
+/* #book-page  вклала в header */
+
+
+
+
 #button-prev, #button-next {
   width: 40px;
   height: 40px;
