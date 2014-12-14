@@ -1,4 +1,6 @@
 @preloaderwidth: 250px;
+@firstColor: #27ae60;
+@secondColor: #CCCCCC;
 #loader {
 	position: relative;
 	width: @preloaderwidth;
@@ -20,7 +22,7 @@ height:30px;
 .preloader{
 position:absolute;
 top:0;
-background-color:#353434;
+background-color:@firstColor;
 width:30px;
 height:30px;
 -moz-animation-name:bounce_preloader;
@@ -125,12 +127,12 @@ animation-delay:1.54s;
 @-moz-keyframes bounce_preloader{
 0%{
 -moz-transform:scale(1);
-background-color:#353434;
+background-color:@firstColor;
 }
 
 100%{
 -moz-transform:scale(.3);
-background-color:#CCCCCC;
+background-color:@secondColor;
 }
 
 }
@@ -138,12 +140,12 @@ background-color:#CCCCCC;
 @-webkit-keyframes bounce_preloader{
 0%{
 -webkit-transform:scale(1);
-background-color:#353434;
+background-color:@firstColor;
 }
 
 100%{
 -webkit-transform:scale(.3);
-background-color:#CCCCCC;
+background-color:@secondColor;
 }
 
 }
@@ -151,12 +153,12 @@ background-color:#CCCCCC;
 @-ms-keyframes bounce_preloader{
 0%{
 -ms-transform:scale(1);
-background-color:#353434;
+background-color:@firstColor;
 }
 
 100%{
 -ms-transform:scale(.3);
-background-color:#CCCCCC;
+background-color:@secondColor;
 }
 
 }
@@ -164,12 +166,12 @@ background-color:#CCCCCC;
 @-o-keyframes bounce_preloader{
 0%{
 -o-transform:scale(1);
-background-color:#353434;
+background-color:@firstColor;
 }
 
 100%{
 -o-transform:scale(.3);
-background-color:#CCCCCC;
+background-color:@secondColor;
 }
 
 }
@@ -177,12 +179,12 @@ background-color:#CCCCCC;
 @keyframes bounce_preloader{
 0%{
 transform:scale(1);
-background-color:#353434;
+background-color:@firstColor;
 }
 
 100%{
 transform:scale(.3);
-background-color:#CCCCCC;
+background-color:@secondColor;
 }
 
 }
