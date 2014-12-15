@@ -161,6 +161,11 @@ header #search_col {
   xwidth: 30%;
   float: right;
   position: relative;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
 }
 header #search_col .search {
   display: inline-block;
@@ -212,12 +217,9 @@ header #search_col .search input:focus {
 header #search_col .search input:focus ~ label {
   right: 0;
 }
-header #search_col .Border {
-  border: 1px solid red;
-  font-weight: bolder;
-}
-header #search_col .Yellow {
-  background: yellow;
+header #search_col #search-error {
+  font-size: 10px;
+  color: #fff;
 }
 footer {
   border-top: 1px #dedede solid;
@@ -407,6 +409,7 @@ li:last-child > .settings-list-link {
   margin-top: -10px;
 }
 /* #book-page  вклала в header */
+/* кради що треба і куди тре) */
 #button-prev,
 #button-next {
   width: 40px;
@@ -463,6 +466,38 @@ li:last-child > .settings-list-link {
 #main:fullscreen {
   height: 100%;
   padding: 5% 0;
+}
+#search {
+  float: right;
+  position: relative;
+  height: 30px;
+}
+#search input {
+  width: 0;
+  height: 100%;
+  position: absolute;
+  right: 25px;
+  border: 1px solid #FFF;
+}
+#search span {
+  position: absolute;
+  right: 0;
+  width: 30px;
+  background-color: #27ae60;
+  height: 100%;
+  font-size: 18px;
+  text-align: center;
+  padding-top: 4px;
+  border: 1px solid #FFF;
+}
+#search span:hover {
+  cursor: pointer;
+}
+#search.active span {
+  background-color: #fff;
+}
+.highlight {
+  background-color: #ffff00;
 }
 
 #loader {
