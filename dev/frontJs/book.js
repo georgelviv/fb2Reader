@@ -1,9 +1,5 @@
-<<<<<<< HEAD
-define(['hidingElements', 'bookSave', 'bookFullScreen', 'search', 'hint'], function(hidingElements, bookSave, bookFullScreen) {
-=======
-define(['book/hidingElements', 'book/bookSave', 'book/bookFullScreen', 'book/bookSearch'],
+define(['book/hidingElements', 'book/bookSave', 'book/bookFullScreen', 'book/bookSearch', 'hint'],
 	function(hidingElements, bookSave, bookFullScreen, bookSearch) {
->>>>>>> 86ba5ee605297cebc5f203cba780a2f34df57b0b
 	function Book(bookString) {
 		this.bookString = bookString;
 		this.bookDiv = $('#book');
