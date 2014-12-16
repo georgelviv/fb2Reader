@@ -1,4 +1,4 @@
-define(['book/hidingElements', 'book/bookSave', 'book/bookFullScreen', 'book/bookSearch'],
+define(['book/hidingElements', 'book/bookSave', 'book/bookFullScreen', 'book/bookSearch', 'hint'],
 	function(hidingElements, bookSave, bookFullScreen, bookSearch) {
 	function Book(bookString) {
 		this.bookString = bookString;

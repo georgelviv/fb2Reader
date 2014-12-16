@@ -16,6 +16,7 @@ module.exports = function(grunt) {
 				}
 			}
 		},
+
 		watch: {
 			scripts: {
 				files: ['dev/frontJs/*.js', 'dev/frontJs/book/*.js'],
@@ -53,5 +54,4 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-less');
 	grunt.loadNpmTasks('grunt-contrib-requirejs');
 	grunt.loadNpmTasks('grunt-contrib-cssmin');
-
 };
