@@ -1,4 +1,9 @@
+<<<<<<< HEAD
 define(['hidingElements', 'bookSave', 'bookFullScreen', 'search', 'hint'], function(hidingElements, bookSave, bookFullScreen) {
+=======
+define(['book/hidingElements', 'book/bookSave', 'book/bookFullScreen', 'book/bookSearch'],
+	function(hidingElements, bookSave, bookFullScreen, bookSearch) {
+>>>>>>> 86ba5ee605297cebc5f203cba780a2f34df57b0b
 	function Book(bookString) {
 		this.bookString = bookString;
 		this.bookDiv = $('#book');
@@ -19,6 +24,7 @@ define(['hidingElements', 'bookSave', 'bookFullScreen', 'search', 'hint'], funct
 	Book.prototype.gotoPage = bookSave.gotoPage;
 	Book.prototype.initFullScreen = bookFullScreen.initFullScreen;
 	Book.prototype.reInitPage = bookSave.reInitPage;
+	Book.prototype.initSearch = bookSearch.initSearch;
 
 	return Book;
 });
@@ -39,6 +45,7 @@ function chekForColumns(book) {
 		book.initKeyNav();
 		book.pageSet();
 		book.initFullScreen();
+		book.initSearch();
 		return true;
 	}
 	book.bookDiv.html(book.bookString);
@@ -46,5 +53,10 @@ function chekForColumns(book) {
 	book.pages = Math.ceil(book.scrollHeight / book.bookHeight);
 	book.initKeyNav();
 	book.pageSet();
+	book.initSearch();
 	return false;
 }
+
+
+
+

@@ -202,6 +202,11 @@ ul.social li a,
       xwidth: 30%;
       float:right;
       position: relative;
+       -webkit-user-select: none;  
+  -moz-user-select: none;     
+  -ms-user-select: none;      
+  -o-user-select: none;
+  user-select: none; 
 
   
 .search {
@@ -466,16 +471,16 @@ li:last-child > .settings-list-link {
 #nobook {
   text-align: center;
   height: 20px;
-  width: 200px;
+  width: 350px;
   position: relative;
   top: 50%;
   left: 50%;
-  margin-left: -100px;
+  margin-left: -175px;
   margin-top: -10px;
 }
 
 /* #book-page  вклала в header */
-
+/* кради що треба і куди тре) */
 
 
 
@@ -537,3 +542,49 @@ li:last-child > .settings-list-link {
   height: 100%;
   padding: 5% 0;
 }
+
+// search
+
+#search {
+  float: right;
+  position: relative;
+  height: 30px;
+  input {
+    width: 0;
+    height: 100%;
+    position: absolute;
+    right: 25px;
+    border: 1px solid #FFF;
+  }
+  .sbutton {
+    position: absolute;
+    right: 0;
+    width: 30px;
+    background-color: @headerColor;
+    height: 100%;
+    font-size: 18px;
+    text-align: center;
+    padding-top: 4px;
+    border: 1px solid #FFF;
+  }
+  .sbutton:hover, .scancel:hover  {
+    cursor: pointer;
+  }
+}
+
+#search.active { 
+  .sbutton {
+    background-color: #fff;
+  }
+  .scancel {
+    height: 100%;
+    position: absolute;
+    right: 30px;
+    font-size: 20px;
+    width: 30px;
+    padding-top: 4px;
+    text-align: center;
+  }
+}
+
+.highlight { background-color: yellow }

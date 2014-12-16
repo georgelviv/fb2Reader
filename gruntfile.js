@@ -19,7 +19,7 @@ module.exports = function(grunt) {
 
 		watch: {
 			scripts: {
-				files: ['dev/frontJs/*.js'],
+				files: ['dev/frontJs/*.js', 'dev/frontJs/book/*.js'],
 				tasks: ['requirejs'],
 				options: {
 					spawn: false,

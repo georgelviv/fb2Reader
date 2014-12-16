@@ -173,6 +173,11 @@ header #search_col {
   xwidth: 30%;
   float: right;
   position: relative;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
 }
 header #search_col .search {
   display: inline-block;
@@ -408,14 +413,15 @@ li:last-child > .settings-list-link {
 #nobook {
   text-align: center;
   height: 20px;
-  width: 200px;
+  width: 350px;
   position: relative;
   top: 50%;
   left: 50%;
-  margin-left: -100px;
+  margin-left: -175px;
   margin-top: -10px;
 }
 /* #book-page  вклала в header */
+/* кради що треба і куди тре) */
 #button-prev,
 #button-next {
   width: 40px;
@@ -473,6 +479,48 @@ li:last-child > .settings-list-link {
   height: 100%;
   padding: 5% 0;
 }
+#search {
+  float: right;
+  position: relative;
+  height: 30px;
+}
+#search input {
+  width: 0;
+  height: 100%;
+  position: absolute;
+  right: 25px;
+  border: 1px solid #FFF;
+}
+#search .sbutton {
+  position: absolute;
+  right: 0;
+  width: 30px;
+  background-color: #27ae60;
+  height: 100%;
+  font-size: 18px;
+  text-align: center;
+  padding-top: 4px;
+  border: 1px solid #FFF;
+}
+#search .sbutton:hover,
+#search .scancel:hover {
+  cursor: pointer;
+}
+#search.active .sbutton {
+  background-color: #fff;
+}
+#search.active .scancel {
+  height: 100%;
+  position: absolute;
+  right: 30px;
+  font-size: 20px;
+  width: 30px;
+  padding-top: 4px;
+  text-align: center;
+}
+.highlight {
+  background-color: #ffff00;
+}
 
 #loader {
   position: relative;
@@ -494,7 +542,7 @@ li:last-child > .settings-list-link {
 .preloader {
   position: absolute;
   top: 0;
-  background-color: #353434;
+  background-color: #27ae60;
   width: 30px;
   height: 30px;
   -moz-animation-name: bounce_preloader;
@@ -590,50 +638,50 @@ li:last-child > .settings-list-link {
 @-moz-keyframes bounce_preloader {
   0% {
     -moz-transform: scale(1);
-    background-color: #353434;
+    background-color: #27ae60;
   }
   100% {
     -moz-transform: scale(0.3);
-    background-color: #CCCCCC;
+    background-color: #cccccc;
   }
 }
 @-webkit-keyframes bounce_preloader {
   0% {
     -webkit-transform: scale(1);
-    background-color: #353434;
+    background-color: #27ae60;
   }
   100% {
     -webkit-transform: scale(0.3);
-    background-color: #CCCCCC;
+    background-color: #cccccc;
   }
 }
 @-ms-keyframes bounce_preloader {
   0% {
     -ms-transform: scale(1);
-    background-color: #353434;
+    background-color: #27ae60;
   }
   100% {
     -ms-transform: scale(0.3);
-    background-color: #CCCCCC;
+    background-color: #cccccc;
   }
 }
 @-o-keyframes bounce_preloader {
   0% {
     -o-transform: scale(1);
-    background-color: #353434;
+    background-color: #27ae60;
   }
   100% {
     -o-transform: scale(0.3);
-    background-color: #CCCCCC;
+    background-color: #cccccc;
   }
 }
 @keyframes bounce_preloader {
   0% {
     transform: scale(1);
-    background-color: #353434;
+    background-color: #27ae60;
   }
   100% {
     transform: scale(0.3);
-    background-color: #CCCCCC;
+    background-color: #cccccc;
   }
 }
