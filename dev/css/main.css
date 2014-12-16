@@ -479,7 +479,7 @@ li:last-child > .settings-list-link {
   right: 25px;
   border: 1px solid #FFF;
 }
-#search span {
+#search .sbutton {
   position: absolute;
   right: 0;
   width: 30px;
@@ -490,11 +490,21 @@ li:last-child > .settings-list-link {
   padding-top: 4px;
   border: 1px solid #FFF;
 }
-#search span:hover {
+#search .sbutton:hover,
+#search .scancel:hover {
   cursor: pointer;
 }
-#search.active span {
+#search.active .sbutton {
   background-color: #fff;
+}
+#search.active .scancel {
+  height: 100%;
+  position: absolute;
+  right: 30px;
+  font-size: 20px;
+  width: 30px;
+  padding-top: 4px;
+  text-align: center;
 }
 .highlight {
   background-color: #ffff00;

@@ -8,8 +8,9 @@ define(['tools/jquery-1.11.1.min'], function(jquery) {
 });
 
 function initSearch() {
+	var oldSearch = '';
 	var searchDiv = $('#search');
-	var searchDivSpan = searchDiv.find('span');
+	var searchDivSpan = searchDiv.find('.sbutton');
 	var searchInput = searchDiv.find('input');
 
 	searchDivSpan[0].addEventListener('click', clickSearchEv);
@@ -33,29 +34,44 @@ function initSearch() {
 	}
 
 	searchInput.focusout(function() {
-		searchInput.animate({
-			width: '0'
-		}, function() {
-			searchDiv.removeClass('active');
-		});
+		if (searchDiv.hasClass('active')) {
+			searchInput.animate({
+				width: '0'
+			}, function() {
+				searchDiv.removeClass('active');
+			});
+		}
 	});
 
 	searchInput.on('click', function(e) {
-		var searchPath = searchInput.val();
-		$('#book').highlight(searchPath);
+		onSearchSubmit();
 	});
 
 	searchInput.on('keyup', function(e) {
 		if (e.keyCode == 13) {
-			var searchPath = searchInput.val();
-			$('#book').highlight(searchPath);
+			onSearchSubmit();
 		}
 	});
 
 	$('body').on('addedBook', function() {
 		searchDivSpan[0].removeEventListener('click', clickSearchEv);
 	});
+
+	function onSearchSubmit() {
+		var searchPath = searchInput.val();
+		if (oldSearch != searchPath) {
+			$('#book').removeHighlight();
+			oldSearch = searchPath;
+			if (searchPath.length > 2) {
+				$('#book').highlight(searchPath);
+				// if (!$('#search .scancel')[0]){
+				// 	searchDiv.append('<span class="scancel"><i class="fa fa-times"></i></span>');
+				// }
+			}
+		}
+	}
 }
+
 
 
 jQuery.fn.highlight = function(pat) {
@@ -84,4 +100,14 @@ jQuery.fn.highlight = function(pat) {
  return this.length && pat && pat.length ? this.each(function() {
   innerHighlight(this, pat.toUpperCase());
  }) : this;
+};
+
+jQuery.fn.removeHighlight = function() {
+ return this.find("span.highlight").each(function() {
+  this.parentNode.firstChild.nodeName;
+  with (this.parentNode) {
+   replaceChild(this.firstChild, this);
+   normalize();
+  }
+ }).end();
 };

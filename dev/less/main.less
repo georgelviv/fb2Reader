@@ -535,30 +535,42 @@ li:last-child > .settings-list-link {
   float: right;
   position: relative;
   height: 30px;
+  input {
+    width: 0;
+    height: 100%;
+    position: absolute;
+    right: 25px;
+    border: 1px solid #FFF;
+  }
+  .sbutton {
+    position: absolute;
+    right: 0;
+    width: 30px;
+    background-color: @headerColor;
+    height: 100%;
+    font-size: 18px;
+    text-align: center;
+    padding-top: 4px;
+    border: 1px solid #FFF;
+  }
+  .sbutton:hover, .scancel:hover  {
+    cursor: pointer;
+  }
 }
-#search input {
-  width: 0;
-  height: 100%;
-  position: absolute;
-  right: 25px;
-  border: 1px solid #FFF;
-}
-#search span {
-  position: absolute;
-  right: 0;
-  width: 30px;
-  background-color: @headerColor;
-  height: 100%;
-  font-size: 18px;
-  text-align: center;
-  padding-top: 4px;
-  border: 1px solid #FFF;
-}
-#search span:hover {
-  cursor: pointer;
-}
-#search.active span {
-  background-color: #fff;
+
+#search.active { 
+  .sbutton {
+    background-color: #fff;
+  }
+  .scancel {
+    height: 100%;
+    position: absolute;
+    right: 30px;
+    font-size: 20px;
+    width: 30px;
+    padding-top: 4px;
+    text-align: center;
+  }
 }
 
 .highlight { background-color: yellow }
