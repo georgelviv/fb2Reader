@@ -537,12 +537,29 @@ li:last-child > .settings-list-link {
   width: 200px;
   display: inline-block;
 }
+#search .scancel {
+  position: absolute;
+  visibility: hidden;
+  font-size: 1.5em;
+  right: 20px;
+  padding-top: 2px;
+  width: 30px;
+  height: 30px;
+  display: inline-block;
+  color: #666666;
+}
 #search.active .sbutton {
   background-color: #fff;
 }
 #search.active .serror {
   visibility: visible;
   color: #fff;
+}
+#search.active .scancel.show {
+  visibility: visible;
+}
+#search.active .scancel:hover {
+  color: #000;
 }
 .highlight {
   background-color: #ffff00;

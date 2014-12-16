@@ -12,6 +12,7 @@ function initSearch() {
 	var searchDiv = $('#search');
 	var searchDivSpan = searchDiv.find('.sbutton');
 	var searchInput = searchDiv.find('input');
+	var searchCancel = $('.scancel');
 
 	searchDivSpan[0].addEventListener('click', clickSearchEv);
 
@@ -47,6 +48,15 @@ function initSearch() {
 		onSearchSubmit();
 	});
 
+	searchCancel.on('click', function(e) {
+		e.preventDefault();
+		searchInput.val('');
+		$('#book').removeHighlight();
+		searchCancel.removeClass('show');
+		oldSearch = '';
+	});
+
+
 	searchInput.on('keyup', function(e) {
 		if (e.keyCode == 13) {
 			onSearchSubmit();
@@ -59,11 +69,13 @@ function initSearch() {
 
 	function onSearchSubmit() {
 		var searchPath = searchInput.val().trim();
+		if (!searchPath.length) return searchCancel.removeClass('show');
 		if (oldSearch != searchPath) {
 			$('#book').removeHighlight();
 			oldSearch = searchPath;
 			if (searchPath.length > 2) {
 				$('#book').highlight(searchPath);
+				searchCancel.addClass('show');
 				$('.serror').remove();
 			} else {
 				if (!$('.serror')[0]) {

@@ -30,7 +30,7 @@ function hideEl(isTop, el) {
 	};
 
 	var lastEl, lineHeight, lineHide, heightHide, positionEl;
-	var fixPix = 1;
+	var fixPix = 0;
 	if (this.isColumns) {
 		fixPix = 0;
 	}

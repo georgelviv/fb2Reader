@@ -605,6 +605,17 @@ li:last-child > .settings-list-link {
     width: 200px;
     display: inline-block;
   }
+  .scancel {
+    position: absolute;
+    visibility: hidden;
+    font-size: 1.5em;
+    right: 20px;
+    padding-top: 2px;
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    color: lighten(#000, 40%)
+  }
 }
 
 #search.active { 
@@ -614,6 +625,12 @@ li:last-child > .settings-list-link {
   .serror {
     visibility: visible;
     color: #fff;
+  }
+  .scancel.show {
+    visibility: visible;
+  }
+  .scancel:hover {
+    color: #000;
   }
 }
 
