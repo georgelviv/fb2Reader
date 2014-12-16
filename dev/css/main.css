@@ -16,50 +16,61 @@ ul,
 ol {
   list-style: none;
 }
-.wrapper {
-  width: 95%;
-  height: auto;
-  margin: 0 auto;
-  position: relative;
-}
 header {
   background: #27ae60;
   width: 100%;
   height: 12%;
-  /*75px;*/
-  padding: 10px ;
+  padding: 10px 5%;
+  position: relative;
 }
-header .file_upload {
-  xoutline: none;
-  text-align: center;
+header .upload {
+  width: 220px;
+  float: left;
+  height: 60px;
+  border-right: 1px solid #fff;
+  position: absolute;
 }
-header .file_upload::-webkit-file-upload-button {
+header .upload .file_upload {
+  width: 0;
+  height: 0;
+  position: absolute;
   visibility: hidden;
 }
-header .file_upload:before {
-  content: 'ЗАВАНТАЖИТИ КНИЖКУ';
-  display: inline-block;
-  background: #27ae60;
-  padding: 0.625em;
-  color: #ffffff;
-  font-family: "lato_regular", arial;
-  font-size: 1.250em;
-  text-decoration: none;
-  margin-top: 0.188em;
-  text-transform: uppercase;
-  letter-spacing: 0.063em;
-  border: 0.125em solid;
-  border-radius: 0.063em;
-  transition: 0.2s;
-  white-space: nowrap;
+header .upload #upload-button {
+  width: 90%;
+  margin: 1% 5%;
+  border: 2px solid #fff;
+  text-align: center;
+  height: 90%;
+  font-size: 1.5em;
+  padding-top: 10px;
+  color: #fff;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+  -webkit-transition: all .15s linear;
+  -moz-transition: all .15s linear;
+  transition: all .15s linear;
+}
+header .upload #upload-button:hover {
   cursor: pointer;
-  text-shadow: 0.063em 0 #ffffff;
+  background-color: #fff;
+  color: #27ae60;
 }
-header .file_upload:hover:before {
-  background: #1e8449;
+header .upload #upload-button:active {
+  color: #000;
 }
-header .file_upload:active:before {
-  background: #1e8449;
+header nav {
+  width: 100%;
+  float: right;
+  padding-left: 240px;
+}
+header #book-page {
+  display: inline-block;
+  padding-top: 13px;
+  height: 30px;
 }
 header ul.social li a,
 header nav ul li a {
@@ -67,14 +78,6 @@ header nav ul li a {
   -webkit-transition: all .2s linear;
   -moz-transition: all .2s linear;
   -o-transition: all .2s linear;
-}
-header nav {
-  overflow: hidden;
-  display: inline-block;
-  xmargin: 32px 0 0 -50px;
-  margin: 0 0 2em 2em;
-  padding: 0px 40px;
-  border-left: 1px #404040 solid;
 }
 header nav ul {
   list-style: none;
@@ -135,8 +138,8 @@ header #book-page {
 header #book-page span,
 header #book-page input {
   display: inline-block;
-  height: 25px;
-  padding: 3px 5px;
+  height: 30px;
+  padding: 4px 5px;
 }
 header #book-page input {
   background: #36d278;
@@ -220,6 +223,13 @@ header #search_col .search input:focus ~ label {
 header #search_col #search-error {
   font-size: 10px;
   color: #fff;
+}
+header:after {
+  content: '';
+  visibility: hidden;
+  height: 0;
+  clear: both;
+  display: block;
 }
 footer {
   border-top: 1px #dedede solid;
@@ -471,6 +481,7 @@ li:last-child > .settings-list-link {
   float: right;
   position: relative;
   height: 30px;
+  padding-top: 13px;
 }
 #search input {
   width: 0;
@@ -489,22 +500,31 @@ li:last-child > .settings-list-link {
   text-align: center;
   padding-top: 4px;
   border: 1px solid #FFF;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
 }
 #search .sbutton:hover,
 #search .scancel:hover {
   cursor: pointer;
 }
+#search .serror {
+  position: absolute;
+  visibility: hidden;
+  font-size: 0.8em;
+  right: 25px;
+  top: 50px;
+  width: 200px;
+  display: inline-block;
+}
 #search.active .sbutton {
   background-color: #fff;
 }
-#search.active .scancel {
-  height: 100%;
-  position: absolute;
-  right: 30px;
-  font-size: 20px;
-  width: 30px;
-  padding-top: 4px;
-  text-align: center;
+#search.active .serror {
+  visibility: visible;
+  color: #fff;
 }
 .highlight {
   background-color: #ffff00;

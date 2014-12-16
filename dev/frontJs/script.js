@@ -19,6 +19,10 @@ function main(jquery, fileupload, settingsPanel, preloader, Book) {
 
 		showBookStorage();
 
+		$('#upload-button').on('click', function() {
+			$('.file_upload').trigger('click');
+		});
+
 		$('#fileselect').fileupload({
 			url: '/upload',
 			dataType: 'json',

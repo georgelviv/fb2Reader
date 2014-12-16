@@ -58,15 +58,17 @@ function initSearch() {
 	});
 
 	function onSearchSubmit() {
-		var searchPath = searchInput.val();
+		var searchPath = searchInput.val().trim();
 		if (oldSearch != searchPath) {
 			$('#book').removeHighlight();
 			oldSearch = searchPath;
 			if (searchPath.length > 2) {
 				$('#book').highlight(searchPath);
-				// if (!$('#search .scancel')[0]){
-				// 	searchDiv.append('<span class="scancel"><i class="fa fa-times"></i></span>');
-				// }
+				$('.serror').remove();
+			} else {
+				if (!$('.serror')[0]) {
+					searchDiv.append('<div class="serror">Pleas write more than 3 characters</div>');
+				}
 			}
 		}
 	}
@@ -104,10 +106,7 @@ jQuery.fn.highlight = function(pat) {
 
 jQuery.fn.removeHighlight = function() {
  return this.find("span.highlight").each(function() {
-  this.parentNode.firstChild.nodeName;
-  with (this.parentNode) {
-   replaceChild(this.firstChild, this);
-   normalize();
-  }
+	this.parentNode.replaceChild(this.firstChild, this);
+	this.normalize();
  }).end();
 };

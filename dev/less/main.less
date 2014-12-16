@@ -30,51 +30,64 @@ ul, ol{
   list-style: none;
 }
 
-.wrapper {
-  width: 95%;
-  height: auto;
-  margin: 0 auto;
-  position: relative;
-}
-
 header{
   background: @headerColor;
   width: 100%;
-  height: @headerheight; /*75px;*/
-  padding: 10px ; 
+  height: @headerheight;
+  padding: 10px 5%; 
+  position: relative;
 
-.file_upload{
-  xoutline: none;
-  text-align: center;
-  &::-webkit-file-upload-button{
+  .upload {
+    width: 220px;
+    float: left;
+    height: 60px;
+    border-right: 1px solid #fff;
+    position: absolute;
+
+    .file_upload {
+      width: 0;
+      height: 0;
+      position: absolute;
       visibility: hidden;
+    }
+    #upload-button {
+      width: 90%;
+      margin: 1% 5%;
+      border: 2px solid #fff;
+      text-align: center;
+      height: 90%;
+      font-size: 1.5em;
+      padding-top: 10px;
+      color: #fff;
+      -webkit-user-select: none;  
+      -moz-user-select: none;     
+      -ms-user-select: none;      
+      -o-user-select: none;
+      user-select: none;
+    -webkit-transition: all .15s linear;
+    -moz-transition: all .15s linear;
+    transition: all .15s linear;
+    }
+    #upload-button:hover {
+      cursor: pointer;
+      background-color: #fff;
+      color:  @headerColor;
+
+    }
+    #upload-button:active {
+      color:  #000;
+    }
   }
-  &:before{
-    content: 'ЗАВАНТАЖИТИ КНИЖКУ';
+  nav {
+    width: 100%;
+    float: right;
+    padding-left: 240px;
+  }
+  #book-page {
     display: inline-block;
-    background: @headerColor;
-    padding: 0.625em;
-    color: @whiteColor;
-    font-family: "lato_regular", arial;
-    font-size: 1.250em;
-    text-decoration: none;
-    margin-top: 0.188em;
-    text-transform: uppercase;
-    letter-spacing: 0.063em;
-    border: 0.125em solid;
-    border-radius: 0.063em;
-    transition: 0.2s;
-    white-space: nowrap;
-    cursor: pointer;
-    text-shadow: 0.063em 0 @whiteColor;
+    padding-top: 13px;
+    height: 30px;
   }
-  &:hover:before{ 
-    background: darken(@headerColor, 10%);
-  }
-  &:active:before{ 
-    background: darken(@headerColor, 10%);
-  }
-}
 
 ul.social li a,
   nav ul li a{
@@ -86,13 +99,6 @@ ul.social li a,
 
 
   nav{
-    overflow: hidden;
-    display: inline-block;
-    xmargin: 32px 0 0 -50px;
-    margin: 0 0 2em 2em;
-    padding: 0px 40px;
-    border-left: 1px #404040 solid;
-
 
     ul{
       list-style: none;
@@ -156,8 +162,8 @@ ul.social li a,
     #book-page {
     span, input {
     display: inline-block;
-    height: 25px;
-    padding: 3px 5px;
+    height: 30px;
+    padding: 4px 5px;
     }
     input {
     background: lighten(@headerColor, 10%);
@@ -260,6 +266,14 @@ ul.social li a,
     }
    
 
+}
+
+header:after {
+  content: '';
+  visibility: hidden;
+  height: 0;
+  clear: both;
+  display: block;
 }
 
 footer{
@@ -535,6 +549,7 @@ li:last-child > .settings-list-link {
   float: right;
   position: relative;
   height: 30px;
+  padding-top: 13px;
   input {
     width: 0;
     height: 100%;
@@ -552,9 +567,23 @@ li:last-child > .settings-list-link {
     text-align: center;
     padding-top: 4px;
     border: 1px solid #FFF;
+ -webkit-user-select: none;  
+  -moz-user-select: none;     
+  -ms-user-select: none;      
+  -o-user-select: none;
+  user-select: none; 
   }
   .sbutton:hover, .scancel:hover  {
     cursor: pointer;
+  }
+  .serror {
+    position: absolute;
+    visibility: hidden;
+    font-size: 0.8em;
+    right: 25px;
+    top: 50px;
+    width: 200px;
+    display: inline-block;
   }
 }
 
@@ -562,14 +591,9 @@ li:last-child > .settings-list-link {
   .sbutton {
     background-color: #fff;
   }
-  .scancel {
-    height: 100%;
-    position: absolute;
-    right: 30px;
-    font-size: 20px;
-    width: 30px;
-    padding-top: 4px;
-    text-align: center;
+  .serror {
+    visibility: visible;
+    color: #fff;
   }
 }
 

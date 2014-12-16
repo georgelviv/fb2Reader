@@ -90,6 +90,12 @@ define(['tools/jquery-1.11.1.min'], function(jquery) {
 
 	function initKeyNav() {
 		var self = this;
+		var htmlArrow = '<div id="button-prev"><i class="fa fa-chevron-left fa-2x">';
+		htmlArrow += '</i></div><div id="button-next"><i class="fa fa-chevron-right fa-2x"></i></div>';
+		var htmlPage = '<input type="text"><span></span>';
+		self.mainDiv.append(htmlArrow);
+		$('#book-page').html(htmlPage);
+ 
 		document.body.addEventListener('keyup', keyEvent);
 		document.getElementById('book-page').addEventListener('keyup', goToEv);
 		document.getElementById('button-next').addEventListener('click', nextPgEv);
@@ -123,6 +129,9 @@ define(['tools/jquery-1.11.1.min'], function(jquery) {
 			document.getElementById('book-page').removeEventListener('keyup', goToEv);
 			document.getElementById('button-next').removeEventListener('click', nextPgEv);
 			document.getElementById('button-prev').removeEventListener('click', prevPgEv);
+			$('#button-next').remove();
+			$('#button-prev').remove();
+			$('#book-page').html('');
 		});
 	}
 });
