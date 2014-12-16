@@ -15,6 +15,7 @@ if (window.find) {
 if (!window.find(str)) {
   while (window.find(str, false, true)) {
     n++;
+    console.log(n);
   }
 } else {
   n++;

@@ -16,6 +16,18 @@ ul,
 ol {
   list-style: none;
 }
+.hint-panel {
+  display: none;
+  width: 200px;
+  height: 50px;
+  background: #ccc;
+}
+.hint-panel.active {
+  display: block;
+  width: 200px;
+  height: 50px;
+  background: #ccc;
+}
 .wrapper {
   width: 95%;
   height: auto;
