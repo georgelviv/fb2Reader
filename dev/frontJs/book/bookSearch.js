@@ -68,36 +68,48 @@ function initSearch() {
 
 	$('body').on('addedBook', function() {
 		searchDivSpan[0].removeEventListener('click', clickSearchEv);
+		searchInput.val('');
+		oldSearch = '';
+		searchError.text('');
+		searchCancel.removeClass('show');
 	});
 
 	function onSearchSubmit() {
 		var searchPath = searchInput.val().trim();
 		var results = 0;
+		var firstMatchTop;
+		var firstMatchPage;
 		if (!searchPath.length) {
 			self.bookDiv.removeHighlight();
 			searchError.text('');
 			return searchCancel.removeClass('show');
 		}
-		if (oldSearch != searchPath) {
-			self.bookDiv.removeHighlight();
-			oldSearch = searchPath;
-			if (searchPath.length > 2) {
-				self.bookDiv.highlight(searchPath);
-				searchCancel.addClass('show');
+		self.bookDiv.removeHighlight();
+		oldSearch = searchPath;
+		if (searchPath.length > 2) {
+			self.bookDiv.highlight(searchPath);
+			searchCancel.addClass('show');
+			if (results === 0) {
+				searchError.text('No results found');
+			} else {
 				if (self.isColumns) {
 					results = self.lcolumn.find('.highlight').length;
+					console.log(self.lcolumn.find('.highlight')[0]);
+					firstMatchTop = Math.ceil(self.lcolumn.find('.highlight')[0].getBoundingClientRect().top);
+					firstMatchPage = Math.ceil(Math.abs(firstMatchTop + self.lcolumn.scrollTop()) / (self.bookHeight * 2));
+					console.log(firstMatchPage);
+					self.gotoPage(firstMatchPage);
 				} else {
 					results = self.bookDiv.find('.highlight').length;
+					firstMatchTop = Math.ceil(self.bookDiv.find('.highlight')[0].getBoundingClientRect().top);
+					firstMatchPage = Math.ceil(Math.abs(firstMatchTop + self.bookDiv.scrollTop()) /  self.bookHeight);
+					self.gotoPage(firstMatchPage);
 				}
-				if (results === 0) {
-					searchError.text('No results found');
-				} else {
-					searchError.text('Found ' + results + ' matches');
-				}
-			} else {
-				searchError.text('Please write more than 3 characters');
+				searchError.text('Found ' + results + ' matches');
 			}
-		}
+		} else {
+			searchError.text('Please write more than 3 characters');
+			}
 	}
 }
 

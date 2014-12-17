@@ -30,7 +30,7 @@ function hideEl(isTop, el) {
 	};
 
 	var lastEl, lineHeight, lineHide, heightHide, positionEl;
-	var fixPix = 0;
+	var fixPix = 1;
 	if (this.isColumns) {
 		fixPix = 0;
 	}
@@ -87,7 +87,7 @@ function hideEl(isTop, el) {
 				var top = child[i].getBoundingClientRect().top;
 				var bottom = child[i].getBoundingClientRect().bottom;
 				if (top < checkElPos && checkElPos < bottom) {
-					if ($(child[i]).children().not('em, strong, br, sup, sub, emphasis, a').length) {
+					if ($(child[i]).children().not('em, strong, br, sup, sub, emphasis, a, span').length) {
 						element = child[i];
 						break;
 					} else {

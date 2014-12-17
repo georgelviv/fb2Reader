@@ -63,19 +63,20 @@ define(['tools/jquery-1.11.1.min'], function(jquery) {
 		this.bookPageDiv.find('span').html(' / ' + this.pages);
 	}
 
-	function gotoPage() {
-		var goPage = Math.max(1, Math.min(this.pages, this.bookPageDiv.find('input').val()));
+	function gotoPage(num) {
+		var goPage = num || Math.max(1, Math.min(this.pages, this.bookPageDiv.find('input').val()));
+		console.log(goPage);
 		if (isNaN(goPage)) return this.pageSet();
 		if (this.isColumns) {
 			$('.linehide').remove();
-			this.lcolumn.scrollTop(this.bookHeight * ((goPage - 1) * 2));
+			this.lcolumn.scrollTop((this.bookHeight * ((goPage - 1) * 2)) - 60);
 			this.rcolumn.scrollTop((this.lcolumn.scrollTop() + this.bookHeight) - 30);
 			this.hideBoth();
 			this.pageSet();
 			this.savePage(this.lcolumn.scrollTop());
 		} else {
 			$('.linehide').remove();
-			this.bookDiv.scrollTop(this.bookHeight * (goPage - 1));
+			this.bookDiv.scrollTop((this.bookHeight * (goPage - 1)) - 30);
 			this.hideBoth();
 			this.pageSet();
 			this.savePage(this.bookDiv.scrollTop());
