@@ -564,6 +564,11 @@ li:last-child > .settings-list-link {
 .highlight {
   background-color: #ffff00;
 }
+@media (max-width: 600px) {
+  .facet_sidebar {
+    display: none;
+  }
+}
 
 #loader {
   position: relative;

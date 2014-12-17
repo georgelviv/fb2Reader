@@ -5,7 +5,6 @@ var dirOpf;
 
 exports.parsingEpub = function(bookName, callback) {
 	exports.epubBook = '';
-
 	fs.createReadStream('./dist/uploads/' + bookName)
 	.pipe(unzip.Extract({ path: './dist/uploads/' }))
 	.on('close', function() {
