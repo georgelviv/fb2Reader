@@ -84,7 +84,9 @@ define(['tools/jquery-1.11.1.min'], function(jquery) {
 
 	function reInitPage() {
 		this.bookHeight = this.bookDiv.height();
-		this.rcolumn.scrollTop((this.lcolumn.scrollTop() + this.bookHeight) - 30);
+		if (this.isColumns) {
+			this.rcolumn.scrollTop((this.lcolumn.scrollTop() + this.bookHeight) - 30);
+		}
 		this.pageSet();
 	}
 

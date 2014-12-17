@@ -49,6 +49,7 @@ function chekForColumns(book) {
 	book.pages = Math.ceil(book.scrollHeight / book.bookHeight);
 	book.initKeyNav();
 	book.pageSet();
+	book.initFullScreen();
 	book.initSearch();
 	return false;
 }

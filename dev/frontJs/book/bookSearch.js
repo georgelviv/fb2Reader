@@ -13,6 +13,8 @@ function initSearch() {
 	var searchDivSpan = searchDiv.find('.sbutton');
 	var searchInput = searchDiv.find('input');
 	var searchCancel = $('.scancel');
+	var searchError = $('.serror');
+	var self = this;
 
 	searchDivSpan[0].addEventListener('click', clickSearchEv);
 
@@ -51,8 +53,9 @@ function initSearch() {
 	searchCancel.on('click', function(e) {
 		e.preventDefault();
 		searchInput.val('');
-		$('#book').removeHighlight();
+		self.bookDiv.removeHighlight();
 		searchCancel.removeClass('show');
+		searchError.text('');
 		oldSearch = '';
 	});
 
@@ -69,18 +72,30 @@ function initSearch() {
 
 	function onSearchSubmit() {
 		var searchPath = searchInput.val().trim();
-		if (!searchPath.length) return searchCancel.removeClass('show');
+		var results = 0;
+		if (!searchPath.length) {
+			self.bookDiv.removeHighlight();
+			searchError.text('');
+			return searchCancel.removeClass('show');
+		}
 		if (oldSearch != searchPath) {
-			$('#book').removeHighlight();
+			self.bookDiv.removeHighlight();
 			oldSearch = searchPath;
 			if (searchPath.length > 2) {
-				$('#book').highlight(searchPath);
+				self.bookDiv.highlight(searchPath);
 				searchCancel.addClass('show');
-				$('.serror').remove();
-			} else {
-				if (!$('.serror')[0]) {
-					searchDiv.append('<div class="serror">Pleas write more than 3 characters</div>');
+				if (self.isColumns) {
+					results = self.lcolumn.find('.highlight').length;
+				} else {
+					results = self.bookDiv.find('.highlight').length;
 				}
+				if (results === 0) {
+					searchError.text('No results found');
+				} else {
+					searchError.text('Found ' + results + ' matches');
+				}
+			} else {
+				searchError.text('Please write more than 3 characters');
 			}
 		}
 	}
