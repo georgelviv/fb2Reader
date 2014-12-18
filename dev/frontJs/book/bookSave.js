@@ -1,4 +1,6 @@
-define(['tools/jquery-1.11.1.min'], function(jquery) {
+define(
+	['tools/jquery-1.11.1.min'],
+	function(jquery) {
 	var bookSave = {
 		save: saveBookStorage,
 		savePage: saveCurrenPosition,
@@ -24,25 +26,23 @@ define(['tools/jquery-1.11.1.min'], function(jquery) {
 	}
 
 	function showNextPage() {
-		$('.linehide').remove();
 		if (this.isColumns) {
 			this.lcolumn.scrollTop(this.lcolumn.scrollTop() + ((this.bookHeight * 2) - this.fixScroll));
 			this.rcolumn.scrollTop((this.lcolumn.scrollTop() + this.bookHeight) - (this.fixScroll) / 2);
 			hideAndPage(this, this.lcolumn.scrollTop());
 		} else {
-			this.bookDiv.scrollTop(this.bookDiv.scrollTop() + this.bookHeight - this.fixScroll);
+			this.bookDiv.scrollTop(this.bookDiv.scrollTop() + (this.bookHeight - this.fixScroll));
 			hideAndPage(this, this.bookDiv.scrollTop());
 		}
 	}
 
 	function showPrevPage() {
-		$('.linehide').remove();
 		if (this.isColumns) {
 			this.lcolumn.scrollTop(this.lcolumn.scrollTop() - ((this.bookHeight * 2) - this.fixScroll));
 			this.rcolumn.scrollTop((this.lcolumn.scrollTop() + this.bookHeight) - (this.fixScroll) / 2);
 			hideAndPage(this, this.lcolumn.scrollTop());
 		} else {
-			this.bookDiv.scrollTop(this.bookDiv.scrollTop() - this.bookHeight - this.fixScroll);
+			this.bookDiv.scrollTop(this.bookDiv.scrollTop() - (this.bookHeight - this.fixScroll));
 			hideAndPage(this, this.bookDiv.scrollTop());
 		}
 	}
@@ -54,10 +54,11 @@ define(['tools/jquery-1.11.1.min'], function(jquery) {
 	}
 	function pageSet() {
 		var currentPage;
+		var fixedHeight = this.bookHeight - this.fixScroll;
 		if (this.isColumns) {
-			currentPage = Math.ceil((this.lcolumn.scrollTop()) / ((this.bookHeight - this.fixScroll) * 2)) + 1;
+			currentPage = Math.ceil((this.lcolumn.scrollTop() + fixedHeight) / (fixedHeight * 2));
 		} else {
-			currentPage = Math.ceil(this.bookDiv.scrollTop() /  (this.bookHeight) - this.fixScroll) + 1;
+			currentPage = Math.ceil((this.bookDiv.scrollTop() + fixedHeight) /  fixedHeight);
 		}
 		this.bookPageDiv.find('input').val(currentPage);
 		this.bookPageDiv.find('span').html(' / ' + this.pages);
@@ -68,14 +69,12 @@ define(['tools/jquery-1.11.1.min'], function(jquery) {
 		goPage -= 1;
 		if (isNaN(goPage)) return this.pageSet();
 		if (this.isColumns) {
-			$('.linehide').remove();
 			this.lcolumn.scrollTop(((this.bookHeight - this.fixScroll) * 2 * goPage));
 			this.rcolumn.scrollTop((this.lcolumn.scrollTop() + this.bookHeight) - (this.fixScroll) / 2);
 			this.hideBoth();
 			this.pageSet();
 			this.savePage(this.lcolumn.scrollTop());
 		} else {
-			$('.linehide').remove();
 			fixScroll = this.fixScroll * goPage;
 			this.bookDiv.scrollTop((this.bookHeight - this.fixScroll) * goPage);
 			this.hideBoth();

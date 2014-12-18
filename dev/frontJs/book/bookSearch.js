@@ -79,6 +79,7 @@ function initSearch() {
 		var results = 0;
 		var firstMatchTop;
 		var firstMatchPage;
+		var scrollEl;
 		if (!searchPath.length) {
 			self.bookDiv.removeHighlight();
 			searchError.text('');
@@ -89,20 +90,20 @@ function initSearch() {
 		if (searchPath.length > 2) {
 			self.bookDiv.highlight(searchPath);
 			searchCancel.addClass('show');
+			results = self.lcolumn.find('.highlight').length;
 			if (results === 0) {
 				searchError.text('No results found');
 			} else {
 				if (self.isColumns) {
-					results = self.lcolumn.find('.highlight').length;
-					console.log(self.lcolumn.find('.highlight')[0]);
 					firstMatchTop = Math.ceil(self.lcolumn.find('.highlight')[0].getBoundingClientRect().top);
-					firstMatchPage = Math.ceil(Math.abs(firstMatchTop + self.lcolumn.scrollTop()) / (self.bookHeight * 2));
-					console.log(firstMatchPage);
+					scrollEl = Math.abs(firstMatchTop + self.lcolumn.scrollTop());
+					firstMatchPage = Math.ceil(scrollEl / ((self.bookHeight - self.fixScroll) * 2));
 					self.gotoPage(firstMatchPage);
 				} else {
 					results = self.bookDiv.find('.highlight').length;
 					firstMatchTop = Math.ceil(self.bookDiv.find('.highlight')[0].getBoundingClientRect().top);
-					firstMatchPage = Math.ceil(Math.abs(firstMatchTop + self.bookDiv.scrollTop()) /  self.bookHeight);
+					scrollEl = Math.abs(firstMatchTop + self.bookDiv.scrollTop());
+					firstMatchPage = Math.ceil(scrollEl / (self.bookHeight - self.fixScroll));
 					self.gotoPage(firstMatchPage);
 				}
 				searchError.text('Found ' + results + ' matches');

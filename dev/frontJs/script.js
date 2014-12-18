@@ -1,11 +1,9 @@
 require(
-    [
-        'tools/jquery-1.11.1.min',
-        'tools/jquery.fileupload',
-        'settingsPanel',
-        'preloader',
-        'book'
-    ],
+    ['tools/jquery-1.11.1.min',
+	'tools/jquery.fileupload',
+	'settingsPanel',
+	'preloader',
+    'book'],
 main);
 
 function main(jquery, fileupload, settingsPanel, preloader, Book) {

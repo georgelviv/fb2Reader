@@ -1,4 +1,6 @@
-define(['tools/jquery-1.11.1.min'], function(jquery) {
+define(
+	['tools/jquery-1.11.1.min'],
+	function(jquery) {
 	var fullSreen = {
 		fSEvent: fSEvent,
 		initFullScreen: initFullScreen
