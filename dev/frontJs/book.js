@@ -32,12 +32,13 @@ function chekForColumns(book) {
 		content = '<div class="bookcolumn" id="lcolumn" style="padding-right:20px">' + book.bookString +'</div>';
 		content += '<div class="bookcolumn" id="rcolumn" style="padding-left:20px">' + book.bookString + '</div>';
 		book.bookDiv.html(content);
+		book.fixScroll = 60;
 		book.lcolumn = $('#lcolumn');
 		book.rcolumn = $('#rcolumn');
 		book.rcolumn.scrollTop(book.bookHeight - 30);
 		book.rcolumn.append('<div id="lastp" style="height:' + book.bookDiv.height() + 'px;">');
 		book.scrollHeight = book.lcolumn[0].scrollHeight;
-		book.pages = Math.ceil((book.scrollHeight / book.bookHeight) / 2);
+		book.pages = Math.ceil((book.scrollHeight) / ((book.bookHeight - book.fixScroll) * 2));
 		book.initKeyNav();
 		book.pageSet();
 		book.initFullScreen();
@@ -45,8 +46,9 @@ function chekForColumns(book) {
 		return true;
 	}
 	book.bookDiv.html(book.bookString);
+	book.fixScroll = 30;
 	book.scrollHeight = book.bookDiv[0].scrollHeight;
-	book.pages = Math.ceil(book.scrollHeight / book.bookHeight);
+	book.pages = Math.ceil((book.scrollHeight + fixedScroll) / (book.bookHeight) - book.fixScroll);
 	book.initKeyNav();
 	book.pageSet();
 	book.initFullScreen();

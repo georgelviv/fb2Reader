@@ -106,7 +106,7 @@ function main(jquery, fileupload, settingsPanel, preloader, Book) {
 				}
 			} else {
 				noBookHtml = '<div id="nobook">No book to show, please upload book<br>';
-				noBookHtml += ' or <a id="ex-book" href="#">Read example</a></div>';
+				noBookHtml += ' or <a id="ex-book" href="#">Read Alice in Wonderland</a></div>';
 				bookOption.bookDiv.html(noBookHtml);
 			}
 		}

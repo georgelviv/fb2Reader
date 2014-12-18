@@ -26,11 +26,11 @@ define(['tools/jquery-1.11.1.min'], function(jquery) {
 	function showNextPage() {
 		$('.linehide').remove();
 		if (this.isColumns) {
-			this.lcolumn.scrollTop(this.lcolumn.scrollTop() + ((this.bookHeight * 2) - 60));
-			this.rcolumn.scrollTop((this.lcolumn.scrollTop() + this.bookHeight) - 30);
+			this.lcolumn.scrollTop(this.lcolumn.scrollTop() + ((this.bookHeight * 2) - this.fixScroll));
+			this.rcolumn.scrollTop((this.lcolumn.scrollTop() + this.bookHeight) - (this.fixScroll) / 2);
 			hideAndPage(this, this.lcolumn.scrollTop());
 		} else {
-			this.bookDiv.scrollTop(this.bookDiv.scrollTop() + this.bookHeight - 30);
+			this.bookDiv.scrollTop(this.bookDiv.scrollTop() + this.bookHeight - this.fixScroll);
 			hideAndPage(this, this.bookDiv.scrollTop());
 		}
 	}
@@ -38,11 +38,11 @@ define(['tools/jquery-1.11.1.min'], function(jquery) {
 	function showPrevPage() {
 		$('.linehide').remove();
 		if (this.isColumns) {
-			this.lcolumn.scrollTop(this.lcolumn.scrollTop() - ((this.bookHeight * 2) - 60));
-			this.rcolumn.scrollTop((this.lcolumn.scrollTop() + this.bookHeight) - 30);
+			this.lcolumn.scrollTop(this.lcolumn.scrollTop() - ((this.bookHeight * 2) - this.fixScroll));
+			this.rcolumn.scrollTop((this.lcolumn.scrollTop() + this.bookHeight) - (this.fixScroll) / 2);
 			hideAndPage(this, this.lcolumn.scrollTop());
 		} else {
-			this.bookDiv.scrollTop(this.bookDiv.scrollTop() - this.bookHeight - 30);
+			this.bookDiv.scrollTop(this.bookDiv.scrollTop() - this.bookHeight - this.fixScroll);
 			hideAndPage(this, this.bookDiv.scrollTop());
 		}
 	}
@@ -55,9 +55,9 @@ define(['tools/jquery-1.11.1.min'], function(jquery) {
 	function pageSet() {
 		var currentPage;
 		if (this.isColumns) {
-			currentPage = Math.ceil(this.lcolumn.scrollTop() / (this.bookHeight * 2)) + 1;
+			currentPage = Math.ceil((this.lcolumn.scrollTop()) / ((this.bookHeight - this.fixScroll) * 2)) + 1;
 		} else {
-			currentPage = Math.ceil(this.bookDiv.scrollTop() /  this.bookHeight) + 1;
+			currentPage = Math.ceil(this.bookDiv.scrollTop() /  (this.bookHeight) - this.fixScroll) + 1;
 		}
 		this.bookPageDiv.find('input').val(currentPage);
 		this.bookPageDiv.find('span').html(' / ' + this.pages);
@@ -65,18 +65,19 @@ define(['tools/jquery-1.11.1.min'], function(jquery) {
 
 	function gotoPage(num) {
 		var goPage = num || Math.max(1, Math.min(this.pages, this.bookPageDiv.find('input').val()));
-		console.log(goPage);
+		goPage -= 1;
 		if (isNaN(goPage)) return this.pageSet();
 		if (this.isColumns) {
 			$('.linehide').remove();
-			this.lcolumn.scrollTop((this.bookHeight * ((goPage - 1) * 2)) - 60);
-			this.rcolumn.scrollTop((this.lcolumn.scrollTop() + this.bookHeight) - 30);
+			this.lcolumn.scrollTop(((this.bookHeight - this.fixScroll) * 2 * goPage));
+			this.rcolumn.scrollTop((this.lcolumn.scrollTop() + this.bookHeight) - (this.fixScroll) / 2);
 			this.hideBoth();
 			this.pageSet();
 			this.savePage(this.lcolumn.scrollTop());
 		} else {
 			$('.linehide').remove();
-			this.bookDiv.scrollTop((this.bookHeight * (goPage - 1)) - 30);
+			fixScroll = this.fixScroll * goPage;
+			this.bookDiv.scrollTop((this.bookHeight - this.fixScroll) * goPage);
 			this.hideBoth();
 			this.pageSet();
 			this.savePage(this.bookDiv.scrollTop());
@@ -86,7 +87,7 @@ define(['tools/jquery-1.11.1.min'], function(jquery) {
 	function reInitPage() {
 		this.bookHeight = this.bookDiv.height();
 		if (this.isColumns) {
-			this.rcolumn.scrollTop((this.lcolumn.scrollTop() + this.bookHeight) - 30);
+			this.rcolumn.scrollTop((this.lcolumn.scrollTop() + this.bookHeight) - (this.fixScroll) / 2);
 		}
 		this.pageSet();
 	}
@@ -132,9 +133,11 @@ define(['tools/jquery-1.11.1.min'], function(jquery) {
 			document.getElementById('book-page').removeEventListener('keyup', goToEv);
 			document.getElementById('button-next').removeEventListener('click', nextPgEv);
 			document.getElementById('button-prev').removeEventListener('click', prevPgEv);
-			$('#button-next').remove();
-			$('#button-prev').remove();
-			$('#book-page').html('');
+			setTimeout(function() {
+				$('#button-next').remove();
+				$('#button-prev').remove();
+				$('#book-page').html('');
+			}, 50);
 		});
 	}
 });
