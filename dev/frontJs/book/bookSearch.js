@@ -89,12 +89,11 @@ function initSearch() {
 		if (searchPath.length > 2) {
 			self.bookDiv.highlight(searchPath);
 			searchCancel.addClass('show');
+			results = self.lcolumn.find('.highlight').length;
 			if (results === 0) {
 				searchError.text('No results found');
 			} else {
 				if (self.isColumns) {
-					results = self.lcolumn.find('.highlight').length;
-					console.log(self.lcolumn.find('.highlight')[0]);
 					firstMatchTop = Math.ceil(self.lcolumn.find('.highlight')[0].getBoundingClientRect().top);
 					firstMatchPage = Math.ceil(Math.abs(firstMatchTop + self.lcolumn.scrollTop()) / (self.bookHeight * 2));
 					console.log(firstMatchPage);
