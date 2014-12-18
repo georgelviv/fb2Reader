@@ -1,4 +1,6 @@
-define(['tools/jquery-1.11.1.min'], function(jquery) {
+define(
+	['tools/jquery-1.11.1.min'],
+	function(jquery) {
 	var bookSave = {
 		save: saveBookStorage,
 		savePage: saveCurrenPosition,
@@ -30,7 +32,7 @@ define(['tools/jquery-1.11.1.min'], function(jquery) {
 			this.rcolumn.scrollTop((this.lcolumn.scrollTop() + this.bookHeight) - (this.fixScroll) / 2);
 			hideAndPage(this, this.lcolumn.scrollTop());
 		} else {
-			this.bookDiv.scrollTop(this.bookDiv.scrollTop() + this.bookHeight - this.fixScroll);
+			this.bookDiv.scrollTop(this.bookDiv.scrollTop() + (this.bookHeight - this.fixScroll));
 			hideAndPage(this, this.bookDiv.scrollTop());
 		}
 	}
@@ -42,7 +44,7 @@ define(['tools/jquery-1.11.1.min'], function(jquery) {
 			this.rcolumn.scrollTop((this.lcolumn.scrollTop() + this.bookHeight) - (this.fixScroll) / 2);
 			hideAndPage(this, this.lcolumn.scrollTop());
 		} else {
-			this.bookDiv.scrollTop(this.bookDiv.scrollTop() - this.bookHeight - this.fixScroll);
+			this.bookDiv.scrollTop(this.bookDiv.scrollTop() - (this.bookHeight - this.fixScroll));
 			hideAndPage(this, this.bookDiv.scrollTop());
 		}
 	}
@@ -54,10 +56,11 @@ define(['tools/jquery-1.11.1.min'], function(jquery) {
 	}
 	function pageSet() {
 		var currentPage;
+		var fixedHeight = this.bookHeight - this.fixScroll;
 		if (this.isColumns) {
-			currentPage = Math.ceil((this.lcolumn.scrollTop()) / ((this.bookHeight - this.fixScroll) * 2)) + 1;
+			currentPage = Math.ceil((this.lcolumn.scrollTop() + fixedHeight) / (fixedHeight * 2));
 		} else {
-			currentPage = Math.ceil(this.bookDiv.scrollTop() /  (this.bookHeight) - this.fixScroll) + 1;
+			currentPage = Math.ceil((this.bookDiv.scrollTop() + fixedHeight) /  fixedHeight);
 		}
 		this.bookPageDiv.find('input').val(currentPage);
 		this.bookPageDiv.find('span').html(' / ' + this.pages);

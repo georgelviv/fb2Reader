@@ -30,14 +30,13 @@ function hideEl(isTop, el) {
 	};
 
 	var lastEl, lineHeight, lineHide, heightHide, positionEl;
-	var fixPix = 1;
+	var fixPix = 0;
 	if (this.isColumns) {
 		fixPix = 0;
 	}
 
 	if (isTop) {
 		lastEl = getHideEl(bookEl.bookTop);
-		
 	} else {
 		lastEl = getHideEl(bookEl.bookBottom);
 	}
@@ -49,10 +48,10 @@ function hideEl(isTop, el) {
 	lineHeight = Math.floor($(lastEl).css('line-height').slice(0, -2));
 	if (isTop) {
 		heightHide = (lastEl.getBoundingClientRect().bottom - bookEl.bookTop) % lineHeight;
-		positionEl = 'top:' + (bookEl.bookTop + fixPix)  + 'px;';
+		positionEl = 'top:0px;';
 	} else {
 		heightHide = (bookEl.bookBottom - lastEl.getBoundingClientRect().top) % lineHeight;
-		positionEl = 'bottom:' + (document.body.offsetHeight - bookEl.bookBottom - 1) + 'px;';
+		positionEl = 'bottom:0px;';
 	}
 
 	

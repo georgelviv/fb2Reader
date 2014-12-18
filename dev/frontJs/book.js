@@ -1,4 +1,9 @@
-define(['book/hidingElements', 'book/bookSave', 'book/bookFullScreen', 'book/bookSearch', 'hint'],
+define(
+	['book/hidingElements',
+	'book/bookSave',
+	'book/bookFullScreen',
+	'book/bookSearch',
+	'hint'],
 	function(hidingElements, bookSave, bookFullScreen, bookSearch) {
 	function Book(bookString) {
 		this.bookString = bookString;
@@ -28,7 +33,7 @@ define(['book/hidingElements', 'book/bookSave', 'book/bookFullScreen', 'book/boo
 
 function chekForColumns(book) {
 	var content = '';
-	if (book.bookDiv.width() > 1000) {
+	if (book.bookDiv.width() > 900) {
 		content = '<div class="bookcolumn" id="lcolumn" style="padding-right:20px">' + book.bookString +'</div>';
 		content += '<div class="bookcolumn" id="rcolumn" style="padding-left:20px">' + book.bookString + '</div>';
 		book.bookDiv.html(content);
@@ -48,7 +53,7 @@ function chekForColumns(book) {
 	book.bookDiv.html(book.bookString);
 	book.fixScroll = 30;
 	book.scrollHeight = book.bookDiv[0].scrollHeight;
-	book.pages = Math.ceil((book.scrollHeight + fixedScroll) / (book.bookHeight) - book.fixScroll);
+	book.pages = Math.ceil(book.scrollHeight / (book.bookHeight - book.fixScroll));
 	book.initKeyNav();
 	book.pageSet();
 	book.initFullScreen();

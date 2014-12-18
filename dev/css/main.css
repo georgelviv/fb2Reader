@@ -398,6 +398,7 @@ li:last-child > .settings-list-link {
   width: 100%;
   height: 85%;
   background-color: #ecf0f1;
+  position: relative;
 }
 #book {
   height: 100%;
@@ -481,19 +482,15 @@ li:last-child > .settings-list-link {
 }
 #main:-webkit-full-screen {
   height: 100%;
-  padding: 5% 0;
 }
 #main:-moz-full-screen {
   height: 100%;
-  padding: 5% 0;
 }
 #main:-ms-fullscreen {
   height: 100%;
-  padding: 5% 0;
 }
 #main:fullscreen {
   height: 100%;
-  padding: 5% 0;
 }
 #search {
   float: right;
@@ -565,8 +562,23 @@ li:last-child > .settings-list-link {
   background-color: #ffff00;
 }
 @media (max-width: 600px) {
-  .facet_sidebar {
+  #button-prev,
+  #button-next {
+    height: 100%;
+    top: 0;
+    margin: 0;
+    padding: 0;
+    width: 20%;
+    background: none;
+  }
+  #button-prev i,
+  #button-next i {
     display: none;
+  }
+  #button-prev:hover,
+  #button-next:hover {
+    cursor: pointer;
+    background: none;
   }
 }
 
