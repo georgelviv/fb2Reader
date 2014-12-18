@@ -26,7 +26,6 @@ define(
 	}
 
 	function showNextPage() {
-		$('.linehide').remove();
 		if (this.isColumns) {
 			this.lcolumn.scrollTop(this.lcolumn.scrollTop() + ((this.bookHeight * 2) - this.fixScroll));
 			this.rcolumn.scrollTop((this.lcolumn.scrollTop() + this.bookHeight) - (this.fixScroll) / 2);
@@ -38,7 +37,6 @@ define(
 	}
 
 	function showPrevPage() {
-		$('.linehide').remove();
 		if (this.isColumns) {
 			this.lcolumn.scrollTop(this.lcolumn.scrollTop() - ((this.bookHeight * 2) - this.fixScroll));
 			this.rcolumn.scrollTop((this.lcolumn.scrollTop() + this.bookHeight) - (this.fixScroll) / 2);
@@ -71,14 +69,12 @@ define(
 		goPage -= 1;
 		if (isNaN(goPage)) return this.pageSet();
 		if (this.isColumns) {
-			$('.linehide').remove();
 			this.lcolumn.scrollTop(((this.bookHeight - this.fixScroll) * 2 * goPage));
 			this.rcolumn.scrollTop((this.lcolumn.scrollTop() + this.bookHeight) - (this.fixScroll) / 2);
 			this.hideBoth();
 			this.pageSet();
 			this.savePage(this.lcolumn.scrollTop());
 		} else {
-			$('.linehide').remove();
 			fixScroll = this.fixScroll * goPage;
 			this.bookDiv.scrollTop((this.bookHeight - this.fixScroll) * goPage);
 			this.hideBoth();

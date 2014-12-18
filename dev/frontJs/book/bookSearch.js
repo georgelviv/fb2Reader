@@ -79,6 +79,7 @@ function initSearch() {
 		var results = 0;
 		var firstMatchTop;
 		var firstMatchPage;
+		var scrollEl;
 		if (!searchPath.length) {
 			self.bookDiv.removeHighlight();
 			searchError.text('');
@@ -95,13 +96,14 @@ function initSearch() {
 			} else {
 				if (self.isColumns) {
 					firstMatchTop = Math.ceil(self.lcolumn.find('.highlight')[0].getBoundingClientRect().top);
-					firstMatchPage = Math.ceil(Math.abs(firstMatchTop + self.lcolumn.scrollTop()) / (self.bookHeight * 2));
-					console.log(firstMatchPage);
+					scrollEl = Math.abs(firstMatchTop + self.lcolumn.scrollTop());
+					firstMatchPage = Math.ceil(scrollEl / ((self.bookHeight - self.fixScroll) * 2));
 					self.gotoPage(firstMatchPage);
 				} else {
 					results = self.bookDiv.find('.highlight').length;
 					firstMatchTop = Math.ceil(self.bookDiv.find('.highlight')[0].getBoundingClientRect().top);
-					firstMatchPage = Math.ceil(Math.abs(firstMatchTop + self.bookDiv.scrollTop()) /  self.bookHeight);
+					scrollEl = Math.abs(firstMatchTop + self.bookDiv.scrollTop());
+					firstMatchPage = Math.ceil(scrollEl / (self.bookHeight - self.fixScroll));
 					self.gotoPage(firstMatchPage);
 				}
 				searchError.text('Found ' + results + ' matches');
