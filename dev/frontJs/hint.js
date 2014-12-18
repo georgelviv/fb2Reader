@@ -103,5 +103,11 @@ document.getElementById('book').addEventListener('click', getHintWord);
     		hideHint();
     	}
     }
+document.getElementById('book').addEventListener('keydown', hideHintWord);
+    function hideHintWord(e) {
+        if(e.keyCode == 27) {
+            hideHint();
+        } 
+    }
 
 }

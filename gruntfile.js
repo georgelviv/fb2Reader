@@ -46,7 +46,7 @@ module.exports = function(grunt) {
 		}
 	});
 
-	grunt.registerTask('default', ['less', 'cssmin', 'requirejs', 'nodemon', 'watch']);
+	grunt.registerTask('default', ['less', 'cssmin', 'requirejs', 'nodemon']);
 	grunt.registerTask('front', ['less', 'cssmin', 'requirejs', 'watch']);
 
 	grunt.loadNpmTasks('grunt-nodemon');

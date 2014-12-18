@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>fb2Reader</title>
 	<link rel="shortcut icon" href="img/favicon.png">
 	<link rel="stylesheet" href="css/style.min.css">
@@ -9,41 +10,29 @@
 <body>
 
 <!-- Header and Nav -->
-<header>    
-  <div class="wrapper">
-      <input id="fileselect" type="file" class="file_upload ">
-
-  
-  <div id="search">
-    <input type="text" placeholder="What you search?">
-    <span class="sbutton"><i class="fa fa-search"></i></span>
-  </div>
-
-<!--      <div id="search_col">
-     <span class="search hidden-xs">
-        <input type="text" id="topSearch"  placeholder="What you search?">
-        <label for="topSearch"><i class="fa fa-search"></i></label>
-        <div id="search-error"> </div>
-      </span> 
-    </div> -->
-	<nav id="nav_menu">
-				<ul>
-					<li id="book-page"><input type="text"><span></span></li>				
-				</ul>
-
-				<ul class="social">
-					<li><a class="fb" href="#"></a></li>
-					<li><a class="gplus" href="#"></a></li>
-				</ul>
-			</nav>
-  </div>
+<header>
+  <div class="upload">
+    <input id="fileselect" type="file" class="file_upload">
+    <div id="upload-button">UPLOAD BOOK</div>
+  </div> 
+  <nav>
+    <div id="book-page"></div>
+    <ul class="social">
+      <li><a class="fb" href="#"></a></li>
+      <li><a class="gplus" href="#"></a></li>
+    </ul>
+    <div id="search">
+      <input type="text" placeholder="Search">
+      <span class="sbutton"><i class="fa fa-search"></i></span>
+      <div class="scancel"><i class="fa fa-times"></i></div>
+      <div class="serror"></div>
+    </div>
+  </nav>
 </header>
 
 <!-- Book -->
 <div id="main">
   <div id="book"></div>
-  <div id="button-prev"><i class="fa fa-chevron-left  fa-2x"></i></div>
-  <div id="button-next"><i class="fa fa-chevron-right fa-2x"></i></div>
 </div>
 <!-- Footer -->
 

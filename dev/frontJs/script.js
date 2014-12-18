@@ -19,6 +19,25 @@ function main(jquery, fileupload, settingsPanel, preloader, Book) {
 
 		showBookStorage();
 
+		$('#upload-button').on('click', function() {
+			$('.file_upload').trigger('click');
+		});
+
+		$('#ex-book').on('click', function(e) {
+			e.preventDefault();
+			$.get("/getexamplebook").done(function(data) {
+				if (data !== 'false') {
+					book = new Book(data);
+					onBookGet(data);
+				} else {
+					setTimeout(getBook, 500);
+				}
+			}).fail(function() {
+				bookOption.bookDiv.html('<div id="nobook">Error to get book</div>');
+			});
+			preloader.exampleParsing();
+		});
+
 		$('#fileselect').fileupload({
 			url: '/upload',
 			dataType: 'json',
@@ -70,6 +89,7 @@ function main(jquery, fileupload, settingsPanel, preloader, Book) {
 		}
 
 		function showBookStorage() {
+			var noBookHtml;
 			if (!!localStorage && localStorage.getItem("book")){
 				book = new Book(localStorage.getItem("book"));
 				if (localStorage.getItem("scrollTop")) {
@@ -85,7 +105,9 @@ function main(jquery, fileupload, settingsPanel, preloader, Book) {
 					}
 				}
 			} else {
-				bookOption.bookDiv.html('<div id="nobook">No book to show, please upload book</div>');
+				noBookHtml = '<div id="nobook">No book to show, please upload book<br>';
+				noBookHtml += ' or <a id="ex-book" href="#">Read Alice in Wonderland</a></div>';
+				bookOption.bookDiv.html(noBookHtml);
 			}
 		}
 

@@ -12,6 +12,9 @@ function initSearch() {
 	var searchDiv = $('#search');
 	var searchDivSpan = searchDiv.find('.sbutton');
 	var searchInput = searchDiv.find('input');
+	var searchCancel = $('.scancel');
+	var searchError = $('.serror');
+	var self = this;
 
 	searchDivSpan[0].addEventListener('click', clickSearchEv);
 
@@ -47,6 +50,16 @@ function initSearch() {
 		onSearchSubmit();
 	});
 
+	searchCancel.on('click', function(e) {
+		e.preventDefault();
+		searchInput.val('');
+		self.bookDiv.removeHighlight();
+		searchCancel.removeClass('show');
+		searchError.text('');
+		oldSearch = '';
+	});
+
+
 	searchInput.on('keyup', function(e) {
 		if (e.keyCode == 13) {
 			onSearchSubmit();
@@ -55,20 +68,48 @@ function initSearch() {
 
 	$('body').on('addedBook', function() {
 		searchDivSpan[0].removeEventListener('click', clickSearchEv);
+		searchInput.val('');
+		oldSearch = '';
+		searchError.text('');
+		searchCancel.removeClass('show');
 	});
 
 	function onSearchSubmit() {
-		var searchPath = searchInput.val();
-		if (oldSearch != searchPath) {
-			$('#book').removeHighlight();
-			oldSearch = searchPath;
-			if (searchPath.length > 2) {
-				$('#book').highlight(searchPath);
-				// if (!$('#search .scancel')[0]){
-				// 	searchDiv.append('<span class="scancel"><i class="fa fa-times"></i></span>');
-				// }
-			}
+		var searchPath = searchInput.val().trim();
+		var results = 0;
+		var firstMatchTop;
+		var firstMatchPage;
+		if (!searchPath.length) {
+			self.bookDiv.removeHighlight();
+			searchError.text('');
+			return searchCancel.removeClass('show');
 		}
+		self.bookDiv.removeHighlight();
+		oldSearch = searchPath;
+		if (searchPath.length > 2) {
+			self.bookDiv.highlight(searchPath);
+			searchCancel.addClass('show');
+			if (results === 0) {
+				searchError.text('No results found');
+			} else {
+				if (self.isColumns) {
+					results = self.lcolumn.find('.highlight').length;
+					console.log(self.lcolumn.find('.highlight')[0]);
+					firstMatchTop = Math.ceil(self.lcolumn.find('.highlight')[0].getBoundingClientRect().top);
+					firstMatchPage = Math.ceil(Math.abs(firstMatchTop + self.lcolumn.scrollTop()) / (self.bookHeight * 2));
+					console.log(firstMatchPage);
+					self.gotoPage(firstMatchPage);
+				} else {
+					results = self.bookDiv.find('.highlight').length;
+					firstMatchTop = Math.ceil(self.bookDiv.find('.highlight')[0].getBoundingClientRect().top);
+					firstMatchPage = Math.ceil(Math.abs(firstMatchTop + self.bookDiv.scrollTop()) /  self.bookHeight);
+					self.gotoPage(firstMatchPage);
+				}
+				searchError.text('Found ' + results + ' matches');
+			}
+		} else {
+			searchError.text('Please write more than 3 characters');
+			}
 	}
 }
 
@@ -104,10 +145,7 @@ jQuery.fn.highlight = function(pat) {
 
 jQuery.fn.removeHighlight = function() {
  return this.find("span.highlight").each(function() {
-  this.parentNode.firstChild.nodeName;
-  with (this.parentNode) {
-   replaceChild(this.firstChild, this);
-   normalize();
-  }
+	this.parentNode.replaceChild(this.firstChild, this);
+	this.normalize();
  }).end();
 };

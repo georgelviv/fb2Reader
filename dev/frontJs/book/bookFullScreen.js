@@ -51,7 +51,7 @@ define(['tools/jquery-1.11.1.min'], function(jquery) {
 				self.hideBoth();
 				self.fSDiv.find('i').toggleClass('fa-arrows-alt');
 				self.fSDiv.find('i').toggleClass('fa-compress');
-			}, 150);
+			}, 180);
 		}
 	}
 
