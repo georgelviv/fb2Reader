@@ -37,12 +37,12 @@ function chekForColumns(book) {
 		content = '<div class="bookcolumn" id="lcolumn" style="padding-right:20px">' + book.bookString +'</div>';
 		content += '<div class="bookcolumn" id="rcolumn" style="padding-left:20px">' + book.bookString + '</div>';
 		book.bookDiv.html(content);
-		book.fixScroll = 60;
+		book.fixScroll = 30;
 		book.lcolumn = $('#lcolumn');
 		book.rcolumn = $('#rcolumn');
-		book.rcolumn.scrollTop(book.bookHeight - 30);
-		book.rcolumn.append('<div id="lastp" style="height:' + book.bookDiv.height() + 'px;">');
+		book.rcolumn.scrollTop(book.bookHeight - book.fixScroll / 2);
 		book.scrollHeight = book.lcolumn[0].scrollHeight;
+		book.rcolumn.append('<div id="lastp" style="height:' + book.bookDiv.height() + 'px;">');
 		book.pages = Math.ceil((book.scrollHeight) / ((book.bookHeight - book.fixScroll) * 2));
 		book.initKeyNav();
 		book.pageSet();

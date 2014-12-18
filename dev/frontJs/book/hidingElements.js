@@ -41,7 +41,12 @@ function hideEl(isTop, el) {
 		lastEl = getHideEl(bookEl.bookBottom);
 	}
 
-	if (!lastEl || lastEl.tagName == 'IMG') {
+	if (!lastEl) {
+		return '';
+	}
+
+	if (lastEl.tagName == 'IMG') {
+		imageFix(isTop, lastEl, bookEl);
 		return '';
 	}
 
@@ -100,6 +105,24 @@ function hideEl(isTop, el) {
 			} else {
 				return;
 			}
+		}
+	}
+
+	function imageFix(isTop, imgEl, bookObj) {
+		var imgClone = $(imgEl).clone();
+		var imgHeight = imgEl.height;
+		var heightDiff;
+		var makedHeight;
+		console.log(imgEl);
+		if (isTop) {
+			heightDiff = bookObj.bookTop - imgEl.getBoundingClientRect().top;
+			makedHeight = imgHeight - heightDiff;
+			console.log(heightDiff);
+		} else {
+			heightDiff = imgEl.getBoundingClientRect().bottom - bookObj.bookBottom;
+			makedHeight = imgHeight - heightDiff;
+			// imgEl.style.height = makedHeight + 'px';
+			console.log(makedHeight);
 		}
 	}
 
