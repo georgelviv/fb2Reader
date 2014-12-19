@@ -8,9 +8,9 @@ function hintWord(x, y) {
 	var currentWord = $(document.elementFromPoint(x, y));
 
 	if (! /\s/g.test(currentWord.text())) {	
-		var hintBlock = $('#hint-panel').addClass('hint-panel');
-		hintBlock.css({"display":"block", "left":x + 'px' , "top":y, "position":"absolute"} );
-		hintBlock.html(currentWord.text() + "\n <p id='jsonWiki' ></p>");
+		var hintBlock = $('#hint');
+		hintBlock.css({"display":"block", "left":x - 30 + 'px' , "top":y + 10 + 'px', "position":"absolute", "z-index":"100"} );
+		hintBlock.html('<h3>' + currentWord.text() + '</h3>' + "\n <p id='jsonWiki'></p>");
         var heightBlock = hintBlock.height();
         var widthBlock = hintBlock.width();
         var heightWindow = $(window).height();
@@ -18,7 +18,7 @@ function hintWord(x, y) {
         var heightHeader = $('header').height();
 
         hintBlock.removeClass();
-        hintBlock.addClass('hint-panel');
+        //hintBlock.addClass('hint');
         if (y < heightBlock + heightHeader + 10 ) {
             hintBlock.addClass('hint-bottom');
             if (x < widthBlock / 2 + 10) {
@@ -29,68 +29,36 @@ function hintWord(x, y) {
             } 
         } else {
             if (x < widthBlock / 2 + 10) {
-                hintBlock.addClass('hint-panel hint-right');
+                hintBlock.addClass('hint-right');
             } else if (x > widthWindow - widthBlock / 2  - 10) {
-                hintBlock.addClass('hint-panel hint-left');
+                hintBlock.addClass('hint-left');
             } else {
-                hintBlock.addClass('hint-panel hint-top');
+                hintBlock.addClass('hint-top');
             }
-        }
-    
+        }    
 
 		getWikiMedia(currentWord.text());
 	}
 }
 
 function hideHint() {
-	$('.hint-panel').css("display", "none"); 
+	$('#hint').css("display", "none"); 
 }
 
 function getWikiMedia(word) {
     var obj = null, key = null; //explaintext, exintro
-    $.getJSON("http://en.wikipedia.org/w/api.php?action=query&prop=extracts&explaintext&exchars=115&titles=" + word + "&format=json&callback=?", function(data) {
+    $.getJSON("http://en.wikipedia.org/w/api.php?action=query&prop=extracts&explaintext&exchars=175&titles=" + word + "&format=json&callback=?", function(data) {
       
        obj = data.query.pages;
        for (key in obj)  break;
         if (key == -1) {
           $('#jsonWiki').html('<p> Sorry wiki doesn`t known</p>');  
         } else {
-            $('#jsonWiki').html(obj[key].extract + '<a href="http://en.wikipedia.org/wiki?curid=' + key +'"> Далі...</a>' );     
+            $('#jsonWiki').html(obj[key].extract + '<a href="http://en.wikipedia.org/wiki?curid=' + key +'"> More...</a>' );     
         }
          
     });
-
-
- $.getJSON("http://api.microsofttranslator.com/V2/Ajax.svc/Translate?appId=Bearer ReaderFEP&from=en&to=ua&text="
-  + word + "&oncomplete=?", function(data) {
-      console.log(data);         
-    });
-/*
-    var Translate={
-      baseUrl:"http://api.microsofttranslator.com/V2/Ajax.svc/",
-      appId:"34b8aabb-e371-4973-a72c-b6660915eab1",
-      translate:function(word,from,to,
-          callback){
-         var s = document.createElement("script");
-         s.src =this.baseUrl+"Translate";
-         s.src +="?oncomplete="+callback; 
-         s.src +="&appId="+this.appId;
-         s.src +="&from=" + from ;
-         s.src += "&to=" + to ;
-         s.src += "&text=" + word; 
-         document.getElementsByTagName(
-          "head")[0].appendChild(s);
-     }
- }
- var callback=function(result){
-   alert(result)};
-   Translate.translate(word,
-    "en","ua","callback");*/
 }
-
-
-
-
 
 function initHint() {
 var self = this;
@@ -103,11 +71,13 @@ document.getElementById('book').addEventListener('click', getHintWord);
     		hideHint();
     	}
     }
-document.getElementById('book').addEventListener('keydown', hideHintWord);
-    function hideHintWord(e) {
-        if(e.keyCode == 27) {
-            hideHint();
-        } 
-    }
 
+document.onkeydown = function(evt) {
+    evt = evt || window.event;
+    if (evt.keyCode == 27) {
+        hideHint();
+    }
+};
+  
 }
+
