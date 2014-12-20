@@ -95,6 +95,63 @@ header #book-page {
   padding-top: 13px;
   height: 30px;
 }
+header #book-scolumn {
+  padding-left: 20px;
+  display: inline-block;
+  padding-top: 13px;
+  height: 30px;
+}
+header #book-scolumn .switch {
+  font-size: 0;
+  border: 3px solid #fff;
+  border-radius: 6px;
+  position: relative;
+  width: 100px;
+  height: 30px;
+  top: -5px;
+}
+header #book-scolumn .count {
+  position: relative;
+  display: inline-block;
+  line-height: 25px;
+  width: 50%;
+  height: 100%;
+}
+header #book-scolumn .label[for="s-one-column"] {
+  border-radius: 5px 0 0 5px;
+}
+header #book-scolumn .label[for="s-two-column"] {
+  border-radius: 0 5px 5px 0;
+}
+header #book-scolumn input[type="radio"] {
+  appearance: none;
+  width: 0;
+  height: 0;
+  opacity: 0;
+}
+header #book-scolumn input[type="radio"]:focus {
+  outline: 0;
+  outline-offset: 0;
+}
+header #book-scolumn input[type="radio"]:checked ~ label {
+  background-color: #fff;
+  color: #27ae60;
+}
+header #book-scolumn input[type="radio"]:active ~ label {
+  color: #000;
+}
+header #book-scolumn label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  text-align: center;
+  color: #fff;
+  font-size: 16px;
+  transition: transform 0.4s, color 0.4s, background-color 0.4s;
+}
 header ul.social li a,
 header nav ul li a {
   transition: all .2s linear;
@@ -814,7 +871,11 @@ li:last-child > .settings-list-link {
 .imgShow {
   position: absolute;
   opacity: 1;
-  max-width: 100%;
+}
+.ornament {
+  position: absolute;
+  opacity: 1;
+  background-color: blue;
 }
 @media (max-width: 600px) {
   #button-prev,

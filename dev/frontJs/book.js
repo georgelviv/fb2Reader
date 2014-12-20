@@ -24,6 +24,7 @@ define(
 	Book.prototype.savePage = bookSave.savePage;
 	Book.prototype.gotoPage = bookSave.gotoPage;
 	Book.prototype.initFullScreen = bookFullScreen.initFullScreen;
+	Book.prototype.initColumns = bookFullScreen.initColumns;
 	Book.prototype.reInitPage = bookSave.reInitPage;
 	Book.prototype.initSearch = bookSearch.initSearch;
 
@@ -33,7 +34,7 @@ define(
 
 function chekForColumns(book) {
 	var content = '';
-	if (book.bookDiv.width() > 900) {
+	if (book.bookDiv.width() > 800) {
 		content = '<div class="bookcolumn" id="lcolumn" style="padding-right:20px">' + book.bookString +'</div>';
 		content += '<div class="bookcolumn" id="rcolumn" style="padding-left:20px">' + book.bookString + '</div>';
 		book.bookDiv.html(content);
@@ -48,6 +49,7 @@ function chekForColumns(book) {
 		book.pageSet();
 		book.initFullScreen();
 		book.initSearch();
+		book.initColumns();
 		return true;
 	}
 	book.bookDiv.html(book.bookString);
@@ -55,7 +57,6 @@ function chekForColumns(book) {
 	book.scrollHeight = book.bookDiv[0].scrollHeight;
 	book.pages = Math.ceil(book.scrollHeight / (book.bookHeight - book.fixScroll));
 	book.initKeyNav();
-	book.pageSet();
 	book.initFullScreen();
 	book.initSearch();
 	return false;

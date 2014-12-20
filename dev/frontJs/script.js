@@ -93,7 +93,7 @@ function main(jquery, fileupload, settingsPanel, preloader, Book) {
 				if (localStorage.getItem("scrollTop")) {
 					if (book.isColumns) {
 						book.lcolumn.scrollTop(localStorage.getItem("scrollTop"));
-						book.rcolumn.scrollTop((book.lcolumn.scrollTop() + book.bookHeight) - 50);
+						book.rcolumn.scrollTop((book.lcolumn.scrollTop() + book.bookHeight) - book.fixScroll);
 						book.pageSet();
 						book.hideBoth();
 					} else {
