@@ -120,7 +120,13 @@ function hideEl(isTop, el, book) {
 		if (isTop) {
 			heightDiff = Math.abs(imgTop - bookObj.bookTop);
 			makedHeight = imgHeight - heightDiff;
-			isShow = (bookObj.bookBottom - imgTop - self.fixScroll) >= heightDiff;
+			isShow = makedHeight >= heightDiff;
+			console.log('-------TOP--------');
+			console.log(imgEl);
+			console.log('imgHeight: ' + imgHeight);
+			console.log('imgTop: ' + imgTop);
+			console.log('imgBottom: ' + imgBottom);
+			console.log('bookTop: ' + bookObj.bookTop);
 			if (isShow) {
 				imgClone.css({
 					height: makedHeight + 'px',
@@ -144,6 +150,9 @@ function hideEl(isTop, el, book) {
 			heightDiff = imgBottom - bookObj.bookBottom;
 			makedHeight = imgHeight - heightDiff;
 			isShow = (bookObj.bookBottom - imgTop) > heightDiff;
+			console.log('-------Bottom--------');
+			console.log('imgHeight:' + imgHeight + ' heightDiff:' + heightDiff);
+			console.log('BottomPart:' + (bookObj.bookBottom - imgTop - self.fixScroll) + ' makedHeight:' + makedHeight);
 			if (isShow) {
 				imgClone.css({
 					height: makedHeight + 'px',

@@ -1,6 +1,6 @@
 {
   "name": "fb2Reader",
-  "version": "0.0.0",
+  "version": "0.4.0",
   "description": "fb2Reader\r =========",
   "main": "server.js",
   "scripts": {
@@ -11,7 +11,7 @@
     "type": "git",
     "url": "https://github.com/georgelviv/fb2Reader.git"
   },
-  "author": "",
+  "author": "Yara, Yura",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/georgelviv/fb2Reader/issues"
