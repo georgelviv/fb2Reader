@@ -72,7 +72,7 @@ function settingPanel() {
 	$('#backgroundColor').change(function()
 	{
 		var option = $(this).find('option:selected').val();
-		$('#book').css("background", option);
+		$('#main, #book').css("background-color", option);
 		$('body').trigger('changeStyles');
 	});
 
@@ -80,9 +80,9 @@ function settingPanel() {
 	{
 		 var current = $('#nightMode').val();
 	      if (current != 'null') {
-	          $('#book').addClass('nightMode');
+	          $('#main, #book').addClass('nightMode');
 	      } else {
-	         $('#book').removeClass();
+	         $('#main, #book').removeClass();
 	      }
 
 		$('body').trigger('changeStyles');
