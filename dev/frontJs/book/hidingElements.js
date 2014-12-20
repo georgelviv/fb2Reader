@@ -7,8 +7,7 @@ define(['tools/jquery-1.11.1.min'], function() {
 });
 
 function hideBoth() {
-	$('.linehide').remove();
-	$('.imgShow').remove();
+	$('.linehide, .imgShow, .ornament').remove();
 	$('img').css('opacity', 1);
 	var hideStr = '';
 	if (this.isColumns || this.isColumns === undefined) {
@@ -25,6 +24,7 @@ function hideBoth() {
 }
 
 function hideEl(isTop, el) {
+	var self = this;
 	var bookEl = {
 		bookDiv: el,
 		bookBottom: Math.floor(el[0].getBoundingClientRect().bottom),
@@ -116,6 +116,7 @@ function hideEl(isTop, el) {
 		var imgTop = imgEl.getBoundingClientRect().top;
 		var imgBottom = imgEl.getBoundingClientRect().bottom;
 		var imgHeight = imgEl.height;
+		var ornament = $('<div class="ornament"></div>');
 		var heightDiff;
 		var makedHeight;
 		var isShow;
@@ -127,22 +128,38 @@ function hideEl(isTop, el) {
 			if (isShow) {
 				imgClone.css({
 					height: makedHeight + 'px',
-					top: 2 + 'px'
+					top: 2 + 'px',
+					maxWidth: '100%'
 				});
 				imgClone.addClass('imgShow');
 				bookObj.bookDiv.append(imgClone);
+			} else {
+				ornament.css({
+					height: makedHeight + 'px',
+					top: 2 + 'px',
+					width: el.outerWidth() + 'px'
+				});
+				bookObj.bookDiv.append(ornament);
 			}
 		} else {
 			heightDiff = imgBottom - bookObj.bookBottom;
 			makedHeight = imgHeight - heightDiff;
-			isShow = (bookObj.bookBottom - imgTop) >= heightDiff;
+			isShow = (bookObj.bookBottom - imgTop - self.fixScroll) > heightDiff;
 			if (isShow) {
 				imgClone.css({
 					height: makedHeight + 'px',
-					top: $(imgEl).position().top + 'px'
+					top: $(imgEl).position().top + 'px',
+					maxWidth: '100%'
 				});
 				imgClone.addClass('imgShow');
 				bookObj.bookDiv.append(imgClone);
+			} else {
+				ornament.css({
+					height: makedHeight + 'px',
+					top: $(imgEl).position().top + 'px',
+					width: el.outerWidth() + 'px'
+				});
+				bookObj.bookDiv.append(ornament);
 			}
 		}
 	}

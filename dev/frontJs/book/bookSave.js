@@ -95,7 +95,7 @@ define(
 		var self = this;
 		var htmlArrow = '<div id="button-prev"><i class="fa fa-chevron-left fa-2x">';
 		htmlArrow += '</i></div><div id="button-next"><i class="fa fa-chevron-right fa-2x"></i></div>';
-		var htmlPage = '<input type="text"><span></span>';
+		var htmlPage = '<input type="text" style="width:' + (('' + self.pages).length * 8 + 17) +'px"><span></span>';
 		self.mainDiv.append(htmlArrow);
 		$('#book-page').html(htmlPage);
  

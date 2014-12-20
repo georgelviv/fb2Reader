@@ -108,6 +108,63 @@ header{
     padding-top: 13px;
     height: 30px;
   }
+  #book-scolumn {
+    padding-left: 20px;
+    display: inline-block;
+    padding-top: 13px;
+    height: 30px;
+    .switch {
+      font-size: 0;
+      border: 3px solid #fff;
+      border-radius: 6px;
+      position: relative;
+      width: 100px;
+      height: 30px;
+      top: -5px;
+    }
+    .count {
+      position: relative;
+      display: inline-block;
+      line-height:25px;
+      width: 50%;
+      height: 100%;
+    }
+    .label[for="s-one-column"] {
+      border-radius: 5px 0 0 5px;
+    }
+    .label[for="s-two-column"] {
+      border-radius: 0 5px 5px 0;
+    }
+    input[type="radio"] {
+      appearance: none;
+      width: 0;
+      height: 0;
+      opacity: 0;
+    }
+    input[type="radio"]:focus {
+      outline: 0;
+      outline-offset: 0;      
+    }
+    input[type="radio"]:checked ~ label {
+      background-color: #fff;
+      color: @headerColor;
+    }
+    input[type="radio"]:active ~ label {
+      color: #000;
+    }
+    label {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      cursor: pointer;
+      text-align: center;
+      color: #fff;
+      font-size: 16px;
+      transition: transform 0.4s, color 0.4s, background-color 0.4s;
+    }
+  }
 
 ul.social li a,
   nav ul li a{
@@ -637,8 +694,12 @@ li:last-child > .settings-list-link {
 .imgShow {
   position: absolute;
   opacity: 1;
-  max-width: 100%;
-}    
+}
+.ornament {
+  position: absolute;
+  opacity: 1;
+  background-color: blue;
+}
 
 @media (max-width: 600px) {
   #button-prev, #button-next {
