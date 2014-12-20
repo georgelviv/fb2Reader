@@ -127,11 +127,15 @@ header{
     .switch {
       font-size: 0;
       border: 3px solid #fff;
-      border-radius: 6px;
       position: relative;
       width: 100px;
       height: 30px;
       top: -5px;
+ -webkit-user-select: none;  
+  -moz-user-select: none;     
+  -ms-user-select: none;      
+  -o-user-select: none;
+  user-select: none; 
     }
     .count {
       position: relative;
@@ -139,12 +143,6 @@ header{
       line-height:25px;
       width: 50%;
       height: 100%;
-    }
-    .label[for="s-one-column"] {
-      border-radius: 5px 0 0 5px;
-    }
-    .label[for="s-two-column"] {
-      border-radius: 0 5px 5px 0;
     }
     input[type="radio"] {
       appearance: none;
@@ -957,7 +955,14 @@ li:last-child > .settings-list-link {
 .ornament {
   position: absolute;
   opacity: 1;
-  background-color: blue;
+}
+.ornament1 {
+  background: url(../img/ornament1.png) no-repeat 50% 50%;
+  background-size: contain;
+}
+.ornament1r {
+  background: url(../img/ornament1r.png) no-repeat 50% 50%;
+  background-size: contain;
 }
 
 @media (max-width: 600px) {

@@ -10,7 +10,7 @@ function settingPanel() {
 			return false;
 		});
 
-	});
+});
 
 	var styleString = '';
 	$('#fonts').change(function()

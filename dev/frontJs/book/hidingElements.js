@@ -139,6 +139,9 @@ function hideEl(isTop, el) {
 					top: 2 + 'px',
 					width: el.outerWidth() + 'px'
 				});
+				if (makedHeight > 40) {
+					ornament.addClass('ornament1');
+				}
 				bookObj.bookDiv.append(ornament);
 			}
 		} else {
@@ -159,6 +162,9 @@ function hideEl(isTop, el) {
 					top: $(imgEl).position().top + 'px',
 					width: el.outerWidth() + 'px'
 				});
+				if (makedHeight > 40) {
+					ornament.addClass('ornament1r');
+				}
 				bookObj.bookDiv.append(ornament);
 			}
 		}
