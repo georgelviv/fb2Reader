@@ -13,7 +13,7 @@ define(
 		this.bookHeight = $('#book').height();
 		this.isColumns = chekForColumns(this);
 	}
-
+	
 	Book.prototype.hideEl = hidingElements.hide;
 	Book.prototype.hideBoth = hidingElements.hideBoth;
 	Book.prototype.pageSet = bookSave.pageSet;
