@@ -16,6 +16,9 @@ function settingPanel() {
 	$('#fonts').change(function()
 	{
 		var option = $(this).find('option:selected').val();
+		if (option == 'null') {
+			$('#book').css("font-family",  "Arial");
+		}
 		$('#book').css("font-family", option);
 		$('body').trigger('changeStyles');
 	});
@@ -23,6 +26,9 @@ function settingPanel() {
 	$('#fontSize').change(function()
 	{
 		var option = $(this).find('option:selected').val();
+		if (option == 'default') {
+			$('#book').css("font-size",  16);
+		}
 		$('#book').css("font-size", parseInt(option, 10));
 		$('body').trigger('changeStyles');
 	});
@@ -30,12 +36,18 @@ function settingPanel() {
 	$('#fontStyle').change(function()
 	{
 		var option = $(this).find('option:selected').val();
+		if (option == 'null') {
+			$('#book').css("font-style",  "normal");
+		}
 		$('#book').css("font-style", option);
 		$('body').trigger('changeStyles');
 	});
 	$('#fontWeight').change(function()
 	{
 		var option = $(this).find('option:selected').val();
+		if (option == 'null') {
+			$('#book').css("font-weight",  "200");
+		}
 		$('#book').css("font-weight", parseInt(option, 10));
 		$('body').trigger('changeStyles');
 	});
@@ -43,6 +55,9 @@ function settingPanel() {
 	$('#fontColor').change(function()
 	{
 		var option = $(this).find('option:selected').val();
+		if (option == 'null') {
+			$('#book').css("color",  "black");
+		}
 		$('#book').css("color", option);
 		$('body').trigger('changeStyles');
 	});
@@ -51,6 +66,9 @@ function settingPanel() {
 	$('#lineHeight').change(function()
 	{
 		var option = $(this).find('option:selected').val();
+		if (option == 'null') {
+			$('#book').css("line-height",  "1");
+		}
 		$('#book').css("line-height", parseInt(option, 10));
 		$('body').trigger('changeStyles');
 	});
@@ -58,6 +76,9 @@ function settingPanel() {
 	$('#letterSpacing').change(function()
 	{
 		var option = $(this).find('option:selected').val();
+		if (option == '0') {
+			$('#book').css("line-spacing",  "1");
+		}
 		$('#book').css("letter-spacing", parseInt(option, 10));
 		$('body').trigger('changeStyles');
 	});
@@ -65,6 +86,9 @@ function settingPanel() {
 	$('#wordSpacing').change(function()
 	{
 		var option = $(this).find('option:selected').val();
+		if (option == '0') {
+			$('#book').css("word-spacing", "1");
+		}
 		$('#book').css("word-spacing", parseInt(option, 10));
 		$('body').trigger('changeStyles');
 	});
@@ -72,7 +96,11 @@ function settingPanel() {
 	$('#backgroundColor').change(function()
 	{
 		var option = $(this).find('option:selected').val();
-		$('#main, #book').css("background-color", option);
+		if (option == 'null') {
+			$('#main, #book').css("background-color",  "#ecf0f1");
+		} 
+
+		$('#main, #book').css("background-color", option);		
 		$('body').trigger('changeStyles');
 	});
 
@@ -90,7 +118,10 @@ function settingPanel() {
 	$('#textures').change(function()
 	{
 		var option = $(this).find('option:selected').val();
-		$('#main, #book').css("background-image",  "url('"+option+"')")
+		if (option != 'null') {
+			$('#main, #book').css("background-image",  "url('"+option+"')");
+		}	
+		$('#main, #book').css("background-image",  "url('"+option+"')");
 		$('body').trigger('changeStyles');
 	});
 
