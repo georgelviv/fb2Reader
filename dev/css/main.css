@@ -33,6 +33,10 @@ ol {
   width: 120px !important;
   padding-left: 10px;
 }
+.nightMode {
+  background: #424242 !important;
+  color: #ccc;
+}
 .wrapper {
   width: 95%;
   height: auto;

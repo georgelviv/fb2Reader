@@ -3,7 +3,8 @@ define(
 	'book/bookSave',
 	'book/bookFullScreen',
 	'book/bookSearch',
-	'hint'],
+	'hint',
+	'settingsPanel'],
 	function(hidingElements, bookSave, bookFullScreen, bookSearch) {
 	function Book(bookString) {
 		this.bookString = bookString;

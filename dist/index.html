@@ -60,8 +60,26 @@
           <ol class="settings-list" id="backgrounds">
             <li>
               <a class="settings-list-link">
-                <i class="fa fa-hand-o-right"></i>
-                Колір фону <span>вибрати колір фону</span>
+                <div class="left-side"> 
+                  <i class="fa fa-hand-o-right"></i>
+                  <label>background</label>
+                </div>
+                <div class="right-side"> 
+                  <select id="backgroundColor">
+                    <option  style="background:red;" value="red">Red</option>
+                    <option style="background:#00FFFF;" value="#00FFFF">Aqua</option>
+                    <option  style="background:#7FFFD4;" value="#7FFFD4">Aquamarine</option>
+                    <option style="background:#FFE4C4;" value="#FFE4C4">Bisque</option>
+                    <option  style="background:#000000;" value="#000000">Black</option>
+                    <option style="background:#0000FF;" value="#0000FF">Blue</option>
+                    <option  style="background:#FA8072;" value="#FA8072">Salmon </option>
+                    <option style="background:#2E8B57;" value="#2E8B57">SeaGreen</option>
+                    <option  style="background:#800080;" value="#800080">Purple</option>
+                    <option style="background:#708090;" value="#708090">SlateGray</option>
+                    <option  style="background:#D2B48C;" value="#D2B48C">Tan</option>
+                    <option style="background:#2F4F4F;" value="#2F4F4F">DarkSlateGray</option>
+                  </select>
+                </div>
               </a>
             </li>
             <li>
@@ -72,8 +90,16 @@
             </li>
             <li>
               <a class="settings-list-link">
-                <i class="fa fa-hand-o-right"></i>           
-                Нічний режим<span>темний фон і сірі букви</span>
+                <div class="left-side"> 
+                  <i class="fa fa-hand-o-right"></i>
+                  <label>night Mode</label>
+                </div>
+                <div class="right-side"> 
+                  <select id="nightMode">
+                    <option  value="null">Off</option>
+                    <option  value="1">On</option>
+                  </select>
+                </div>          
               </a>
             </li>
           </ol>
