@@ -32,6 +32,26 @@ ul, ol{
 
 
 
+
+.right-side {
+  display: inline-block;
+  select {
+  color: @settingsLinkHover;
+  width: 100px !important; 
+  padding-left: 5px;
+  padding: 1px 5px; 
+  }
+}
+
+.left-side {
+  display: inline-block;
+  width: 150px !important;
+  label {
+    width: 120px !important;
+    padding-left: 10px;
+  }
+}
+
 .wrapper {
   width: 95%;
   height: auto;
@@ -108,6 +128,11 @@ header{
       width: 100px;
       height: 30px;
       top: -5px;
+ -webkit-user-select: none;  
+  -moz-user-select: none;     
+  -ms-user-select: none;      
+  -o-user-select: none;
+  user-select: none; 
     }
     .count {
       position: relative;
@@ -927,7 +952,14 @@ li:last-child > .settings-list-link {
 .ornament {
   position: absolute;
   opacity: 1;
-  background-color: blue;
+}
+.ornament1 {
+  background: url(../img/ornament1.png) no-repeat 50% 50%;
+  background-size: contain;
+}
+.ornament1r {
+  background: url(../img/ornament1r.png) no-repeat 50% 50%;
+  background-size: contain;
 }
 
 @media (max-width: 600px) {

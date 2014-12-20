@@ -87,8 +87,12 @@ define(
 		this.bookHeight = this.bookDiv.height();
 		if (this.isColumns) {
 			this.rcolumn.scrollTop((this.lcolumn.scrollTop() + this.bookHeight) - (this.fixScroll) / 2);
+			this.pages = Math.ceil((this.scrollHeight) / ((this.bookHeight - this.fixScroll) * 2));
+		} else {
+			this.pages = Math.ceil(this.scrollHeight / (this.bookHeight - this.fixScroll));
 		}
 		this.pageSet();
+		this.hideBoth();
 	}
 
 	function initKeyNav() {
