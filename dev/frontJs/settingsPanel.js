@@ -84,10 +84,15 @@ function settingPanel() {
 	      } else {
 	         $('#main, #book').removeClass();
 	      }
-
 		$('body').trigger('changeStyles');
 	});
-	
+
+	$('#textures').change(function()
+	{
+		var option = $(this).find('option:selected').val();
+		$('#main, #book').css("background-image",  "url('"+option+"')")
+		$('body').trigger('changeStyles');
+	});
 
 /*
 	function saveBookStyle(styleString) {
