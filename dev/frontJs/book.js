@@ -35,11 +35,11 @@ function initBook(book) {
 	self.currentPage = 1;
 	if (self.userWidth) {
 		self.initTwoColumn();
-		self.initFullScreen();
 		self.initColumnButtons();
 	} else {
 		self.initOneColumn();
 	}
+	self.initFullScreen();
 	self.initNavigation();
 	self.initSaving();
 	self.initSearch();

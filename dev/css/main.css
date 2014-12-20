@@ -886,6 +886,9 @@ li:last-child > .settings-list-link {
   background: url(../img/ornament1r.png) no-repeat 50% 50%;
   background-size: contain;
 }
+.sb-toggle-left {
+  display: none;
+}
 @media (max-width: 600px) {
   #button-prev,
   #button-next {
@@ -904,6 +907,78 @@ li:last-child > .settings-list-link {
   #button-next:hover {
     cursor: pointer;
     background: none;
+  }
+  #search,
+  .upload {
+    display: none;
+  }
+  .sb-toggle-left {
+    position: absolute;
+    display: block;
+  }
+  header #book-page {
+    width: 120px;
+    margin: 0 auto;
+    padding: 0;
+    padding-left: 12px;
+    display: block;
+  }
+  header nav {
+    padding-top: 5px;
+    width: 100%;
+    float: none;
+    padding: 0;
+    position: relative;
+  }
+  #main {
+    height: 88%;
+  }
+  #fullScreenBtn {
+    z-index: 10;
+    font-size: 2em;
+    bottom: 0;
+    right: 5px;
+  }
+  .upload.sidebar {
+    display: block;
+    width: 100%;
+    height: 60px;
+    border-right: 1px solid #fff;
+  }
+  .upload.sidebar .file_uploads {
+    width: 0;
+    height: 0;
+    position: absolute;
+    visibility: hidden;
+  }
+  .upload.sidebar #upload-buttons {
+    width: 90%;
+    margin: 5px auto;
+    border: 2px solid #fff;
+    text-align: center;
+    line-height: 50px;
+    height: 50px;
+    font-size: 1.5em;
+    color: #fff;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+    -webkit-transition: all .15s linear;
+    -moz-transition: all .15s linear;
+    transition: all .15s linear;
+  }
+  .upload.sidebar #upload-buttons:hover {
+    cursor: pointer;
+    background-color: #fff;
+    color: #222;
+  }
+  .upload.sidebar #upload-buttons:active {
+    color: #222;
+  }
+  footer {
+    display: none;
   }
 }
 

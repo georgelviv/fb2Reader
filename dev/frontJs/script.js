@@ -1,22 +1,31 @@
 require(
     ['tools/jquery-1.11.1.min',
 	'tools/jquery.fileupload',
+	'tools/slidebars.js',
 	'settingsPanel',
 	'preloader',
     'book',
     'hint'],
 main);
 
-function main(jquery, fileupload, settingsPanel, preloader, Book) {
+function main(jquery, fileupload, slidebars, settingsPanel, preloader, Book) {
 	$(document).ready(function() {
 
 		var bookDiv = $('#book');
 		var fileExtension = /(fb2|epub|txt)/i;
 		var bookName;
+
+		$.slidebars();
+
 		showBookStorage();
+
+
 
 		$('#upload-button').on('click', function() {
 			$('.file_upload').trigger('click');
+		});
+		$('#upload-buttons').on('click', function() {
+			$('.file_uploads').trigger('click');
 		});
 
 		$('#ex-book').on('click', function(e) {

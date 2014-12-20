@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
 	<title>fb2Reader</title>
 	<link rel="shortcut icon" href="img/favicon.png">
 	<link rel="stylesheet" href="css/style.min.css">
@@ -10,12 +10,15 @@
 <body>
 
 <!-- Header and Nav -->
+<div id="sb-site">
+
 <header>
   <div class="upload">
     <input id="fileselect" type="file" class="file_upload">
     <div id="upload-button">UPLOAD BOOK</div>
   </div> 
   <nav>
+    <div class="sb-toggle-left"><i class="fa fa-bars fa-2x"></i></div>
     <div id="book-page"></div>
     <div id="book-scolumn"></div> 
     <ul class="social">
@@ -270,8 +273,17 @@
         </div>
       </div>
   </footer>
-
   <div id="hint"> </div>
+  </div>
+
+<div class="sb-slidebar sb-left">
+  <div class="upload sidebar">
+    <input id="fileselects" type="file" class="file_uploads">
+    <div id="upload-buttons">UPLOAD BOOK</div>
+  </div> 
+</div>
+
+  
 	<script src="js/build.min.js"></script>
 </body>
 </html>
