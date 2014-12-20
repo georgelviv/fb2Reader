@@ -915,13 +915,17 @@ li:last-child > .settings-list-link {
   .sb-toggle-left {
     position: absolute;
     display: block;
+    color: #fff;
   }
   header #book-page {
-    width: 120px;
+    width: 140px;
     margin: 0 auto;
     padding: 0;
-    padding-left: 12px;
     display: block;
+    font-size: 2em;
+  }
+  header #book-page input {
+    height: 40px;
   }
   header nav {
     padding-top: 5px;
@@ -979,6 +983,26 @@ li:last-child > .settings-list-link {
   }
   footer {
     display: none;
+  }
+  .sb-slidebar h2,
+  .sb-slidebar h3 {
+    margin: 15px 0;
+    text-align: center;
+    color: #fff;
+  }
+  .sb-slidebar h2 {
+    font-size: 2em;
+  }
+  .sb-slidebar h3 {
+    font-size: 1.5em;
+  }
+  .sb-slidebar .sfont-size {
+    width: 90%;
+    margin: 0 auto;
+  }
+  .sb-slidebar select {
+    width: 100%;
+    font-size: 1.4em;
   }
 }
 

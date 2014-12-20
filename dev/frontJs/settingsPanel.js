@@ -20,7 +20,7 @@ function settingPanel() {
 		$('body').trigger('changeStyles');
 	});
 
-	$('#fontSize').change(function()
+	$('#fontSize, #sfontSize').change(function()
 	{
 		var option = $(this).find('option:selected').val();
 		$('#book').css("font-size", parseInt(option, 10));
