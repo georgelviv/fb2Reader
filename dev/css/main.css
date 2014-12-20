@@ -87,7 +87,6 @@ header #book-scolumn {
 header #book-scolumn .switch {
   font-size: 0;
   border: 3px solid #fff;
-  border-radius: 6px;
   position: relative;
   width: 100px;
   height: 30px;
@@ -99,12 +98,6 @@ header #book-scolumn .count {
   line-height: 25px;
   width: 50%;
   height: 100%;
-}
-header #book-scolumn .label[for="s-one-column"] {
-  border-radius: 5px 0 0 5px;
-}
-header #book-scolumn .label[for="s-two-column"] {
-  border-radius: 0 5px 5px 0;
 }
 header #book-scolumn input[type="radio"] {
   appearance: none;
