@@ -35,45 +35,74 @@
 <div id="main">
   <div id="book"></div>
 </div>
-<!-- Footer -->
+<!-- Footer / Settings Panel -->
 
 
   <footer>
     <i class="fa fa-bars menu" data-toggle-settings-panel="settings-panel"></i>
     <div class="settings-panel" style="display:none">
       <div class="settings">
-          <ol class="settings-list" id="vocabulary">
-            <li>
-              <a class="settings-list-link">
-                <i class="fa fa-stack-exchange"></i>
-                Словник Нотаток <span>мій словник</span>
-              </a>
-            </li>
-            <li>
-              <a class="settings-list-link">          
-                <i class="fa fa-stack-exchange"></i>
-                Англ. Словник шуканих слів <span>переклад шуканих слів на англ.м.</span>
-              </a>
-            </li>
-          </ol>
-
           <ol class="settings-list" id="backgrounds">
             <li>
               <a class="settings-list-link">
-                <i class="fa fa-hand-o-right"></i>
-                Колір фону <span>вибрати колір фону</span>
+                <div class="left-side"> 
+                  <i class="fa fa-hand-o-right"></i>
+                  <label>background</label>
+                </div>
+                <div class="right-side"> 
+                  <select id="backgroundColor">
+                    <option  style="background:red;" value="red">Red</option>
+                    <option style="background:#00FFFF;" value="#00FFFF">Aqua</option>
+                    <option  style="background:#7FFFD4;" value="#7FFFD4">Aquamarine</option>
+                    <option style="background:#FFE4C4;" value="#FFE4C4">Bisque</option>
+                    <option  style="background:#000000;" value="#000000">Black</option>
+                    <option style="background:#0000FF;" value="#0000FF">Blue</option>
+                    <option  style="background:#FA8072;" value="#FA8072">Salmon </option>
+                    <option style="background:#2E8B57;" value="#2E8B57">SeaGreen</option>
+                    <option  style="background:#800080;" value="#800080">Purple</option>
+                    <option style="background:#708090;" value="#708090">SlateGray</option>
+                    <option  style="background:#D2B48C;" value="#D2B48C">Tan</option>
+                    <option style="background:#2F4F4F;" value="#2F4F4F">DarkSlateGray</option>
+                  </select>
+                </div>
               </a>
             </li>
             <li>
               <a class="settings-list-link">
-                <i class="fa fa-hand-o-right"></i>
-                Текстура<span>текстура під текст</span>
+                <div class="left-side"> 
+                  <i class="fa fa-hand-o-right"></i>
+                  <label>textures</label>
+                </div>
+                <div class="right-side"> 
+                  <select id="textures">
+                    <option  style="background: url(../img/Textures/1.jpg);" value="../img/Textures/1.jpg">1</option>
+                    <option style="background: url(../img/Textures/2.jpg);" value="../img/Textures/2.jpg"> 2 </option>
+                    <option  style="background: url(../img/Textures/3.jpg);" value="../img/Textures/3.jpg">3</option>
+                    <option style="background: url(../img/Textures/4.jpg);" value="../img/Textures/4.jpg">4</option>
+                    <option  style="background: url(../img/Textures/5.jpg);" value="../img/Textures/5.jpg">5</option>
+                    <option style="background: url(../img/Textures/6.jpg);" value="../img/Textures/6.jpg">6</option>
+                    <option  style="background: url(../img/Textures/7.jpg);" value="../img/Textures/7.jpg">7</option>
+                    <option style="background: url(../img/Textures/8.jpg);" value="../img/Textures/8.jpg">8</option>
+                    <option  style="background: url(../img/Textures/9.jpg);" value="../img/Textures/9.jpg">9</option>
+                    <option style="background: url(../img/Textures/10.jpg);" value="../img/Textures/10.jpg">10</option>
+                    <option  style="background: url(../img/Textures/11.jpg);" value="../img/Textures/11.jpg">11</option>
+                    <option style="background: url(../img/Textures/12.jpg);" value="../img/Textures/12.jpg">12</option>
+                  </select>
+                </div>
               </a>
             </li>
             <li>
               <a class="settings-list-link">
-                <i class="fa fa-hand-o-right"></i>           
-                Нічний режим<span>темний фон і сірі букви</span>
+                <div class="left-side"> 
+                  <i class="fa fa-hand-o-right"></i>
+                  <label>night Mode</label>
+                </div>
+                <div class="right-side"> 
+                  <select id="nightMode">
+                    <option  value="null">Off</option>
+                    <option  value="1">On</option>
+                  </select>
+                </div>          
               </a>
             </li>
           </ol>
@@ -232,11 +261,11 @@
           </ol>
           <ul class="settings-tabs">
             <li class="settings-tab">
-              <a href="#vocabulary" class="settings-tab-link">Dictionaries</a>
-            <li class="settings-tab">
               <a href="#backgrounds" class="settings-tab-link">Backgrounds</a>
+            </li>  
             <li class="settings-tab">
               <a href="#bookFonts" class="settings-tab-link">Fonts</a>
+            </li>  
           </ul>
         </div>
       </div>

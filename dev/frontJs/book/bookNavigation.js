@@ -71,6 +71,14 @@ define(function() {
 			self.bookPageDiv.find('input').val(self.currentPage);
 		});
 
+		$('body').on('changeStyles', function() {
+			if (self.isTwoColumn) {
+				self.initTwoColumn();
+			} else {
+				self.initOneColumn();
+			}
+		});
+
 		$('body').on('addedBook', function() {
 			document.body.removeEventListener('keyup', keyEvent);
 			document.getElementById('book-page').removeEventListener('keyup', goToEv);

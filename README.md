@@ -5,6 +5,10 @@ fb2Reader is best web application for read books in fb2, epub and txt format
 
 #### Last Updates:
 
+* hint and setting panel
+
+* structure changed
+
 * two columns
 
 * img move
@@ -15,21 +19,13 @@ fb2Reader is best web application for read books in fb2, epub and txt format
 
 * 404 added
 
-* Search added
-
-* Fixed ajax errors
-
 #### TODO list:
-
-* hint
-
-* settings panel
 
 * mobile version
 
 #### Bugs list:
 
-
+* img count
 
 
 
