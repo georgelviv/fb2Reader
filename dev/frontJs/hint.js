@@ -1,5 +1,5 @@
 define(['tools/jquery-1.11.1.min'], function() {
- initHint();
+   initHint();
 });
 
 function hintWord(x, y) {
@@ -37,8 +37,8 @@ function hintWord(x, y) {
             }
         }    
 
-		getWikiMedia(currentWord.text());
-	}
+        getWikiMedia(currentWord.text());
+    }
 }
 
 function hideHint() {
@@ -49,20 +49,20 @@ function getWikiMedia(word) {
     var obj = null, key = null; //explaintext, exintro
     $.getJSON("http://en.wikipedia.org/w/api.php?action=query&prop=extracts&explaintext&exchars=175&titles=" + word + "&format=json&callback=?", function(data) {
       
-       obj = data.query.pages;
-       for (key in obj)  break;
+     obj = data.query.pages;
+     for (key in obj)  break;
         if (key == -1) {
           $('#jsonWiki').html('<p> Sorry wiki doesn`t known</p>');  
-        } else {
-            $('#jsonWiki').html(obj[key].extract + '<a href="http://en.wikipedia.org/wiki?curid=' + key +'"> More...</a>' );     
-        }
-         
-    });
+      } else {
+        $('#jsonWiki').html(obj[key].extract + '<a href="http://en.wikipedia.org/wiki?curid=' + key +'"> More...</a>' );     
+    }
+    
+});
 }
 
 function initHint() {
-var self = this;
-document.getElementById('book').addEventListener('click', getHintWord);
+    var self = this;
+    document.getElementById('book').addEventListener('click', getHintWord);
 
     function getHintWord(e) {
     	if (e.ctrlKey) {
@@ -72,12 +72,12 @@ document.getElementById('book').addEventListener('click', getHintWord);
     	}
     }
 
-document.onkeydown = function(evt) {
-    evt = evt || window.event;
-    if (evt.keyCode == 27) {
-        hideHint();
-    }
-};
-  
+    document.onkeydown = function(evt) {
+        evt = evt || window.event;
+        if (evt.keyCode == 27) {
+            hideHint();
+        }
+    };
+    
 }
 

@@ -80,56 +80,162 @@
           <ol class="settings-list" id="bookFonts">
             <li>
               <a class="settings-list-link">
-                <i class="fa fa-font"></i>
-                Font-family<span>вибір/налаштування</span>
+                <div class="left-side">                 
+                  <i class="fa fa-font"></i>
+                  <label>Font-family</label>
+                </div>
+                <div class="right-side"> 
+                  <select id="fonts">
+                    <option value="Verdana">Verdana</option>
+                    <option value="Arial">Arial</option>
+                    <option value="Comic Sans MS">Comic Sans MS</option>
+                    <option value="Courier New">Courier New</option>
+                    <option value="Monotype Corsiva">Monotype</option>
+                    <option value="Tahoma">Tahoma</option>
+                    <option value="Times">Times</option>
+                  </select> 
+               </div>
               </a>
             </li>
             <li>
               <a class="settings-list-link">
-               <i class="fa fa-arrows-v"></i>
-                 font-size <span>вибір/налаштування</span>
+                <div class="left-side">                 
+                  <i class="fa fa-arrows-v"></i>
+                  <label>Font-size</label> 
+                </div>
+                <div class="right-side"> 
+                  <select id="fontSize">
+                    <option value="12">12</option>
+                    <option value="14">14</option>
+                    <option value="16">16</option>
+                    <option value="18">18</option>
+                    <option value="20">20</option>
+                    <option value="22">22</option>
+                    <option value="24">24</option>
+                  </select> 
+                </div>
               </a>
             </li>
 
             <li>
               <a class="settings-list-link">
-                <i class="fa fa-bars "></i>
-                font-color<span>вибір/налаштування</span>
+                <div class="left-side"> 
+                  <i class="fa fa-bars "></i>
+                  <label>font-color</label>
+                </div>
+                <div class="right-side"> 
+                  <select id="fontColor">
+                    <option  style="background:red;" value="red">Red</option>
+                    <option style="background:#00FFFF;" value="#00FFFF">Aqua</option>
+                    <option  style="background:#7FFFD4;" value="#7FFFD4">Aquamarine</option>
+                    <option style="background:#FFE4C4;" value="#FFE4C4">Bisque</option>
+                    <option  style="background:#000000;" value="#000000">Black</option>
+                    <option style="background:#0000FF;" value="#0000FF">Blue</option>
+                    <option  style="background:#FA8072;" value="#FA8072">Salmon </option>
+                    <option style="background:#2E8B57;" value="#2E8B57">SeaGreen</option>
+                    <option  style="background:#800080;" value="#800080">Purple</option>
+                    <option style="background:#708090;" value="#708090">SlateGray</option>
+                    <option  style="background:#D2B48C;" value="#D2B48C">Tan</option>
+                    <option style="background:#2F4F4F;" value="#2F4F4F">DarkSlateGray</option>
+                  </select>
+                </div> 
               </a>
             </li>
 
             <li>
               <a class="settings-list-link">
-                <i class="fa fa-text-width"></i>
-                letter-spacing<span>вибір/налаштування</span>
+                <div class="left-side">                 
+                  <i class="fa fa-text-width"></i>
+                  <label>letter-spacing</label>
+                </div>
+                <div class="right-side"> 
+                  <select id="letterSpacing">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="5">5</option>
+                    <option value="10">10</option>
+                    <option value="20">20</option>
+                  </select> 
+                 </div> 
               </a>
             </li>
             <li>
               <a class="settings-list-link">
-                <i class="fa fa-text-widt"></i>
-                 word-spacing <span>вибір/налаштування</span>
+                <div class="left-side">                 
+                  <i class="fa fa-text-widt"></i>
+                  <label>word-spacing</label> 
+               </div>
+                <div class="right-side"> 
+                  <select id="wordSpacing">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="5">5</option>
+                    <option value="10">10</option>
+                    <option value="20">20</option>
+                  </select> 
+              </div>
               </a>
             </li>
             <li>
               <a class="settings-list-link">
-                <i class="fa fa-text-height"></i>
-                line-height<span>вибір/налаштування</span>
+                <div class="left-side"> 
+                  <i class="fa fa-text-height"></i>
+                  <label>line-height</label>
+                </div>
+                <div class="right-side"> 
+                <select id="lineHeight">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="5">5</option>
+                    <option value="10">10</option>
+                    <option value="20">20</option>
+                  </select>
+                </div> 
               </a>
             </li>
             <li>
               <a class="settings-list-link">
-                <i class="fa fa-list"></i>
-                font-style<span>вибір/налаштування</span>
+                <div class="left-side"> 
+                  <i class="fa fa-list"></i>
+                  <label>font-style</label>
+                </div>                
+                <div class="right-side"> 
+                  <select id="fontStyle">
+                    <option value="normal">Normal</option>
+                    <option value="oblique">Oblique</option>
+                    <option value="italic">Italic</option>                  
+                  </select> 
+              </div>
               </a>
             </li>
+            <li>
+              <a class="settings-list-link">
+                <div class="left-side">
+                  <i class="fa fa-list"></i>
+                  <label>font-weight</label> 
+                </div> 
+                <div class="right-side">              
+                  <select id="fontWeight">
+                    <option value="200">200</option>
+                    <option value="400">400</option>
+                    <option value="600">600</option>
+                    <option value="800">800</option>                  
+                  </select> 
+              </div>
+              </a>
+            </li>
+            
           </ol>
           <ul class="settings-tabs">
             <li class="settings-tab">
-              <a href="#vocabulary" class="settings-tab-link">Словники</a>
+              <a href="#vocabulary" class="settings-tab-link">Dictionaries</a>
             <li class="settings-tab">
-              <a href="#backgrounds" class="settings-tab-link">Фон</a>
+              <a href="#backgrounds" class="settings-tab-link">Backgrounds</a>
             <li class="settings-tab">
-              <a href="#bookFonts" class="settings-tab-link">Шрифт</a>
+              <a href="#bookFonts" class="settings-tab-link">Fonts</a>
           </ul>
         </div>
       </div>

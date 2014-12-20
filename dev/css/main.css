@@ -16,6 +16,23 @@ ul,
 ol {
   list-style: none;
 }
+.right-side {
+  display: inline-block;
+}
+.right-side select {
+  color: #333333;
+  width: 100px !important;
+  padding-left: 5px;
+  padding: 1px 5px;
+}
+.left-side {
+  display: inline-block;
+  width: 150px !important;
+}
+.left-side label {
+  width: 120px !important;
+  padding-left: 10px;
+}
 .wrapper {
   width: 95%;
   height: auto;
