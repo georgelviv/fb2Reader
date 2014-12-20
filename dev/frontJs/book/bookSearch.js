@@ -1,9 +1,7 @@
-define(['tools/jquery-1.11.1.min'], function(jquery) {
-
+define(function() {
 	var bookSearch = {
 		initSearch: initSearch
 	};
-
 	return bookSearch;
 });
 
@@ -94,16 +92,16 @@ function initSearch() {
 			if (results === 0) {
 				searchError.text('No results found');
 			} else {
-				if (self.isColumns) {
+				if (self.isTwoColumn) {
 					firstMatchTop = Math.ceil(self.lcolumn.find('.highlight')[0].getBoundingClientRect().top);
 					scrollEl = Math.abs(firstMatchTop + self.lcolumn.scrollTop());
-					firstMatchPage = Math.ceil(scrollEl / ((self.bookHeight - self.fixScroll) * 2));
+					firstMatchPage = Math.ceil(scrollEl / (self.fixedHeight * 2));
 					self.gotoPage(firstMatchPage);
 				} else {
 					results = self.bookDiv.find('.highlight').length;
 					firstMatchTop = Math.ceil(self.bookDiv.find('.highlight')[0].getBoundingClientRect().top);
 					scrollEl = Math.abs(firstMatchTop + self.bookDiv.scrollTop());
-					firstMatchPage = Math.ceil(scrollEl / (self.bookHeight - self.fixScroll));
+					firstMatchPage = Math.ceil(scrollEl / fixedHeight);
 					self.gotoPage(firstMatchPage);
 				}
 				searchError.text('Found ' + results + ' matches');

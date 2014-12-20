@@ -1,13 +1,9 @@
-define(
-	['tools/jquery-1.11.1.min'],
-	function(jquery) {
-	var fullSreen = {
-		fSEvent: fSEvent,
-		initFullScreen: initFullScreen,
-		initColumns: initSColumns
+define(function() {
+	var bookFullScreen = {
+		initFullScreen: initFullScreen
 	};
 
-	return fullSreen;
+	return bookFullScreen;
 
 	function fSEvent(self) {
 		if (
@@ -50,11 +46,23 @@ define(
 		function onChangeFull(iconClass) {
 			$('.linehide').remove();
 			setTimeout(function() {
-				self.reInitPage();
-				self.hideBoth();
+				$('body').trigger('fsChange');
+				reInitPage();
 				self.fSDiv.find('i').toggleClass('fa-arrows-alt');
 				self.fSDiv.find('i').toggleClass('fa-compress');
 			}, 180);
+		}
+
+		function reInitPage() {
+			self.bookHeight = self.bookDiv.height();
+			self.fixedHeight = self.bookHeight - self.fixScroll;
+			if (self.isTwoColumn) {
+				self.rcolumn.scrollTop(self.lcolumn.scrollTop() + self.fixedHeight);
+				self.pages = Math.ceil((self.scrollHeight) / (self.fixedHeight * 2));
+			} else {
+				self.pages = Math.ceil(self.scrollHeight / self.fixedHeight);
+			}
+			self.hideElements();
 		}
 	}
 
@@ -66,10 +74,8 @@ define(
 			document.mozFullScreenEnabled ||
 			document.msFullscreenEnabled
 		) {
-			if (!self.fSDiv) {
-				self.mainDiv.append('<div id="fullScreenBtn"><i class="fa fa-arrows-alt"></i></div>');
-				self.fSDiv = $('#fullScreenBtn');
-			}
+			self.mainDiv.append('<div id="fullScreenBtn"><i class="fa fa-arrows-alt"></i></div>');
+			self.fSDiv = $('#fullScreenBtn');
 			self.fSDiv[0].addEventListener('click', clickFSEvent);
 		}
 		function clickFSEvent(e) {
@@ -80,56 +86,4 @@ define(
 			self.fSDiv.remove();
 		});
 	}
-
-	function initSColumns() {
-		var self = this;
-		var scolumnDiv = $('#book-scolumn');
-		var columnsHtml = '<div class="switch"><div class="count"><input type="radio" name="scolumn"';
-		columnsHtml += ' id="s-one-column"><label for="s-one-column">One</label></div><div class="count">';
-		columnsHtml += '<input type="radio" name="scolumn" id="s-two-column" checked><label';
-		columnsHtml += ' for="s-two-column">Two</label></div></div>';
-
-		scolumnDiv.html(columnsHtml);
-
-		$('#s-one-column, #s-two-column').change(function() {
-			if ($('#s-one-column:checked').val()) {
-				initOneColumn(self);
-			} else {
-				initTwoColumn(self);
-			}
-		});
-
-		$('body').on('addedBook', function() {
-			scolumnDiv.html('');
-		});
-	}
-
-	function initOneColumn(self) {
-		var currentPage = self.lcolumn.scrollTop();
-		self.bookDiv.html(self.bookString);
-		self.scrollHeight = self.bookDiv[0].scrollHeight;
-		self.bookDiv.scrollTop(currentPage);
-		self.pages = Math.ceil(self.scrollHeight / (self.bookHeight - self.fixScroll));
-		self.isColumns = false;
-		self.pageSet();
-		self.hideBoth();
-	}
-	function initTwoColumn(self) {
-		var content = '';
-		var currentPage = self.bookDiv.scrollTop();
-		content = '<div class="bookcolumn" id="lcolumn" style="padding-right:20px">' + self.bookString +'</div>';
-		content += '<div class="bookcolumn" id="rcolumn" style="padding-left:20px">' + self.bookString + '</div>';
-		self.bookDiv.html(content);
-		self.isColumns = true;
-		self.lcolumn = $('#lcolumn');
-		self.rcolumn = $('#rcolumn');
-		self.lcolumn.scrollTop(currentPage);
-		self.rcolumn.scrollTop((self.lcolumn.scrollTop() + self.bookHeight) - self.fixScroll);
-		self.scrollHeight = self.lcolumn[0].scrollHeight;
-		self.rcolumn.append('<div id="lastp" style="height:' + self.bookDiv.height() + 'px;">');
-		self.pages = Math.ceil((self.scrollHeight) / ((self.bookHeight - self.fixScroll) * 2));
-		self.pageSet();
-		self.hideBoth();
-	}
-
 });

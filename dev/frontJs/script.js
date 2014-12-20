@@ -3,18 +3,16 @@ require(
 	'tools/jquery.fileupload',
 	'settingsPanel',
 	'preloader',
-    'book'],
+    'book',
+    'hint'],
 main);
 
 function main(jquery, fileupload, settingsPanel, preloader, Book) {
 	$(document).ready(function() {
 
-		var book;
-		var bookOption = {
-			fileExtension: /(fb2|epub|txt)/i,
-			bookDiv: $('#book')
-		};
-
+		var bookDiv = $('#book');
+		var fileExtension = /(fb2|epub|txt)/i;
+		var bookName;
 		showBookStorage();
 
 		$('#upload-button').on('click', function() {
@@ -23,16 +21,7 @@ function main(jquery, fileupload, settingsPanel, preloader, Book) {
 
 		$('#ex-book').on('click', function(e) {
 			e.preventDefault();
-			$.get("/getexamplebook").done(function(data) {
-				if (data !== 'false') {
-					book = new Book(data);
-					onBookGet(data);
-				} else {
-					setTimeout(getBook, 500);
-				}
-			}).fail(function() {
-				bookOption.bookDiv.html('<div id="nobook">Error to get book</div>');
-			});
+			getExample();
 			preloader.exampleParsing();
 		});
 
@@ -41,20 +30,16 @@ function main(jquery, fileupload, settingsPanel, preloader, Book) {
 			dataType: 'json',
 			add: function(e, data) {
 				var format;
-				bookOption.bookDiv.html('');
-
-				if (book) {
-					$('body').trigger('addedBook');
-				}
-
-				bookOption.bookName = data.files[0].name;
-				format = bookOption.bookName.split('.');
+				bookName = data.files[0].name;
+				bookDiv.html('');
+				$('body').trigger('addedBook');
+				format = bookName.split('.');
 				format = format[format.length - 1];
-				if (format.match(bookOption.fileExtension)) {
+				if (format.match(fileExtension)) {
 					data.submit();
 					book = '';
 				} else {
-					bookOption.bookDiv.html('<div id="nobook">Wrong book format</div>');
+					bookDiv.html('<div id="nobook">Wrong book format</div>');
 				}
 			},
 			done: function (e, data) {
@@ -66,53 +51,40 @@ function main(jquery, fileupload, settingsPanel, preloader, Book) {
 		});
 
 		function getBook() {
-				$.get("/getbook?bookName=" + bookOption.bookName).done(function(data) {
+				$.get("/getbook?bookName=" + bookName).done(function(data) {
 					if (data !== 'false') {
-						book = new Book(data);
-						onBookGet(data);
+						new Book(data);
 					} else {
 						setTimeout(getBook, 500);
 					}
 				}).fail(function() {
-					bookOption.bookDiv.html('<div id="nobook">Error to get book</div>');
+					bookDiv.html('<div id="nobook">Error to get book</div>');
 				});
 				preloader.parsing();
-		}
-
-		function onBookGet(data) {
-			book.hideBoth();
-			book.saveBookString(data);
-			book.savePage(0);
-			book.pageSet();
 		}
 
 		function showBookStorage() {
 			var noBookHtml;
 			if (!!localStorage && localStorage.getItem("book")){
-				book = new Book(localStorage.getItem("book"));
-				if (localStorage.getItem("scrollTop")) {
-					if (book.isColumns) {
-						book.lcolumn.scrollTop(localStorage.getItem("scrollTop"));
-						book.rcolumn.scrollTop((book.lcolumn.scrollTop() + book.bookHeight) - book.fixScroll);
-						book.pageSet();
-						book.hideBoth();
-					} else {
-						book.bookDiv.scrollTop(localStorage.getItem("scrollTop"));
-						book.pageSet();
-						book.hideBoth();
-					}
-				}
+				new Book(localStorage.getItem("book"));
 			} else {
 				noBookHtml = '<div id="nobook">No book to show, please upload book<br>';
 				noBookHtml += ' or <a id="ex-book" href="#">Read Alice in Wonderland</a></div>';
-				bookOption.bookDiv.html(noBookHtml);
+				bookDiv.html(noBookHtml);
 			}
+		}
+
+		function getExample() {
+			$.get("/getexamplebook").done(function(data) {
+				if (data !== 'false') {
+					new Book(data);
+				} else {
+					setTimeout(getExample, 500);
+				}
+			}).fail(function() {
+				bookDiv.html('<div id="nobook">Error to get book</div>');
+			});
 		}
 
 	});
 }
-
-
-
-
-

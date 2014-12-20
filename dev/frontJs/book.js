@@ -1,67 +1,46 @@
 define(
-	['book/hidingElements',
-	'book/bookSave',
+	['book/bookColumn',
+	'book/bookHide',
+	'book/bookNavigation',
 	'book/bookFullScreen',
 	'book/bookSearch',
-	'hint'],
-	function(hidingElements, bookSave, bookFullScreen, bookSearch) {
+	'book/bookSave'],
+	function(bookColumn, bookHide, bookNavigation, bookFullScreen, bookSearch, bookSave) {
 	function Book(bookString) {
 		this.bookString = bookString;
 		this.bookDiv = $('#book');
-		this.bookPageDiv = $('#book-page');
 		this.mainDiv = $('#main');
-		this.bookHeight = $('#book').height();
-		this.isColumns = chekForColumns(this);
+		this.userHeight = $('#book').height();
+		this.userWidth = $('#book').width() > 800;
+		this.fixScroll = 5 + Number($('#book').css('lineHeight').slice(0, -2));
+		initBook(this);
 	}
-	
-	Book.prototype.hideEl = hidingElements.hide;
-	Book.prototype.hideBoth = hidingElements.hideBoth;
-	Book.prototype.pageSet = bookSave.pageSet;
-	Book.prototype.showNextPage = bookSave.showNextPage;
-	Book.prototype.showPrevPage = bookSave.showPrevPage;
-	Book.prototype.initKeyNav = bookSave.initKeyNav;
-	Book.prototype.saveBookString = bookSave.save;
-	Book.prototype.savePage = bookSave.savePage;
-	Book.prototype.gotoPage = bookSave.gotoPage;
+
+	Book.prototype.initOneColumn = bookColumn.initOneColumn;
+	Book.prototype.initColumnButtons = bookColumn.initColumnButtons;
+	Book.prototype.initTwoColumn = bookColumn.initTwoColumn;
+	Book.prototype.hideElements = bookHide.hideElements;
+	Book.prototype.initNavigation = bookNavigation.initNavigation;
+	Book.prototype.gotoPage = bookNavigation.gotoPage;
 	Book.prototype.initFullScreen = bookFullScreen.initFullScreen;
-	Book.prototype.initColumns = bookFullScreen.initColumns;
-	Book.prototype.reInitPage = bookSave.reInitPage;
+	Book.prototype.initSaving = bookSave.initSaving;
 	Book.prototype.initSearch = bookSearch.initSearch;
 
 	return Book;
 });
 
-
-function chekForColumns(book) {
-	var content = '';
-	if (book.bookDiv.width() > 800) {
-		content = '<div class="bookcolumn" id="lcolumn" style="padding-right:20px">' + book.bookString +'</div>';
-		content += '<div class="bookcolumn" id="rcolumn" style="padding-left:20px">' + book.bookString + '</div>';
-		book.bookDiv.html(content);
-		book.fixScroll = 30;
-		book.lcolumn = $('#lcolumn');
-		book.rcolumn = $('#rcolumn');
-		book.rcolumn.scrollTop(book.bookHeight - book.fixScroll / 2);
-		book.scrollHeight = book.lcolumn[0].scrollHeight;
-		book.rcolumn.append('<div id="lastp" style="height:' + book.bookDiv.height() + 'px;">');
-		book.pages = Math.ceil((book.scrollHeight) / ((book.bookHeight - book.fixScroll) * 2));
-		book.initKeyNav();
-		book.pageSet();
-		book.initFullScreen();
-		book.initSearch();
-		book.initColumns();
-		return true;
+function initBook(book) {
+	var self = book;
+	self.fixedHeight = self.userHeight - self.fixScroll;
+	self.currentPage = 1;
+	if (self.userWidth) {
+		self.initTwoColumn();
+		self.initFullScreen();
+		self.initColumnButtons();
+	} else {
+		self.initOneColumn();
 	}
-	book.bookDiv.html(book.bookString);
-	book.fixScroll = 30;
-	book.scrollHeight = book.bookDiv[0].scrollHeight;
-	book.pages = Math.ceil(book.scrollHeight / (book.bookHeight - book.fixScroll));
-	book.initKeyNav();
-	book.initFullScreen();
-	book.initSearch();
-	return false;
+	self.initNavigation();
+	self.initSaving();
+	self.initSearch();
 }
-
-
-
-

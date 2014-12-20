@@ -1,30 +1,29 @@
-define(['tools/jquery-1.11.1.min'], function() {
-	var elementHide = {
-		hide: hideEl,
-		hideBoth: hideBoth
+define(function() {
+	var bookHide = {
+		hideElements: hideElements
 	};
-	return elementHide;
+	return bookHide;
 });
 
-function hideBoth() {
+function hideElements() {
 	$('.linehide, .imgShow, .ornament').remove();
 	$('img').css('opacity', 1);
 	var hideStr = '';
-	if (this.isColumns || this.isColumns === undefined) {
-		hideStr += this.hideEl(true, this.lcolumn);
-		hideStr += this.hideEl(false, this.lcolumn);
-		hideStr += this.hideEl(true, this.rcolumn);
-		hideStr += this.hideEl(false, this.rcolumn);
+	if (this.isTwoColumn) {
+		hideStr += hideEl(true, this.lcolumn, this);
+		hideStr += hideEl(false, this.lcolumn, this);
+		hideStr += hideEl(true, this.rcolumn, this);
+		hideStr += hideEl(false, this.rcolumn, this);
 		this.bookDiv.append(hideStr);
 	} else {
-		hideStr += this.hideEl(true, this.bookDiv);
-		hideStr += this.hideEl(false, this.bookDiv);
+		hideStr += hideEl(true, this.bookDiv, this);
+		hideStr += hideEl(false, this.bookDiv, this);
 		this.bookDiv.append(hideStr);
 	}
 }
 
-function hideEl(isTop, el) {
-	var self = this;
+function hideEl(isTop, el, book) {
+	var self = book;
 	var bookEl = {
 		bookDiv: el,
 		bookBottom: Math.floor(el[0].getBoundingClientRect().bottom),
@@ -34,9 +33,6 @@ function hideEl(isTop, el) {
 
 	var lastEl, lineHeight, lineHide, heightHide, positionEl;
 	var fixPix = 0;
-	if (this.isColumns) {
-		fixPix = 0;
-	}
 
 	if (isTop) {
 		lastEl = getHideEl(bookEl.bookTop);
@@ -65,7 +61,7 @@ function hideEl(isTop, el) {
 	
 	if (heightHide < Math.floor($(lastEl).css('line-height').slice(0, -2))) {
 		lineHide = '<div style="height:' + Math.ceil(heightHide + 1)  + 'px;background:';
-		lineHide += this.bookDiv.css('background-color') + ';';
+		lineHide += self.bookDiv.css('background-color') + ';';
 
 		lineHide += 'width:' + el.outerWidth() + 'px;';
 		lineHide += 'left:' + bookEl.bookLeft + 'px;';
@@ -124,7 +120,7 @@ function hideEl(isTop, el) {
 		if (isTop) {
 			heightDiff = Math.abs(imgTop - bookObj.bookTop);
 			makedHeight = imgHeight - heightDiff;
-			isShow = (imgBottom - bookObj.bookTop) >= heightDiff;
+			isShow = (bookObj.bookBottom - imgTop - self.fixScroll) >= heightDiff;
 			if (isShow) {
 				imgClone.css({
 					height: makedHeight + 'px',
@@ -147,7 +143,7 @@ function hideEl(isTop, el) {
 		} else {
 			heightDiff = imgBottom - bookObj.bookBottom;
 			makedHeight = imgHeight - heightDiff;
-			isShow = (bookObj.bookBottom - imgTop - self.fixScroll) > heightDiff;
+			isShow = (bookObj.bookBottom - imgTop) > heightDiff;
 			if (isShow) {
 				imgClone.css({
 					height: makedHeight + 'px',
@@ -171,4 +167,3 @@ function hideEl(isTop, el) {
 	}
 
 }
-
