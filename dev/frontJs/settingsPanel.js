@@ -11,12 +11,7 @@ function settingPanel() {
 		});
 
 	});
-/*
-function myFunction(selectTag) {
-    var listValue = selectTag.options[selectTag.selectedIndex].text;
-    document.getElementById("book").style.fontFamily = listValue;
-}
-*/
+
 	var styleString = '';
 	$('#fonts').change(function()
 	{
@@ -99,6 +94,7 @@ function myFunction(selectTag) {
 		if (!!localStorage && styleString) {
 			localStorage.setItem("book", styleString);
 		}
+
 	}
 */
 }
