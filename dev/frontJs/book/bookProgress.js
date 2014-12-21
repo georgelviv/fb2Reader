@@ -1,7 +1,5 @@
-define(['tools/intro.js'], function(introJs) {
-	    $('body').on('addedBook pageChanged fsChange columnInit', function() {
-        $('#hint').css("display", "none");
-    });
+
+define( function() {
 	var bookProgress = {
 		setProgress: setProgress
 	};
