@@ -1,4 +1,7 @@
 define(['tools/intro.js'], function(introJs) {
+	    $('body').on('addedBook pageChanged fsChange columnInit', function() {
+        $('#hint').css("display", "none");
+    });
 	var bookProgress = {
 		setProgress: setProgress
 	};
@@ -13,7 +16,7 @@ define(['tools/intro.js'], function(introJs) {
     $(".progressbar").width(progressBarWidth).html(progress + "% ");
 
 		$('body').on('addedBook', function() {
-			$('#info').html('');
+			$('#progressbar').html('');
 		});
 	}
 });
