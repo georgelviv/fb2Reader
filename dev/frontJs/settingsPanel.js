@@ -13,7 +13,7 @@ function settingPanel() {
 });
 
 	var styleString = '';
-	$('#fonts').change(function()
+	$('#fonts, #sfonts').change(function()
 	{
 		var option = $(this).find('option:selected').val();
 		if (option == 'null') {
@@ -33,7 +33,7 @@ function settingPanel() {
 		$('body').trigger('changeStyles');
 	});
 
-	$('#fontStyle').change(function()
+	$('#fontStyle, #sfontStyle').change(function()
 	{
 		var option = $(this).find('option:selected').val();
 		if (option == 'null') {
@@ -42,7 +42,7 @@ function settingPanel() {
 		$('#book').css("font-style", option);
 		$('body').trigger('changeStyles');
 	});
-	$('#fontWeight').change(function()
+	$('#fontWeight, #sfontWeight').change(function()
 	{
 		var option = $(this).find('option:selected').val();
 		if (option == 'null') {

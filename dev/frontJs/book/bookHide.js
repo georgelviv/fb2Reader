@@ -109,6 +109,7 @@ function hideEl(isTop, el, book) {
 
 	function imageFix(isTop, imgEl, bookObj) {
 		var imgClone = $(imgEl).clone();
+		var maxWidth = $(imgEl).parent().width();
 		var imgTop = imgEl.getBoundingClientRect().top;
 		var imgBottom = imgEl.getBoundingClientRect().bottom;
 		var imgHeight = imgEl.height;
@@ -125,7 +126,7 @@ function hideEl(isTop, el, book) {
 				imgClone.css({
 					height: makedHeight + 'px',
 					top: 2 + 'px',
-					maxWidth: '100%'
+					maxWidth: (maxWidth - 5) + 'px'
 				});
 				imgClone.addClass('imgShow');
 				bookObj.bookDiv.append(imgClone);
@@ -148,7 +149,7 @@ function hideEl(isTop, el, book) {
 				imgClone.css({
 					height: makedHeight + 'px',
 					top: $(imgEl).position().top + 'px',
-					maxWidth: '100%'
+					maxWidth: (maxWidth - 5) + 'px'
 				});
 				imgClone.addClass('imgShow');
 				bookObj.bookDiv.append(imgClone);

@@ -29,7 +29,7 @@ define(function() {
 
 	function initNavigation() {
 		var self = this;
-		var inputWidth = this.isMobile ? 50 : (('' + self.pages).length * 8 + 17);
+		var inputWidth = this.isMobile ? 70 : (('' + self.pages).length * 8 + 17);
 		var htmlArrow = '<div id="button-prev"><i class="fa fa-chevron-left fa-2x">';
 		htmlArrow += '</i></div><div id="button-next"><i class="fa fa-chevron-right fa-2x"></i></div>';
 		var htmlPage = '<input type="text" style="width:' + inputWidth +'px"><span></span>';

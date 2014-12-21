@@ -21,7 +21,7 @@ function main(jquery, fileupload, slidebars, highlight, settingsPanel, preloader
 		showBookStorage();
 		hljs.initHighlightingOnLoad(); //init Highlight
 
-		$('pre.programlisting').each(function(i, block) {
+		$('pre').each(function(i, block) {
 			hljs.highlightBlock(block);
 		});
 

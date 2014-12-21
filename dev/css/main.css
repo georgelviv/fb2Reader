@@ -936,7 +936,17 @@ li:last-child > .settings-list-link {
   }
   #button-prev i,
   #button-next i {
-    display: none;
+    width: 10px;
+    position: absolute;
+    color: #b3b3b3;
+    top: 50%;
+    margin-top: -15px;
+  }
+  #button-prev i {
+    left: 0;
+  }
+  #button-next i {
+    right: 12px;
   }
   #button-prev:hover,
   #button-next:hover {
@@ -954,7 +964,7 @@ li:last-child > .settings-list-link {
     color: #fff;
   }
   header #book-page {
-    width: 140px;
+    width: 160px;
     margin: 0 auto;
     padding: 0;
     display: block;
