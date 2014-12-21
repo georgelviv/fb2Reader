@@ -1,7 +1,6 @@
 define(['tools/jquery-1.11.1.min'], function() {
     // for remove hint when occurs next events
     $('body').on('addedBook pageChanged fsChange columnInit', function() {
-        console.log('ss');
         $('#hint').css("display", "none");
     });
    initHint();

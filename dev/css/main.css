@@ -210,6 +210,31 @@ header nav ul li a {
 header nav ul li a:hover {
   color: #424242;
 }
+header #info {
+  float: right;
+  position: relative;
+  height: 30px;
+  padding-top: 13px;
+  cursor: pointer;
+}
+header #info i {
+  width: 30px;
+  height: 100%;
+  position: absolute;
+  right: -35px;
+  background-color: #27ae60;
+  border: 1px solid #FFF;
+  text-align: center;
+  padding: 7px;
+  font-size: 18px;
+}
+header #info:hover {
+  cursor: pointer;
+  background: #36d278;
+}
+header #info:active {
+  background: #fff;
+}
 header #book-page {
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -243,7 +268,6 @@ header #book-page span {
   color: #ffffff;
 }
 header #search_col {
-  xwidth: 30%;
   float: right;
   position: relative;
   -webkit-user-select: none;
@@ -886,6 +910,9 @@ li:last-child > .settings-list-link {
   background: url(../img/ornament1r.png) no-repeat 50% 50%;
   background-size: contain;
 }
+.sb-toggle-left {
+  display: none;
+}
 @media (max-width: 600px) {
   #button-prev,
   #button-next {
@@ -904,6 +931,102 @@ li:last-child > .settings-list-link {
   #button-next:hover {
     cursor: pointer;
     background: none;
+  }
+  #search,
+  .upload {
+    display: none;
+  }
+  .sb-toggle-left {
+    position: absolute;
+    display: block;
+    color: #fff;
+  }
+  header #book-page {
+    width: 140px;
+    margin: 0 auto;
+    padding: 0;
+    display: block;
+    font-size: 2em;
+  }
+  header #book-page input {
+    height: 40px;
+  }
+  header nav {
+    padding-top: 5px;
+    width: 100%;
+    float: none;
+    padding: 0;
+    position: relative;
+  }
+  #main {
+    height: 88%;
+  }
+  #fullScreenBtn {
+    z-index: 10;
+    font-size: 2em;
+    bottom: 0;
+    right: 5px;
+  }
+  .upload.sidebar {
+    display: block;
+    width: 100%;
+    height: 60px;
+    border-right: 1px solid #fff;
+  }
+  .upload.sidebar .file_uploads {
+    width: 0;
+    height: 0;
+    position: absolute;
+    visibility: hidden;
+  }
+  .upload.sidebar #upload-buttons {
+    width: 90%;
+    margin: 5px auto;
+    border: 2px solid #fff;
+    text-align: center;
+    line-height: 50px;
+    height: 50px;
+    font-size: 1.5em;
+    color: #fff;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+    -webkit-transition: all .15s linear;
+    -moz-transition: all .15s linear;
+    transition: all .15s linear;
+  }
+  .upload.sidebar #upload-buttons:hover {
+    cursor: pointer;
+    background-color: #fff;
+    color: #222;
+  }
+  .upload.sidebar #upload-buttons:active {
+    color: #222;
+  }
+  footer {
+    display: none;
+  }
+  .sb-slidebar h2,
+  .sb-slidebar h3 {
+    margin: 15px 0;
+    text-align: center;
+    color: #fff;
+  }
+  .sb-slidebar h2 {
+    font-size: 2em;
+  }
+  .sb-slidebar h3 {
+    font-size: 1.5em;
+  }
+  .sb-slidebar .sfont-size {
+    width: 90%;
+    margin: 0 auto;
+  }
+  .sb-slidebar select {
+    width: 100%;
+    font-size: 1.4em;
   }
 }
 

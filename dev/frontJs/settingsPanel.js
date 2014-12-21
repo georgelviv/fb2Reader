@@ -23,7 +23,7 @@ function settingPanel() {
 		$('body').trigger('changeStyles');
 	});
 
-	$('#fontSize').change(function()
+	$('#fontSize, #sfontSize').change(function()
 	{
 		var option = $(this).find('option:selected').val();
 		if (option == 'default') {

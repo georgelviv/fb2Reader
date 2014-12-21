@@ -40,7 +40,7 @@ module.exports = function(grunt) {
 		cssmin: {
 			combine: {
 				files: {
-					'dist/css/style.min.css': ['dev/css/font-awesome.css', 'dev/css/normalize.css', 'dev/css/main.css']
+					'dist/css/style.min.css': ['dev/css/font-awesome.css', 'dev/css/normalize.css', 'dev/css/slidebars.css', 'dev/css/main.css']
 				}
 			}
 		}

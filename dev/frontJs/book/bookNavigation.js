@@ -21,6 +21,7 @@ define(function() {
 			this.hideElements();
 			this.scrollTop = this.bookDiv.scrollTop();
 		}
+		this.bookPageDiv.find('input').blur();
 		$('body').trigger('pageChanged');
 		this.currentPage = goPage + 1;
 		this.bookPageDiv.find('input').val(this.currentPage);
@@ -28,9 +29,10 @@ define(function() {
 
 	function initNavigation() {
 		var self = this;
+		var inputWidth = this.isMobile ? 50 : (('' + self.pages).length * 8 + 17);
 		var htmlArrow = '<div id="button-prev"><i class="fa fa-chevron-left fa-2x">';
 		htmlArrow += '</i></div><div id="button-next"><i class="fa fa-chevron-right fa-2x"></i></div>';
-		var htmlPage = '<input type="text" style="width:' + (('' + self.pages).length * 8 + 17) +'px"><span></span>';
+		var htmlPage = '<input type="text" style="width:' + inputWidth +'px"><span></span>';
 		this.bookPageDiv = $('#book-page');
 		this.mainDiv.append(htmlArrow);
 		this.bookPageDiv.html(htmlPage);

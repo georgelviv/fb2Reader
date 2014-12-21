@@ -245,6 +245,33 @@ ul.social li a,
     }                              
   }
 
+#info{
+  float: right;
+  position: relative;
+  height: 30px;
+  padding-top: 13px;
+  cursor: pointer;
+  i {
+    width: 30px;
+    height: 100%;
+    position: absolute;
+    right: -35px;
+    background-color: @headerColor;
+    border: 1px solid #FFF;
+    text-align: center;
+    padding: 7px;
+    font-size: 18px;
+  }
+
+  &:hover{
+    cursor: pointer;
+    background: lighten(@headerColor, 10%);
+  }
+  &:active {
+    background: #fff;
+  }
+  
+}
 
 
     #book-page {
@@ -279,7 +306,6 @@ ul.social li a,
     user-select: none; 
     }
     #search_col {
-      xwidth: 30%;
       float:right;
       position: relative;
        -webkit-user-select: none;  
@@ -964,7 +990,9 @@ li:last-child > .settings-list-link {
   background: url(../img/ornament1r.png) no-repeat 50% 50%;
   background-size: contain;
 }
-
+.sb-toggle-left {
+  display: none;
+}
 @media (max-width: 600px) {
   #button-prev, #button-next {
     height: 100%;
@@ -981,4 +1009,106 @@ li:last-child > .settings-list-link {
     cursor: pointer;
     background: none;
   }
+  #search, .upload {
+    display: none;
+  }
+  .sb-toggle-left {
+    position: absolute;
+    display: block;
+    color: #fff;
+  }
+  header {
+    #book-page {
+      width: 140px;
+      margin: 0 auto;
+      padding: 0;
+      display: block;
+      font-size: 2em;
+
+      input {
+        height: 40px;
+      }
+    }
+   nav {
+      padding-top: 5px;
+      width: 100%;
+      float: none;
+      padding: 0;
+      position: relative;
+    }
+  }
+  #main {
+    height: @bookheight + @footerheight;
+  }
+  #fullScreenBtn {
+    z-index: 10;
+    font-size: 2em;
+    bottom: 0;
+    right: 5px;
+  }
+  .upload.sidebar {
+    display: block;
+    width: 100%;
+    height: 60px;
+    border-right: 1px solid #fff;
+    .file_uploads {
+        width: 0;
+        height: 0;
+        position: absolute;
+        visibility: hidden;
+    }
+    #upload-buttons {
+      width: 90%;
+      margin: 5px auto;
+      border: 2px solid #fff;
+      text-align: center;
+      line-height: 50px;
+      height: 50px;
+      font-size: 1.5em;
+      color: #fff;
+      -webkit-user-select: none;  
+      -moz-user-select: none;     
+      -ms-user-select: none;      
+      -o-user-select: none;
+      user-select: none;
+    -webkit-transition: all .15s linear;
+    -moz-transition: all .15s linear;
+    transition: all .15s linear;
+    }
+    #upload-buttons:hover {
+      cursor: pointer;
+      background-color: #fff;
+      color:  #222;
+
+    }
+    #upload-buttons:active {
+      color:  #222;
+    }
+  }
+  footer {
+    display: none;
+  }
+  .sb-slidebar {
+    h2, h3 {
+      margin: 15px 0;
+      text-align: center;
+      color: #fff;
+    }
+    h2 {
+      font-size: 2em;
+    }
+    h3 {
+      font-size: 1.5em;
+    }
+    .sfont-size {
+      width: 90%;
+      margin: 0 auto;
+    }
+    select {
+      width: 100%;
+      font-size: 1.4em;
+    }
+  }
 }
+
+

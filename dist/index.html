@@ -2,43 +2,59 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
 	<title>fb2Reader</title>
 	<link rel="shortcut icon" href="img/favicon.png">
 	<link rel="stylesheet" href="css/style.min.css">
+  <link rel="stylesheet" type="text/css" href="css/introjs.css">
+      <script src="js/intro.js"></script>
+    <script>
+    function startTour() {
+      var tour = introJs();
+      tour.setOption('tooltipPosition', 'auto');
+      tour.setOption('positionPrecedence', ['left', 'right', 'bottom', 'top']);
+      tour.start();
+    }  
+  </script>
 </head>
 <body>
 
 <!-- Header and Nav -->
+<div id="sb-site">
+
 <header>
-  <div class="upload">
+  <div class="upload" data-step="2" data-intro="Ok, You must to UPLOAD BOOK">
     <input id="fileselect" type="file" class="file_upload">
     <div id="upload-button">UPLOAD BOOK</div>
   </div> 
   <nav>
-    <div id="book-page"></div>
-    <div id="book-scolumn"></div> 
+    <div class="sb-toggle-left"><i class="fa fa-bars fa-3x"></i></div>
+    <div id="book-page" data-step="3" data-intro="Then set page number or not)"></div>
+    <div id="book-scolumn" data-step="5" data-intro="You can choose 1 or 2 column"></div> 
     <ul class="social">
       <li><a class="fb" href="#"></a></li>
       <li><a class="gplus" href="#"></a></li>
     </ul>
-    <div id="search">
+    <div id="search"  data-step="4" data-intro="You can search word (which greater than 3 chars)">
       <input type="text" placeholder="Search">
       <span class="sbutton"><i class="fa fa-search"></i></span>
       <div class="scancel"><i class="fa fa-times"></i></div>
       <div class="serror"></div>
     </div>
+    <div id="info" class="ibutton">      
+      <a href="javascript:void(0);" onclick="javascript:startTour();"><i class="fa fa-info"></i></a>
+    </div>  
   </nav>
 </header>
 
 <!-- Book -->
-<div id="main">
+<div id="main" data-step="6" data-intro="Read Your book)">
   <div id="book"></div>
 </div>
 <!-- Footer / Settings Panel -->
 
 
-  <footer>
+  <footer data-step="7" data-intro="set your settings">
     <i class="fa fa-bars menu" data-toggle-settings-panel="settings-panel"></i>
     <div class="settings-panel" style="display:none">
       <div class="settings">
@@ -199,7 +215,7 @@
             <li>
               <a class="settings-list-link">
                 <div class="left-side">                 
-                  <i class="fa fa-text-widt"></i>
+                  <i class="fa fa-arrows-h"></i>
                   <label>word-spacing</label> 
                </div>
                 <div class="right-side"> 
@@ -280,8 +296,31 @@
         </div>
       </div>
   </footer>
+  <div id="hint" data-step="8" data-intro="click+Ctrl and you can see the explain word of Wiki "> </div>
+  </div>
 
-  <div id="hint"> </div>
+<div class="sb-slidebar sb-left">
+  <h2>BookReader</h2>
+  <div class="upload sidebar">
+    <input id="fileselects" type="file" class="file_uploads">
+    <div id="upload-buttons">UPLOAD BOOK</div>
+  </div>
+  <div class="sfont-size">
+    <h3>Font Size</h3>
+    <select id="sfontSize">
+      <option value="12">12</option>
+      <option value="14">14</option>
+      <option value="16">16</option>
+      <option value="18">18</option>
+      <option value="20">20</option>
+      <option value="22">22</option>
+      <option value="24">24</option>
+    </select> 
+  </div>
+</div>
+
+  
 	<script src="js/build.min.js"></script>
+
 </body>
 </html>

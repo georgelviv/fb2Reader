@@ -120,7 +120,7 @@ function hideEl(isTop, el, book) {
 		if (isTop) {
 			heightDiff = Math.abs(imgTop - bookObj.bookTop);
 			makedHeight = imgHeight - heightDiff;
-			isShow = (bookObj.bookBottom - imgTop - self.fixScroll) >= heightDiff;
+			isShow = makedHeight >= heightDiff;
 			if (isShow) {
 				imgClone.css({
 					height: makedHeight + 'px',

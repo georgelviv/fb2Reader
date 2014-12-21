@@ -12,6 +12,7 @@ define(
 		this.mainDiv = $('#main');
 		this.userHeight = $('#book').height();
 		this.userWidth = $('#book').width() > 800;
+		this.isMobile = $('#book').width() < 600;
 		this.fixScroll = 5 + Number($('#book').css('lineHeight').slice(0, -2));
 		initBook(this);
 	}
@@ -35,11 +36,11 @@ function initBook(book) {
 	self.currentPage = 1;
 	if (self.userWidth) {
 		self.initTwoColumn();
-		self.initFullScreen();
 		self.initColumnButtons();
 	} else {
 		self.initOneColumn();
 	}
+	self.initFullScreen();
 	self.initNavigation();
 	self.initSaving();
 	self.initSearch();
