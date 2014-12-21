@@ -42,6 +42,7 @@ function initBook(book) {
 	} else {
 		self.initOneColumn();
 	}
+	$('a:not([href^=http])').contents().unwrap();
 	self.initFullScreen();
 	self.initNavigation();
 	self.initSaving();

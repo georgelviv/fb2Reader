@@ -135,6 +135,7 @@ function formatHtml(htmlString, path) {
 			link = linkArr[i];
 			linkInner = (link.match(/>.*<\/a>/i)[0]).slice(1, -4);
 			htmlString = htmlString.replace(link , linkInner);
+			console.log(htmlString);
 		}
 
 		return htmlString;

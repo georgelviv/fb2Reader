@@ -16,7 +16,6 @@ exports.parsingXml = function(bookName, callback) {
 
     var encode = jschardet.detect(data)['encoding'];
 
-    console.log(encode);
     if (encode == 'utf-8') encode = 'utf8';
     if (encode == 'windows-1251') encode = 'win1251';
 
