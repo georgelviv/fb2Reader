@@ -3,6 +3,7 @@ var xmlParser = require('./xmlParser.js');
 var epubParser = require('./epubParser.js');
 var txtParser = require('./txtParser.js');
 var rmdir = require( 'rmdir' );
+var hljs = require('highlight.js');
 
 
 exports.parsingBook = function(bookName) {
@@ -40,21 +41,28 @@ function removeDir(path) {
 }
 
 function readyAndRemove(htmlString, isError) {
-	exports.bookText = htmlString;
-	if (!isError) {
-			splitBook(htmlString);
+	if (htmlString.search(/<pre.*?>.*?<\/pre>/i) !== -1) {
+		htmlString = codeStyle(htmlString);
 	}
+	exports.bookText = htmlString;
 	exports.ready = true;
 	removeDir('./dist/uploads/');
 }
 
-function splitBook(htmlString) {
-	var symbolsLength = htmlString.split('').length;
-	var divideEach = 1000000;
-	var parts = Math.ceil(symbolsLength / divideEach);
-	var partsArr;
-	
-	for (var i = 0; i <= parts; i++) {
-		
+function codeStyle(htmlString) {
+	var regPre = /<pre.*?>.*?<\/pre>/gi;
+	var preArr = htmlString.match(regPre);
+	var pre;
+	var preInner;
+	var preFormated;
+
+	for (var i = 0; i < preArr.length; i++) {
+		pre = preArr[i];
+		preInner = (pre.match(/>.*<\/pre>/i)[0]).slice(1, -7);
+		preFormated = hljs.highlightAuto(preInner).value;
+		console.log(preFormated);
+		htmlString = htmlString.replace(pre, preFormated);
 	}
+
+	return htmlString;
 }
