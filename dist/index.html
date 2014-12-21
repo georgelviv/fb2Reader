@@ -40,7 +40,7 @@
   <div id="book"></div>
 </div>
 <!-- Footer / Settings Panel -->
-
+<div class="container"><div id="progressbar"></div></div>
 
   <footer data-step="7" data-intro="set your settings">
     <i class="fa fa-bars menu" data-toggle-settings-panel="settings-panel"></i>
@@ -159,7 +159,7 @@
               <a class="settings-list-link">
                 <div class="left-side"> 
                   <i class="fa fa-bars "></i>
-                  <label>font-color</label>
+                  <label>Font-color</label>
                 </div>
                 <div class="right-side"> 
                   <select id="fontColor">
@@ -185,7 +185,7 @@
               <a class="settings-list-link">
                 <div class="left-side">                 
                   <i class="fa fa-text-width"></i>
-                  <label>letter-spacing</label>
+                  <label>Letter-spacing</label>
                 </div>
                 <div class="right-side"> 
                   <select id="letterSpacing">
@@ -204,7 +204,7 @@
               <a class="settings-list-link">
                 <div class="left-side">                 
                   <i class="fa fa-arrows-h"></i>
-                  <label>word-spacing</label> 
+                  <label>Word-spacing</label> 
                </div>
                 <div class="right-side"> 
                   <select id="wordSpacing">
@@ -223,7 +223,7 @@
               <a class="settings-list-link">
                 <div class="left-side"> 
                   <i class="fa fa-text-height"></i>
-                  <label>line-height</label>
+                  <label>Line-height</label>
                 </div>
                 <div class="right-side"> 
                 <select id="lineHeight">
@@ -242,7 +242,7 @@
               <a class="settings-list-link">
                 <div class="left-side"> 
                   <i class="fa fa-list"></i>
-                  <label>font-style</label>
+                  <label>Font-style</label>
                 </div>                
                 <div class="right-side"> 
                   <select id="fontStyle">
@@ -258,7 +258,7 @@
               <a class="settings-list-link">
                 <div class="left-side">
                   <i class="fa fa-list"></i>
-                  <label>font-weight</label> 
+                  <label>Font-weight</label> 
                 </div> 
                 <div class="right-side">              
                   <select id="fontWeight">
@@ -296,6 +296,7 @@
   <div class="sfont-size">
     <h3>Font Size</h3>
     <select id="sfontSize">
+      <option value="default">Default</option>
       <option value="12">12</option>
       <option value="14">14</option>
       <option value="16">16</option>
@@ -303,12 +304,37 @@
       <option value="20">20</option>
       <option value="22">22</option>
       <option value="24">24</option>
+    </select>
+    <h3>Font-family</h3>
+    <select id="sfonts">
+      <option value="null">Default</option>
+      <option value="Verdana">Verdana</option>
+      <option value="Arial">Arial</option>
+      <option value="Comic Sans MS">Comic Sans MS</option>
+      <option value="Courier New">Courier New</option>
+      <option value="Monotype Corsiva">Monotype</option>
+      <option value="Tahoma">Tahoma</option>
+      <option value="Times">Times</option>
+    </select>
+    <h3>Font-style</h3>
+    <select id="sfontStyle">
+      <option value="null">Default</option>
+      <option value="normal">Normal</option>
+      <option value="oblique">Oblique</option>
+      <option value="italic">Italic</option>                  
+    </select> 
+    <h3>Font-weight</h3>
+    <select id="sfontWeight">
+      <option value="null">Default</option>
+      <option value="200">200</option>
+      <option value="400">400</option>
+      <option value="600">600</option>
+      <option value="800">800</option>                  
     </select> 
   </div>
 </div>
 
-  
-	<script src="js/build.min.js"></script>
+<script src="js/build.min.js"></script>
 
 </body>
 </html>

@@ -30,7 +30,7 @@ ul, ol{
   list-style: none;
 }
 
-
+/* grid for settings panel*/
 .right-side {
   display: inline-block;
   select {
@@ -49,6 +49,7 @@ ul, ol{
     padding-left: 10px;
   }
 }
+/*******************************************/
 
 .nightMode {
   background: #424242 !important;
@@ -639,8 +640,38 @@ header:after {
   header {
     background: none;
   }
+  a[href^="mailto"]:before {
+    content: '';
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    background: url(../img/mail.png) no-repeat;
+    background-size: contain;
+  }
 }
 
+/************* PROGRESS BAR ************/
+
+.container{
+    width: 100%;
+    position: relative;
+    top: -12px;
+    z-index: 100;
+    border: 1px solid #ddd;
+    overflow: hidden;
+    display: inline-block;
+    margin: 5px 0px 0px 0px;
+    vertical-align: top;
+}
+
+#progressbar {
+    color: #fff;
+    text-align: right;
+    height: 5px;
+    width: 40%;
+    background-color: @headerColor; 
+}
+/**************************************/
 footer{
     border-top: 1px #dedede solid;
     background: #444;
@@ -1009,7 +1040,17 @@ li:last-child > .settings-list-link {
     background: none;
   }
   #button-prev i, #button-next i {
-    display: none;
+    width: 10px;
+    position: absolute;
+    color: darken(#fff, 30%);
+    top: 50%;
+    margin-top: -15px;
+  }
+  #button-prev i {
+    left: 0;
+  }
+  #button-next i {
+    right: 12px;
   }
   #button-prev:hover, #button-next:hover {
     cursor: pointer;
@@ -1025,7 +1066,7 @@ li:last-child > .settings-list-link {
   }
   header {
     #book-page {
-      width: 140px;
+      width: 160px;
       margin: 0 auto;
       padding: 0;
       display: block;
