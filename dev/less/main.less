@@ -30,7 +30,7 @@ ul, ol{
   list-style: none;
 }
 
-
+/* grid for settings panel*/
 .right-side {
   display: inline-block;
   select {
@@ -49,6 +49,7 @@ ul, ol{
     padding-left: 10px;
   }
 }
+/*******************************************/
 
 .nightMode {
   background: #424242 !important;
@@ -642,6 +643,28 @@ header:after {
 
 }
 
+/************* PROGRESS BAR ************/
+
+.container{
+    width: 100%;
+    position: relative;
+    top: -12px;
+    z-index: 100;
+    border: 1px solid #ddd;
+    overflow: hidden;
+    display: inline-block;
+    margin: 5px 0px 0px 0px;
+    vertical-align: top;
+}
+
+#progressbar {
+    color: #fff;
+    text-align: right;
+    height: 5px;
+    width: 40%;
+    background-color: @headerColor; 
+}
+/**************************************/
 footer{
     border-top: 1px #dedede solid;
     background: #444;

@@ -69,7 +69,7 @@ function initHint() {
     document.getElementById('book').addEventListener('click', getHintWord);
 
     function getHintWord(e) {
-    	if (e.ctrlKey) {
+    	if (e.shiftKey/*ctrlKey*/) {
     		hintWord(e.clientX, e.clientY);
     	} else {
     		hideHint();
