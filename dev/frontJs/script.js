@@ -2,14 +2,13 @@ require(
     ['tools/jquery-1.11.1.min',
 	'tools/jquery.fileupload',
 	'tools/slidebars',
-	'tools/highlight.pack.js',
 	'settingsPanel',
 	'preloader',
     'book',
     'hint'],
 main);
 
-function main(jquery, fileupload, slidebars, highlight, settingsPanel, preloader, Book) {
+function main(jquery, fileupload, slidebars, settingsPanel, preloader, Book) {
 	$(document).ready(function() {
 
 		var bookDiv = $('#book');
@@ -19,11 +18,6 @@ function main(jquery, fileupload, slidebars, highlight, settingsPanel, preloader
 		$.slidebars(); // init Sidebar for mobile
 
 		showBookStorage();
-		hljs.initHighlightingOnLoad(); //init Highlight
-
-		$('pre').each(function(i, block) {
-			hljs.highlightBlock(block);
-		});
 
 		$('#upload-button').on('click', function() {
 			$('.file_upload').trigger('click');

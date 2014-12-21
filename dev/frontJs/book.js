@@ -37,12 +37,11 @@ function initBook(book) {
 	self.fixedHeight = self.userHeight - self.fixScroll;
 	self.currentPage = 1;
 	if (self.userWidth) {
-		self.initTwoColumn();
+		self.initTwoColumn(true);
 		self.initColumnButtons();
 	} else {
-		self.initOneColumn();
+		self.initOneColumn(true);
 	}
-	$('a:not([href^=http])').contents().unwrap();
 	self.initFullScreen();
 	self.initNavigation();
 	self.initSaving();

@@ -1,4 +1,4 @@
-define(function () {
+define(['tools/highlight.pack.js'], function (highlight) {
 	var bookColumn = {
 		initOneColumn: initOneColumn,
 		initTwoColumn: initTwoColumn,
@@ -17,6 +17,10 @@ define(function () {
 			this.currentPage = Math.ceil((this.bookDiv.scrollTop() + this.fixedHeight) /  this.fixedHeight);
 		}
 		this.scrollTop = this.bookDiv.scrollTop();
+		$('pre').each(function(i, block) {
+			hljs.highlightBlock(block);
+		});
+		this.bookDiv.find('a:not([href^=http])').contents().unwrap();
 		this.hideElements();
 		$('body').trigger('columnInit');
 	}
@@ -37,6 +41,10 @@ define(function () {
 		this.rcolumn.scrollTop(this.lcolumn.scrollTop() + this.fixedHeight);
 		this.scrollHeight = this.lcolumn[0].scrollHeight;
 		this.pages = Math.ceil(this.scrollHeight / (this.fixedHeight * 2));
+		$('pre').each(function(i, block) {
+			hljs.highlightBlock(block);
+		});
+		this.bookDiv.find('a:not([href^=http])').contents().unwrap();
 		this.hideElements();
 		$('body').trigger('columnInit');
 	}

@@ -585,14 +585,6 @@ header:after {
 #book header {
   background: none;
 }
-#book a[href^="mailto"]:before {
-  content: '';
-  width: 20px;
-  height: 20px;
-  display: inline-block;
-  background: url(../img/mail.png) no-repeat;
-  background-size: contain;
-}
 footer {
   border-top: 1px #dedede solid;
   background: #444;
