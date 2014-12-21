@@ -104,7 +104,6 @@ function formatHtml(htmlString, path) {
 		bookBody = imageSort(bookBody);
 	}
 
-
 	if (bookBody.search(/<a.*?href=("|')(?!http(s)?:\/\/).*?(<\/a>)/i) !== -1) {
 		bookBody = linkSort(bookBody);
 	}

@@ -15,11 +15,9 @@ function main(jquery, fileupload, slidebars, settingsPanel, preloader, Book) {
 		var fileExtension = /(fb2|epub|txt)/i;
 		var bookName;
 
-		$.slidebars();
+		$.slidebars(); // init Sidebar for mobile
 
 		showBookStorage();
-
-
 
 		$('#upload-button').on('click', function() {
 			$('.file_upload').trigger('click');
@@ -33,6 +31,8 @@ function main(jquery, fileupload, slidebars, settingsPanel, preloader, Book) {
 			getExample();
 			preloader.exampleParsing();
 		});
+
+
 
 		$('#fileselect').fileupload({
 			url: '/upload',

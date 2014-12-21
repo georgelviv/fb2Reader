@@ -4,8 +4,9 @@ define(
 	'book/bookNavigation',
 	'book/bookFullScreen',
 	'book/bookSearch',
-	'book/bookSave'],
-	function(bookColumn, bookHide, bookNavigation, bookFullScreen, bookSearch, bookSave) {
+	'book/bookSave',
+	'book/bookIntro'],
+	function(bookColumn, bookHide, bookNavigation, bookFullScreen, bookSearch, bookSave, bookIntro) {
 	function Book(bookString) {
 		this.bookString = bookString;
 		this.bookDiv = $('#book');
@@ -26,6 +27,7 @@ define(
 	Book.prototype.initFullScreen = bookFullScreen.initFullScreen;
 	Book.prototype.initSaving = bookSave.initSaving;
 	Book.prototype.initSearch = bookSearch.initSearch;
+	Book.prototype.initIntro = bookIntro.initIntro;
 
 	return Book;
 });
@@ -44,4 +46,5 @@ function initBook(book) {
 	self.initNavigation();
 	self.initSaving();
 	self.initSearch();
+	self.initIntro();
 }

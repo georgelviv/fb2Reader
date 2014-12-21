@@ -116,13 +116,13 @@ header{
   }
   #book-page {
     display: inline-block;
-    padding-top: 13px;
+    margin-top: 13px;
     height: 30px;
   }
   #book-scolumn {
     padding-left: 20px;
     display: inline-block;
-    padding-top: 13px;
+    margin-top: 13px;
     height: 30px;
     .switch {
       font-size: 0;
@@ -635,6 +635,11 @@ header:after {
 }
 /**************************************/
 
+#book {
+  header {
+    background: none;
+  }
+}
 
 footer{
     border-top: 1px #dedede solid;
@@ -652,6 +657,10 @@ footer{
       cursor: pointer;
       position: fixed;
     }
+    ol li{
+  width: 25% !important;
+  float: left;
+}
 
 }
 
@@ -679,10 +688,7 @@ footer{
   xborder-radius: 3px 3px 0 0;
 }
 
-ol li{
-  width: 25% !important;
-  float: left;
-}
+
   
 .settings-tab,
 .settings-list:target:first-of-type ~ .settings-tabs > .settings-tab:first-child ~ .settings-tab,
@@ -1009,7 +1015,7 @@ li:last-child > .settings-list-link {
     cursor: pointer;
     background: none;
   }
-  #search, .upload {
+  #search, .upload, #info {
     display: none;
   }
   .sb-toggle-left {

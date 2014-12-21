@@ -1,6 +1,8 @@
 var exports = module.exports = {};
 var fs = require('fs');
 var parseString = require('xml2js').parseString;
+var iconv = require('iconv-lite');
+var jschardet = require("jschardet");
 
 exports.xmlBook = '';
 
@@ -12,7 +14,13 @@ exports.parsingXml = function(bookName, callback) {
       callback(true);
     }
 
-    var dataString = data.toString('utf-8');
+    var encode = jschardet.detect(data)['encoding'];
+
+    console.log(encode);
+    if (encode == 'utf-8') encode = 'utf8';
+    if (encode == 'windows-1251') encode = 'win1251';
+
+    var dataString = iconv.decode(data, encode);
     exports.xmlBook = xmlBookToObj(data);
     exports.xmlBook += xmlBookTagFilter(dataString);
 

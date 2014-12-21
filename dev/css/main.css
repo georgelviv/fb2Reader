@@ -96,13 +96,13 @@ header nav {
 }
 header #book-page {
   display: inline-block;
-  padding-top: 13px;
+  margin-top: 13px;
   height: 30px;
 }
 header #book-scolumn {
   padding-left: 20px;
   display: inline-block;
-  padding-top: 13px;
+  margin-top: 13px;
   height: 30px;
 }
 header #book-scolumn .switch {
@@ -582,6 +582,9 @@ header:after {
   font: bold 14px/22px Arail, Helvetica;
 }
 /**************************************/
+#book header {
+  background: none;
+}
 footer {
   border-top: 1px #dedede solid;
   background: #444;
@@ -597,6 +600,10 @@ footer .menu {
   margin-left: 50%;
   cursor: pointer;
   position: fixed;
+}
+footer ol li {
+  width: 25% !important;
+  float: left;
 }
 .settings {
   position: relative;
@@ -619,10 +626,6 @@ footer .menu {
   background: #ecf0f1;
   border-bottom: 1px solid #ddd;
   xborder-radius: 3px 3px 0 0;
-}
-ol li {
-  width: 25% !important;
-  float: left;
 }
 .settings-tab,
 .settings-list:target:first-of-type ~ .settings-tabs > .settings-tab:first-child ~ .settings-tab,
@@ -933,7 +936,8 @@ li:last-child > .settings-list-link {
     background: none;
   }
   #search,
-  .upload {
+  .upload,
+  #info {
     display: none;
   }
   .sb-toggle-left {
