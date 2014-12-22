@@ -42,9 +42,9 @@ define(function() {
 	}
 
 	function countBytes(string) {
-		return unescape( // convert a single `%xx` escape into the corresponding character
-			encodeURI(string) // URL-encode the string (this uses UTF-8)
-		).length; // read out the length (i.e. the number of `%xx` escapes)
+		return unescape(
+			encodeURI(string)
+		).length;
 	}
 
 });
