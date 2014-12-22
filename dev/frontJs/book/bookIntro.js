@@ -16,7 +16,6 @@ define(['tools/intro.js'], function(introJs) {
 		});
 
 		function startTour() {
-			console.log('inited');
 			var tour = introJs();
 			tour.setOption('tooltipPosition', 'auto');
 			tour.setOption('positionPrecedence', ['left', 'right', 'bottom', 'top']);

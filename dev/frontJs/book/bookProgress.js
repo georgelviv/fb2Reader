@@ -1,7 +1,4 @@
-define(['tools/intro.js'], function(introJs) {
-	    $('body').on('addedBook pageChanged fsChange columnInit', function() {
-        $('#hint').css("display", "none");
-    });
+define( function() {
 	var bookProgress = {
 		setProgress: setProgress
 	};
@@ -9,11 +6,11 @@ define(['tools/intro.js'], function(introJs) {
 
 	function setProgress() {
 		var self = this;
-		var introHtml = '<a href="#"><i class="fa fa-info"></i></a>';
-		//var infoDiv = $('#info');
-	var progress = this.currentPage * 100 / this.pages ;	
-	var progressBarWidth =progress*$(".container").width()/ 100;  
-    $(".progressbar").width(progressBarWidth).html(progress + "% ");
+		//var introHtml = '<a href="#"><i class="fa fa-info"></i></a>';
+		var progress = this.currentPage * 100 / this.pages ;	
+		var progressBarWidth =Math.ceil(progress*$(".container").width()/ 100);  
+	    $("#progressbar").width(progressBarWidth).html('<span class="label">' + progress.toPrecision(4) + "% </span");
+
 
 		$('body').on('addedBook', function() {
 			$('#progressbar').html('');
