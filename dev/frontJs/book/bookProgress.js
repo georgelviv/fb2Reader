@@ -6,18 +6,24 @@ define( function() {
 	
 	function setProgress() {
 		var self = this;
-		function changeProgress(self){
+		//var introHtml = '<a href="#"><i class="fa fa-info"></i></a>';
+		var progress = this.currentPage * 100 / this.pages ;	
+		var progressBarWidth =Math.ceil(progress*$(".container").width()/ 100);  
+	    $("#progressbar").width(progressBarWidth).html('<span class="label">' + progress.toPrecision(4) + "% </span");
+
+
+		function changeProgress(){
 			var progress = self.currentPage * 100 / self.pages ;	
 			var progressBarWidth =Math.ceil(progress * $(".container").width()/ 100);  
 		    $("#progressbar").width(progressBarWidth);
 		    $(".label").css("left", progress < 97 ? progressBarWidth : progressBarWidth - 40);
 			$(".label").html(progress.toPrecision(4) + "%");
 		}
-		changeProgress(self);
+		changeProgress();
 		$('body').on('pageChanged', function(e) {
-			changeProgress(self);	
-			console.log(e);
+			changeProgress();	
 		});
+
 		$('body').on('addedBook', function() {
 			$('#progressbar').html('');
 		});

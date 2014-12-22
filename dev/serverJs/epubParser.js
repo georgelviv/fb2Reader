@@ -104,7 +104,7 @@ function formatHtml(htmlString, path) {
 		bookBody = imageSort(bookBody);
 	}
 
-	if (bookBody.search(/<a.*?href=("|')(?!http(s)?:\/\/).*?(<\/a>)/i) !== -1) {
+	if (bookBody.search(/<a.*?href=("|')(?!http(s)?:\/\/).*?>.*?(<\/a>)/i) !== -1) {
 		bookBody = linkSort(bookBody);
 	}
 
@@ -127,13 +127,13 @@ function formatHtml(htmlString, path) {
 	}
 
 	function linkSort(htmlString) {
-		var linkArr = htmlString.match(/<a.*?href=("|')(?!http(s)?:\/\/).*?(<\/a>)/gi);
+		var linkArr = htmlString.match(/<a.*?href=("|')(?!http(s)?:\/\/).*?>.*?(<\/a>)/gi);
 		var link;
 		var linkInner;
 
 		for (var i = 0; i < linkArr.length; i++) {
 			link = linkArr[i];
-			linkInner = (link.match(/>.*<\/a>/i)[0]).slice(1, -4);
+			linkInner = (link.match(/>.*?<\/a>/i)[0]).slice(1, -4);
 			htmlString = htmlString.replace(link , linkInner);
 		}
 

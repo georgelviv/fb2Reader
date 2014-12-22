@@ -45,6 +45,7 @@ function initBook(book) {
 	} else {
 		self.initOneColumn(true);
 	}
+	self.bookDiv.find('a:not([href^=http])').contents().unwrap();
 	self.initFullScreen();
 	self.initNavigation();
 	self.initSaving();
