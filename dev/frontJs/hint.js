@@ -42,6 +42,8 @@ function hintWord(x, y) {
         }    
 
         getWikiMedia(currentWord.text());
+        translateWord(currentWord.text());
+        //console.log(translateWord(currentWord.text()));
     }
 }
 
@@ -64,6 +66,17 @@ function getWikiMedia(word) {
 });
 }
 
+function translateWord(word){
+    var inLang = 'en';
+    var outLang = 'uk';
+    var APIkey = 'trnsl.1.1.20141222T001454Z.8c7163c39781738b.a70c5087d7f3180f1c30294400bfe661c74a6016';
+    $.getJSON("https://translate.yandex.net/api/v1.5/tr.json/translate?key="+APIkey+"&lang="+inLang+"-"+outLang+"&text="+word+"&callback=?", function(data) {
+        transText = data.text[0];
+        $('#outText').text(transText);
+        console.log(transText);  
+    });
+} 
+
 function initHint() {
     var self = this;
     document.getElementById('book').addEventListener('click', getHintWord);
@@ -71,7 +84,7 @@ function initHint() {
     function getHintWord(e) {
     	if (e.shiftKey/*ctrlKey*/) {
     		hintWord(e.clientX, e.clientY);
-    	} else {
+    	}  else {
     		hideHint();
     	}
     }
