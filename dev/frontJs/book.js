@@ -5,8 +5,9 @@ define(
 	'book/bookFullScreen',
 	'book/bookSearch',
 	'book/bookSave',
-	'book/bookIntro'],
-	function(bookColumn, bookHide, bookNavigation, bookFullScreen, bookSearch, bookSave, bookIntro) {
+	'book/bookIntro',
+	'book/bookProgress'],
+	function(bookColumn, bookHide, bookNavigation, bookFullScreen, bookSearch, bookSave, bookIntro, bookProgress) {
 	function Book(bookString) {
 		this.bookString = bookString;
 		this.bookDiv = $('#book');
@@ -28,6 +29,8 @@ define(
 	Book.prototype.initSaving = bookSave.initSaving;
 	Book.prototype.initSearch = bookSearch.initSearch;
 	Book.prototype.initIntro = bookIntro.initIntro;
+	Book.prototype.setProgress = bookProgress.setProgress;
+
 
 	return Book;
 });
@@ -42,9 +45,11 @@ function initBook(book) {
 	} else {
 		self.initOneColumn(true);
 	}
+	self.bookDiv.find('a:not([href^=http])').contents().unwrap();
 	self.initFullScreen();
 	self.initNavigation();
 	self.initSaving();
 	self.initSearch();
 	self.initIntro();
+	self.setProgress();
 }

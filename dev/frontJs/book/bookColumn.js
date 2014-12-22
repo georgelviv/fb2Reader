@@ -17,7 +17,6 @@ define(function () {
 			this.currentPage = Math.ceil((this.bookDiv.scrollTop() + this.fixedHeight) /  this.fixedHeight);
 		}
 		this.scrollTop = this.bookDiv.scrollTop();
-		this.bookDiv.find('a:not([href^=http])').contents().unwrap();
 		this.hideElements();
 		$('body').trigger('columnInit');
 	}
@@ -41,9 +40,6 @@ define(function () {
 		this.rcolumn.scrollTop(this.lcolumn.scrollTop() + this.fixedHeight);
 		this.scrollHeight = this.lcolumn[0].scrollHeight;
 		this.pages = Math.ceil(this.scrollHeight / (this.fixedHeight * 2));
-		console.time(4);
-		this.bookDiv.find('a:not([href^=http])').contents().unwrap();
-		console.timeEnd(4);
 		this.hideElements();
 		$('body').trigger('columnInit');
 		console.timeEnd(1);

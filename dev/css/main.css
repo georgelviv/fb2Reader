@@ -603,7 +603,7 @@ header:after {
   color: #fff;
   text-align: right;
   height: 5px;
-  width: 40%;
+  width: 0;
   background-color: #27ae60;
 }
 /**************************************/

@@ -41,7 +41,7 @@ function removeDir(path) {
 }
 
 function readyAndRemove(htmlString, isError) {
-	if (htmlString.search(/<pre.*?>.*?<\/pre>/i) !== -1) {
+	if (htmlString.search(/<pre.*?>(.|\s)*?<\/pre>/i) !== -1) {
 		htmlString = codeStyle(htmlString);
 	}
 	exports.bookText = htmlString;
@@ -50,7 +50,7 @@ function readyAndRemove(htmlString, isError) {
 }
 
 function codeStyle(htmlString) {
-	var regPre = /<pre.*?>.*?<\/pre>/gi;
+	var regPre = /<pre.*?>(.|\s)*?<\/pre>/gi;
 	var preArr = htmlString.match(regPre);
 	var pre;
 	var preInner;
@@ -58,9 +58,9 @@ function codeStyle(htmlString) {
 
 	for (var i = 0; i < preArr.length; i++) {
 		pre = preArr[i];
-		preInner = (pre.match(/>.*<\/pre>/i)[0]).slice(1, -7);
+		preInner = (pre.match(/>(.|\s)*<\/pre>/i)[0]).slice(1, -7);
 		preFormated = hljs.highlightAuto(preInner).value;
-		console.log(preFormated);
+		preFormated = '<pre class="hljs">' + preFormated + '</pre>';
 		htmlString = htmlString.replace(pre, preFormated);
 	}
 

@@ -1,4 +1,7 @@
 define(['tools/intro.js'], function(introJs) {
+	    $('body').on('addedBook pageChanged fsChange columnInit', function() {
+        $('#hint').css("display", "none");
+    });
 	var bookProgress = {
 		setProgress: setProgress
 	};
@@ -7,24 +10,13 @@ define(['tools/intro.js'], function(introJs) {
 	function setProgress() {
 		var self = this;
 		var introHtml = '<a href="#"><i class="fa fa-info"></i></a>';
-		var infoDiv = $('#info');
-
-		$('#info').html(introHtml);
-
-		$('#info').on('click', function() {
-			startTour();
-		});
-
-		function startTour() {
-			console.log('inited');
-			var tour = introJs();
-			tour.setOption('tooltipPosition', 'auto');
-			tour.setOption('positionPrecedence', ['left', 'right', 'bottom', 'top']);
-			tour.start();
-		}
+		//var infoDiv = $('#info');
+	var progress = this.currentPage * 100 / this.pages ;	
+	var progressBarWidth =progress*$(".container").width()/ 100;  
+    $(".progressbar").width(progressBarWidth).html(progress + "% ");
 
 		$('body').on('addedBook', function() {
-			$('#info').html('');
+			$('#progressbar').html('');
 		});
 	}
 });
@@ -32,10 +24,10 @@ define(['tools/intro.js'], function(introJs) {
 /*
 this.pages всі стррінки
 this.currentPage поточна
-*/
+
 
 function setProgress(progress)
 {           
     var progressBarWidth =progress*$(".container").width()/ 100;  
     $(".progressbar").width(progressBarWidth).html(progress + "% ");
-}
+}*/
