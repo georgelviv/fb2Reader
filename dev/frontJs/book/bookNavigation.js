@@ -22,8 +22,8 @@ define(function() {
 			this.scrollTop = this.bookDiv.scrollTop();
 		}
 		this.bookPageDiv.find('input').blur();
-		$('body').trigger('pageChanged');
 		this.currentPage = goPage + 1;
+		$('body').trigger('pageChanged');
 		this.bookPageDiv.find('input').val(this.currentPage);
 	}
 

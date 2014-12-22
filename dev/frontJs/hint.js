@@ -14,7 +14,7 @@ function hintWord(x, y) {
 	if (! /\s/g.test(currentWord.text())) {	
 		var hintBlock = $('#hint');
 		hintBlock.css({"display":"block", "left":x - 30 + 'px' , "top":y + 10 + 'px', "position":"absolute", "z-index":"100"} );
-		hintBlock.html('<h3>' + currentWord.text() + '</h3>' + "\n <p id='jsonWiki'></p>");
+		hintBlock.html('<h3>' + currentWord.text() + '</h3>' + "\n <p id='jsonWiki'></p><hr><p id = 'jsonTranslated'></p>");
         var heightBlock = hintBlock.height();
         var widthBlock = hintBlock.width();
         var heightWindow = $(window).height();
@@ -43,7 +43,6 @@ function hintWord(x, y) {
 
         getWikiMedia(currentWord.text());
         translateWord(currentWord.text());
-        //console.log(translateWord(currentWord.text()));
     }
 }
 
@@ -56,6 +55,7 @@ function getWikiMedia(word) {
     $.getJSON("http://en.wikipedia.org/w/api.php?action=query&prop=extracts&explaintext&exchars=175&titles=" + word + "&format=json&callback=?", function(data) {
       
      obj = data.query.pages;
+     console.log(obj);
      for (key in obj)  break;
         if (key == -1) {
           $('#jsonWiki').html('<p> Sorry wiki doesn`t known</p>');  
@@ -72,8 +72,7 @@ function translateWord(word){
     var APIkey = 'trnsl.1.1.20141222T001454Z.8c7163c39781738b.a70c5087d7f3180f1c30294400bfe661c74a6016';
     $.getJSON("https://translate.yandex.net/api/v1.5/tr.json/translate?key="+APIkey+"&lang="+inLang+"-"+outLang+"&text="+word+"&callback=?", function(data) {
         transText = data.text[0];
-        $('#outText').text(transText);
-        console.log(transText);  
+        $('#jsonTranslated').text(transText);
     });
 } 
 
@@ -81,8 +80,8 @@ function initHint() {
     var self = this;
     document.getElementById('book').addEventListener('click', getHintWord);
 
-    function getHintWord(e) {
-    	if (e.shiftKey/*ctrlKey*/) {
+    function getHintWord(e) {       
+    	if (e.ctrlKey /*shiftKey*/) {
     		hintWord(e.clientX, e.clientY);
     	}  else {
     		hideHint();
