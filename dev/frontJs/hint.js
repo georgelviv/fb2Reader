@@ -76,7 +76,7 @@ function translateWord(word){
     var APIkey = 'trnsl.1.1.20141222T001454Z.8c7163c39781738b.a70c5087d7f3180f1c30294400bfe661c74a6016';
     $.getJSON("https://translate.yandex.net/api/v1.5/tr.json/translate?key="+APIkey+"&lang="+inLang+"-"+outLang+"&text="+word+"&callback=?", function(data) {
         transText = data.text[0];
-        $('#jsonTranslated').text(transText);
+        $('#jsonTranslated').text('Translate to Ukraine: ' + transText);
     });
 } 
 
@@ -85,7 +85,7 @@ function initHint() {
     document.getElementById('book').addEventListener('click', getHintWord);
 
     function getHintWord(e) {       
-    	if (e.ctrlKey /*shiftKey*/) {
+    	if (e.ctrlKey) {
     		hintWord(e.clientX, e.clientY);
     	}  else {
     		hideHint();
@@ -98,7 +98,6 @@ function initHint() {
             hideHint();
         }
     };
-    
 
 }
 
