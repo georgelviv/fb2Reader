@@ -6,7 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="shortcut icon" href="img/favicon.png">
 	<style>
-	body{
+	/*body{
 	  background-color: #E6E6E6;
 	  font-family: Helvetica, Arial, sans-serif;
 	  font-size: 10pt;
@@ -68,11 +68,75 @@
 	}
 	.box ul li {
 	  margin-bottom: 7px;
+	}*/
+
+
+
+
+/* ----------------------------------------------Wrapper-------------------------------------*/
+#fof{display:block; width:100%; margin:44px 0; line-height:1.6em; text-align:center;}
+#fof .hgroup{text-transform:uppercase;}
+#fof .hgroup h1{margin-bottom:25px; font-size:80px;}
+#fof .hgroup h1 span{display:inline-block; margin-left:5px; padding:2px; border:1px solid #CCCCCC; overflow:hidden;}
+#fof .hgroup h1 span strong{display:inline-block; padding:0px 20px 20px; border:1px solid #CCCCCC; font-weight:normal;}
+#fof .hgroup h2{font-size:60px;}
+#fof .hgroup h2 span{display:block; font-size:30px;}
+#fof p{margin:25px 0 0 0; padding:0; font-size:16px;}
+#fof p:first-child{margin-top:0;}
+
+body{margin:0; padding:0; font-size:13px; font-family:Georgia, "Times New Roman", Times, serif; }
+header{	background: #27ae60;	height: 50px;	width: 100%;}
+footer {background: #444; width: 100%; height: 150px;  }
+
+.clear:after{content:"."; display:block; height:0; clear:both; visibility:hidden; line-height:0;}
+.clear{display:inline-block; clear:both;}
+html[xmlns] .clear{display:block;}
+* html .clear{height:1%;}
+
+a{outline:none; text-decoration:none;}
+
+
+/* ----------------------------------------------Wrapper-------------------------------------*/
+
+div.wrapper{display:block; width:100%; margin:0; padding:0; text-align:left;}
+
+.row1, .row1 a{color:#C0BAB6; background-color:#333333;}
+.row2{color:#979797; background-color:#FFFFFF;}
+.row2 a{color:#FF9900; background-color:#FFFFFF;}
+.row3, .row3 a{color:#919191; background-color:#232323;}
+
+div.wrapper h1, div.wrapper h2{
+	margin:0 0 15px 0;
+	padding:0;
+	font-size:20px;
+	font-weight:normal;
+	line-height:normal;
 	}
 
+ #container{display:block; width:960px; margin:0 auto;}
+
+
+/*----------------------------------------------Content Area-------------------------------------*/
+
+#container a{background-color:transparent;}
 	</style>
 </head>
+<header></header>	
 <body>
+<div class="wrapper row2">
+  <div id="container" class="clear">
+    <section id="fof" class="clear">
+      <div class="hgroup">
+        <h1><span><strong>4</strong></span><span><strong>0</strong></span><span><strong>4</strong></span></h1>
+        <h2>Error ! <span>Page Not Found</span></h2>
+      </div>
+      <p>The page you are looking for might have been removed had its name changed or is temporarily unavailable</p>
+      <p><a href="javascript:history.go(-1)">&laquo; Go Back</a> / <a href="/">Go Home &raquo;</a></p>
+    </section>
+  </div>
+</div>
+<footer></footer>
+<!--
 <div class="container">
   <div class="box">
     <h1>404</h1>
@@ -83,6 +147,7 @@
     </ul>
   </div>
 </div>
+-->
 
 </body>
 </html>

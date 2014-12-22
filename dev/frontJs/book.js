@@ -29,7 +29,7 @@ define(
 	Book.prototype.initSaving = bookSave.initSaving;
 	Book.prototype.initSearch = bookSearch.initSearch;
 	Book.prototype.initIntro = bookIntro.initIntro;
-	Book.prototype.bookProgress = bookProgress.setProgress;
+	Book.prototype.setProgress = bookProgress.setProgress;
 
 
 	return Book;

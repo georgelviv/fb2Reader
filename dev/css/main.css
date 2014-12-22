@@ -606,6 +606,16 @@ header:after {
   width: 0;
   background-color: #27ae60;
 }
+.label {
+  position: absolute;
+  display: block;
+  width: 12px;
+  height: 9px;
+  top: -9px;
+  left: 14px;
+  background: transparent;
+  overflow: hidden;
+}
 /**************************************/
 footer {
   border-top: 1px #dedede solid;
