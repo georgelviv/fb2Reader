@@ -24,7 +24,7 @@ define( function() {
 			$(".label").html(progress.toPrecision(4) + "%");
 		}
 		changeProgress();
-		$('body').on('pageChanged', function(e) {
+		$('body').on('pageChanged columnInit', function(e) {
 			changeProgress();
 		});
 
