@@ -29,7 +29,6 @@ define( function() {
 		});
 
 		$('body').on('addedBook', function() {
-			console.log('222');
 			progresDiv.html('');
 		});
 	}

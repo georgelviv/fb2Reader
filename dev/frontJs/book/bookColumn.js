@@ -21,15 +21,12 @@ define(function () {
 		$('body').trigger('columnInit');
 	}
 	function initTwoColumn() {
-		console.time(1);
 		var content = '';
 		this.isTwoColumn = true;
 		content = '<div class="bookcolumn" id="lcolumn" style="padding-right:20px">' + this.bookString +'</div>';
 		content += '<div class="bookcolumn" id="rcolumn" style="padding-left:20px">' + this.bookString;
 		content += '<div id="lastp" style="height:' + this.userHeight + 'px;"></div>';
-		console.time(2);
 		this.bookDiv.html(content);
-		console.timeEnd(2);
 		this.lcolumn = $('#lcolumn');
 		this.rcolumn = $('#rcolumn');
 		if (this.scrollTop) {
@@ -42,7 +39,6 @@ define(function () {
 		this.pages = Math.ceil(this.scrollHeight / (this.fixedHeight * 2));
 		this.hideElements();
 		$('body').trigger('columnInit');
-		console.timeEnd(1);
 	}
 	function initColumnButtons() {
 		var self = this;
