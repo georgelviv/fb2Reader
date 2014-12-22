@@ -56,11 +56,15 @@ function getWikiMedia(word) {
       
      obj = data.query.pages;
      console.log(obj);
-     for (key in obj)  break;
+     for (key in obj)  break;        
         if (key == -1) {
           $('#jsonWiki').html('<p> Sorry wiki doesn`t known</p>');  
       } else {
-        $('#jsonWiki').html(obj[key].extract + '<a href="http://en.wikipedia.org/wiki?curid=' + key +'"> More...</a>' );     
+            if (obj[key].extract == '...'){
+               $('#jsonWiki').html('<p> Wiki has many version...</p><a href="http://en.wikipedia.org/wiki?curid=' + key +'" target="blank">Go to Wiki...</a>');  
+            } else {
+                $('#jsonWiki').html(obj[key].extract + '<a href="http://en.wikipedia.org/wiki?curid=' + key +'"  target="blank"> More...</a>' );     
+            }
     }
     
 });
