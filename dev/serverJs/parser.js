@@ -41,9 +41,9 @@ function removeDir(path) {
 }
 
 function readyAndRemove(htmlString, isError) {
-	if (htmlString.search(/<pre.*?>(.|\s)*?<\/pre>/i) !== -1) {
-		htmlString = codeStyle(htmlString);
-	}
+	// if (htmlString.search(/<pre.*?>(.|\s)*?<\/pre>/i) !== -1) {
+	// 	htmlString = codeStyle(htmlString);
+	// }
 	exports.bookText = htmlString;
 	exports.ready = true;
 	removeDir('./dist/uploads/');
