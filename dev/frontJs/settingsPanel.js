@@ -124,14 +124,5 @@ function settingPanel() {
 		$('#main, #book').css("background-image",  "url('"+option+"')");
 		$('body').trigger('changeStyles');
 	});
-
-/*
-	function saveBookStyle(styleString) {
-		if (!!localStorage && styleString) {
-			localStorage.setItem("book", styleString);
-		}
-
-	}
-*/
 }
 
