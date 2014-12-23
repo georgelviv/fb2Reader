@@ -114,7 +114,7 @@ function settingPanel() {
 	      }
 		$('body').trigger('changeStyles');
 	});
-
+//this snippet of code is worked, but don't fully correct ( background color left on the left-top)
 	/*$('#textures').change(function()
 	{
 		var option = $(this).find('option:selected').val();
