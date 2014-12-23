@@ -8,8 +8,15 @@ define(function() {
 		if (!localStorage) return;
 		var self = this;
 		var savedScroll;
+		var bookBytesLength = countBytes(this.bookString);
+
+		if (bookBytesLength > 4000000) {
+			console.log('Book size is too long to save to localStorage:' + bookBytesLength + ' bytes.');
+			return ;
+		}
 
 		localStorage.setItem("book", this.bookString);
+
 
 		if (localStorage.getItem("scrollTop")) {
 			savedScroll = Number(localStorage.getItem("scrollTop"));
@@ -33,5 +40,12 @@ define(function() {
 			localStorage.setItem("scrollTop", 0);
 		});
 	}
+
+	function countBytes(string) {
+		return unescape(
+			encodeURI(string)
+		).length;
+	}
+
 });
 

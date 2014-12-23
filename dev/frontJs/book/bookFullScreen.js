@@ -57,10 +57,9 @@ define(function() {
 			self.bookHeight = self.bookDiv.height();
 			self.fixedHeight = self.bookHeight - self.fixScroll;
 			if (self.isTwoColumn) {
-				self.rcolumn.scrollTop(self.lcolumn.scrollTop() + self.fixedHeight);
-				self.pages = Math.ceil((self.scrollHeight) / (self.fixedHeight * 2));
+				self.initTwoColumn();
 			} else {
-				self.pages = Math.ceil(self.scrollHeight / self.fixedHeight);
+				self.initOneColumn();
 			}
 			self.hideElements();
 		}
