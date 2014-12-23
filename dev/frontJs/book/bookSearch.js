@@ -88,18 +88,18 @@ function initSearch() {
 		if (searchPath.length > 2) {
 			self.bookDiv.highlight(searchPath);
 			searchCancel.addClass('show');
-			results = self.lcolumn.find('.highlight').length;
+			results = self.lcolumn.find('.search-highlight').length;
 			if (results === 0) {
 				searchError.text('No results found');
 			} else {
 				if (self.isTwoColumn) {
-					firstMatchTop = Math.ceil(self.lcolumn.find('.highlight')[0].getBoundingClientRect().top);
+					firstMatchTop = Math.ceil(self.lcolumn.find('.search-highlight')[0].getBoundingClientRect().top);
 					scrollEl = Math.abs(firstMatchTop + self.lcolumn.scrollTop());
 					firstMatchPage = Math.ceil(scrollEl / (self.fixedHeight * 2));
 					self.gotoPage(firstMatchPage);
 				} else {
-					results = self.bookDiv.find('.highlight').length;
-					firstMatchTop = Math.ceil(self.bookDiv.find('.highlight')[0].getBoundingClientRect().top);
+					results = self.bookDiv.find('.search-highlight').length;
+					firstMatchTop = Math.ceil(self.bookDiv.find('.search-highlight')[0].getBoundingClientRect().top);
 					scrollEl = Math.abs(firstMatchTop + self.bookDiv.scrollTop());
 					firstMatchPage = Math.ceil(scrollEl / fixedHeight);
 					self.gotoPage(firstMatchPage);
@@ -121,7 +121,7 @@ jQuery.fn.highlight = function(pat) {
    var pos = node.data.toUpperCase().indexOf(pat);
    if (pos >= 0) {
     var spannode = document.createElement('span');
-    spannode.className = 'highlight';
+    spannode.className = 'search-highlight';
     var middlebit = node.splitText(pos);
     var endbit = middlebit.splitText(pat.length);
     var middleclone = middlebit.cloneNode(true);
@@ -143,7 +143,7 @@ jQuery.fn.highlight = function(pat) {
 };
 
 jQuery.fn.removeHighlight = function() {
- return this.find("span.highlight").each(function() {
+ return this.find("span.search-highlight").each(function() {
 	this.parentNode.replaceChild(this.firstChild, this);
 	this.normalize();
  }).end();

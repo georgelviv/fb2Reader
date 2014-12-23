@@ -1028,7 +1028,7 @@ li:last-child > .settings-list-link {
 #search.active .scancel:hover {
   color: #000;
 }
-.highlight {
+.search-highlight {
   background-color: #ffff00;
 }
 .imgShow {
