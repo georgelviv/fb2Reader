@@ -333,9 +333,6 @@ ul.social li a,
     border: 1px solid #ccc;
     padding-right: 30px;
     opacity: 0.15;
-    /*-webkit-transition: all .15s linear;
-    -moz-transition: all .15s linear;
-    transition: all .15s linear;*/
     transition: width .4s cubic-bezier(0.000, 0.795, 0.000, 1.000);
 }
 
@@ -398,7 +395,7 @@ header:after {
   display: none;
   width: 300px;
   height: 180px; 
-  background-color: #444;
+  background-color: @settingPanelContentBg;
   color: #fff;
   border: 1px solid rgba(30,114,140,.5);
   border-radius: 2px;
@@ -414,11 +411,11 @@ header:after {
   }
   &:before {
      bottom: -11px;
-     border-top-color: #444;
+     border-top-color: @settingPanelContentBg;
   }
   &:after {
      bottom: -10px;
-     border-top-color: #444;
+     border-top-color: @settingPanelContentBg;
   }
   h3 {
      margin: 0;
@@ -445,7 +442,7 @@ header:after {
   display: none;
   width: 300px;
   height: 180px; 
-  background-color: #444;
+  background-color: @settingPanelContentBg;
   color: #fff;
   border: 1px solid rgba(30,114,140,.5);
   border-radius: 2px;
@@ -462,11 +459,11 @@ header:after {
   }
   &:before {
      bottom: -11px;
-     border-top-color: #444;
+     border-top-color: @settingPanelContentBg;
   }
   &:after {
      bottom: -10px;
-     border-top-color: #444;
+     border-top-color: @settingPanelContentBg;
   }
   h3 {
      margin: 0;
@@ -494,7 +491,7 @@ header:after {
   display: none;
   width: 300px;
   height: 180px; 
-  background-color: #444;
+  background-color: @settingPanelContentBg;
   color: #fff;
   border: 1px solid rgba(30,114,140,.5);
   border-radius: 2px;
@@ -513,10 +510,10 @@ header:after {
   &:before {
     bottom: 20px;
     margin-left: -11%;
-    -ms-transform: rotate(90deg); /* IE 9 */
-    -webkit-transform: rotate(90deg); /* Chrome, Safari, Opera */
+    -ms-transform: rotate(90deg);
+    -webkit-transform: rotate(90deg);
     transform: rotate(90deg);
-    border-top-color: #444;
+    border-top-color: @settingPanelContentBg;
   }
   h3 {
      margin: 0;
@@ -543,7 +540,7 @@ header:after {
   display: none;
   width: 300px;
   height: 180px; 
-  background-color: #444;
+  background-color: @settingPanelContentBg;
   color: #fff;
   border: 1px solid rgba(30,114,140,.5);
   border-radius: 2px;
@@ -562,10 +559,10 @@ header:after {
   &:before {
     bottom: 20px;
     margin-left: 92%;
-    -ms-transform: rotate(270deg); /* IE 9 */
-    -webkit-transform: rotate(270deg); /* Chrome, Safari, Opera */
+    -ms-transform: rotate(270deg);
+    -webkit-transform: rotate(270deg);
     transform: rotate(270deg);
-    border-top-color: #444;
+    border-top-color: @settingPanelContentBg;
   }
   h3 {
      margin: 0;
@@ -592,7 +589,7 @@ header:after {
   display: none;
   width: 300px;
   height: 180px; 
-  background-color: #444;
+  background-color: @settingPanelContentBg;
   color: #fff;
   border: 1px solid rgba(30,114,140,.5);
   border-radius: 2px;
@@ -611,8 +608,8 @@ header:after {
   &:before {
     top: -11px;
     margin-left: 5%;
-    -ms-transform: rotate(180deg); /* IE 9 */
-    -webkit-transform: rotate(180deg); /* Chrome, Safari, Opera */
+    -ms-transform: rotate(180deg);
+    -webkit-transform: rotate(180deg);
     transform: rotate(180deg);
     border-top-color: #ccc;
   }
@@ -637,11 +634,11 @@ header:after {
 
 
 .hint-bottom.hint-right{
-    position: relative;
+  position: relative;
   display: none;
   width: 300px;
   height: 180px; 
-  background-color: #444;
+  background-color: @settingPanelContentBg;
   color: #fff;
   border: 1px solid rgba(30,114,140,.5);
   border-radius: 2px;
@@ -661,10 +658,10 @@ header:after {
   &:before {
     top: 35px;
     margin-left: -11%;
-    -ms-transform: rotate(90deg); /* IE 9 */
-    -webkit-transform: rotate(90deg); /* Chrome, Safari, Opera */
+    -ms-transform: rotate(90deg);
+    -webkit-transform: rotate(90deg); 
     transform: rotate(90deg);
-    border-top-color: #444;
+    border-top-color: @settingPanelContentBg;
   }
   h3 {
      margin: 0;
@@ -692,7 +689,7 @@ header:after {
   display: none;
   width: 300px;
   height: 180px; 
-  background-color: #444;
+  background-color: @settingPanelContentBg;
   color: #fff;
   border: 1px solid rgba(30,114,140,.5);
   border-radius: 2px;
@@ -711,10 +708,10 @@ header:after {
   &:before {
     top: 35px;
     margin-left: 92%;
-    -ms-transform: rotate(270deg); /* IE 9 */
-    -webkit-transform: rotate(270deg); /* Chrome, Safari, Opera */
+    -ms-transform: rotate(270deg);
+    -webkit-transform: rotate(270deg); 
     transform: rotate(270deg);
-    border-top-color: #444;
+    border-top-color: @settingPanelContentBg;
   }
   h3 {
      margin: 0;
@@ -778,7 +775,7 @@ header:after {
 /**************************************/
 footer{
     border-top: 1px #dedede solid;
-    background: #444;
+    background: @settingPanelContentBg;
     width: 100%;
     height: @footerheight;
     bottom: 0;
@@ -803,8 +800,8 @@ footer{
   position: relative;
   margin-top: -11%;
   width: 100%;
-  background: #444 !important;
-  border: 1px solid #27ae60;
+  background: @settingPanelContentBg !important;
+  border: 1px solid @headerColor;
   -webkit-box-shadow: 0 0 8px rgba(0, 0, 0, 0.07);
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.07);
   overflow:auto;
@@ -820,7 +817,6 @@ footer{
   direction: rtl;
   background:@mainBackgroundColor;
   border-bottom: 1px solid #ddd;
-  xborder-radius: 3px 3px 0 0;
 }
 
 
@@ -860,7 +856,7 @@ footer{
   padding-bottom: 2px;
   line-height: 36px;
   font-weight: bold;
-  color: #27ae60;
+  color: @headerColor;
   background: @settingPanelContentBg;
   border-top: 0;
 }
@@ -901,7 +897,7 @@ footer{
   line-height: 3px !important;
   padding: 10px 12px;
   font-weight: bold;
-  color: #eff4d0;
+  color: @settingPanelTextColor;
   text-decoration: none;
   cursor: pointer;
 }
@@ -980,10 +976,6 @@ li:last-child > .settings-list-link {
   margin-left: -175px;
   margin-top: -10px;
 }
-
-/* #book-page  вклала в header */
-/* кради що треба і куди тре) */
-
 
 
 #button-prev, #button-next {

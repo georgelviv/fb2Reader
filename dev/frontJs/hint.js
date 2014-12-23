@@ -22,7 +22,6 @@ function hintWord(x, y) {
         var heightHeader = $('header').height();
 
         hintBlock.removeClass();
-        //hintBlock.addClass('hint');
         if (y < heightBlock + heightHeader + 10 ) {
             hintBlock.addClass('hint-bottom');
             if (x < widthBlock / 2 + 10) {
