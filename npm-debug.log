@@ -1,0 +1,798 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'c:\\Program Files\\nodejs\\node.exe',
+1 verbose cli   'c:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli   'install' ]
+2 info using npm@1.4.28
+3 info using node@v0.10.32
+4 verbose readDependencies using package.json deps
+5 verbose install where, deps [ 'c:\\Users\\Yaroslava\\MaKE_DIr\\FrontEndProject_Reader',
+5 verbose install   [ 'express',
+5 verbose install     'fs-extra',
+5 verbose install     'grunt',
+5 verbose install     'grunt-contrib-cssmin',
+5 verbose install     'grunt-contrib-less',
+5 verbose install     'grunt-contrib-requirejs',
+5 verbose install     'grunt-contrib-watch',
+5 verbose install     'grunt-nodemon',
+5 verbose install     'highlight.js',
+5 verbose install     'iconv-lite',
+5 verbose install     'jquery-file-upload-middleware',
+5 verbose install     'jschardet',
+5 verbose install     'rmdir',
+5 verbose install     'unzip',
+5 verbose install     'xml2js' ] ]
+6 info preinstall fb2Reader@0.4.0
+7 verbose readDependencies using package.json deps
+8 verbose already installed skipping express@^4.10.2 c:\Users\Yaroslava\MaKE_DIr\FrontEndProject_Reader
+9 verbose already installed skipping fs-extra@^0.13.0 c:\Users\Yaroslava\MaKE_DIr\FrontEndProject_Reader
+10 verbose already installed skipping grunt@^0.4.5 c:\Users\Yaroslava\MaKE_DIr\FrontEndProject_Reader
+11 verbose already installed skipping grunt-contrib-cssmin@^0.10.0 c:\Users\Yaroslava\MaKE_DIr\FrontEndProject_Reader
+12 verbose already installed skipping grunt-contrib-less@^0.12.0 c:\Users\Yaroslava\MaKE_DIr\FrontEndProject_Reader
+13 verbose already installed skipping grunt-contrib-requirejs@^0.4.4 c:\Users\Yaroslava\MaKE_DIr\FrontEndProject_Reader
+14 verbose already installed skipping grunt-contrib-watch@^0.6.1 c:\Users\Yaroslava\MaKE_DIr\FrontEndProject_Reader
+15 verbose already installed skipping grunt-nodemon@^0.3.0 c:\Users\Yaroslava\MaKE_DIr\FrontEndProject_Reader
+16 verbose cache add [ 'highlight.js@^8.4.0', null ]
+17 verbose cache add name=undefined spec="highlight.js@^8.4.0" args=["highlight.js@^8.4.0",null]
+18 verbose parsed url { protocol: null,
+18 verbose parsed url   slashes: null,
+18 verbose parsed url   auth: null,
+18 verbose parsed url   host: null,
+18 verbose parsed url   port: null,
+18 verbose parsed url   hostname: null,
+18 verbose parsed url   hash: null,
+18 verbose parsed url   search: null,
+18 verbose parsed url   query: null,
+18 verbose parsed url   pathname: 'highlight.js@^8.4.0',
+18 verbose parsed url   path: 'highlight.js@^8.4.0',
+18 verbose parsed url   href: 'highlight.js@^8.4.0' }
+19 verbose already installed skipping iconv-lite@^0.4.5 c:\Users\Yaroslava\MaKE_DIr\FrontEndProject_Reader
+20 verbose already installed skipping jquery-file-upload-middleware@^0.1.7 c:\Users\Yaroslava\MaKE_DIr\FrontEndProject_Reader
+21 verbose already installed skipping jschardet@^1.1.0 c:\Users\Yaroslava\MaKE_DIr\FrontEndProject_Reader
+22 verbose already installed skipping rmdir@^1.0.4 c:\Users\Yaroslava\MaKE_DIr\FrontEndProject_Reader
+23 verbose already installed skipping unzip@^0.1.11 c:\Users\Yaroslava\MaKE_DIr\FrontEndProject_Reader
+24 verbose already installed skipping xml2js@^0.4.4 c:\Users\Yaroslava\MaKE_DIr\FrontEndProject_Reader
+25 verbose cache add name="highlight.js" spec="^8.4.0" args=["highlight.js","^8.4.0"]
+26 verbose parsed url { protocol: null,
+26 verbose parsed url   slashes: null,
+26 verbose parsed url   auth: null,
+26 verbose parsed url   host: null,
+26 verbose parsed url   port: null,
+26 verbose parsed url   hostname: null,
+26 verbose parsed url   hash: null,
+26 verbose parsed url   search: null,
+26 verbose parsed url   query: null,
+26 verbose parsed url   pathname: '^8.4.0',
+26 verbose parsed url   path: '^8.4.0',
+26 verbose parsed url   href: '^8.4.0' }
+27 verbose addNamed [ 'highlight.js', '^8.4.0' ]
+28 verbose addNamed [ null, '>=8.4.0-0 <9.0.0-0' ]
+29 silly lockFile 6ebe7597-highlight-js-8-4-0 highlight.js@^8.4.0
+30 verbose lock highlight.js@^8.4.0 C:\Users\Yaroslava\AppData\Roaming\npm-cache\6ebe7597-highlight-js-8-4-0.lock
+31 silly addNameRange { name: 'highlight.js',
+31 silly addNameRange   range: '>=8.4.0-0 <9.0.0-0',
+31 silly addNameRange   hasData: false }
+32 verbose request where is /highlight.js
+33 verbose request registry https://registry.npmjs.org/
+34 verbose request id 2d217918000b78b7
+35 verbose url raw /highlight.js
+36 verbose url resolving [ 'https://registry.npmjs.org/', './highlight.js' ]
+37 verbose url resolved https://registry.npmjs.org/highlight.js
+38 verbose request where is https://registry.npmjs.org/highlight.js
+39 info trying registry request attempt 1 at 08:54:32
+40 http GET https://registry.npmjs.org/highlight.js
+41 http 200 https://registry.npmjs.org/highlight.js
+42 silly registry.get cb [ 200,
+42 silly registry.get   { date: 'Tue, 23 Dec 2014 06:54:34 GMT',
+42 silly registry.get     server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+42 silly registry.get     etag: '"CO94XRRVGY8RU22KY4XZED3K8"',
+42 silly registry.get     'content-type': 'application/json',
+42 silly registry.get     'cache-control': 'max-age=60',
+42 silly registry.get     'content-length': '87412',
+42 silly registry.get     'accept-ranges': 'bytes',
+42 silly registry.get     via: '1.1 varnish',
+42 silly registry.get     age: '0',
+42 silly registry.get     'x-served-by': 'cache-fra1225-FRA',
+42 silly registry.get     'x-cache': 'HIT',
+42 silly registry.get     'x-cache-hits': '1',
+42 silly registry.get     'x-timer': 'S1419317673.594121,VS0,VE418',
+42 silly registry.get     vary: 'Accept',
+42 silly registry.get     'keep-alive': 'timeout=10, max=50',
+42 silly registry.get     connection: 'Keep-Alive' } ]
+43 silly addNameRange number 2 { name: 'highlight.js',
+43 silly addNameRange   range: '>=8.4.0-0 <9.0.0-0',
+43 silly addNameRange   hasData: true }
+44 silly addNameRange versions [ 'highlight.js',
+44 silly addNameRange   [ '1.0.0',
+44 silly addNameRange     '1.0.1',
+44 silly addNameRange     '1.0.2',
+44 silly addNameRange     '1.0.3',
+44 silly addNameRange     '1.0.4',
+44 silly addNameRange     '1.1.0',
+44 silly addNameRange     '1.1.1',
+44 silly addNameRange     '1.2.0',
+44 silly addNameRange     '7.0.1',
+44 silly addNameRange     '7.1.0',
+44 silly addNameRange     '7.2.0',
+44 silly addNameRange     '7.3.0',
+44 silly addNameRange     '7.4.0',
+44 silly addNameRange     '7.5.0',
+44 silly addNameRange     '8.0.0',
+44 silly addNameRange     '8.1.0',
+44 silly addNameRange     '8.2.0',
+44 silly addNameRange     '8.3.0',
+44 silly addNameRange     '8.4.0' ] ]
+45 verbose addNamed [ 'highlight.js', '8.4.0' ]
+46 verbose addNamed [ '8.4.0', '8.4.0' ]
+47 silly lockFile f8c5ffa8-highlight-js-8-4-0 highlight.js@8.4.0
+48 verbose lock highlight.js@8.4.0 C:\Users\Yaroslava\AppData\Roaming\npm-cache\f8c5ffa8-highlight-js-8-4-0.lock
+49 silly lockFile cf532c39-hlight-js-highlight-js-8-4-0-tgz https://registry.npmjs.org/highlight.js/-/highlight.js-8.4.0.tgz
+50 verbose lock https://registry.npmjs.org/highlight.js/-/highlight.js-8.4.0.tgz C:\Users\Yaroslava\AppData\Roaming\npm-cache\cf532c39-hlight-js-highlight-js-8-4-0-tgz.lock
+51 verbose addRemoteTarball [ 'https://registry.npmjs.org/highlight.js/-/highlight.js-8.4.0.tgz',
+51 verbose addRemoteTarball   'dc0d05b8dc9b110f13bce52cb96fd1e0c6bc791c' ]
+52 info retry fetch attempt 1 at 08:54:33
+53 verbose fetch to= C:\Users\YAROSL~1\AppData\Local\Temp\npm-8080-NCuYvci3\registry.npmjs.org\highlight.js\-\highlight.js-8.4.0.tgz
+54 http GET https://registry.npmjs.org/highlight.js/-/highlight.js-8.4.0.tgz
+55 http 200 https://registry.npmjs.org/highlight.js/-/highlight.js-8.4.0.tgz
+56 silly lockFile cf532c39-hlight-js-highlight-js-8-4-0-tgz https://registry.npmjs.org/highlight.js/-/highlight.js-8.4.0.tgz
+57 silly lockFile cf532c39-hlight-js-highlight-js-8-4-0-tgz https://registry.npmjs.org/highlight.js/-/highlight.js-8.4.0.tgz
+58 silly lockFile f8c5ffa8-highlight-js-8-4-0 highlight.js@8.4.0
+59 silly lockFile f8c5ffa8-highlight-js-8-4-0 highlight.js@8.4.0
+60 silly lockFile 6ebe7597-highlight-js-8-4-0 highlight.js@^8.4.0
+61 silly lockFile 6ebe7597-highlight-js-8-4-0 highlight.js@^8.4.0
+62 silly resolved [ { name: 'highlight.js',
+62 silly resolved     description: 'Syntax highlighting with language autodetection.',
+62 silly resolved     keywords: [ 'highlight', 'syntax' ],
+62 silly resolved     homepage: 'https://highlightjs.org/',
+62 silly resolved     version: '8.4.0',
+62 silly resolved     author: { name: 'Ivan Sagalaev', email: 'maniac@softwaremaniacs.org' },
+62 silly resolved     contributors:
+62 silly resolved      [ [Object],
+62 silly resolved        [Object],
+62 silly resolved        [Object],
+62 silly resolved        [Object],
+62 silly resolved        [Object],
+62 silly resolved        [Object],
+62 silly resolved        [Object],
+62 silly resolved        [Object],
+62 silly resolved        [Object],
+62 silly resolved        [Object],
+62 silly resolved        [Object],
+62 silly resolved        [Object],
+62 silly resolved        [Object],
+62 silly resolved        [Object],
+62 silly resolved        [Object],
+62 silly resolved        [Object],
+62 silly resolved        [Object],
+62 silly resolved        [Object],
+62 silly resolved        [Object],
+62 silly resolved        [Object],
+62 silly resolved        [Object],
+62 silly resolved        [Object],
+62 silly resolved        [Object],
+62 silly resolved        [Object],
+62 silly resolved        [Object],
+62 silly resolved        [Object],
+62 silly resolved        [Object],
+62 silly resolved        [Object],
+62 silly resolved        [Object],
+62 silly resolved        [Object],
+62 silly resolved        [Object],
+62 silly resolved        [Object],
+62 silly resolved        [Object],
+62 silly resolved        [Object],
+62 silly resolved        [Object],
+62 silly resolved        [Object],
+62 silly resolved        [Object],
+62 silly resolved        [Object],
+62 silly resolved        [Object],
+62 silly resolved        [Object],
+62 silly resolved        [Object],
+62 silly resolved        [Object],
+62 silly resolved        [Object],
+62 silly resolved        [Object],
+62 silly resolved        [Object],
+62 silly resolved        [Object],
+62 silly resolved        [Object],
+62 silly resolved        [Object],
+62 silly resolved        [Object],
+62 silly resolved        [Object],
+62 silly resolved        [Object],
+62 silly resolved        [Object],
+62 silly resolved        [Object],
+62 silly resolved        [Object],
+62 silly resolved        [Object],
+62 silly resolved        [Object],
+62 silly resolved        [Object],
+62 silly resolved        [Object],
+62 silly resolved        [Object],
+62 silly resolved        [Object],
+62 silly resolved        [Object],
+62 silly resolved        [Object],
+62 silly resolved        [Object],
+62 silly resolved        [Object],
+62 silly resolved        [Object],
+62 silly resolved        [Object],
+62 silly resolved        [Object],
+62 silly resolved        [Object],
+62 silly resolved        [Object],
+62 silly resolved        [Object],
+62 silly resolved        [Object],
+62 silly resolved        [Object],
+62 silly resolved        [Object],
+62 silly resolved        [Object],
+62 silly resolved        [Object],
+62 silly resolved        [Object],
+62 silly resolved        [Object],
+62 silly resolved        [Object],
+62 silly resolved        [Object],
+62 silly resolved        [Object],
+62 silly resolved        [Object],
+62 silly resolved        [Object],
+62 silly resolved        [Object],
+62 silly resolved        [Object],
+62 silly resolved        [Object],
+62 silly resolved        [Object],
+62 silly resolved        [Object],
+62 silly resolved        [Object],
+62 silly resolved        [Object],
+62 silly resolved        [Object],
+62 silly resolved        [Object],
+62 silly resolved        [Object],
+62 silly resolved        [Object],
+62 silly resolved        [Object],
+62 silly resolved        [Object],
+62 silly resolved        [Object],
+62 silly resolved        [Object],
+62 silly resolved        [Object],
+62 silly resolved        [Object],
+62 silly resolved        [Object],
+62 silly resolved        [Object],
+62 silly resolved        [Object],
+62 silly resolved        [Object],
+62 silly resolved        [Object],
+62 silly resolved        [Object],
+62 silly resolved        [Object],
+62 silly resolved        [Object],
+62 silly resolved        [Object],
+62 silly resolved        [Object],
+62 silly resolved        [Object],
+62 silly resolved        [Object],
+62 silly resolved        [Object],
+62 silly resolved        [Object],
+62 silly resolved        [Object],
+62 silly resolved        [Object],
+62 silly resolved        [Object],
+62 silly resolved        [Object],
+62 silly resolved        [Object],
+62 silly resolved        [Object],
+62 silly resolved        [Object],
+62 silly resolved        [Object],
+62 silly resolved        [Object],
+62 silly resolved        [Object],
+62 silly resolved        [Object],
+62 silly resolved        [Object],
+62 silly resolved        [Object],
+62 silly resolved        [Object],
+62 silly resolved        [Object],
+62 silly resolved        [Object],
+62 silly resolved        [Object],
+62 silly resolved        [Object],
+62 silly resolved        [Object],
+62 silly resolved        [Object],
+62 silly resolved        [Object],
+62 silly resolved        [Object],
+62 silly resolved        [Object],
+62 silly resolved        [Object],
+62 silly resolved        [Object],
+62 silly resolved        [Object],
+62 silly resolved        [Object],
+62 silly resolved        [Object],
+62 silly resolved        [Object],
+62 silly resolved        [Object],
+62 silly resolved        [Object] ],
+62 silly resolved     bugs: { url: 'https://github.com/isagalaev/highlight.js/issues' },
+62 silly resolved     licenses: [ [Object] ],
+62 silly resolved     repository:
+62 silly resolved      { type: 'git',
+62 silly resolved        url: 'git://github.com/isagalaev/highlight.js.git' },
+62 silly resolved     main: './lib/index.js',
+62 silly resolved     scripts: { test: './node_modules/.bin/mocha test/' },
+62 silly resolved     engines: { node: '*' },
+62 silly resolved     devDependencies:
+62 silly resolved      { commander: '^2.3.0',
+62 silly resolved        del: '^0.1.2',
+62 silly resolved        gear: '^0.9.4',
+62 silly resolved        'gear-lib': '^0.9.1',
+62 silly resolved        glob: '^4.0.5',
+62 silly resolved        jsdom: '^1.0.3',
+62 silly resolved        lodash: '^2.4.1',
+62 silly resolved        mocha: '^2.0.1',
+62 silly resolved        should: '^4.0.4' },
+62 silly resolved     _id: 'highlight.js@8.4.0',
+62 silly resolved     dist:
+62 silly resolved      { shasum: 'dc0d05b8dc9b110f13bce52cb96fd1e0c6bc791c',
+62 silly resolved        tarball: 'http://registry.npmjs.org/highlight.js/-/highlight.js-8.4.0.tgz' },
+62 silly resolved     _from: 'highlight.js@^8.4.0',
+62 silly resolved     _npmVersion: '1.3.12',
+62 silly resolved     _npmUser: { name: 'isagalaev', email: 'maniac@softwaremaniacs.org' },
+62 silly resolved     maintainers: [ [Object], [Object] ],
+62 silly resolved     directories: {},
+62 silly resolved     _shasum: 'dc0d05b8dc9b110f13bce52cb96fd1e0c6bc791c',
+62 silly resolved     _resolved: 'https://registry.npmjs.org/highlight.js/-/highlight.js-8.4.0.tgz' } ]
+63 info install highlight.js@8.4.0 into c:\Users\Yaroslava\MaKE_DIr\FrontEndProject_Reader
+64 info installOne highlight.js@8.4.0
+65 verbose node_modules\highlight.js unbuild
+66 verbose tar unpack C:\Users\Yaroslava\AppData\Roaming\npm-cache\highlight.js\8.4.0\package.tgz
+67 silly lockFile b2276502-Reader-node-modules-highlight-js tar://c:\Users\Yaroslava\MaKE_DIr\FrontEndProject_Reader\node_modules\highlight.js
+68 verbose lock tar://c:\Users\Yaroslava\MaKE_DIr\FrontEndProject_Reader\node_modules\highlight.js C:\Users\Yaroslava\AppData\Roaming\npm-cache\b2276502-Reader-node-modules-highlight-js.lock
+69 silly lockFile ebdf8d9c-e-highlight-js-8-4-0-package-tgz tar://C:\Users\Yaroslava\AppData\Roaming\npm-cache\highlight.js\8.4.0\package.tgz
+70 verbose lock tar://C:\Users\Yaroslava\AppData\Roaming\npm-cache\highlight.js\8.4.0\package.tgz C:\Users\Yaroslava\AppData\Roaming\npm-cache\ebdf8d9c-e-highlight-js-8-4-0-package-tgz.lock
+71 silly gunzTarPerm modes [ '777', '666' ]
+72 silly gunzTarPerm extractEntry package.json
+73 silly gunzTarPerm modified mode [ 'package.json', 420, 438 ]
+74 silly gunzTarPerm extractEntry README.md
+75 silly gunzTarPerm modified mode [ 'README.md', 420, 438 ]
+76 silly gunzTarPerm extractEntry LICENSE
+77 silly gunzTarPerm modified mode [ 'LICENSE', 420, 438 ]
+78 silly gunzTarPerm extractEntry docs/language-guide.rst
+79 silly gunzTarPerm modified mode [ 'docs/language-guide.rst', 420, 438 ]
+80 silly gunzTarPerm extractEntry docs/api.rst
+81 silly gunzTarPerm modified mode [ 'docs/api.rst', 420, 438 ]
+82 silly gunzTarPerm extractEntry docs/css-classes-reference.rst
+83 silly gunzTarPerm modified mode [ 'docs/css-classes-reference.rst', 420, 438 ]
+84 silly gunzTarPerm extractEntry docs/index.rst
+85 silly gunzTarPerm modified mode [ 'docs/index.rst', 420, 438 ]
+86 silly gunzTarPerm extractEntry docs/language-contribution.rst
+87 silly gunzTarPerm modified mode [ 'docs/language-contribution.rst', 420, 438 ]
+88 silly gunzTarPerm extractEntry docs/building-testing.rst
+89 silly gunzTarPerm modified mode [ 'docs/building-testing.rst', 420, 438 ]
+90 silly gunzTarPerm extractEntry docs/language-requests.rst
+91 silly gunzTarPerm modified mode [ 'docs/language-requests.rst', 420, 438 ]
+92 silly gunzTarPerm extractEntry docs/line-numbers.rst
+93 silly gunzTarPerm modified mode [ 'docs/line-numbers.rst', 420, 438 ]
+94 silly gunzTarPerm extractEntry docs/reference.rst
+95 silly gunzTarPerm modified mode [ 'docs/reference.rst', 420, 438 ]
+96 silly gunzTarPerm extractEntry docs/style-contribution.rst
+97 silly gunzTarPerm modified mode [ 'docs/style-contribution.rst', 420, 438 ]
+98 silly gunzTarPerm extractEntry docs/style-guide.rst
+99 silly gunzTarPerm modified mode [ 'docs/style-guide.rst', 420, 438 ]
+100 silly gunzTarPerm extractEntry lib/highlight.js
+101 silly gunzTarPerm modified mode [ 'lib/highlight.js', 420, 438 ]
+102 silly gunzTarPerm extractEntry lib/index.js
+103 silly gunzTarPerm modified mode [ 'lib/index.js', 420, 438 ]
+104 silly gunzTarPerm extractEntry lib/languages/1c.js
+105 silly gunzTarPerm modified mode [ 'lib/languages/1c.js', 420, 438 ]
+106 silly gunzTarPerm extractEntry lib/languages/lua.js
+107 silly gunzTarPerm modified mode [ 'lib/languages/lua.js', 420, 438 ]
+108 silly gunzTarPerm extractEntry lib/languages/makefile.js
+109 silly gunzTarPerm modified mode [ 'lib/languages/makefile.js', 420, 438 ]
+110 silly gunzTarPerm extractEntry lib/languages/markdown.js
+111 silly gunzTarPerm modified mode [ 'lib/languages/markdown.js', 420, 438 ]
+112 silly gunzTarPerm extractEntry lib/languages/mathematica.js
+113 silly gunzTarPerm modified mode [ 'lib/languages/mathematica.js', 420, 438 ]
+114 silly gunzTarPerm extractEntry lib/languages/livescript.js
+115 silly gunzTarPerm modified mode [ 'lib/languages/livescript.js', 420, 438 ]
+116 silly gunzTarPerm extractEntry lib/languages/mel.js
+117 silly gunzTarPerm modified mode [ 'lib/languages/mel.js', 420, 438 ]
+118 silly gunzTarPerm extractEntry lib/languages/mercury.js
+119 silly gunzTarPerm modified mode [ 'lib/languages/mercury.js', 420, 438 ]
+120 silly gunzTarPerm extractEntry lib/languages/mizar.js
+121 silly gunzTarPerm modified mode [ 'lib/languages/mizar.js', 420, 438 ]
+122 silly gunzTarPerm extractEntry lib/languages/monkey.js
+123 silly gunzTarPerm modified mode [ 'lib/languages/monkey.js', 420, 438 ]
+124 silly gunzTarPerm extractEntry lib/languages/nginx.js
+125 silly gunzTarPerm modified mode [ 'lib/languages/nginx.js', 420, 438 ]
+126 silly gunzTarPerm extractEntry lib/languages/livecodeserver.js
+127 silly gunzTarPerm modified mode [ 'lib/languages/livecodeserver.js', 420, 438 ]
+128 silly gunzTarPerm extractEntry lib/languages/nimrod.js
+129 silly gunzTarPerm modified mode [ 'lib/languages/nimrod.js', 420, 438 ]
+130 silly gunzTarPerm extractEntry lib/languages/lisp.js
+131 silly gunzTarPerm modified mode [ 'lib/languages/lisp.js', 420, 438 ]
+132 silly gunzTarPerm extractEntry lib/languages/nix.js
+133 silly gunzTarPerm modified mode [ 'lib/languages/nix.js', 420, 438 ]
+134 silly gunzTarPerm extractEntry lib/languages/less.js
+135 silly gunzTarPerm modified mode [ 'lib/languages/less.js', 420, 438 ]
+136 silly gunzTarPerm extractEntry lib/languages/nsis.js
+137 silly gunzTarPerm modified mode [ 'lib/languages/nsis.js', 420, 438 ]
+138 silly gunzTarPerm extractEntry lib/languages/lasso.js
+139 silly gunzTarPerm modified mode [ 'lib/languages/lasso.js', 420, 438 ]
+140 silly gunzTarPerm extractEntry lib/languages/objectivec.js
+141 silly gunzTarPerm modified mode [ 'lib/languages/objectivec.js', 420, 438 ]
+142 silly gunzTarPerm extractEntry lib/languages/json.js
+143 silly gunzTarPerm modified mode [ 'lib/languages/json.js', 420, 438 ]
+144 silly gunzTarPerm extractEntry lib/languages/ocaml.js
+145 silly gunzTarPerm modified mode [ 'lib/languages/ocaml.js', 420, 438 ]
+146 silly gunzTarPerm extractEntry lib/languages/javascript.js
+147 silly gunzTarPerm modified mode [ 'lib/languages/javascript.js', 420, 438 ]
+148 silly gunzTarPerm extractEntry lib/languages/oxygene.js
+149 silly gunzTarPerm modified mode [ 'lib/languages/oxygene.js', 420, 438 ]
+150 silly gunzTarPerm extractEntry lib/languages/java.js
+151 silly gunzTarPerm modified mode [ 'lib/languages/java.js', 420, 438 ]
+152 silly gunzTarPerm extractEntry lib/languages/parser3.js
+153 silly gunzTarPerm modified mode [ 'lib/languages/parser3.js', 420, 438 ]
+154 silly gunzTarPerm extractEntry lib/languages/ini.js
+155 silly gunzTarPerm modified mode [ 'lib/languages/ini.js', 420, 438 ]
+156 silly gunzTarPerm extractEntry lib/languages/perl.js
+157 silly gunzTarPerm modified mode [ 'lib/languages/perl.js', 420, 438 ]
+158 silly gunzTarPerm extractEntry lib/languages/http.js
+159 silly gunzTarPerm modified mode [ 'lib/languages/http.js', 420, 438 ]
+160 silly gunzTarPerm extractEntry lib/languages/php.js
+161 silly gunzTarPerm modified mode [ 'lib/languages/php.js', 420, 438 ]
+162 silly gunzTarPerm extractEntry lib/languages/haxe.js
+163 silly gunzTarPerm modified mode [ 'lib/languages/haxe.js', 420, 438 ]
+164 silly gunzTarPerm extractEntry lib/languages/powershell.js
+165 silly gunzTarPerm modified mode [ 'lib/languages/powershell.js', 420, 438 ]
+166 silly gunzTarPerm extractEntry lib/languages/haskell.js
+167 silly gunzTarPerm modified mode [ 'lib/languages/haskell.js', 420, 438 ]
+168 silly gunzTarPerm extractEntry lib/languages/processing.js
+169 silly gunzTarPerm modified mode [ 'lib/languages/processing.js', 420, 438 ]
+170 silly gunzTarPerm extractEntry lib/languages/handlebars.js
+171 silly gunzTarPerm modified mode [ 'lib/languages/handlebars.js', 420, 438 ]
+172 silly gunzTarPerm extractEntry lib/languages/profile.js
+173 silly gunzTarPerm modified mode [ 'lib/languages/profile.js', 420, 438 ]
+174 silly gunzTarPerm extractEntry lib/languages/haml.js
+175 silly gunzTarPerm modified mode [ 'lib/languages/haml.js', 420, 438 ]
+176 silly gunzTarPerm extractEntry lib/languages/protobuf.js
+177 silly gunzTarPerm modified mode [ 'lib/languages/protobuf.js', 420, 438 ]
+178 silly gunzTarPerm extractEntry lib/languages/groovy.js
+179 silly gunzTarPerm modified mode [ 'lib/languages/groovy.js', 420, 438 ]
+180 silly gunzTarPerm extractEntry lib/languages/puppet.js
+181 silly gunzTarPerm modified mode [ 'lib/languages/puppet.js', 420, 438 ]
+182 silly gunzTarPerm extractEntry lib/languages/gradle.js
+183 silly gunzTarPerm modified mode [ 'lib/languages/gradle.js', 420, 438 ]
+184 silly gunzTarPerm extractEntry lib/languages/python.js
+185 silly gunzTarPerm modified mode [ 'lib/languages/python.js', 420, 438 ]
+186 silly gunzTarPerm extractEntry lib/languages/go.js
+187 silly gunzTarPerm modified mode [ 'lib/languages/go.js', 420, 438 ]
+188 silly gunzTarPerm extractEntry lib/languages/q.js
+189 silly gunzTarPerm modified mode [ 'lib/languages/q.js', 420, 438 ]
+190 silly gunzTarPerm extractEntry lib/languages/glsl.js
+191 silly gunzTarPerm modified mode [ 'lib/languages/glsl.js', 420, 438 ]
+192 silly gunzTarPerm extractEntry lib/languages/r.js
+193 silly gunzTarPerm modified mode [ 'lib/languages/r.js', 420, 438 ]
+194 silly gunzTarPerm extractEntry lib/languages/gherkin.js
+195 silly gunzTarPerm modified mode [ 'lib/languages/gherkin.js', 420, 438 ]
+196 silly gunzTarPerm extractEntry lib/languages/rib.js
+197 silly gunzTarPerm modified mode [ 'lib/languages/rib.js', 420, 438 ]
+198 silly gunzTarPerm extractEntry lib/languages/gcode.js
+199 silly gunzTarPerm modified mode [ 'lib/languages/gcode.js', 420, 438 ]
+200 silly gunzTarPerm extractEntry lib/languages/roboconf.js
+201 silly gunzTarPerm modified mode [ 'lib/languages/roboconf.js', 420, 438 ]
+202 silly gunzTarPerm extractEntry lib/languages/fsharp.js
+203 silly gunzTarPerm modified mode [ 'lib/languages/fsharp.js', 420, 438 ]
+204 silly gunzTarPerm extractEntry lib/languages/rsl.js
+205 silly gunzTarPerm modified mode [ 'lib/languages/rsl.js', 420, 438 ]
+206 silly gunzTarPerm extractEntry lib/languages/fix.js
+207 silly gunzTarPerm modified mode [ 'lib/languages/fix.js', 420, 438 ]
+208 silly gunzTarPerm extractEntry lib/languages/ruby.js
+209 silly gunzTarPerm modified mode [ 'lib/languages/ruby.js', 420, 438 ]
+210 silly gunzTarPerm extractEntry lib/languages/erlang.js
+211 silly gunzTarPerm modified mode [ 'lib/languages/erlang.js', 420, 438 ]
+212 silly gunzTarPerm extractEntry lib/languages/ruleslanguage.js
+213 silly gunzTarPerm modified mode [ 'lib/languages/ruleslanguage.js', 420, 438 ]
+214 silly gunzTarPerm extractEntry lib/languages/erlang-repl.js
+215 silly gunzTarPerm modified mode [ 'lib/languages/erlang-repl.js', 420, 438 ]
+216 silly gunzTarPerm extractEntry lib/languages/rust.js
+217 silly gunzTarPerm modified mode [ 'lib/languages/rust.js', 420, 438 ]
+218 silly gunzTarPerm extractEntry lib/languages/erb.js
+219 silly gunzTarPerm modified mode [ 'lib/languages/erb.js', 420, 438 ]
+220 silly gunzTarPerm extractEntry lib/languages/scala.js
+221 silly gunzTarPerm modified mode [ 'lib/languages/scala.js', 420, 438 ]
+222 silly gunzTarPerm extractEntry lib/languages/elixir.js
+223 silly gunzTarPerm modified mode [ 'lib/languages/elixir.js', 420, 438 ]
+224 silly gunzTarPerm extractEntry lib/languages/scheme.js
+225 silly gunzTarPerm modified mode [ 'lib/languages/scheme.js', 420, 438 ]
+226 silly gunzTarPerm extractEntry lib/languages/dust.js
+227 silly gunzTarPerm modified mode [ 'lib/languages/dust.js', 420, 438 ]
+228 silly gunzTarPerm extractEntry lib/languages/scilab.js
+229 silly gunzTarPerm modified mode [ 'lib/languages/scilab.js', 420, 438 ]
+230 silly gunzTarPerm extractEntry lib/languages/dos.js
+231 silly gunzTarPerm modified mode [ 'lib/languages/dos.js', 420, 438 ]
+232 silly gunzTarPerm extractEntry lib/languages/scss.js
+233 silly gunzTarPerm modified mode [ 'lib/languages/scss.js', 420, 438 ]
+234 silly gunzTarPerm extractEntry lib/languages/django.js
+235 silly gunzTarPerm modified mode [ 'lib/languages/django.js', 420, 438 ]
+236 silly gunzTarPerm extractEntry lib/languages/smali.js
+237 silly gunzTarPerm modified mode [ 'lib/languages/smali.js', 420, 438 ]
+238 silly gunzTarPerm extractEntry lib/languages/diff.js
+239 silly gunzTarPerm modified mode [ 'lib/languages/diff.js', 420, 438 ]
+240 silly gunzTarPerm extractEntry lib/languages/smalltalk.js
+241 silly gunzTarPerm modified mode [ 'lib/languages/smalltalk.js', 420, 438 ]
+242 silly gunzTarPerm extractEntry lib/languages/delphi.js
+243 silly gunzTarPerm modified mode [ 'lib/languages/delphi.js', 420, 438 ]
+244 silly gunzTarPerm extractEntry lib/languages/sml.js
+245 silly gunzTarPerm modified mode [ 'lib/languages/sml.js', 420, 438 ]
+246 silly gunzTarPerm extractEntry lib/languages/dart.js
+247 silly gunzTarPerm modified mode [ 'lib/languages/dart.js', 420, 438 ]
+248 silly gunzTarPerm extractEntry lib/languages/sql.js
+249 silly gunzTarPerm modified mode [ 'lib/languages/sql.js', 420, 438 ]
+250 silly gunzTarPerm extractEntry lib/languages/d.js
+251 silly gunzTarPerm modified mode [ 'lib/languages/d.js', 420, 438 ]
+252 silly gunzTarPerm extractEntry lib/languages/stata.js
+253 silly gunzTarPerm modified mode [ 'lib/languages/stata.js', 420, 438 ]
+254 silly gunzTarPerm extractEntry lib/languages/css.js
+255 silly gunzTarPerm modified mode [ 'lib/languages/css.js', 420, 438 ]
+256 silly gunzTarPerm extractEntry lib/languages/step21.js
+257 silly gunzTarPerm modified mode [ 'lib/languages/step21.js', 420, 438 ]
+258 silly gunzTarPerm extractEntry lib/languages/cs.js
+259 silly gunzTarPerm modified mode [ 'lib/languages/cs.js', 420, 438 ]
+260 silly gunzTarPerm extractEntry lib/languages/stylus.js
+261 silly gunzTarPerm modified mode [ 'lib/languages/stylus.js', 420, 438 ]
+262 silly gunzTarPerm extractEntry lib/languages/cpp.js
+263 silly gunzTarPerm modified mode [ 'lib/languages/cpp.js', 420, 438 ]
+264 silly gunzTarPerm extractEntry lib/languages/swift.js
+265 silly gunzTarPerm modified mode [ 'lib/languages/swift.js', 420, 438 ]
+266 silly gunzTarPerm extractEntry lib/languages/coffeescript.js
+267 silly gunzTarPerm modified mode [ 'lib/languages/coffeescript.js', 420, 438 ]
+268 silly gunzTarPerm extractEntry lib/languages/tcl.js
+269 silly gunzTarPerm modified mode [ 'lib/languages/tcl.js', 420, 438 ]
+270 silly gunzTarPerm extractEntry lib/languages/cmake.js
+271 silly gunzTarPerm modified mode [ 'lib/languages/cmake.js', 420, 438 ]
+272 silly gunzTarPerm extractEntry lib/languages/tex.js
+273 silly gunzTarPerm modified mode [ 'lib/languages/tex.js', 420, 438 ]
+274 silly gunzTarPerm extractEntry lib/languages/clojure.js
+275 silly gunzTarPerm modified mode [ 'lib/languages/clojure.js', 420, 438 ]
+276 silly gunzTarPerm extractEntry lib/languages/thrift.js
+277 silly gunzTarPerm modified mode [ 'lib/languages/thrift.js', 420, 438 ]
+278 silly gunzTarPerm extractEntry lib/languages/clojure-repl.js
+279 silly gunzTarPerm modified mode [ 'lib/languages/clojure-repl.js', 420, 438 ]
+280 silly gunzTarPerm extractEntry lib/languages/twig.js
+281 silly gunzTarPerm modified mode [ 'lib/languages/twig.js', 420, 438 ]
+282 silly gunzTarPerm extractEntry lib/languages/capnproto.js
+283 silly gunzTarPerm modified mode [ 'lib/languages/capnproto.js', 420, 438 ]
+284 silly gunzTarPerm extractEntry lib/languages/typescript.js
+285 silly gunzTarPerm modified mode [ 'lib/languages/typescript.js', 420, 438 ]
+286 silly gunzTarPerm extractEntry lib/languages/brainfuck.js
+287 silly gunzTarPerm modified mode [ 'lib/languages/brainfuck.js', 420, 438 ]
+288 silly gunzTarPerm extractEntry lib/languages/vala.js
+289 silly gunzTarPerm modified mode [ 'lib/languages/vala.js', 420, 438 ]
+290 silly gunzTarPerm extractEntry lib/languages/bash.js
+291 silly gunzTarPerm modified mode [ 'lib/languages/bash.js', 420, 438 ]
+292 silly gunzTarPerm extractEntry lib/languages/vbnet.js
+293 silly gunzTarPerm modified mode [ 'lib/languages/vbnet.js', 420, 438 ]
+294 silly gunzTarPerm extractEntry lib/languages/axapta.js
+295 silly gunzTarPerm modified mode [ 'lib/languages/axapta.js', 420, 438 ]
+296 silly gunzTarPerm extractEntry lib/languages/vbscript-html.js
+297 silly gunzTarPerm modified mode [ 'lib/languages/vbscript-html.js', 420, 438 ]
+298 silly gunzTarPerm extractEntry lib/languages/avrasm.js
+299 silly gunzTarPerm modified mode [ 'lib/languages/avrasm.js', 420, 438 ]
+300 silly gunzTarPerm extractEntry lib/languages/vbscript.js
+301 silly gunzTarPerm modified mode [ 'lib/languages/vbscript.js', 420, 438 ]
+302 silly gunzTarPerm extractEntry lib/languages/autohotkey.js
+303 silly gunzTarPerm modified mode [ 'lib/languages/autohotkey.js', 420, 438 ]
+304 silly gunzTarPerm extractEntry lib/languages/verilog.js
+305 silly gunzTarPerm modified mode [ 'lib/languages/verilog.js', 420, 438 ]
+306 silly gunzTarPerm extractEntry lib/languages/aspectj.js
+307 silly gunzTarPerm modified mode [ 'lib/languages/aspectj.js', 420, 438 ]
+308 silly gunzTarPerm extractEntry lib/languages/vhdl.js
+309 silly gunzTarPerm modified mode [ 'lib/languages/vhdl.js', 420, 438 ]
+310 silly gunzTarPerm extractEntry lib/languages/asciidoc.js
+311 silly gunzTarPerm modified mode [ 'lib/languages/asciidoc.js', 420, 438 ]
+312 silly gunzTarPerm extractEntry lib/languages/vim.js
+313 silly gunzTarPerm modified mode [ 'lib/languages/vim.js', 420, 438 ]
+314 silly gunzTarPerm extractEntry lib/languages/applescript.js
+315 silly gunzTarPerm modified mode [ 'lib/languages/applescript.js', 420, 438 ]
+316 silly gunzTarPerm extractEntry lib/languages/x86asm.js
+317 silly gunzTarPerm modified mode [ 'lib/languages/x86asm.js', 420, 438 ]
+318 silly gunzTarPerm extractEntry lib/languages/apache.js
+319 silly gunzTarPerm modified mode [ 'lib/languages/apache.js', 420, 438 ]
+320 silly gunzTarPerm extractEntry lib/languages/xl.js
+321 silly gunzTarPerm modified mode [ 'lib/languages/xl.js', 420, 438 ]
+322 silly gunzTarPerm extractEntry lib/languages/actionscript.js
+323 silly gunzTarPerm modified mode [ 'lib/languages/actionscript.js', 420, 438 ]
+324 silly gunzTarPerm extractEntry lib/languages/xml.js
+325 silly gunzTarPerm modified mode [ 'lib/languages/xml.js', 420, 438 ]
+326 silly gunzTarPerm extractEntry lib/languages/matlab.js
+327 silly gunzTarPerm modified mode [ 'lib/languages/matlab.js', 420, 438 ]
+328 silly gunzTarPerm extractEntry styles/ir_black.css
+329 silly gunzTarPerm modified mode [ 'styles/ir_black.css', 420, 438 ]
+330 silly gunzTarPerm extractEntry styles/arta.css
+331 silly gunzTarPerm modified mode [ 'styles/arta.css', 420, 438 ]
+332 silly gunzTarPerm extractEntry styles/atelier-dune.dark.css
+333 silly gunzTarPerm modified mode [ 'styles/atelier-dune.dark.css', 420, 438 ]
+334 silly gunzTarPerm extractEntry styles/atelier-dune.light.css
+335 silly gunzTarPerm modified mode [ 'styles/atelier-dune.light.css', 420, 438 ]
+336 silly gunzTarPerm extractEntry styles/atelier-forest.dark.css
+337 silly gunzTarPerm modified mode [ 'styles/atelier-forest.dark.css', 420, 438 ]
+338 silly gunzTarPerm extractEntry styles/atelier-forest.light.css
+339 silly gunzTarPerm modified mode [ 'styles/atelier-forest.light.css', 420, 438 ]
+340 silly gunzTarPerm extractEntry styles/atelier-heath.dark.css
+341 silly gunzTarPerm modified mode [ 'styles/atelier-heath.dark.css', 420, 438 ]
+342 silly gunzTarPerm extractEntry styles/atelier-heath.light.css
+343 silly gunzTarPerm modified mode [ 'styles/atelier-heath.light.css', 420, 438 ]
+344 silly gunzTarPerm extractEntry styles/atelier-lakeside.dark.css
+345 silly gunzTarPerm modified mode [ 'styles/atelier-lakeside.dark.css', 420, 438 ]
+346 silly gunzTarPerm extractEntry styles/atelier-lakeside.light.css
+347 silly gunzTarPerm modified mode [ 'styles/atelier-lakeside.light.css', 420, 438 ]
+348 silly gunzTarPerm extractEntry styles/atelier-seaside.dark.css
+349 silly gunzTarPerm modified mode [ 'styles/atelier-seaside.dark.css', 420, 438 ]
+350 silly gunzTarPerm extractEntry styles/atelier-seaside.light.css
+351 silly gunzTarPerm modified mode [ 'styles/atelier-seaside.light.css', 420, 438 ]
+352 silly gunzTarPerm extractEntry styles/brown_paper.css
+353 silly gunzTarPerm modified mode [ 'styles/brown_paper.css', 420, 438 ]
+354 silly gunzTarPerm extractEntry styles/codepen-embed.css
+355 silly gunzTarPerm modified mode [ 'styles/codepen-embed.css', 420, 438 ]
+356 silly gunzTarPerm extractEntry styles/color-brewer.css
+357 silly gunzTarPerm modified mode [ 'styles/color-brewer.css', 420, 438 ]
+358 silly gunzTarPerm extractEntry styles/dark.css
+359 silly gunzTarPerm modified mode [ 'styles/dark.css', 420, 438 ]
+360 silly gunzTarPerm extractEntry styles/default.css
+361 silly gunzTarPerm modified mode [ 'styles/default.css', 420, 438 ]
+362 silly gunzTarPerm extractEntry styles/docco.css
+363 silly gunzTarPerm modified mode [ 'styles/docco.css', 420, 438 ]
+364 silly gunzTarPerm extractEntry styles/far.css
+365 silly gunzTarPerm modified mode [ 'styles/far.css', 420, 438 ]
+366 silly gunzTarPerm extractEntry styles/foundation.css
+367 silly gunzTarPerm modified mode [ 'styles/foundation.css', 420, 438 ]
+368 silly gunzTarPerm extractEntry styles/github.css
+369 silly gunzTarPerm modified mode [ 'styles/github.css', 420, 438 ]
+370 silly gunzTarPerm extractEntry styles/googlecode.css
+371 silly gunzTarPerm modified mode [ 'styles/googlecode.css', 420, 438 ]
+372 silly gunzTarPerm extractEntry styles/hybrid.css
+373 silly gunzTarPerm modified mode [ 'styles/hybrid.css', 420, 438 ]
+374 silly gunzTarPerm extractEntry styles/idea.css
+375 silly gunzTarPerm modified mode [ 'styles/idea.css', 420, 438 ]
+376 silly gunzTarPerm extractEntry styles/ascetic.css
+377 silly gunzTarPerm modified mode [ 'styles/ascetic.css', 420, 438 ]
+378 silly gunzTarPerm extractEntry styles/kimbie.dark.css
+379 silly gunzTarPerm modified mode [ 'styles/kimbie.dark.css', 420, 438 ]
+380 silly gunzTarPerm extractEntry styles/kimbie.light.css
+381 silly gunzTarPerm modified mode [ 'styles/kimbie.light.css', 420, 438 ]
+382 silly gunzTarPerm extractEntry styles/magula.css
+383 silly gunzTarPerm modified mode [ 'styles/magula.css', 420, 438 ]
+384 silly gunzTarPerm extractEntry styles/mono-blue.css
+385 silly gunzTarPerm modified mode [ 'styles/mono-blue.css', 420, 438 ]
+386 silly gunzTarPerm extractEntry styles/monokai.css
+387 silly gunzTarPerm modified mode [ 'styles/monokai.css', 420, 438 ]
+388 silly gunzTarPerm extractEntry styles/monokai_sublime.css
+389 silly gunzTarPerm modified mode [ 'styles/monokai_sublime.css', 420, 438 ]
+390 silly gunzTarPerm extractEntry styles/obsidian.css
+391 silly gunzTarPerm modified mode [ 'styles/obsidian.css', 420, 438 ]
+392 silly gunzTarPerm extractEntry styles/paraiso.dark.css
+393 silly gunzTarPerm modified mode [ 'styles/paraiso.dark.css', 420, 438 ]
+394 silly gunzTarPerm extractEntry styles/paraiso.light.css
+395 silly gunzTarPerm modified mode [ 'styles/paraiso.light.css', 420, 438 ]
+396 silly gunzTarPerm extractEntry styles/pojoaque.css
+397 silly gunzTarPerm modified mode [ 'styles/pojoaque.css', 420, 438 ]
+398 silly gunzTarPerm extractEntry styles/railscasts.css
+399 silly gunzTarPerm modified mode [ 'styles/railscasts.css', 420, 438 ]
+400 silly gunzTarPerm extractEntry styles/rainbow.css
+401 silly gunzTarPerm modified mode [ 'styles/rainbow.css', 420, 438 ]
+402 silly gunzTarPerm extractEntry styles/school_book.css
+403 silly gunzTarPerm modified mode [ 'styles/school_book.css', 420, 438 ]
+404 silly gunzTarPerm extractEntry styles/solarized_dark.css
+405 silly gunzTarPerm modified mode [ 'styles/solarized_dark.css', 420, 438 ]
+406 silly gunzTarPerm extractEntry styles/solarized_light.css
+407 silly gunzTarPerm modified mode [ 'styles/solarized_light.css', 420, 438 ]
+408 silly gunzTarPerm extractEntry styles/sunburst.css
+409 silly gunzTarPerm modified mode [ 'styles/sunburst.css', 420, 438 ]
+410 silly gunzTarPerm extractEntry styles/tomorrow-night-blue.css
+411 silly gunzTarPerm modified mode [ 'styles/tomorrow-night-blue.css', 420, 438 ]
+412 silly gunzTarPerm extractEntry styles/tomorrow-night-bright.css
+413 silly gunzTarPerm modified mode [ 'styles/tomorrow-night-bright.css', 420, 438 ]
+414 silly gunzTarPerm extractEntry styles/tomorrow-night-eighties.css
+415 silly gunzTarPerm modified mode [ 'styles/tomorrow-night-eighties.css', 420, 438 ]
+416 silly gunzTarPerm extractEntry styles/tomorrow-night.css
+417 silly gunzTarPerm modified mode [ 'styles/tomorrow-night.css', 420, 438 ]
+418 silly gunzTarPerm extractEntry styles/tomorrow.css
+419 silly gunzTarPerm modified mode [ 'styles/tomorrow.css', 420, 438 ]
+420 silly gunzTarPerm extractEntry styles/vs.css
+421 silly gunzTarPerm modified mode [ 'styles/vs.css', 420, 438 ]
+422 silly gunzTarPerm extractEntry styles/xcode.css
+423 silly gunzTarPerm modified mode [ 'styles/xcode.css', 420, 438 ]
+424 silly gunzTarPerm extractEntry styles/zenburn.css
+425 silly gunzTarPerm modified mode [ 'styles/zenburn.css', 420, 438 ]
+426 silly lockFile b2276502-Reader-node-modules-highlight-js tar://c:\Users\Yaroslava\MaKE_DIr\FrontEndProject_Reader\node_modules\highlight.js
+427 silly lockFile b2276502-Reader-node-modules-highlight-js tar://c:\Users\Yaroslava\MaKE_DIr\FrontEndProject_Reader\node_modules\highlight.js
+428 silly lockFile ebdf8d9c-e-highlight-js-8-4-0-package-tgz tar://C:\Users\Yaroslava\AppData\Roaming\npm-cache\highlight.js\8.4.0\package.tgz
+429 silly lockFile ebdf8d9c-e-highlight-js-8-4-0-package-tgz tar://C:\Users\Yaroslava\AppData\Roaming\npm-cache\highlight.js\8.4.0\package.tgz
+430 info preinstall highlight.js@8.4.0
+431 verbose readDependencies using package.json deps
+432 verbose readDependencies using package.json deps
+433 silly resolved []
+434 verbose about to build c:\Users\Yaroslava\MaKE_DIr\FrontEndProject_Reader\node_modules\highlight.js
+435 info build c:\Users\Yaroslava\MaKE_DIr\FrontEndProject_Reader\node_modules\highlight.js
+436 verbose linkStuff [ false,
+436 verbose linkStuff   false,
+436 verbose linkStuff   false,
+436 verbose linkStuff   'c:\\Users\\Yaroslava\\MaKE_DIr\\FrontEndProject_Reader\\node_modules' ]
+437 info linkStuff highlight.js@8.4.0
+438 verbose linkBins highlight.js@8.4.0
+439 verbose linkMans highlight.js@8.4.0
+440 verbose rebuildBundles highlight.js@8.4.0
+441 info install highlight.js@8.4.0
+442 info postinstall highlight.js@8.4.0
+443 info build c:\Users\Yaroslava\MaKE_DIr\FrontEndProject_Reader
+444 verbose linkStuff [ false, false, false, 'c:\\Users\\Yaroslava\\MaKE_DIr' ]
+445 info linkStuff fb2Reader@0.4.0
+446 verbose linkBins fb2Reader@0.4.0
+447 verbose linkMans fb2Reader@0.4.0
+448 verbose rebuildBundles fb2Reader@0.4.0
+449 verbose rebuildBundles [ '.bin',
+449 verbose rebuildBundles   'express',
+449 verbose rebuildBundles   'fs-extra',
+449 verbose rebuildBundles   'grunt',
+449 verbose rebuildBundles   'grunt-contrib',
+449 verbose rebuildBundles   'grunt-contrib-cssmin',
+449 verbose rebuildBundles   'grunt-contrib-jshint',
+449 verbose rebuildBundles   'grunt-contrib-less',
+449 verbose rebuildBundles   'grunt-contrib-requirejs',
+449 verbose rebuildBundles   'grunt-contrib-uglify',
+449 verbose rebuildBundles   'grunt-contrib-watch',
+449 verbose rebuildBundles   'grunt-nodemon',
+449 verbose rebuildBundles   'highlight.js',
+449 verbose rebuildBundles   'iconv-lite',
+449 verbose rebuildBundles   'jquery-file-upload-middleware',
+449 verbose rebuildBundles   'jschardet',
+449 verbose rebuildBundles   'rmdir',
+449 verbose rebuildBundles   'unzip',
+449 verbose rebuildBundles   'wikipedia-js',
+449 verbose rebuildBundles   'xml2js' ]
+450 verbose rebuild bundle c:\Users\Yaroslava\MaKE_DIr\FrontEndProject_Reader\node_modules\grunt-contrib
+451 info build c:\Users\Yaroslava\MaKE_DIr\FrontEndProject_Reader\node_modules\grunt-contrib
+452 info preinstall grunt-contrib@0.11.0
+453 verbose linkStuff [ false,
+453 verbose linkStuff   false,
+453 verbose linkStuff   false,
+453 verbose linkStuff   'c:\\Users\\Yaroslava\\MaKE_DIr\\FrontEndProject_Reader\\node_modules' ]
+454 info linkStuff grunt-contrib@0.11.0
+455 verbose linkBins grunt-contrib@0.11.0
+456 verbose linkMans grunt-contrib@0.11.0
+457 verbose rebuildBundles grunt-contrib@0.11.0
+458 verbose rebuildBundles [ 'matchdep' ]
+459 info install grunt-contrib@0.11.0
+460 info postinstall grunt-contrib@0.11.0
+461 verbose rebuild bundle c:\Users\Yaroslava\MaKE_DIr\FrontEndProject_Reader\node_modules\grunt-contrib-jshint
+462 info build c:\Users\Yaroslava\MaKE_DIr\FrontEndProject_Reader\node_modules\grunt-contrib-jshint
+463 info preinstall grunt-contrib-jshint@0.10.0
+464 verbose linkStuff [ false,
+464 verbose linkStuff   false,
+464 verbose linkStuff   false,
+464 verbose linkStuff   'c:\\Users\\Yaroslava\\MaKE_DIr\\FrontEndProject_Reader\\node_modules' ]
+465 info linkStuff grunt-contrib-jshint@0.10.0
+466 verbose linkBins grunt-contrib-jshint@0.10.0
+467 verbose linkMans grunt-contrib-jshint@0.10.0
+468 verbose rebuildBundles grunt-contrib-jshint@0.10.0
+469 verbose rebuildBundles [ 'hooker', 'jshint' ]
+470 info install grunt-contrib-jshint@0.10.0
+471 info postinstall grunt-contrib-jshint@0.10.0
+472 verbose rebuild bundle c:\Users\Yaroslava\MaKE_DIr\FrontEndProject_Reader\node_modules\grunt-contrib-uglify
+473 info build c:\Users\Yaroslava\MaKE_DIr\FrontEndProject_Reader\node_modules\grunt-contrib-uglify
+474 info preinstall grunt-contrib-uglify@0.6.0
+475 verbose linkStuff [ false,
+475 verbose linkStuff   false,
+475 verbose linkStuff   false,
+475 verbose linkStuff   'c:\\Users\\Yaroslava\\MaKE_DIr\\FrontEndProject_Reader\\node_modules' ]
+476 info linkStuff grunt-contrib-uglify@0.6.0
+477 verbose linkBins grunt-contrib-uglify@0.6.0
+478 verbose linkMans grunt-contrib-uglify@0.6.0
+479 verbose rebuildBundles grunt-contrib-uglify@0.6.0
+480 verbose rebuildBundles [ '.bin', 'chalk', 'lodash', 'maxmin', 'uglify-js', 'uri-path' ]
+481 info install grunt-contrib-uglify@0.6.0
+482 info postinstall grunt-contrib-uglify@0.6.0
+483 verbose rebuild bundle c:\Users\Yaroslava\MaKE_DIr\FrontEndProject_Reader\node_modules\wikipedia-js
+484 info build c:\Users\Yaroslava\MaKE_DIr\FrontEndProject_Reader\node_modules\wikipedia-js
+485 info preinstall wikipedia-js@0.0.6
+486 verbose linkStuff [ false,
+486 verbose linkStuff   false,
+486 verbose linkStuff   false,
+486 verbose linkStuff   'c:\\Users\\Yaroslava\\MaKE_DIr\\FrontEndProject_Reader\\node_modules' ]
+487 info linkStuff wikipedia-js@0.0.6
+488 verbose linkBins wikipedia-js@0.0.6
+489 verbose linkMans wikipedia-js@0.0.6
+490 verbose rebuildBundles wikipedia-js@0.0.6
+491 verbose rebuildBundles [ 'cheerio', 'superagent', 'underscore', 'underscore.string' ]
+492 info install wikipedia-js@0.0.6
+493 info postinstall wikipedia-js@0.0.6
+494 info install fb2Reader@0.4.0
+495 info postinstall fb2Reader@0.4.0
+496 info prepublish fb2Reader@0.4.0
+497 error peerinvalid The package grunt-contrib-cssmin does not satisfy its siblings' peerDependencies requirements!
+497 error peerinvalid Peer grunt-contrib@0.11.0 wants grunt-contrib-cssmin@~0.9.0
+498 error System Windows_NT 6.2.9200
+499 error command "c:\\Program Files\\nodejs\\node.exe" "c:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "install"
+500 error cwd c:\Users\Yaroslava\MaKE_DIr\FrontEndProject_Reader
+501 error node -v v0.10.32
+502 error npm -v 1.4.28
+503 error code EPEERINVALID
+504 verbose exit [ 1, true ]

@@ -54,7 +54,6 @@ function getWikiMedia(word) {
     $.getJSON("http://en.wikipedia.org/w/api.php?action=query&prop=extracts&explaintext&exchars=175&titles=" + word + "&format=json&callback=?", function(data) {
       
      obj = data.query.pages;
-     console.log(obj);
      for (key in obj)  break;        
         if (key == -1) {
           $('#jsonWiki').html('<p> Sorry wiki doesn`t known</p>');  
@@ -64,7 +63,7 @@ function getWikiMedia(word) {
             } else {
                 $('#jsonWiki').html(obj[key].extract + '<a href="http://en.wikipedia.org/wiki?curid=' + key +'"  target="blank"> More...</a>' );     
             }
-    }
+     }
     
 });
 }
@@ -73,7 +72,7 @@ function translateWord(word){
     var inLang = 'en';
     var outLang = 'uk';
     var APIkey = 'trnsl.1.1.20141222T001454Z.8c7163c39781738b.a70c5087d7f3180f1c30294400bfe661c74a6016';
-    $.getJSON("https://translate.yandex.net/api/v1.5/tr.json/translate?key="+APIkey+"&lang="+inLang+"-"+outLang+"&text="+word+"&callback=?", function(data) {
+    $.getJSON("https://translate.yandex.net/api/v1.5/tr.json/translate?key=" + APIkey + "&lang=" + inLang + "-" + outLang + "&text=" + word + "&callback=?", function(data) {
         transText = data.text[0];
         $('#jsonTranslated').text('Translate to Ukraine: ' + transText);
     });
