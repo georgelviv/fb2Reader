@@ -6,6 +6,11 @@ define( function() {
 	
 	function setProgress() {
 		var self = this;
+
+		var progress = this.currentPage * 100 / this.pages ;	
+		var progressBarWidth =Math.ceil(progress*$(".container").width()/ 100);  
+	    $("#progressbar").width(progressBarWidth).html('<span class="label">' + progress.toPrecision(4) + "% </span");
+
 		var progresDiv = $('#progres');
 		var progressBarWidth =Math.ceil(progress*$(".container").width()/ 100);
 		var progress = this.currentPage * 100 / this.pages ;

@@ -115,7 +115,7 @@ function settingPanel() {
 		$('body').trigger('changeStyles');
 	});
 
-	$('#textures').change(function()
+	/*$('#textures').change(function()
 	{
 		var option = $(this).find('option:selected').val();
 		if (option != 'null') {
@@ -123,6 +123,6 @@ function settingPanel() {
 		}	
 		$('#main, #book').css("background-image",  "url('"+option+"')");
 		$('body').trigger('changeStyles');
-	});
+	});*/
 }
 
